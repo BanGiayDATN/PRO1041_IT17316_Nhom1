@@ -29,7 +29,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table(name = "nhan_vien")
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
 public class NhanVien implements Serializable {
@@ -70,7 +70,7 @@ public class NhanVien implements Serializable {
     @Column(name = "mat_khau", length = 30)
     private String password;
 
-    @Column(name = "dia_chi", columnDefinition = "nvarchar(500)")
+    @Column(name = "dia_chi", columnDefinition = "nvarchar(Max)")
     private String diaChi;
 
     @Column(name = "trang_thai")

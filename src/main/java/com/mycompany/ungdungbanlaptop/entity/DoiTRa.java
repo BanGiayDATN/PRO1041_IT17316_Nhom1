@@ -24,7 +24,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table(name = "doi_tra")
+@Table
 @ToString
 public class DoiTRa {
     

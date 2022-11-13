@@ -24,7 +24,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table(name = "khach_hang")
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
 public class KhachHang implements Serializable {
