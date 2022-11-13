@@ -42,7 +42,7 @@ public class Ram {
     @Column(name = "Id", columnDefinition = "uniqueidentifier")
     private UUID idRam;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
 
     @Column(name = "ten_CPU")

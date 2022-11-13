@@ -50,7 +50,13 @@ public class SanPham implements Serializable {
     @Column(name = "nam_bao_hanh")
     private int namBH;
 
-    @Column(name = "trong_luong", length = 50)
+    @Column(name = "ma", length = 50)
+    private float ma;
+    
+    @Column(name = "ten_san_pham")
+    private int ten;
+
+    @Column(name = "trong_luong")
     private float trongLuong;
 
     @Column(name = "so_luong_ton")

@@ -42,7 +42,7 @@ public class GPM {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idGPU;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
 
     @Column(name = "ten_GPM")
