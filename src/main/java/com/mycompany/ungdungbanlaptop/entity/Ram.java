@@ -45,6 +45,6 @@ public class Ram {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_cpu")
+    @Column(name = "ten_CPU")
     private String ten;
 }
