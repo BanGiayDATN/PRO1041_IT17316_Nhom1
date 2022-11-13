@@ -45,6 +45,6 @@ public class GPM {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_GPM")
+    @Column(name = "ten_gpm")
     private String ten;
 }

@@ -39,7 +39,7 @@ public class Ram {
             )
         }
     )
-    @Column(name = "Id", columnDefinition = "uniqueidentifier")
+    @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idRam;
 
     @Column(name = "ma")

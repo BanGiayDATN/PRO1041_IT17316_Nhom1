@@ -45,6 +45,6 @@ public class CPU {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_CPU")
+    @Column(name = "ten_cpu")
     private String ten;
 }
