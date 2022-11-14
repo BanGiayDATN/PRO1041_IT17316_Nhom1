@@ -49,7 +49,7 @@ public class NhanVien implements Serializable {
     @Column(name = "ma", unique = true, length = 20)
     private String ma;
 
-    @Column(name = "ho_ten", columnDefinition = "nvarchar(50)")
+    @Column(name = "ho_ten", columnDefinition = "nvarchar(Max)")
     private String hoTen;
 
     @Column(name = "gioi_tinh", length = 10)
@@ -64,7 +64,7 @@ public class NhanVien implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "mat_khau", length = 30)
+    @Column(name = "mat_khau")
     private String password;
 
     @Column(name = "dia_chi", columnDefinition = "nvarchar(Max)")
@@ -77,17 +77,4 @@ public class NhanVien implements Serializable {
     @JoinColumn(name = "idChucVu")
     private ChucVu chucVu;
 
-    public NhanVien(String ma, String hoTen, String gioiTinh, long ngaySinh, String sdt, String email, String password, String diaChi, int trangThai, ChucVu chucVu) {
-        this.ma = ma;
-        this.hoTen = hoTen;
-        this.gioiTinh = gioiTinh;
-        this.ngaySinh = ngaySinh;
-        this.sdt = sdt;
-        this.email = email;
-        this.password = password;
-        this.diaChi = diaChi;
-        this.trangThai = trangThai;
-        this.chucVu = chucVu;
-    }
-    
 }

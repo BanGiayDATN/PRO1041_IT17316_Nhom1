@@ -46,15 +46,16 @@ public class Ram {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_cpu")
+    @Column(name = "ten_cpu",columnDefinition = "nvarchar(100)")
     private String ten;
-    
+
+
     @Column(name = "dung_luong")
     private int dungLuong;
-    
+
     @Column(name = "megahertz")
     private int megahertz;
-    
+
     @Column(name = "loai_ram")
     private EnumLoaiRam enumLoaiRam;
 }

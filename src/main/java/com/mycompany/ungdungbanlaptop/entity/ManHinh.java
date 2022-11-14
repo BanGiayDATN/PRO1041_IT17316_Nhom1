@@ -45,15 +45,15 @@ public class ManHinh {
     @Column(name = "ma")
     private String ma;
     
-    @Column(name = "do_phan_giai")
+    @Column(name = "do_phan_giai",columnDefinition = "nvarchar(Max)")
     private String doPhanGiaMan;
     
-    @Column(name = "kich_thuoc")
+    @Column(name = "kich_thuoc",columnDefinition = "nvarchar(Max)")
     private String kichThuoc;
     
-    @Column(name = "loai_cam_ung")
+    @Column(name = "loai_cam_ung",columnDefinition = "nvarchar(50)")
     private String loaiCamUng;
     
-    @Column(name = "tan_so")
+    @Column(name = "tan_so",columnDefinition = "nvarchar(100)")
     private String tanSo;
 }

@@ -45,6 +45,6 @@ public class GPM {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_gpm")
+    @Column(name = "ten_gpm",columnDefinition = "nvarchar(Max)")
     private String ten;
 }

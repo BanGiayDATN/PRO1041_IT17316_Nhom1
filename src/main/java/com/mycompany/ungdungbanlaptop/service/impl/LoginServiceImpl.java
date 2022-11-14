@@ -12,12 +12,16 @@ import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
+import javax.xml.bind.DatatypeConverter;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 
 /**
@@ -30,18 +34,19 @@ public class LoginServiceImpl implements LoginService {
     private NhanVienRepository nhanVienRepository = new NhanVienRepository();
 
     @Override
-    public String login(String email, String password) {
+    public NhanVien login(String email, String password) {
+        NhanVien nhanVien = new NhanVien();
         if (email.isBlank() || password.isBlank()) {
-            return "Không để trống ";
+            return null;
         }
         if (!EmailValidator.getInstance().isValid(email)) {
-            return "Email sai định dạng ";
+            return null;
         }
-        NhanVien nhanVien = nhanVienRepository.getNhanVienByEmailAndPass(email, password);
+        nhanVien = nhanVienRepository.getNhanVienByEmailAndPass(email, matKhauMD5(password));
         if (nhanVien == null) {
-            return "Email hoặc password không đúng";
+            return null;
         }
-        return "Đăng nhập thành công";
+        return nhanVien;
     }
 
     @Override
@@ -71,7 +76,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public String dangKy(NhanVienResponse response) {
+    public int dangKy(NhanVienResponse response) {
         String ma = "NV" + new TaoChuoiNgauNhien().getMkRanDum(5);
         String hoTen = response.getHoTen().trim();
         String gioiTinh = response.getGioiTinh().trim();
@@ -83,38 +88,39 @@ public class LoginServiceImpl implements LoginService {
         int trangThai = 0;
         ChucVu chucVu = null;
         if (ma.isBlank() || hoTen.isBlank() || dateStr.isBlank() || sdt.isBlank() || email.isBlank()
-                || password.isBlank() || diaChi.isBlank()) {
-            return "Không để trống ";
+                || password.isBlank() || diaChi.isBlank() || gioiTinh.isBlank()) {
+            return 1;
         }
         if (!EmailValidator.getInstance().isValid(email)) {
-            return "Email sai định dạng ";
+            return 2;
         }
         if (!sdt.matches(regexSDT)) {
-            return "SĐT sai định dạng ";
+            return 3;
         }
         if (!isValid(dateStr)) {
-            return "Ngày sinh sai định dạng \n VD : 2000/01/21";
+            return 4;
         }
         NhanVien checkTontai = nhanVienRepository.getNhanVienByEmail(email);
         if (checkTontai != null) {
-            return "Email đã tồn tại";
+            return 5;
         }
         if (password.length() < 8) {
-            return "Mật khẩu phải lớn hơn hoặc bằng 8 kí tự";
+            return 6;
         }
+        
         NhanVien nhanVien = new NhanVien();
         nhanVien.setEmail(response.getEmail());
         nhanVien.setMa(ma);
         nhanVien.setDiaChi(response.getDiaChi());
         nhanVien.setGioiTinh(response.getGioiTinh());
         nhanVien.setNgaySinh(new ConverDate().dateToLong(dateStr, "yyyy/MM/dd"));
-        nhanVien.setPassword(response.getPassword());
+        nhanVien.setPassword(matKhauMD5(response.getPassword())); // tạo mật khẩu mã hóa
         nhanVien.setSdt(response.getSdt());
         nhanVien.setHoTen(response.getHoTen());
         nhanVien.setTrangThai(response.getTrangThai());
         nhanVien.setChucVu(null); // chua them chuc vu
         nhanVienRepository.addNhanVien(nhanVien);
-        return "Đăng ký thành công";
+        return 0;
     }
 
     public static boolean isValid(String dateStr) {
@@ -126,5 +132,21 @@ public class LoginServiceImpl implements LoginService {
             return false;
         }
         return true;
-    } 
+    }
+    
+    private String matKhauMD5(String matKhau){
+         String md5Hex = DigestUtils.md5Hex(matKhau).toUpperCase();
+         return md5Hex;
+    }
+    private boolean verify(String inputPassword, String hashPassWord)
+            throws NoSuchAlgorithmException {
+
+        MessageDigest md = MessageDigest.getInstance("MD5");
+        md.update(inputPassword.getBytes());
+        byte[] digest = md.digest();
+        String myChecksum = DatatypeConverter
+                .printHexBinary(digest).toUpperCase();
+
+        return hashPassWord.equals(myChecksum);
+    }
 }

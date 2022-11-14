@@ -111,7 +111,7 @@ public class NhanVienRepository {
 //        NhanVien add = new NhanVienRepository().addNhanVien(nhanVien);
 //        System.out.println(add.toString());
 
-        NhanVien getOne = new NhanVienRepository().getNhanVienByEmail("anhvinh12a888@gmail.com");
+        NhanVien getOne = new NhanVienRepository().getNhanVienByEmailAndPass("anhvinh12a888@gmail.com","25F9E794323B453885F5181F1B624D0B");
         System.out.println(getOne);
         
         
