@@ -53,7 +53,7 @@ public class SanPham implements Serializable {
     @Column(name = "ma", length = 50)
     private float ma;
     
-    @Column(name = "ten_san_pham")
+    @Column(name = "ten_san_pham",columnDefinition = "nvarchar(Max)")
     private int ten;
 
     @Column(name = "trong_luong")

@@ -45,6 +45,6 @@ public class HeDieuHanh {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_he_dieu_hanh")
+    @Column(name = "ten_he_dieu_hanh",columnDefinition = "nvarchar(Max)")
     private String ten;
 }
