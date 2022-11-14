@@ -51,10 +51,10 @@ public class SanPham implements Serializable {
     private int namBH;
 
     @Column(name = "ma", length = 50)
-    private float ma;
+    private String ma;
     
     @Column(name = "ten_san_pham",columnDefinition = "nvarchar(Max)")
-    private int ten;
+    private String ten;
 
     @Column(name = "trong_luong")
     private float trongLuong;

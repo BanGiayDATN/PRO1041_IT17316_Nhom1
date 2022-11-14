@@ -64,7 +64,7 @@ public class NhanVien implements Serializable {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "mat_khau", length = 30)
+    @Column(name = "mat_khau")
     private String password;
 
     @Column(name = "dia_chi", columnDefinition = "nvarchar(Max)")
