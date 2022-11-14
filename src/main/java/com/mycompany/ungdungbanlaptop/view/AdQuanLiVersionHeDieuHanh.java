@@ -145,7 +145,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE))
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 654, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -184,7 +184,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
                     .addComponent(txtTenVersion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(errorTen)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThem)
                     .addComponent(btnSua))
@@ -213,7 +213,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
             heDieuHanh.setHeDieuHanh(getEumHeDieuHanh());
             try {
                 if (heDieuHanhService.findById(heDieuHanh.getMa()) != null) {
-                    JOptionPane.showMessageDialog(this, "Mã version hệ điều hành đã tòn tại");
+                    JOptionPane.showMessageDialog(this, "Mã version hệ điều hành đã tồn tại");
                 } else {
                     int index;
                     index = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu " + txtMa.getText() + ": " + txtTenVersion.getText());
@@ -233,8 +233,8 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "vui lòng chọn hệ điều hành cần thay đổi");
             return;
         }
+        
         UUID id = UUID.fromString(txtID.getText());
-        System.out.println(id);
         HeDieuHanh heDieuHanh = new HeDieuHanh();
         heDieuHanh.setMa(txtMa.getText());
         heDieuHanh.setTen(txtTenVersion.getText());
@@ -268,10 +268,14 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
         if (txtMa.getText().isEmpty()) {
             errorMa.setText("vui lòng nhập mã");
             check++;
+        }else{
+            errorMa.setText("");
         }
         if (txtTenVersion.getText().isEmpty()) {
             errorTen.setText("vui lòng nhập tên");
             check++;
+        }else{
+            errorTen.setText("");
         }
         if (check == 0) {
             return true;

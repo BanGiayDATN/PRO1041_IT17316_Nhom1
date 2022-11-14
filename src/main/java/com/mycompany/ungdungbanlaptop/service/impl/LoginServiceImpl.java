@@ -6,8 +6,8 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.infrastruture.SendEmail;
-import com.mycompany.ungdungbanlaptop.infrastruture.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.SendEmail;
+import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.service.LoginService;

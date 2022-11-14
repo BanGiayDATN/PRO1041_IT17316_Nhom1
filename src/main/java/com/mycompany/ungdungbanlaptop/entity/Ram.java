@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.entity;
 
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,4 +48,13 @@ public class Ram {
 
     @Column(name = "ten_cpu")
     private String ten;
+    
+    @Column(name = "dung_luong")
+    private int dungLuong;
+    
+    @Column(name = "megahertz")
+    private int megahertz;
+    
+    @Column(name = "loai_ram")
+    private EnumLoaiRam enumLoaiRam;
 }
