@@ -128,6 +128,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
         errorMa.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         errorMa.setForeground(new java.awt.Color(255, 102, 102));
 
+        errorTen.setFont(new java.awt.Font("Segoe UI", 0, 8)); // NOI18N
         errorTen.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -216,9 +217,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
                 } else {
                     int index;
                     index = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu " + txtMa.getText() + ": " + txtTenVersion.getText());
-                    System.out.println(index);
                     if (index == 0) {
-                        System.out.println("hello");
                         heDieuHanhService.insert(heDieuHanh);
                     }
                 }
