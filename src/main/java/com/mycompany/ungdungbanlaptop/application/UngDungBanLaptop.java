@@ -153,7 +153,7 @@ public class UngDungBanLaptop extends javax.swing.JFrame {
             txt_errorPassword.setText("");
         }
         if (nhanVien != null) {
-            JOptionPane.showMessageDialog(this, "Đăng nhập thành cộng");
+            JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

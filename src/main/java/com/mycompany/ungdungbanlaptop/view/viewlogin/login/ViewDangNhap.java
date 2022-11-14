@@ -215,9 +215,9 @@ public class ViewDangNhap extends javax.swing.JFrame {
         } else {
             txt_errorGioiTinh.setText("");
         }
-        if(rd_nam.isSelected()){
+        if (rd_nam.isSelected()) {
             gioiTinh = "Nam";
-        }else{
+        } else {
             gioiTinh = "Nữ";
         }
         NhanVienResponse response = new NhanVienResponse(hoten, gioiTinh, ngaySinh, sdt, email, password, diaChi);
@@ -256,14 +256,15 @@ public class ViewDangNhap extends javax.swing.JFrame {
             txt_errorPassword.setText("Password phải dài hơn hoặc bằng 8 kí tự");
         } else {
             txt_errorPassword.setText("");
-        }       
+        }
         if (diaChi.isEmpty()) {
             txt_errorDiaChi.setText("Không để trống địa chỉ");
         } else {
             txt_errorDiaChi.setText("");
         }
-
-//        JOptionPane.showMessageDialog(this, ktra);
+        if (ktra == 0) {
+            JOptionPane.showMessageDialog(this, "Đăng ký thành công");
+        }
     }//GEN-LAST:event_btn_dangKyActionPerformed
 
     /**
