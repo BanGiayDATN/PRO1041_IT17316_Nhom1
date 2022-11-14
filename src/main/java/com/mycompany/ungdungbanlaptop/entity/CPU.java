@@ -46,5 +46,5 @@ public class CPU {
     private String ma;
 
     @Column(name = "ten_cpu" ,columnDefinition = "nvarchar(Max)")
-    private String ten;
+    private String ten;    
 }
