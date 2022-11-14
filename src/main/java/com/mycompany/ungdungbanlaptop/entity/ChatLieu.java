@@ -45,6 +45,6 @@ public class ChatLieu {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_chat_lieu")
+    @Column(name = "ten_chat_lieu",columnDefinition = "nvarchar(Max)")
     private String ten;
 }

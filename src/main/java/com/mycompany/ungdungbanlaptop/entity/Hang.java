@@ -45,6 +45,6 @@ public class Hang {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_hang")
+    @Column(name = "ten_hang",columnDefinition = "nvarchar(Max)")
     private String ten;
 }
