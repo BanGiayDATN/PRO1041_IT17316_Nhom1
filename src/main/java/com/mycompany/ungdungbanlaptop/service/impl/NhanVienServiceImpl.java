@@ -49,8 +49,8 @@ public class NhanVienServiceImpl implements NhanVienService {
     }
 
     @Override
-    public NhanVien getNhanVienByMa(String ma) {
-        return nhanVienRepository.getNhanVienByMa(ma);
+    public NhanVien getNhanVienByEmail(String email) {
+        return nhanVienRepository.getNhanVienByEmail(email);
     }
 
 }
