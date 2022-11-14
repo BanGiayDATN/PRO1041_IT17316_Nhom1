@@ -47,4 +47,5 @@ public class Ram {
 
     @Column(name = "ten_cpu",columnDefinition = "nvarchar(100)")
     private String ten;
+    
 }
