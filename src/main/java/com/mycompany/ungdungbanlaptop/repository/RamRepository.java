@@ -6,28 +6,29 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+
 import java.util.List;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 /**
- *
  * @author thang
  */
 public class RamRepository {
-    
-    public List<Ram> getList(){
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
+
+    public List<Ram> getList() {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM Ram");
             return query.getResultList();
         } catch (Exception e) {
             return null;
         }
     }
-    
-    public boolean insert(Ram ram){
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
+
+    public boolean insert(Ram ram) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.save(ram);
             transaction.commit();
@@ -36,9 +37,9 @@ public class RamRepository {
             return false;
         }
     }
-    
-    public boolean update(Ram ram){
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
+
+    public boolean update(Ram ram) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();
             session.update(ram);
             transaction.commit();
@@ -47,14 +48,14 @@ public class RamRepository {
             return false;
         }
     }
-    
-    public Ram findByMa(String ma){
+
+    public Ram findByMa(String ma) {
         Ram ram = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query<Ram> query = session.createQuery("""
-                                                   FROM Ram
-                                                   WHERE ma LIKE :ma
-                                                   """).setParameter("ma", ma);
+                    FROM Ram
+                    WHERE ma LIKE :ma
+                    """).setParameter("ma", ma);
             ram = query.uniqueResult();
         } catch (Exception e) {
         }

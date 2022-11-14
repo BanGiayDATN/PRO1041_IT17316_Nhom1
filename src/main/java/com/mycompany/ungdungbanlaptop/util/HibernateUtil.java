@@ -21,7 +21,9 @@ import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+
 import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -29,7 +31,6 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 /**
- *
  * @author thang
  */
 public class HibernateUtil {
