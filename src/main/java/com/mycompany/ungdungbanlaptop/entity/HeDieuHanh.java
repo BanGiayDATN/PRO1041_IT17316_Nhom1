@@ -10,6 +10,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,4 +49,7 @@ public class HeDieuHanh {
 
     @Column(name = "ten_he_dieu_hanh")
     private String ten;
+
+    @Column(name="he_dieu_hanh")
+    private EnumHeDieuHanh heDieuHanh;
 }
