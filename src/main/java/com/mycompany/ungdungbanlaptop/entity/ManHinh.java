@@ -42,7 +42,7 @@ public class ManHinh {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idManHinh;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
     
     @Column(name = "do_phan_giai")

@@ -67,7 +67,7 @@ public class HoaDon implements Serializable {
     @Column(name = "ten_nguoi_nhan", length = 50)
     private String tenNguoiNhan;
 
-    @Column(name = "dia_chi", length = 100, columnDefinition = "nvarchar(30)")
+    @Column(name = "dia_chi", columnDefinition = "nvarchar(Max)")
     private String diaChhi;
 
     @Column(name = "Sdt", length = 30)

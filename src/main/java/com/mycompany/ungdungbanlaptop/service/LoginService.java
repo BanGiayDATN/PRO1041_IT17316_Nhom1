@@ -4,20 +4,17 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
-import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
 
 /**
  *
  * @author vinhnv
  */
-public interface NhanVienService {
+public interface LoginService {
 
-    String addNhanVien(NhanVien nv);
+    String login(String email, String password);
 
-    String updateNhanVien(NhanVien nv);
-
-    String deleteNhanVien(NhanVien nv);
-
-    NhanVien getNhanVienByEmail(String email);
-
+    String quenMK(String email, String sdt);
+    
+    String dangKy(NhanVienResponse response);
 }

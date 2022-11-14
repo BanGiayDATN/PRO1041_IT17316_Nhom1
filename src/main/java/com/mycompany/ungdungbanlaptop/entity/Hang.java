@@ -42,7 +42,7 @@ public class Hang {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idChatLieu;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
 
     @Column(name = "ten_hang")

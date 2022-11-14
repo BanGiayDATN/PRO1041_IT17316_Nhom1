@@ -44,7 +44,7 @@ public class HeDieuHanh {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idHeDieuHanh;
 
-    @Column(name = "Ma")
+    @Column(name = "ma")
     private String ma;
 
     @Column(name = "ten_he_dieu_hanh")
