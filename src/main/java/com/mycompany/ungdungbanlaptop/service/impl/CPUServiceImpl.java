@@ -21,29 +21,44 @@ public class CPUServiceImpl implements CPUService {
 
     @Override
     public String add(CPU cpu) {
-        
-        if(cpu.getMa().isEmpty() || cpu.getTen().isEmpty()){
+
+        CPU check = cpuRespository.getOne(cpu.getMa());
+        if (check != null) {
+            return "Trung ma";
+        }
+        if (cpu.getMa().isEmpty() || cpu.getTen().isEmpty()) {
             return "Không được để trống thông tin";
         }
-        if (cpu == null) {
-            return " Add thất bại";
+        boolean add = cpuRespository.add(cpu);
+        if (add) {
+            return " Add thanh cong";
         }
-        return "Add thành công ";
+        return "Add that bai";
+    }
+
+    @Override
+    public String update(CPU cpu) {
+        String ma = cpu.getMa();
+        if (cpu.getMa().isEmpty() || cpu.getTen().isEmpty()) {
+            return "Không được để trống thông tin";
+        }
+        boolean update = cpuRespository.update(cpu);
+
+        if (update) {
+            return "Update thanh cong";
+        }
+
+        return "Update that bai";
+    }
+
+    @Override
+    public CPU getOne(String ma) {
+        return cpuRespository.getOne(ma);
     }
 
     @Override
     public List<CPU> getALl() {
         return cpuRespository.getAll();
-    }
-
-  
-
-    @Override
-    public String update(CPU cpu) {
-        if(cpu==null){
-            return "update thất bại";
-        }
-        return "update thành công";
     }
 
 };

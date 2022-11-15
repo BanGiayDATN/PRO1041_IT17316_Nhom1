@@ -1,4 +1,3 @@
-
 package com.mycompany.ungdungbanlaptop.view.viewsanpham;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
@@ -7,7 +6,6 @@ import com.mycompany.ungdungbanlaptop.service.impl.CPUServiceImpl;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 public class CPUView extends javax.swing.JFrame {
 
@@ -158,27 +156,14 @@ public class CPUView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void fillData(int index){
-//       CPU list =  
-    }
-    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
+    private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         String ma = txtMa.getText();
         String ten = txtTen.getText();
-<<<<<<< HEAD
         CPU cpu = new CPU(ma, ten);
         JOptionPane.showMessageDialog(this, ql.add(cpu));
-        
-=======
-        CPU cpu = new CPU(null, ma, ten);
-        JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
-        CPU cpu = new CPU();
-        cpu.setMa(txtMa.getText());
-        cpu.setTen(txtTen.getText());
-        JOptionPane.showMessageDialog(this, ql.addCPU(cpu));
-        showData((ArrayList<CPU>) ql.getALl());
->>>>>>> 320c4a2101601b57de0d5f0313c226500679458e
+//        showData((ArrayList<CPU>) ql.getALl());
 
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -186,27 +171,32 @@ public class CPUView extends javax.swing.JFrame {
         showData((ArrayList<CPU>) ql.getALl());
     }//GEN-LAST:event_btnXemActionPerformed
 
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-         String ma = txtMa.getText();
-        String ten = txtTen.getText();
-<<<<<<< HEAD
-        CPU cpu = new CPU(ma, ten);
-        JOptionPane.showMessageDialog(this, ql.update(cpu));
-       
-=======
-        CPU cpu = new CPU(null, ma, ten);
-        JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
-        showData((ArrayList<CPU>) ql.getALl());
+
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
->>>>>>> 320c4a2101601b57de0d5f0313c226500679458e
+        String ma = txtMa.getText();
+        String ten = txtTen.getText();
+        CPU cpu = ql.getOne(ma);
+        System.out.println(cpu);
+        cpu.setMa(ma);
+        cpu.setTen(ten);
+
+//        if
+        int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", 0);
+        if (check == JOptionPane.YES_OPTION) {
+            JOptionPane.showMessageDialog(this, ql.update(cpu));
+        } else if (check == JOptionPane.NO_OPTION) {
+            txtMa.setText("");
+            txtTen.setText("");
+        }
+        showData((ArrayList<CPU>) ql.getALl());
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tbCPUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCPUMouseClicked
-       int row = tbCPU.getSelectedRow();
-       CPU cpu = ql.getALl().get(row);
-       txtMa.setText(cpu.getMa());
-       txtTen.setText(cpu.getTen());
+        int row = tbCPU.getSelectedRow();
+        CPU cpu = ql.getALl().get(row);
+        txtMa.setText(cpu.getMa());
+        txtTen.setText(cpu.getTen());
     }//GEN-LAST:event_tbCPUMouseClicked
 
     private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
