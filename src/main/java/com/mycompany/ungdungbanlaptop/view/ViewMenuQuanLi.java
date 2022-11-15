@@ -40,7 +40,6 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         viewChucNang = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenu10 = new javax.swing.JMenu();
         jMenu3 = new javax.swing.JMenu();
         menuHang = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
@@ -48,6 +47,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         menuCPU = new javax.swing.JMenuItem();
         menuChatLieu = new javax.swing.JMenuItem();
         MenuGPM = new javax.swing.JMenuItem();
+        jMenu10 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -74,11 +74,8 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
             .addGap(0, 447, Short.MAX_VALUE)
         );
 
-        jMenu2.setText("Thống Kê");
+        jMenu2.setText("File");
         jMenuBar1.add(jMenu2);
-
-        jMenu10.setText("Sản Phẩm");
-        jMenuBar1.add(jMenu10);
 
         jMenu3.setText("Cấu hình máy");
 
@@ -90,6 +87,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         });
         jMenu3.add(menuHang);
 
+        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-ram-24.png"))); // NOI18N
         jMenuItem2.setText("Ram");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -131,6 +129,9 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         jMenu3.add(MenuGPM);
 
         jMenuBar1.add(jMenu3);
+
+        jMenu10.setText("jMenu10");
+        jMenuBar1.add(jMenu10);
 
         setJMenuBar(jMenuBar1);
 
