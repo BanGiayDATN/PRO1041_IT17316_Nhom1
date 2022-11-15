@@ -20,8 +20,9 @@ public class CPUServiceImpl implements CPUService {
     private CPURespository cpuRespository = new CPURespository();
 
     @Override
-    public String addCPU(CPU add) {
+    public String addOrUpdateCPU(CPU add) {
 
+        
         if (add == null) {
             return " Add thất bại";
         }
