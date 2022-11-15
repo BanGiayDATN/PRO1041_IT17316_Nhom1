@@ -1,4 +1,3 @@
-
 package com.mycompany.ungdungbanlaptop.view.viewsanpham;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
@@ -7,7 +6,6 @@ import com.mycompany.ungdungbanlaptop.service.impl.CPUServiceImpl;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 public class CPUView extends javax.swing.JFrame {
 
@@ -148,7 +146,6 @@ public class CPUView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-
 
         String ma = txtMa.getText();
         String ten = txtTen.getText();
