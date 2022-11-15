@@ -134,21 +134,10 @@ public class LoginServiceImpl implements LoginService {
         }
         return true;
     }
-    
-    private String matKhauMD5(String matKhau){
+    @Override
+    public String matKhauMD5(String matKhau){
          String md5Hex = DigestUtils.md5Hex(matKhau).toUpperCase();
          return md5Hex;
-    }
-    private boolean verify(String inputPassword, String hashPassWord)
-            throws NoSuchAlgorithmException {
-
-        MessageDigest md = MessageDigest.getInstance("MD5");
-        md.update(inputPassword.getBytes());
-        byte[] digest = md.digest();
-        String myChecksum = DatatypeConverter
-                .printHexBinary(digest).toUpperCase();
-
-        return hashPassWord.equals(myChecksum);
     }
 
     @Override

@@ -22,6 +22,7 @@ import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
+import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import static com.mycompany.ungdungbanlaptop.util.HibernateUtil.getConfiguration;
@@ -267,7 +268,7 @@ public class GenDB {
         nhanVien.setMa("Adim");
         nhanVien.setSdt("0987654321");
         nhanVien.setTrangThai(0);
-        nhanVien.setPassword("12345678");
+        nhanVien.setPassword( new LoginServiceImpl().matKhauMD5("12345678"));
         nhanVien.setChucVu(chucVu1);
         nhanVien.setNgaySinh(new ConverDate().dateToLong("2000/06/01", "yyyy/MM/dd"));
         nhanVien.setGioiTinh("Nam");
@@ -280,12 +281,12 @@ public class GenDB {
         nhanVien1.setMa(new TaoChuoiNgauNhien().getMkRanMa("NV", 3));
         nhanVien1.setSdt("0987654321");
         nhanVien1.setTrangThai(0);
-        nhanVien1.setPassword("12345678");
+        nhanVien1.setPassword(new LoginServiceImpl().matKhauMD5("12345678"));
         nhanVien1.setChucVu(chucVu);
         nhanVien1.setNgaySinh(new ConverDate().dateToLong("2000/06/04", "yyyy/MM/dd"));
         nhanVien1.setGioiTinh("Nam");
         nhanVien1.setDiaChi("Hà Nội");
-        nhanVien1.setEmail("vinhnvph23845@fpt.edu.vn");
+        nhanVien1.setEmail("anhvinh12a888@gmail.com");
         session.save(nhanVien1);
 
         KhachHang khachHang = new KhachHang();

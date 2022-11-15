@@ -139,6 +139,7 @@ public class UngDungBanLaptop extends javax.swing.JFrame {
         String email = txt_email.getText().trim();
         String password = txt_password.getText().trim();
         NhanVien nhanVien = loginService.login(email, password);
+        System.out.println(nhanVien);
         if (email.isEmpty()) {
             txt_errorEmail.setText("Không để trống email");
         } else if (!EmailValidator.getInstance().isValid(email)) {
