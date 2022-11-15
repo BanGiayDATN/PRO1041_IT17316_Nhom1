@@ -158,7 +158,7 @@ public class CPUView extends javax.swing.JFrame {
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
         showData((ArrayList<CPU>) ql.getALl());
     }//GEN-LAST:event_btnXemActionPerformed
-
+                                      
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
         String ma = txtMa.getText();
