@@ -15,7 +15,7 @@ public interface LoginService {
 
     NhanVien login(String email, String password);
 
-    NhanVien doiMK(String email, String password , String passwordMoi);
+    NhanVien doiMK(String email, String password , String passwordMoi , String passwordNhapLai);
 
     String quenMK(String email, String sdt);
 
