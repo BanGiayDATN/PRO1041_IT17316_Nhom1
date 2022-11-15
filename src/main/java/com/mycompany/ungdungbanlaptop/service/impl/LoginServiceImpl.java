@@ -65,12 +65,13 @@ public class LoginServiceImpl implements LoginService {
             return "Tài khoản không tồn tại";
         }
         String matKhauMoi = new TaoChuoiNgauNhien().getMkRanDum(8);
+        String maHoaMK = matKhauMD5(matKhauMoi);
         try {
             new SendEmail().guiMail(email, "Laptop", matKhauMoi);
         } catch (MessagingException ex) {
             Logger.getLogger(LoginServiceImpl.class.getName()).log(Level.SEVERE, null, ex);
         }
-        nhanVien.setPassword(matKhauMoi);
+        nhanVien.setPassword(maHoaMK);
         NhanVien nhanVienUpdate = nhanVienRepository.update(nhanVien);
         return "Gửi thành công";
     }
@@ -148,5 +149,26 @@ public class LoginServiceImpl implements LoginService {
                 .printHexBinary(digest).toUpperCase();
 
         return hashPassWord.equals(myChecksum);
+    }
+
+    @Override
+    public NhanVien doiMK(String email, String password , String passwordMoi , String passwordNhapLai) {
+         NhanVien nhanVien = new NhanVien();
+        if (email.isBlank() || password.isBlank()) {
+            return null;
+        }
+        if (!EmailValidator.getInstance().isValid(email)) {
+            return null;
+        }
+        if(!passwordNhapLai.equals(passwordMoi)){
+            return null;
+        }
+        nhanVien = nhanVienRepository.getNhanVienByEmailAndPass(email, matKhauMD5(password));
+        if (nhanVien == null) {
+            return null;
+        }
+        String matKhauMoi = matKhauMD5(passwordMoi);
+        nhanVien.setPassword(matKhauMoi);
+        return nhanVien;
     }
 }
