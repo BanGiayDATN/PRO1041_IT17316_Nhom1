@@ -3,49 +3,51 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.ungdungbanlaptop.repository;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+
+import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.ArrayList;
 import java.util.List;
-import org.hibernate.Transaction;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
-public class GPMRepository {
-    
+public class ChatLieuRepository {
+
     private Session session = HibernateUtil.getFACTORY().openSession();
-    
-    public List<GPM> getAll() {
-        
+
+    public List<ChatLieu> getAll() {
+
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery("FROM GPM");
-            List<GPM> list = query.getResultList();
+            Query query = session.createQuery("FROM ChatLieu");
+            List<ChatLieu> list = query.getResultList();
             return list;
         } catch (Exception e) {
         }
         return null;
     }
-    
-    public GPM addGPM(GPM gpm) {
+
+    public ChatLieu addNew(ChatLieu chatLieu) {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.save(gpm);
+            session.save(chatLieu);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return gpm;
+        return chatLieu;
     }
-    
+
     public static void main(String[] args) {
-        GPM add = new GPM();
-        add.setMa("GPM0001");
-        add.setTen("Gigabyte N710D5-1GL");
-        GPM gpm = new GPMRepository().addGPM(add);
-        System.out.println(gpm);
-        List<GPM> list = new ArrayList<>();
-        for (GPM x : list) {
+        ChatLieu add = new ChatLieu();
+        add.setMa("M0001");
+        add.setTen("Kim loại");
+        ChatLieu chatLieu = new ChatLieuRepository().addNew(add);
+        System.out.println(chatLieu);
+        List<ChatLieu> list = new ArrayList<>();
+        for (ChatLieu x : list) {
             System.out.println(x);
         }
     }
