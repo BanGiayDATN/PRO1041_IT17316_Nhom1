@@ -5,6 +5,8 @@
 
 package com.mycompany.ungdungbanlaptop.view.viewBaoHanh;
 
+import java.awt.FlowLayout;
+
 /**
  *
  * @author Du
@@ -25,45 +27,124 @@ public class view extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
+        btn_BaoHanh = new javax.swing.JButton();
+        btn_CapNhat = new javax.swing.JButton();
+        btn_TimKiem = new javax.swing.JButton();
+        viewPane = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("jButton1");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        btn_BaoHanh.setText("Bảo Hành");
+        btn_BaoHanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btn_BaoHanhActionPerformed(evt);
             }
         });
+
+        btn_CapNhat.setText("Cập Nhật");
+        btn_CapNhat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CapNhatActionPerformed(evt);
+            }
+        });
+
+        btn_TimKiem.setText("Tìm Kiếm");
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_CapNhat)
+                    .addComponent(btn_TimKiem)
+                    .addComponent(btn_BaoHanh))
+                .addContainerGap(31, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_BaoHanh)
+                .addGap(18, 18, 18)
+                .addComponent(btn_CapNhat)
+                .addGap(18, 18, 18)
+                .addComponent(btn_TimKiem)
+                .addContainerGap(500, Short.MAX_VALUE))
+        );
+
+        viewPane.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout viewPaneLayout = new javax.swing.GroupLayout(viewPane);
+        viewPane.setLayout(viewPaneLayout);
+        viewPaneLayout.setHorizontalGroup(
+            viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 671, Short.MAX_VALUE)
+        );
+        viewPaneLayout.setVerticalGroup(
+            viewPaneLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(432, 432, 432)
-                .addComponent(jButton1)
-                .addContainerGap(525, Short.MAX_VALUE))
+                .addGap(34, 34, 34)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(viewPane, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(126, 126, 126)
-                .addComponent(jButton1)
-                .addContainerGap(717, Short.MAX_VALUE))
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(viewPane, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//        viewChucNang.removeAll();
-//        test1 form = new test1();
-//        viewChucNang.add(form);
-//        viewChucNang.setLayout(new FlowLayout());
-//        this.pack();
-//        form.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    private void btn_BaoHanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BaoHanhActionPerformed
+        viewPane.removeAll();
+        BaoHanh1 form = new BaoHanh1();
+        viewPane.add(form);
+        viewPane.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_BaoHanhActionPerformed
+
+    private void btn_CapNhatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CapNhatActionPerformed
+        viewPane.removeAll();
+        CapNhatBaoHanh form = new CapNhatBaoHanh();
+        viewPane.add(form);
+        viewPane.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_CapNhatActionPerformed
+
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+        viewPane.removeAll();
+       TimKiemBaoHanh form = new TimKiemBaoHanh();
+        viewPane.add(form);
+        viewPane.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
 
     /**
      * @param args the command line arguments
@@ -101,7 +182,11 @@ public class view extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btn_BaoHanh;
+    private javax.swing.JButton btn_CapNhat;
+    private javax.swing.JButton btn_TimKiem;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel viewPane;
     // End of variables declaration//GEN-END:variables
 
 }

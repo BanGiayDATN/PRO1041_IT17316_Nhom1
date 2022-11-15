@@ -35,7 +35,6 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
         txt_SoHoaDonDo = new javax.swing.JTextField();
         txt_SoImei = new javax.swing.JTextField();
         btn_TimKiem = new javax.swing.JButton();
-        Btn_TaoMoi = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jtable_TimkiemBaoHanh = new javax.swing.JTable();
 
@@ -54,13 +53,6 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
         });
 
         btn_TimKiem.setText("Tìm Kiếm");
-
-        Btn_TaoMoi.setText("Tạo Mới");
-        Btn_TaoMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Btn_TaoMoiActionPerformed(evt);
-            }
-        });
 
         jtable_TimkiemBaoHanh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -102,10 +94,8 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
                             .addComponent(txt_SoHoaDonDo, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                             .addComponent(txt_SoImei))
                         .addGap(39, 39, 39)
-                        .addComponent(btn_TimKiem)
-                        .addGap(26, 26, 26)
-                        .addComponent(Btn_TaoMoi)))
-                .addContainerGap(377, Short.MAX_VALUE))
+                        .addComponent(btn_TimKiem)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -120,9 +110,7 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
                             .addComponent(txt_SoImei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(24, 24, 24)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_TimKiem)
-                            .addComponent(Btn_TaoMoi))))
+                        .addComponent(btn_TimKiem)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -139,13 +127,8 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_SoHoaDonDoActionPerformed
 
-    private void Btn_TaoMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Btn_TaoMoiActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_Btn_TaoMoiActionPerformed
-
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Btn_TaoMoi;
     private javax.swing.JButton btn_TimKiem;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
