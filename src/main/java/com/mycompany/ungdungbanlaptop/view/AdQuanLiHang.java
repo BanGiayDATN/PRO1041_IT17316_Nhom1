@@ -60,7 +60,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
         return false;
     }
     
-    private Hang getHang(){
+    private Hang hangRequest(){
         Hang hang = new Hang();
         hang.setMa(txtMa.getText());
         hang.setTen(txtTen.getText());
@@ -214,8 +214,8 @@ public class AdQuanLiHang extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if(checkForm()){
-            Hang hang = getHang();
-            if(hangService.findById(hang.getMa()) == null){
+            Hang hang = hangRequest();
+            if(hangService.findById(hang.getMa()) != null){
                 errorMa.setText("mã đã tồn tại");
             }else{
                 errorMa.setText("");
@@ -231,7 +231,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
             return;
         }
         if(checkForm()){
-            Hang hang = getHang();
+            Hang hang = hangRequest();
             UUID id = UUID.fromString(txtId.getText());
                 hangService.update(id,hang);
         }
