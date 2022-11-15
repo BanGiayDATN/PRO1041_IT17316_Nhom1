@@ -31,11 +31,11 @@ public class CPURespository {
         }
         return null;
     }
-    public CPU addCPU(CPU cpu) {
+    public CPU addOrUpdateCPU(CPU cpu) {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.save(cpu);
+            session.saveOrUpdate(cpu);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -47,13 +47,13 @@ public class CPURespository {
         CPU add = new CPU();
         add.setMa("CPU1");
         add.setTen("intel core i5");
-        CPU cpu = new CPURespository().addCPU(add);
+        CPU cpu = new CPURespository().addOrUpdateCPU(add);
         System.out.println(cpu);
         
         //
-        List<CPU> list = new ArrayList<>();
-        for (CPU x : list) {
-            System.out.println(x);
-        }
+//        List<CPU> list = new ArrayList<>();
+//        for (CPU x : list) {
+//            System.out.println(x);
+//        }
     }
 }

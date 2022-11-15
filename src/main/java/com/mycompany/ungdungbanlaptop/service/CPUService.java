@@ -16,5 +16,5 @@ public interface CPUService {
 
     List<CPU> getALl();
 
-    String addCPU(CPU cpu);
+    String addOrUpdateCPU(CPU cpu);
 }
