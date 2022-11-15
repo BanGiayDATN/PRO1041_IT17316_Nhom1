@@ -1,4 +1,3 @@
-
 package com.mycompany.ungdungbanlaptop.view.viewsanpham;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
@@ -7,7 +6,6 @@ import com.mycompany.ungdungbanlaptop.service.impl.CPUServiceImpl;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
-
 
 public class CPUView extends javax.swing.JFrame {
 
@@ -149,15 +147,10 @@ public class CPUView extends javax.swing.JFrame {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
-
         String ma = txtMa.getText();
         String ten = txtTen.getText();
         CPU cpu = new CPU(null, ma, ten);
         JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
-        CPU cpu = new CPU();
-        cpu.setMa(txtMa.getText());
-        cpu.setTen(txtTen.getText());
-        JOptionPane.showMessageDialog(this, ql.addCPU(cpu));
         showData((ArrayList<CPU>) ql.getALl());
 
     }//GEN-LAST:event_btnThemActionPerformed
@@ -167,13 +160,12 @@ public class CPUView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnXemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-         String ma = txtMa.getText();
+        // TODO add your handling code here:
+        String ma = txtMa.getText();
         String ten = txtTen.getText();
         CPU cpu = new CPU(null, ma, ten);
         JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
         showData((ArrayList<CPU>) ql.getALl());
-    private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
-        // TODO add your handling code here:
     }//GEN-LAST:event_btnSuaActionPerformed
 
     /**
