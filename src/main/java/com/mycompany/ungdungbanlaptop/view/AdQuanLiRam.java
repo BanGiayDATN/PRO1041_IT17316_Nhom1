@@ -249,8 +249,8 @@ public class AdQuanLiRam extends javax.swing.JPanel {
     }//GEN-LAST:event_txtMaActionPerformed
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if (check()) {
-            Ram ram = getRam();
+        if (checkFrom()) {
+            Ram ram = ramRequest();
             if (ramService.findByMa(ram.getMa()) != null) {
                 errorMa.setText("mã đã tồn tại");
             } else {
@@ -278,7 +278,7 @@ public class AdQuanLiRam extends javax.swing.JPanel {
         if (txtId.getText().isEmpty()) {
             JOptionPane.showConfirmDialog(this, "Vui lòng chọn ram");
         } else {
-            Ram ram = getRam();
+            Ram ram = ramRequest();
             UUID id = UUID.fromString(txtId.getText());
             errorMa.setText("");
             int check = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu ram " + ram.getTen() + ", Dung lượng: " + ram.getDungLuong() + "GB");
@@ -289,7 +289,7 @@ public class AdQuanLiRam extends javax.swing.JPanel {
         loadTable(ramService.getList());
     }//GEN-LAST:event_btnSuaActionPerformed
 
-    private boolean check() {
+    private boolean checkFrom() {
         int check = 0;
         if (txtMa.getText().isEmpty()) {
             errorMa.setText("vui lòng nhập mã");
@@ -328,7 +328,7 @@ public class AdQuanLiRam extends javax.swing.JPanel {
         return false;
     }
 
-    private Ram getRam() {
+    private Ram ramRequest() {
         Ram ram = new Ram();
         ram.setMa(txtMa.getText());
         ram.setTen(txtTen.getText());

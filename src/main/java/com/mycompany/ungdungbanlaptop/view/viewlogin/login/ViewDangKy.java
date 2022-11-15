@@ -14,15 +14,15 @@ import javax.swing.JOptionPane;
  *
  * @author vinhnv
  */
-public class ViewDangNhap extends javax.swing.JFrame {
+public class ViewDangKy extends javax.swing.JFrame {
 
     /**
-     * Creates new form ViewDangNhap
+     * Creates new form ViewDangKy
      */
     private LoginService loginService = new LoginServiceImpl();
     private ButtonGroup buttonGroup = new ButtonGroup();
 
-    public ViewDangNhap() {
+    public ViewDangKy() {
         initComponents();
         this.setLocationRelativeTo(null);
         radio();
@@ -284,20 +284,21 @@ public class ViewDangNhap extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewDangNhap.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewDangKy.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewDangNhap().setVisible(true);
+                new ViewDangKy().setVisible(true);
             }
         });
     }

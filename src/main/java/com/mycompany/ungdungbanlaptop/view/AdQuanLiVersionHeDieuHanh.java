@@ -206,7 +206,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
-        if (check()) {
+        if (checkFrom()) {
             HeDieuHanh heDieuHanh = new HeDieuHanh();
             heDieuHanh.setMa(txtMa.getText());
             heDieuHanh.setTen(txtTenVersion.getText());
@@ -263,7 +263,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
         return EnumHeDieuHanh.KHAC;
     }
 
-    public boolean check() {
+    public boolean checkFrom() {
         int check = 0;
         if (txtMa.getText().isEmpty()) {
             errorMa.setText("vui lòng nhập mã");
