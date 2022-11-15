@@ -25,7 +25,7 @@ public class CPURespository {
         
         try (Session session = HibernateUtil.getFACTORY().openSession();){
             Query query = session.createQuery("FROM CPU");
-            List<CPU> list = query.getResultList();
+            List<CPU> list = query.list();
             return list;
         } catch (Exception e) {
         }
@@ -35,7 +35,7 @@ public class CPURespository {
         Transaction transaction = null;
         try {
             transaction = session.beginTransaction();
-            session.saveOrUpdate(cpu);
+            session.save(cpu);
             transaction.commit();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -45,8 +45,8 @@ public class CPURespository {
 
     public static void main(String[] args) {
         CPU add = new CPU();
-        add.setMa("CPU1");
-        add.setTen("intel core i5");
+        add.setMa("CPU2");
+        add.setTen("intel core i9");
         CPU cpu = new CPURespository().addOrUpdateCPU(add);
         System.out.println(cpu);
         

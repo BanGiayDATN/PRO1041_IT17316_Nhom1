@@ -20,10 +20,12 @@ public class CPUServiceImpl implements CPUService {
     private CPURespository cpuRespository = new CPURespository();
 
     @Override
-    public String addOrUpdateCPU(CPU add) {
-
+    public String add(CPU cpu) {
         
-        if (add == null) {
+        if(cpu.getMa().isEmpty() || cpu.getTen().isEmpty()){
+            return "Không được để trống thông tin";
+        }
+        if (cpu == null) {
             return " Add thất bại";
         }
         return "Add thành công ";
@@ -32,6 +34,16 @@ public class CPUServiceImpl implements CPUService {
     @Override
     public List<CPU> getALl() {
         return cpuRespository.getAll();
+    }
+
+  
+
+    @Override
+    public String update(CPU cpu) {
+        if(cpu==null){
+            return "update thất bại";
+        }
+        return "update thành công";
     }
 
 };

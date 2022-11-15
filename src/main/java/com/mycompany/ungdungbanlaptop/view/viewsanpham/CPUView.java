@@ -60,6 +60,12 @@ public class CPUView extends javax.swing.JFrame {
 
         jLabel2.setText("Tên CPU");
 
+        txtTen.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTenActionPerformed(evt);
+            }
+        });
+
         tbCPU.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {},
@@ -71,6 +77,11 @@ public class CPUView extends javax.swing.JFrame {
 
             }
         ));
+        tbCPU.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tbCPUMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tbCPU);
 
         jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -157,13 +168,16 @@ public class CPUView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void fillData(int index){
+//       CPU list =  
+    }
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
 
         String ma = txtMa.getText();
         String ten = txtTen.getText();
-        CPU cpu = new CPU(null, ma, ten);
-        JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
-        showData((ArrayList<CPU>) ql.getALl());
+        CPU cpu = new CPU(ma, ten);
+        JOptionPane.showMessageDialog(this, ql.add(cpu));
+        
 
     }//GEN-LAST:event_btnThemActionPerformed
 
@@ -174,10 +188,21 @@ public class CPUView extends javax.swing.JFrame {
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
          String ma = txtMa.getText();
         String ten = txtTen.getText();
-        CPU cpu = new CPU(null, ma, ten);
-        JOptionPane.showMessageDialog(this, ql.addOrUpdateCPU(cpu));
-        showData((ArrayList<CPU>) ql.getALl());
+        CPU cpu = new CPU(ma, ten);
+        JOptionPane.showMessageDialog(this, ql.update(cpu));
+       
     }//GEN-LAST:event_btnSuaActionPerformed
+
+    private void tbCPUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCPUMouseClicked
+       int row = tbCPU.getSelectedRow();
+       CPU cpu = ql.getALl().get(row);
+       txtMa.setText(cpu.getMa());
+       txtTen.setText(cpu.getTen());
+    }//GEN-LAST:event_tbCPUMouseClicked
+
+    private void txtTenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTenActionPerformed
 
     /**
      * @param args the command line arguments

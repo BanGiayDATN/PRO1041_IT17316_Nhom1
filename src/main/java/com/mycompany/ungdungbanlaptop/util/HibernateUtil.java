@@ -62,7 +62,7 @@ public class HibernateUtil {
         properties.put(Environment.PASS, "21072002"); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-//        properties.put(Environment.HBM2DDL_AUTO, "create");
+        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
@@ -70,6 +70,9 @@ public class HibernateUtil {
         Configuration conf = new Configuration();
 
         conf.setProperties(prop);
+        
+        
+        
         conf.addAnnotatedClass(ChatLieu.class);
         conf.addAnnotatedClass(HeDieuHanh.class);
         conf.addAnnotatedClass(Ram.class);
