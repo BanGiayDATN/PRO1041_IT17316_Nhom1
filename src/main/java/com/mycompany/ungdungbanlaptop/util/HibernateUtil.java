@@ -21,7 +21,9 @@ import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+
 import java.util.Properties;
+
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -29,7 +31,6 @@ import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 
 /**
- *
  * @author thang
  */
 public class HibernateUtil {
@@ -58,8 +59,8 @@ public class HibernateUtil {
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
-        properties.put(Environment.USER, "sa"); // nhớ thay tài khoản SQL
-        properties.put(Environment.PASS, "123"); // nhớ thay mật khẩu SQL
+        properties.put(Environment.USER, ""); // nhớ thay tài khoản SQL
+        properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
         properties.put(Environment.HBM2DDL_AUTO, "create");

@@ -16,10 +16,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-/**
- *
- * @author vinhnv
- */
+
 @Entity
 @Data
 @Table
@@ -46,5 +43,5 @@ public class CPU {
     private String ma;
 
     @Column(name = "ten_cpu" ,columnDefinition = "nvarchar(Max)")
-    private String ten;
+    private String ten;    
 }

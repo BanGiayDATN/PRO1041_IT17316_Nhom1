@@ -19,7 +19,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
 /**
- *
  * @author vinhnv
  */
 public class SendEmail {
@@ -28,7 +27,7 @@ public class SendEmail {
     private final static String matKhau = "enjkxtscsburacui";
 
     public void guiMail(String emailNhan,
-            String tieuDe, String noiDung)
+                        String tieuDe, String noiDung)
             throws AddressException, MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);

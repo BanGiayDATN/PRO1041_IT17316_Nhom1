@@ -7,16 +7,16 @@ package com.mycompany.ungdungbanlaptop.infrastructure;
 import org.apache.commons.lang3.RandomStringUtils;
 
 /**
- *
  * @author vinhnv
  */
 public class TaoChuoiNgauNhien {
 
-    public String getMkRanDum( int soLuong ) {
-        String generator =  RandomStringUtils.randomNumeric(soLuong);
+    public String getMkRanDum(int soLuong) {
+        String generator = RandomStringUtils.randomNumeric(soLuong);
         return generator;
     }
-    public String getIMEI(String noDung , int soluong) {
+
+    public String getIMEI(String noDung, int soluong) {
         String generator = noDung + RandomStringUtils.randomNumeric(soluong);
         return generator;
     }

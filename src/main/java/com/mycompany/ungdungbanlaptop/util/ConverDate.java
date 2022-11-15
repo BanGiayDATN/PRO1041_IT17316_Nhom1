@@ -20,6 +20,7 @@ public class ConverDate {
         return date;
     }
 
+
     public long dateToLong(String date, String fomat) {
         long milliseconds = -1;
         SimpleDateFormat f = new SimpleDateFormat(fomat);
