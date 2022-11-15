@@ -44,4 +44,10 @@ public class CPU {
 
     @Column(name = "ten_cpu" ,columnDefinition = "nvarchar(Max)")
     private String ten;    
+
+    public CPU(String ma, String ten) {
+        this.ma = ma;
+        this.ten = ten;
+    }
+    
 }
