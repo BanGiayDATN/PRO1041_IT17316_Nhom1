@@ -19,6 +19,7 @@ public class GPMView extends javax.swing.JPanel {
 
     private DefaultTableModel tbmodel;
     private GPMService service = new GPMServiceImpl();
+
     public GPMView() {
         initComponents();
     }
@@ -26,11 +27,12 @@ public class GPMView extends javax.swing.JPanel {
     public void loadTable(List<GPM> list) {
         tbmodel = (DefaultTableModel) tbGPM.getModel();
         tbmodel.setRowCount(0);
-        tbmodel.setColumnIdentifiers(new String[]{"ID", "Mã", "Tên GPM"});
+        tbmodel.setColumnIdentifiers(new String[]{"Mã", "Tên GPM"});
         for (GPM x : list) {
-            tbmodel.addRow(new Object[]{x.getIdGPU(), x.getMa(), x.getTen()});
+            tbmodel.addRow(new Object[]{x.getMa(), x.getTen()});
         }
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
