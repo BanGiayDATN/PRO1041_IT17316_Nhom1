@@ -19,17 +19,17 @@ public class ChatLieuView extends javax.swing.JPanel {
 
     private DefaultTableModel tbmodel;
     private ChatLieuService service = new ChatLieuServiceImpl();
-    
+
     public ChatLieuView() {
         initComponents();
     }
 
-     public void loadTable(List<ChatLieu> list) {
+    public void loadTable(List<ChatLieu> list) {
         tbmodel = (DefaultTableModel) tbchatlieu.getModel();
         tbmodel.setRowCount(0);
-        tbmodel.setColumnIdentifiers(new String[]{"ID", "Mã", "Tên chất liệu"});
+        tbmodel.setColumnIdentifiers(new String[]{"Mã", "Tên chất liệu"});
         for (ChatLieu x : list) {
-            tbmodel.addRow(new Object[]{x.getIdChatLieu(), x.getMa(), x.getTen()});
+            tbmodel.addRow(new Object[]{x.getMa(), x.getTen()});
         }
     }
 

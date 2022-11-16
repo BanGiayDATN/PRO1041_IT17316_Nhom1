@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.viewmodel.LichSuMuaHangViewModel;
 
 import java.util.List;
 
