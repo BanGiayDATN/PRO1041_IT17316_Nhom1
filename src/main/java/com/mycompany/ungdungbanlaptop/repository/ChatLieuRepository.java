@@ -28,27 +28,57 @@ public class ChatLieuRepository {
         return null;
     }
 
-    public ChatLieu addNew(ChatLieu chatLieu) {
+//    public ChatLieu addNew(ChatLieu chatLieu) {
+//        Transaction transaction = null;
+//        try {
+//            transaction = session.beginTransaction();
+//            session.save(chatLieu);
+//            transaction.commit();
+//        } catch (Exception e) {
+//            e.printStackTrace(System.out);
+//        }
+//        return chatLieu;
+//    }
+    public boolean addNew(ChatLieu chatLieu) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.save(chatLieu);
             transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public boolean update(ChatLieu chatLieu) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            session.update(chatLieu);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public ChatLieu getOne(String ma) {
+        Transaction transaction = null;
+        ChatLieu chatLieu = new ChatLieu();
+        try {
+            String query = "SELECT chatLieu "
+                    + "FROM ChatLieu chatLieu "
+                    + "WHERE chatLieu.ma = :ma ";
+            Query<ChatLieu> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            chatLieu = hth.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return chatLieu;
     }
 
-    public static void main(String[] args) {
-        ChatLieu add = new ChatLieu();
-        add.setMa("M0001");
-        add.setTen("Kim loại");
-        ChatLieu chatLieu = new ChatLieuRepository().addNew(add);
-        System.out.println(chatLieu);
-        List<ChatLieu> list = new ArrayList<>();
-        for (ChatLieu x : list) {
-            System.out.println(x);
-        }
-    }
 }

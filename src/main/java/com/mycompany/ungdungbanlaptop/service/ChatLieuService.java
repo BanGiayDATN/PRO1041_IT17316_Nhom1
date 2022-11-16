@@ -16,5 +16,9 @@ public interface ChatLieuService {
 
     public List<ChatLieu> getAll();
 
-    public Boolean addNew(ChatLieu chatLieu);
+    public String addNew(ChatLieu chatLieu);
+
+    public String update(ChatLieu ChatLieu);
+
+    public ChatLieu getOne(String ma);
 }

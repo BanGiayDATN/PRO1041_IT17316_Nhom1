@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.ungdungbanlaptop.repository;
+
 import com.mycompany.ungdungbanlaptop.entity.GPM;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
@@ -12,11 +13,11 @@ import org.hibernate.Session;
 import org.hibernate.query.Query;
 
 public class GPMRepository {
-    
+
     private Session session = HibernateUtil.getFACTORY().openSession();
-    
+
     public List<GPM> getAll() {
-        
+
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
             Query query = session.createQuery("FROM GPM");
             List<GPM> list = query.getResultList();
@@ -25,28 +26,49 @@ public class GPMRepository {
         }
         return null;
     }
-    
-    public GPM addGPM(GPM gpm) {
+
+    public boolean addNew(GPM gpm) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.save(gpm);
             transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+    }
+
+    public boolean update(GPM gpm) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
+            transaction = session.beginTransaction();
+            session.update(gpm);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return false;
+
+    }
+
+    public GPM getOne(String ma) {
+        Transaction transaction = null;
+        GPM gpm = new GPM();
+        try {
+            String query = "SELECT gpm "
+                    + "FROM GPM gpm "
+                    + "WHERE gpm.ma = :ma ";
+            Query<GPM> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            gpm = hth.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return gpm;
     }
+
     
-    public static void main(String[] args) {
-        GPM add = new GPM();
-        add.setMa("GPM0001");
-        add.setTen("Gigabyte N710D5-1GL");
-        GPM gpm = new GPMRepository().addGPM(add);
-        System.out.println(gpm);
-        List<GPM> list = new ArrayList<>();
-        for (GPM x : list) {
-            System.out.println(x);
-        }
-    }
 }

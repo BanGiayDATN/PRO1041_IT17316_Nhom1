@@ -20,4 +20,6 @@ public interface LoginService {
     String quenMK(String email, String sdt);
 
     int dangKy(NhanVienResponse response);
+    
+    String matKhauMD5(String matKhau);
 }
