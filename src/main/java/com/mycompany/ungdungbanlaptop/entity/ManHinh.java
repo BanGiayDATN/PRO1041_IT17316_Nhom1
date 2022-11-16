@@ -56,10 +56,16 @@ public class ManHinh {
     
     @Column(name = "tan_so",columnDefinition = "nvarchar(100)")
     private String tanSo;
+<<<<<<< HEAD
 
     public ManHinh(UUID idManHinh) {
         this.idManHinh = idManHinh;
     }
     
     
+=======
+    
+    @Column(name = "cong_nghe_man_hinh",columnDefinition = "nvarchar(100)")
+    private String congNgheMH;
+>>>>>>> develop
 }
