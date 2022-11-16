@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="" />
+    <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="diem" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,7 +37,7 @@
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "last_opened_file_path": "D:/DuAn1/PRO1041_IT17346_Nhom1"
+    "last_opened_file_path": "E:/PRO1041_DuAn1/PRO1041_IT17346_Nhom1"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
@@ -61,5 +61,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="diem" />
+    <option name="LAST_COMMIT_MESSAGE" value="diem" />
   </component>
 </project>
