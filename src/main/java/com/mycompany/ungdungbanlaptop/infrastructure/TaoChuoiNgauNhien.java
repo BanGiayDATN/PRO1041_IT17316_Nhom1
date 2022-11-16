@@ -16,6 +16,11 @@ public class TaoChuoiNgauNhien {
         return generator;
     }
 
+    public String getMkRanMa(String ma, int soLuong) {
+        String generator = ma + RandomStringUtils.randomNumeric(soLuong);
+        return generator;
+    }
+
     public String getIMEI(String noDung, int soluong) {
         String generator = noDung + RandomStringUtils.randomNumeric(soluong);
         return generator;

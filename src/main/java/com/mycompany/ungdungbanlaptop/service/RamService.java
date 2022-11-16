@@ -22,4 +22,6 @@ public interface RamService {
     
     Ram findByMa(String ma);
     
+    Ram getByTen(String ten);
+    
 }

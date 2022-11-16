@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
@@ -62,4 +63,24 @@ public class HeDieuHanhRepository {
         }
         return heDieuHanh;
     }
+     public HeDieuHanh getByTen(String ten) {
+    
+        HeDieuHanh hdh = new HeDieuHanh();
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            String query = "SELECT hdh "
+                    + "FROM HeDieuHanh hdh "
+                    + "WHERE hdh.ten = :ten ";
+            Query<HeDieuHanh> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
+            hdh = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return hdh;
+    }
+     public static void main(String[] args) {
+         System.out.println(new HeDieuHanhRepository().getList());
+                 };
+     
 }
+

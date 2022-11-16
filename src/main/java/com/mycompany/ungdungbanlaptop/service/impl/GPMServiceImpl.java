@@ -51,4 +51,11 @@ public class GPMServiceImpl implements GPMService {
         return gpmRepo.getOne(ma);
     }
 
+    @Override
+    public GPM getByTen(String ten) {
+        return gpmRepo.getByTen(ten);
+    }
+
+  
+
 }

@@ -47,4 +47,10 @@ public class ChatLieu {
 
     @Column(name = "ten_chat_lieu",columnDefinition = "nvarchar(Max)")
     private String ten;
+
+    public ChatLieu(UUID idChatLieu) {
+        this.idChatLieu = idChatLieu;
+    }
+    
+    
 }

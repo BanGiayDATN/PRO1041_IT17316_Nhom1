@@ -46,9 +46,8 @@ public class Ram {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_cpu",columnDefinition = "nvarchar(100)")
+    @Column(name = "ten_ram",columnDefinition = "nvarchar(100)")
     private String ten;
-
 
     @Column(name = "dung_luong")
     private int dungLuong;
@@ -58,4 +57,10 @@ public class Ram {
 
     @Column(name = "loai_ram")
     private EnumLoaiRam enumLoaiRam;
+
+    public Ram(UUID idRam) {
+        this.idRam = idRam;
+    }
+    
+    
 }
