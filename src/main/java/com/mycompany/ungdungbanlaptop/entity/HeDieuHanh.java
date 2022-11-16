@@ -52,4 +52,10 @@ public class HeDieuHanh {
 
     @Column(name="he_dieu_hanh")
     private EnumHeDieuHanh heDieuHanh;
+
+    public HeDieuHanh(UUID idHeDieuHanh) {
+        this.idHeDieuHanh = idHeDieuHanh;
+    }
+    
+    
 }

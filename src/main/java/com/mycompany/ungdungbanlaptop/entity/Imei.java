@@ -44,4 +44,10 @@ public class Imei {
 
     @Column(name = "ma")
     private String ma;
+
+    public Imei(UUID idImei) {
+        this.idImei = idImei;
+    }
+    
+    
 }

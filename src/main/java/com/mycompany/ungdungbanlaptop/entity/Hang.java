@@ -40,11 +40,17 @@ public class Hang {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idChatLieu;
+    private UUID idHang;
 
     @Column(name = "ma")
     private String ma;
 
     @Column(name = "ten_hang",columnDefinition = "nvarchar(Max)")
     private String ten;
+
+    public Hang(UUID idHang) {
+        this.idHang = idHang;
+    }
+    
+    
 }

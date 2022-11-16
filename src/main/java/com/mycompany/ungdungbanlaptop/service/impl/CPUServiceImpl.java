@@ -61,4 +61,11 @@ public class CPUServiceImpl implements CPUService {
         return cpuRespository.getAll();
     }
 
+    @Override
+    public CPU getByTen(String ten) {
+        return cpuRespository.getByTen(ten);
+    }
+
+   
+
 };

@@ -58,4 +58,10 @@ public class Ram {
 
     @Column(name = "loai_ram")
     private EnumLoaiRam enumLoaiRam;
+
+    public Ram(UUID idRam) {
+        this.idRam = idRam;
+    }
+    
+    
 }

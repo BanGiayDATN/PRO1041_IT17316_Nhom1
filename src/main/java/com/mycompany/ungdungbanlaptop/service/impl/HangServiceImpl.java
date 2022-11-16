@@ -34,17 +34,23 @@ public class HangServiceImpl implements HangService{
 
     @Override
     public String update(UUID id, Hang hang) {
-        Hang updateHang = hang;
-        updateHang.setIdChatLieu(id);
-        if(hangRepository.update(updateHang)){
+       
+        if(hangRepository.update(hang)){
             return "Sửa thành công";
         }
         return "Sửa thất bại";
     }
 
     @Override
-    public Hang findById(String ma) {
-        return hangRepository.findByMa(ma);
+    public Hang getOne(String ma) {
+        return hangRepository.getOne(ma);
     }
+
+    @Override
+    public Hang getByTen(String ten) {
+        return hangRepository.getByTen(ten);
+    }
+
+  
     
 }

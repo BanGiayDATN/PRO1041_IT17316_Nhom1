@@ -21,4 +21,6 @@ public interface ChatLieuService {
     public String update(ChatLieu ChatLieu);
 
     public ChatLieu getOne(String ma);
+    
+    public ChatLieu getByTen(String ten);
 }
