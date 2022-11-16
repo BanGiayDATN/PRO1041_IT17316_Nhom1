@@ -59,4 +59,14 @@ public class KhuyenMai {
     
     @Column(name = "phan_tram")
     private int phanTram;
+
+    public KhuyenMai(String ma, long ngayBatDau, long ngayKetThuc, int trangThai, int soLuong, int phanTram) {
+        this.ma = ma;
+        this.ngayBatDau = ngayBatDau;
+        this.ngayKetThuc = ngayKetThuc;
+        this.trangThai = trangThai;
+        this.soLuong = soLuong;
+        this.phanTram = phanTram;
+    }
+    
 }
