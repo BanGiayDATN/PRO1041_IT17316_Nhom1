@@ -10,10 +10,6 @@ import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * @author Hoàng Ngô
- */
 public class ChatLieuServiceImpl implements ChatLieuService {
 
     private ChatLieuRepository chatLieuRepo = new ChatLieuRepository();
@@ -24,11 +20,37 @@ public class ChatLieuServiceImpl implements ChatLieuService {
     }
 
     @Override
-    public Boolean addNew(ChatLieu chatLieu) {
-        if (chatLieu == null) {
-            return false;
+    public String addNew(ChatLieu chatLieu) {
+        ChatLieu check = chatLieuRepo.getOne(chatLieu.getMa());
+        if (check != null) {
+            return "Mã chất liệu đã tồn tại";
         }
-        return true;
+        if (chatLieu.getMa().isEmpty() || chatLieu.getTen().isEmpty()) {
+            return "Không được để trống thông tin";
+        }
+        boolean add = chatLieuRepo.addNew(chatLieu);
+        if (add) {
+            return " Thêm thành công";
+        }
+        return "Thêm thất bại";
+    }
+
+    @Override
+    public ChatLieu getOne(String ma) {
+        return chatLieuRepo.getOne(ma);
+    }
+
+    @Override
+    public String update(ChatLieu chatLieu) {
+        String ma = chatLieu.getMa();
+        if (chatLieu.getMa().isEmpty() || chatLieu.getTen().isEmpty()) {
+            return "Không được để trống thông tin";
+        }
+        boolean update = chatLieuRepo.update(chatLieu);
+        if (update) {
+            return "Update thành công";
+        }
+        return "Update thất bại";
     }
 
 }
