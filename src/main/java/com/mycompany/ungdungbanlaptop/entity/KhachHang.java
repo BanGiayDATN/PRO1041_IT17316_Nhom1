@@ -62,9 +62,6 @@ public class KhachHang implements Serializable {
     @Column(name = "email", length = 30)
     private String email;
 
-    @Column(name = "mat_khau", length = 30)
-    private String password;
-
     @Column(name = "dia_chi", columnDefinition="nvarchar(Max)")
     private String diaChi;
 
