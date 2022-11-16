@@ -53,4 +53,11 @@ public class ChatLieuServiceImpl implements ChatLieuService {
         return "Update thất bại";
     }
 
+    @Override
+    public ChatLieu getByTen(String ten) {
+        return chatLieuRepo.getByTen(ten);
+    }
+
+    
+
 }

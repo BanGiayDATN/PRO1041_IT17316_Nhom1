@@ -13,12 +13,14 @@ import java.util.UUID;
  * @author thang
  */
 public interface HeDieuHanhService {
-    
+
     List<HeDieuHanh> getList();
-    
+
     String insert(HeDieuHanh heDieuHanh);
-    
+
     String update(UUID id, HeDieuHanh heDieuHanh);
-    
+
     HeDieuHanh findById(String ma);
+
+    HeDieuHanh getByTen(String ten);
 }

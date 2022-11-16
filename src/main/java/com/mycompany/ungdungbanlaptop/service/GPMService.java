@@ -20,4 +20,6 @@ public interface GPMService {
     String update(GPM gpm);
 
     GPM getOne(String ma);
+
+    GPM getByTen(String ten);
 }

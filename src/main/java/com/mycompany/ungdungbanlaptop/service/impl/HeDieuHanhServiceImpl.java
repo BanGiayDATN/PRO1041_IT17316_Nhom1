@@ -46,4 +46,10 @@ public class HeDieuHanhServiceImpl implements HeDieuHanhService {
         return heDieuHanhRepository.findByMa(ma);
     }
 
+    @Override
+    public HeDieuHanh getByTen(String ten) {
+        return heDieuHanhRepository.getByTen(ten);
+    }
+
+    
 }

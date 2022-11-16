@@ -21,4 +21,6 @@ public interface CPUService {
     String update(CPU cpu);
     
     CPU getOne(String ma);
+    
+   CPU getByTen(String ten);
 }

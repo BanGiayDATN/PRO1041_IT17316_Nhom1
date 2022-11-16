@@ -66,7 +66,7 @@ public class ChatLieuRepository {
     }
 
     public ChatLieu getOne(String ma) {
-        Transaction transaction = null;
+        
         ChatLieu chatLieu = new ChatLieu();
         try {
             String query = "SELECT chatLieu "
@@ -74,6 +74,20 @@ public class ChatLieuRepository {
                     + "WHERE chatLieu.ma = :ma ";
             Query<ChatLieu> hth = session.createQuery(query);
             hth.setParameter("ma", ma);
+            chatLieu = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return chatLieu;
+    }
+    public ChatLieu getByTen(String ten){
+        ChatLieu chatLieu = new ChatLieu();
+        try {
+            String query = "SELECT chatLieu "
+                    + "FROM ChatLieu chatLieu "
+                    + "WHERE chatLieu.ten = :ten ";
+            Query<ChatLieu> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
             chatLieu = hth.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace(System.out);

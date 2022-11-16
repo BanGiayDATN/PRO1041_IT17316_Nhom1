@@ -7,6 +7,8 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.util.ArrayList;
+import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -17,7 +19,19 @@ import org.hibernate.query.Query;
 public class NhanVienRepository {
 
     private Session session = HibernateUtil.getFACTORY().openSession();
-
+    
+    public List<NhanVien> getAll() {
+        List<NhanVien> list = new ArrayList<>();
+        try {
+            Query query = session.createQuery("FROM NhanVien");
+            list = query.getResultList();
+            return list;
+            
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public NhanVien addNhanVien(NhanVien nhanVien) {
         Transaction transaction = null;
         try {
