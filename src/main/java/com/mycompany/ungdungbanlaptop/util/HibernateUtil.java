@@ -63,7 +63,7 @@ public class HibernateUtil {
         properties.put(Environment.PASS, "123"); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-        properties.put(Environment.HBM2DDL_AUTO, "create");
+        properties.put(Environment.HBM2DDL_AUTO, "none");
         return properties;
     }
 

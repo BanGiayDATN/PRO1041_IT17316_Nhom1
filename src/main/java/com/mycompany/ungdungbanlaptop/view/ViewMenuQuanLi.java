@@ -4,10 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
-import com.mycompany.ungdungbanlaptop.view.viewsanpham.CPUView;
-import com.mycompany.ungdungbanlaptop.view.viewsanpham.ChatLieuView;
-import com.mycompany.ungdungbanlaptop.view.viewsanpham.GPMView;
 import java.awt.FlowLayout;
 
 /**
@@ -181,12 +177,12 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void menuCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCPUActionPerformed
-        viewChucNang.removeAll();
-        CPUView form = new CPUView();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
+//        viewChucNang.removeAll();
+//        CPUView form = new CPUView();
+//        viewChucNang.add(form);
+//        viewChucNang.setLayout(new FlowLayout());
+//        this.pack();
+//        form.setVisible(true);
     }//GEN-LAST:event_menuCPUActionPerformed
 
     private void menuChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuChatLieuActionPerformed
