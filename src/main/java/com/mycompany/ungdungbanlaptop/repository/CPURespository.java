@@ -33,17 +33,6 @@ public class CPURespository {
         return null;
     }
 
-//    public CPU add(CPU cpu) {
-//        Transaction transaction = null;
-//        try {
-//            transaction = session.beginTransaction();
-//            session.save(cpu);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            e.printStackTrace(System.out);
-//        }
-//        return cpu;
-//    }
     public CPU getOne(String ma) {
         Transaction transaction = null;
         CPU cpu = new CPU();
@@ -59,18 +48,22 @@ public class CPURespository {
         }
         return cpu;
     }
+    public CPU getByTen(String ten) {
+    
+        CPU cpu = new CPU();
+        try {
+            String query = "SELECT cpu "
+                    + "FROM CPU cpu "
+                    + "WHERE cpu.ten = :ten ";
+            Query<CPU> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
+            cpu = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return cpu;
+    }
 
-//    public CPU update(CPU cpu) {
-//        Transaction transaction = null;
-//        try {
-//            transaction = session.beginTransaction();
-//            session.update(cpu);
-//            transaction.commit();
-//        } catch (Exception e) {
-//            e.printStackTrace(System.out);
-//        }
-//        return cpu;
-//    }
     public boolean add(CPU cpu) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession();) {

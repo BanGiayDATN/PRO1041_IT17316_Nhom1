@@ -56,7 +56,12 @@ public class ManHinh {
     
     @Column(name = "tan_so",columnDefinition = "nvarchar(100)")
     private String tanSo;
+
     
     @Column(name = "cong_nghe_man_hinh",columnDefinition = "nvarchar(100)")
     private String congNgheMH;
+
+    public ManHinh(UUID idManHinh) {
+        this.idManHinh = idManHinh;
+    }
 }

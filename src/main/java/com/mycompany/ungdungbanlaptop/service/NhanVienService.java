@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import java.util.List;
 
 /**
  *
@@ -19,5 +20,6 @@ public interface NhanVienService {
     String deleteNhanVien(NhanVien nv);
 
     NhanVien getNhanVienByEmail(String email);
-
+    
+    List<NhanVien> getAll();
 }

@@ -4,9 +4,11 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -48,17 +50,36 @@ public class HangRepository {
         }
     }
     
-    public Hang findByMa(String ma){
-        Hang hang = null;
+     public Hang getByTen(String ten) {
+    
+       Hang hang = new Hang();
         try (Session session = HibernateUtil.getFACTORY().openSession()){
-            Query<Hang> query = session.createQuery("""
-                                              FROM Hang
-                                              Where ma LIKE :ma
-                                              """).setParameter("ma", ma);
-            hang = query.uniqueResult();
+            String query = "SELECT hang "
+                    + "FROM Hang hang "
+                    + "WHERE hang.ten = :ten ";
+            Query<Hang> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
+            hang = hth.uniqueResult();
         } catch (Exception e) {
+            e.printStackTrace(System.out);
         }
         return hang;
-    }
+     }
+        
+      public Hang getOne(String ma) {
+    
+       Hang hang = new Hang();
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            String query = "SELECT hang "
+                    + "FROM Hang hang "
+                    + "WHERE hang.ma = :ma ";
+            Query<Hang> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            hang = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return hang;
+     }
             
 }

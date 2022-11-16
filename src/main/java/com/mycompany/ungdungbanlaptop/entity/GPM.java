@@ -47,4 +47,10 @@ public class GPM {
 
     @Column(name = "ten_gpm",columnDefinition = "nvarchar(Max)")
     private String ten;
+
+    public GPM(UUID idGPU) {
+        this.idGPU = idGPU;
+    }
+    
+    
 }

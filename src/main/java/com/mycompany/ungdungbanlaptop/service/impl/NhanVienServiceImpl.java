@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
+import java.util.List;
 
 /**
  *
@@ -51,6 +52,11 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public NhanVien getNhanVienByEmail(String email) {
         return nhanVienRepository.getNhanVienByEmail(email);
+    }
+
+    @Override
+    public List<NhanVien> getAll() {
+        return nhanVienRepository.getAll();
     }
 
 }

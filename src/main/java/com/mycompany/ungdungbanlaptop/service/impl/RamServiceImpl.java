@@ -48,4 +48,11 @@ public class RamServiceImpl implements RamService {
         return ramRepository.findByMa(ma);
     }
 
+    @Override
+    public Ram getByTen(String ten) {
+        return ramRepository.getByTen(ten);
+    }
+
+    
+
 }

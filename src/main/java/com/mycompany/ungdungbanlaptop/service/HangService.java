@@ -13,12 +13,14 @@ import java.util.UUID;
  * @author thang
  */
 public interface HangService {
-    
+
     List<Hang> getList();
-    
+
     String insert(Hang hang);
-    
+
     String update(UUID id, Hang hang);
-    
-    Hang findById(String ma);
+
+    Hang getOne(String ma);
+
+    Hang getByTen(String ten);
 }

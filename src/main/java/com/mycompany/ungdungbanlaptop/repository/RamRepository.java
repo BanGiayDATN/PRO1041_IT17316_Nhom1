@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
@@ -58,6 +59,22 @@ public class RamRepository {
                     """).setParameter("ma", ma);
             ram = query.uniqueResult();
         } catch (Exception e) {
+        }
+        return ram;
+    }
+    
+     public Ram getByTen(String ten) {
+    
+        Ram ram = new Ram();
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            String query = "SELECT ram "
+                    + "FROM Ram ram "
+                    + "WHERE ram.ten = :ten ";
+            Query<Ram> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
+            ram = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
         }
         return ram;
     }

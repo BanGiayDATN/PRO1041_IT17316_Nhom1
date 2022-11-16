@@ -49,5 +49,9 @@ public class CPU {
         this.ma = ma;
         this.ten = ten;
     }
+
+    public CPU(UUID idCPU) {
+        this.idCPU = idCPU;
+    }
     
 }

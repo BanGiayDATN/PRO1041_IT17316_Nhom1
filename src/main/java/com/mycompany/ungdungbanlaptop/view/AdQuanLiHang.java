@@ -31,7 +31,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
         model.setColumnIdentifiers(new String[]{"id","Mã", "Tên"});
         if(list != null){
             for(Hang hang : list){
-                model.addRow(new Object[]{hang.getIdChatLieu(), hang.getMa(), hang.getTen()});
+                model.addRow(new Object[]{hang.getIdHang(), hang.getMa(), hang.getTen()});
             }
         }
         tblHang.setModel(model);
@@ -202,7 +202,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -215,7 +215,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         if(checkForm()){
             Hang hang = hangRequest();
-            if(hangService.findById(hang.getMa()) != null){
+            if(hangService.getOne(hang.getMa()) != null){
                 errorMa.setText("mã đã tồn tại");
             }else{
                 errorMa.setText("");

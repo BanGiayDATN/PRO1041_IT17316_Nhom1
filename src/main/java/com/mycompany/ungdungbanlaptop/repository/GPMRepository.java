@@ -69,6 +69,20 @@ public class GPMRepository {
         }
         return gpm;
     }
-
+    public GPM getByTen(String ten) {
+        Transaction transaction = null;
+        GPM gpm = new GPM();
+        try {
+            String query = "SELECT gpm "
+                    + "FROM GPM gpm "
+                    + "WHERE gpm.ten = :ten ";
+            Query<GPM> hth = session.createQuery(query);
+            hth.setParameter("ten", ten);
+            gpm = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return gpm;
+    }
     
 }
