@@ -19,6 +19,7 @@ public interface CPUService {
     String add(CPU cpu);
 
     String update(CPU cpu);
-    
+
     CPU getOne(String ma);
+
 }

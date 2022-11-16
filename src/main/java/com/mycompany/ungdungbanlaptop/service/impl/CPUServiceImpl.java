@@ -39,6 +39,7 @@ public class CPUServiceImpl implements CPUService {
     @Override
     public String update(CPU cpu) {
         String ma = cpu.getMa();
+
         if (cpu.getMa().isEmpty() || cpu.getTen().isEmpty()) {
             return "Không được để trống thông tin";
         }
