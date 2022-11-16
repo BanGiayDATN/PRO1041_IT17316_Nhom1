@@ -15,5 +15,9 @@ public interface GPMService {
 
     List<GPM> getAll();
 
-    String addGPM(GPM gpm);
+    String addNew(GPM gpm);
+
+    String update(GPM gpm);
+
+    GPM getOne(String ma);
 }
