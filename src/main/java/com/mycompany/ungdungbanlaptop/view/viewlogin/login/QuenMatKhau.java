@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 
-import com.mycompany.ungdungbanlaptop.application.UngDungBanLaptop;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import javax.swing.JOptionPane;
@@ -114,7 +113,7 @@ public class QuenMatKhau extends javax.swing.JFrame {
         String ktra = loginService.quenMK(email, sdt);
         JOptionPane.showMessageDialog(this,ktra);
         if(ktra.equals("Gửi thành công")){
-            new UngDungBanLaptop().setVisible(true);
+            new ViewLogin().setVisible(true);
             this.dispose();
         }
 
