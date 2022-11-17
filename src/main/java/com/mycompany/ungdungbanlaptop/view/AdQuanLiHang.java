@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.Hang;
-import com.mycompany.ungdungbanlaptop.repository.impl.HangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HangService;
 import com.mycompany.ungdungbanlaptop.service.impl.HangServiceImpl;
 import java.util.List;

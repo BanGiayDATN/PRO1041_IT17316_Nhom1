@@ -56,11 +56,9 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="41" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="errorMa" alignment="0" pref="369" max="32767" attributes="0"/>
-                                          <Component id="errorTen" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtMaManHinh" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
-                                      </Group>
+                                      <Component id="errorMa" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="errorTen" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtMaManHinh" alignment="0" min="-2" pref="231" max="-2" attributes="0"/>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="txtDoPhanGiai" min="-2" pref="232" max="-2" attributes="0"/>
                                           <EmptySpace min="-2" pref="94" max="-2" attributes="0"/>
