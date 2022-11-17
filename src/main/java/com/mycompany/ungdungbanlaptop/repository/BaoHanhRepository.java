@@ -41,30 +41,7 @@ public class BaoHanhRepository {
         }
         return baoHanh;
     }
-    public BaoHanh update(BaoHanh baoHanh){
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
-            transaction = session.beginTransaction();
-            session.update(baoHanh);
-            transaction.commit();
-            
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return baoHanh;
-    }
-    public BaoHanh delete(BaoHanh baoHanh){
-        Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()){
-            transaction = session.beginTransaction();
-            session.delete(baoHanh);
-            transaction.commit();
-           
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return baoHanh;
-    }
+
     public BaoHanh getOne(String maBh){
         
         try (Session session = HibernateUtil.getFACTORY().openSession()){
