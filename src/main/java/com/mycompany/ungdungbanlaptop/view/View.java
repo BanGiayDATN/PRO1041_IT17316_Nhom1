@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
+import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.color.ColorSpace;
@@ -302,7 +303,7 @@ public class View extends javax.swing.JFrame {
         jPanel8.setBackground(one);
         jPanel7.setBackground(Color.black);
         jPanel6.setBackground(one);
-        ViewSanPham viewsp = new ViewSanPham();
+        BaoHanh1 viewsp = new BaoHanh1();
         DeskTop.add(viewsp);
         DeskTop.setLayout(new FlowLayout());
         this.pack();

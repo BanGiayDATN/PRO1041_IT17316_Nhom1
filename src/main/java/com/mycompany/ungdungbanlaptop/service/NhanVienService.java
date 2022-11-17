@@ -22,4 +22,6 @@ public interface NhanVienService {
     NhanVien getNhanVienByEmail(String email);
     
     List<NhanVien> getAll();
+    
+    NhanVien getByTen(String ten);
 }

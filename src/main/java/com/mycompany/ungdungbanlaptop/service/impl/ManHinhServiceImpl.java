@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.repository.ManHinhRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.ManHinhRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ManHinhService;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import java.util.List;
  *
  * @author Diệm DZ
  */
-public class ManHinhServiceImpl implements ManHinhService{
-    private ManHinhRepository hinhRepository = new ManHinhRepository();
+public class ManHinhServiceImpl implements ManHinhService {
+
+    private ManHinhRepository hinhRepository = new ManHinhRepositoryImpl();
+
     @Override
     public List<ManHinh> getAll() {
         return hinhRepository.getAll();
@@ -44,5 +47,5 @@ public class ManHinhServiceImpl implements ManHinhService{
     public ManHinh getByTen(String ten) {
         return hinhRepository.getByTen(ten);
     }
-    
+
 }

@@ -67,5 +67,10 @@ public class KhachHang implements Serializable {
 
     @Column(name = "trang_thai")
     private int trangThai;
+
+    public KhachHang(UUID idKhachHang) {
+        this.idKhachHang = idKhachHang;
+    }
    
+    
 }

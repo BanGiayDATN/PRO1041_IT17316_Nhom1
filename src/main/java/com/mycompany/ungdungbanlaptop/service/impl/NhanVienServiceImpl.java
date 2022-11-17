@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
  */
 public class NhanVienServiceImpl implements NhanVienService {
 
-    private NhanVienRepository nhanVienRepository = new NhanVienRepository();
+    private NhanVienRepository nhanVienRepository = new NhanVienRepositoryImpl();
 
     @Override
     public String addNhanVien(NhanVien nv) {
@@ -57,6 +58,11 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public List<NhanVien> getAll() {
         return nhanVienRepository.getAll();
+    }
+
+    @Override
+    public NhanVien getByTen(String ten) {
+        return nhanVienRepository.getByTen(ten);
     }
 
 }

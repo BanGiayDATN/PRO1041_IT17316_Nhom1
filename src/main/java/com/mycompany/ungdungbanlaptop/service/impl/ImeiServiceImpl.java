@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.ImeiRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ImeiService;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import java.util.List;
  *
  * @author Diệm DZ
  */
-public class ImeiServiceImpl implements ImeiService{
-    private ImeiRepository imeiRepository = new ImeiRepository();
+public class ImeiServiceImpl implements ImeiService {
+
+    private ImeiRepository imeiRepository = new ImeiRepositoryImpl();
+
     @Override
     public List<Imei> getAll() {
         return imeiRepository.getAll();
@@ -39,5 +42,5 @@ public class ImeiServiceImpl implements ImeiService{
     public Imei getOne(String ma) {
         return imeiRepository.getOne(ma);
     }
-    
+
 }
