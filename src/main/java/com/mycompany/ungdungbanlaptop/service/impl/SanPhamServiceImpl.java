@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import java.util.List;
  *
  * @author Diệm DZ
  */
-public class SanPhamServiceImpl implements SanPhamService{
-    private SanPhamRepository sanPhamRepository = new SanPhamRepository();
+public class SanPhamServiceImpl implements SanPhamService {
+
+    private SanPhamRepository sanPhamRepository = new SanPhamRepositoryImpl();
+
     @Override
     public List<SanPham> getAll() {
         return sanPhamRepository.getAll();
@@ -23,29 +26,29 @@ public class SanPhamServiceImpl implements SanPhamService{
     @Override
     public String add(SanPham sanPham) {
         SanPham add = sanPhamRepository.add(sanPham);
-        if(add != null){
+        if (add != null) {
             return "Thêm thành công";
-        }else{
+        } else {
             return "Thêm thất bại";
         }
     }
 
     @Override
     public String update(SanPham sanPham) {
-         SanPham update = sanPhamRepository.update(sanPham);
-        if(update !=null){
+        SanPham update = sanPhamRepository.update(sanPham);
+        if (update != null) {
             return "Sửa thành công";
-        }else{
+        } else {
             return "Sửa thất bại";
         }
     }
 
     @Override
     public String delete(SanPham sanPham) {
-         SanPham delete = sanPhamRepository.delete(sanPham);
-        if(delete != null){
+        SanPham delete = sanPhamRepository.delete(sanPham);
+        if (delete != null) {
             return "Xóa thành công";
-        }else{
+        } else {
             return "Xóa thất bại";
         }
     }
@@ -64,5 +67,5 @@ public class SanPhamServiceImpl implements SanPhamService{
     public List<SanPham> searchByTen(List<SanPham> list, String tenSp) {
         return sanPhamRepository.searchByTen(tenSp);
     }
-    
+
 }

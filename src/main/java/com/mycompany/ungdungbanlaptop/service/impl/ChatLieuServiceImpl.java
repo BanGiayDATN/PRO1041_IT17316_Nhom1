@@ -6,13 +6,14 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.repository.ChatLieuRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.ChatLieuRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ChatLieuServiceImpl implements ChatLieuService {
 
-    private ChatLieuRepository chatLieuRepo = new ChatLieuRepository();
+    private ChatLieuRepository chatLieuRepo = new ChatLieuRepositoryImpl();
 
     @Override
     public List<ChatLieu> getAll() {

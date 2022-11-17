@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.KhachHangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import java.util.List;
 
@@ -13,8 +14,10 @@ import java.util.List;
  *
  * @author Diệm DZ
  */
-public class KhachHangServiceImpl implements KhachHangService{
-    private KhachHangRepository khachHangRepository = new KhachHangRepository();
+public class KhachHangServiceImpl implements KhachHangService {
+
+    private KhachHangRepository khachHangRepository = new KhachHangRepositoryImpl();
+
     @Override
     public List<KhachHang> getAll() {
         return khachHangRepository.getAll();
@@ -23,30 +26,30 @@ public class KhachHangServiceImpl implements KhachHangService{
     @Override
     public String add(KhachHang khachHang) {
         KhachHang add = khachHangRepository.add(khachHang);
-        if(add !=null){
+        if (add != null) {
             return "Thêm thành công";
-        }else{
-            return"Thêm thất bại";
+        } else {
+            return "Thêm thất bại";
         }
     }
 
     @Override
     public String update(KhachHang khachHang) {
         KhachHang update = khachHangRepository.update(khachHang);
-        if(update !=null){
+        if (update != null) {
             return "Sửa thành công";
-        }else{
-            return"Sửa thất bại";
+        } else {
+            return "Sửa thất bại";
         }
     }
 
     @Override
     public String delete(KhachHang khachHang) {
         KhachHang delete = khachHangRepository.delete(khachHang);
-        if(delete !=null){
+        if (delete != null) {
             return "Sửa thành công";
-        }else{
-            return"Sửa thất bại";
+        } else {
+            return "Sửa thất bại";
         }
     }
 
@@ -59,5 +62,5 @@ public class KhachHangServiceImpl implements KhachHangService{
     public KhachHang getByTen(String ten) {
         return khachHangRepository.getByTen(ten);
     }
-    
+
 }
