@@ -19,11 +19,8 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
      */
     public ViewMenuQuanLi() {
         initComponents();
-<<<<<<< HEAD
         this.setLocationRelativeTo(null);
-=======
         jMenu3.setIcon(new ImageIcon(new File("").getAbsolutePath()+"//src//main//resources//img//icon.png"));
->>>>>>> develop
     }
 
     /**
