@@ -27,9 +27,9 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService{
         }
         boolean add = ql.add(km);
         if(add){
-            return "Add thanh cong";
+            return "Thêm mã khuyến mại thành công";
         }
-        return "Add that bai";
+        return "Thêm mã khuyến mại thất bại";
     }
 
     @Override
