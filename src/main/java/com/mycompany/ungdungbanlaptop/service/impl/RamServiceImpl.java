@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.repository.RamRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.RamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.RamService;
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 public class RamServiceImpl implements RamService {
 
-    private RamRepository ramRepository = new RamRepository();
+    private RamRepository ramRepository = new RamRepositoryImpl();
 
     @Override
     public List<Ram> getList() {

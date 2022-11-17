@@ -33,7 +33,7 @@ public class ReadingQRCode {
     }
 
     public static void main(String args[]) throws WriterException, IOException, NotFoundException {
-        String path = "D:\\MOB1023_JavaSwing\\AssJava3\\diem.png";
+        String path = "D:\\MOB1023_JavaSwing\\AssJava3\\phong.png";
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hintMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
         hintMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);

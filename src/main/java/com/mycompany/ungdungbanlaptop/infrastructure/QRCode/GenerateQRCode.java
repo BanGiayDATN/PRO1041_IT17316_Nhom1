@@ -35,9 +35,9 @@ public class GenerateQRCode {
 
     public static void main(String args[]) throws WriterException, IOException, NotFoundException {
         //dữ liệu mà chúng tôi muốn lưu trữ trong mã QR 
-        String str = "Diem ngu";
+        String str = "phong dzai";
         //đường dẫn nơi chúng tôi muốn lấy Mã QR
-        String path = "D:\\MOB1023_JavaSwing\\AssJava3\\diem.png";
+        String path = "D:\\MOB1023_JavaSwing\\AssJava3\\phong.png";
         //Mã hóa bộ ký tự được sử dụng 
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();

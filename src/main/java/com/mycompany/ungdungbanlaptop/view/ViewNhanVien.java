@@ -5,7 +5,7 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import java.sql.Date;

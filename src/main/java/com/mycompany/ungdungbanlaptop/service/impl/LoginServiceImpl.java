@@ -10,6 +10,7 @@ import com.mycompany.ungdungbanlaptop.infrastructure.SendEmail;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.security.MessageDigest;
@@ -31,7 +32,7 @@ import org.apache.commons.validator.routines.EmailValidator;
 public class LoginServiceImpl implements LoginService {
 
     private String regexSDT = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$";
-    private NhanVienRepository nhanVienRepository = new NhanVienRepository();
+    private NhanVienRepository nhanVienRepository = new NhanVienRepositoryImpl();
 
     @Override
     public NhanVien login(String email, String password) {
@@ -108,7 +109,7 @@ public class LoginServiceImpl implements LoginService {
         if (password.length() < 8) {
             return 6;
         }
-        
+
         NhanVien nhanVien = new NhanVien();
         nhanVien.setEmail(response.getEmail());
         nhanVien.setMa(ma);
@@ -134,22 +135,23 @@ public class LoginServiceImpl implements LoginService {
         }
         return true;
     }
+
     @Override
-    public String matKhauMD5(String matKhau){
-         String md5Hex = DigestUtils.md5Hex(matKhau).toUpperCase();
-         return md5Hex;
+    public String matKhauMD5(String matKhau) {
+        String md5Hex = DigestUtils.md5Hex(matKhau).toUpperCase();
+        return md5Hex;
     }
 
     @Override
-    public NhanVien doiMK(String email, String password , String passwordMoi , String passwordNhapLai) {
-         NhanVien nhanVien = new NhanVien();
+    public NhanVien doiMK(String email, String password, String passwordMoi, String passwordNhapLai) {
+        NhanVien nhanVien = new NhanVien();
         if (email.isBlank() || password.isBlank()) {
             return null;
         }
         if (!EmailValidator.getInstance().isValid(email)) {
             return null;
         }
-        if(!passwordNhapLai.equals(passwordMoi)){
+        if (!passwordNhapLai.equals(passwordMoi)) {
             return null;
         }
         nhanVien = nhanVienRepository.getNhanVienByEmailAndPass(email, matKhauMD5(password));
