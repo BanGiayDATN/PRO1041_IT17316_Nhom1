@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface CPURespository {
 
-    List<CPU> getAll();
+    List<CPUViewModel> getAll();
 
     CPU getOne(String ma);
 

@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import com.mycompany.ungdungbanlaptop.service.impl.CPUServiceImpl;
 import java.util.ArrayList;
@@ -31,10 +32,10 @@ public class CPUview extends javax.swing.JPanel {
 
     }
 
-    private void showData(ArrayList<CPU> list) {
+    private void showData(ArrayList<CPUViewModel> list) {
         dtm.setRowCount(0);
-        for (CPU x : list) {
-            dtm.addRow(new Object[]{x.getIdCPU(), x.getMa(), x.getTen()});
+        for (CPUViewModel x : list) {
+            dtm.addRow(new Object[]{x.getId(), x.getMa(), x.getTen()});
         }
     }
 
@@ -175,9 +176,9 @@ public class CPUview extends javax.swing.JPanel {
 
     private void tbCPUMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbCPUMouseClicked
         int row = tbCPU.getSelectedRow();
-        CPU cpu = ql.getALl().get(row);
-        txtMa.setText(cpu.getMa());
-        txtTen.setText(cpu.getTen());
+        CPUViewModel model = ql.getALl().get(row);
+        txtMa.setText(model.getMa());
+        txtTen.setText(model.getTen());
     }//GEN-LAST:event_tbCPUMouseClicked
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
@@ -202,12 +203,12 @@ public class CPUview extends javax.swing.JPanel {
             txtMa.setText("");
             txtTen.setText("");
         }
-        showData((ArrayList<CPU>) ql.getALl());        // TODO add your handling code here:
+        showData((ArrayList<CPUViewModel>) ql.getALl());        // TODO add your handling code here:
 
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
-        showData((ArrayList<CPU>) ql.getALl());
+        showData((ArrayList<CPUViewModel>) ql.getALl());
     }//GEN-LAST:event_btnXemActionPerformed
 
 
