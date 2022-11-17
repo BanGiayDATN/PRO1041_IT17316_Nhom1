@@ -114,6 +114,20 @@ public class NhanVienRepository {
         }
         return nv;
     }
+    public NhanVien getByTen(String ten) {
+        NhanVien nv = new NhanVien();
+        try {
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.hoTen = :hoTen ";
+            Query<NhanVien> hth = session.createQuery(query);
+            hth.setParameter("hoTen", ten);
+            nv = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return nv;
+    }
 
     public static void main(String[] args) {
         //String ma, String hoTen, String gioiTinh, long ngaySinh, String sdt, String email, String password,
@@ -124,11 +138,11 @@ public class NhanVienRepository {
 //        NhanVien add = new NhanVienRepository().addNhanVien(nhanVien);
 //        System.out.println(add.toString());
 
-        NhanVien getOne = new NhanVienRepository().getNhanVienByEmailAndPass("anhvinh12a888@gmail.com", "25F9E794323B453885F5181F1B624D0B");
-        System.out.println(getOne);
+//        NhanVien getOne = new NhanVienRepository().getNhanVienByEmailAndPass("anhvinh12a888@gmail.com", "25F9E794323B453885F5181F1B624D0B");
+//        System.out.println(getOne);
 
 
 //        NhanVien delete = new NhanVienRepository().delete(add);
-//        System.out.println(delete);
+        System.out.println( new NhanVienRepository().getByTen("Nguyễn Văn Vinh"));
     }
 }

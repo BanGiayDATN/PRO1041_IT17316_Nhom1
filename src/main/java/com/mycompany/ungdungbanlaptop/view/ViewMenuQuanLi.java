@@ -83,7 +83,6 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         });
         jMenu3.add(menuHang);
 
-        jMenuItem2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/icons8-ram-24.png"))); // NOI18N
         jMenuItem2.setText("Ram");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

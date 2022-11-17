@@ -85,7 +85,19 @@ public class KhachHangRepository {
         }
         return null;
     }
+     public KhachHang getByTen(String ten) {
 
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.hoTen like :hoTen ";
+            Query<KhachHang> query = session.createQuery(hql);
+            query.setParameter("hoTen", "%" + ten + "%");
+            KhachHang kh = query.uniqueResult();
+            return kh;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public List<KhachHang> sreach(String tenKh) {
         List<KhachHang> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -97,5 +109,8 @@ public class KhachHangRepository {
         } catch (Exception e) {
         }
         return list;
+    }
+    public static void main(String[] args) {
+        System.out.println(new KhachHangRepository().getByTen("Hà Phương Na"));
     }
 }
