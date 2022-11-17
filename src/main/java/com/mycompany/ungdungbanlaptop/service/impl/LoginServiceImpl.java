@@ -8,7 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.SendEmail;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
+import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
@@ -78,7 +78,7 @@ public class LoginServiceImpl implements LoginService {
     }
 
     @Override
-    public int dangKy(NhanVienResponse response) {
+    public int dangKy(NhanVienResquest response) {
         String ma = "NV" + new TaoChuoiNgauNhien().getMkRanDum(5);
         String hoTen = response.getHoTen().trim();
         String gioiTinh = response.getGioiTinh().trim();

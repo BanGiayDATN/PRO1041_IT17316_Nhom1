@@ -14,6 +14,7 @@ import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
 import com.mycompany.ungdungbanlaptop.service.GPMService;
@@ -66,7 +67,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private RamService ramService = new RamServiceImpl();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     
-    private List<CPU> listCPU = cPUService.getALl();
+    private List<CPUViewModel> listCPU = cPUService.getALl();
     private List<ChatLieu> listChatLieu = chatLieuSevice.getAll();
     private List<GPM> listGPM = gPMService.getAll();
     private List<Hang> listHang = hangService.getList();
@@ -88,7 +89,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             dcm1.addElement("Trắng");
             
         cbbCPU.setModel(dcm2);
-        for (CPU x : listCPU) {
+        for (CPUViewModel x : listCPU) {
             dcm2.addElement(x.getTen());
         }
         

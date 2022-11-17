@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import java.util.List;
 
 /**
@@ -14,7 +15,7 @@ import java.util.List;
  */
 public interface CPUService {
 
-    List<CPU> getALl();
+    List<CPUViewModel> getALl();
 
     String add(CPU cpu);
 

@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.repository.CPURespository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
@@ -24,10 +25,11 @@ public class CPURespositoryImpl implements CPURespository {
     private Session session = HibernateUtil.getFACTORY().openSession();
 
     @Override
-    public List<CPU> getAll() {
+    public List<CPUViewModel> getAll() {
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery("FROM CPU");
-            List<CPU> list = query.getResultList();
+            Query query = session.createQuery(" SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel"
+                    + "(cpu.idCPU,cpu.ma ,cpu.ten ) FROM CPU cpu");
+            List<CPUViewModel> list = query.getResultList();
             return list;
         } catch (Exception e) {
         }
