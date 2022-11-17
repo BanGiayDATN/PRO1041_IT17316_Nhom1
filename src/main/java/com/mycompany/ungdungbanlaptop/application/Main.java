@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.application;
 
 import com.mycompany.ungdungbanlaptop.view.ViewMenuKhachHang;
+import com.mycompany.ungdungbanlaptop.view.viewlogin.login.ViewLogin;
 
 /**
  *
@@ -13,6 +14,6 @@ import com.mycompany.ungdungbanlaptop.view.ViewMenuKhachHang;
 public class Main {
     
     public static void main(String[] args) {
-        new ViewMenuKhachHang().setVisible(true);
+        new ViewLogin().setVisible(true);
     }
 }

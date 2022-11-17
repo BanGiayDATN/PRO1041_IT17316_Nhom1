@@ -241,7 +241,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(48, 48, 48)
                 .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(259, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
