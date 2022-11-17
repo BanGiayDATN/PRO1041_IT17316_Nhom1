@@ -34,9 +34,11 @@ public class NhanVienServiceImpl implements NhanVienService {
         // Muốn check gì thì check ở đây
         NhanVien add = nhanVienRepository.update(nv);
         if (add == null) {
-            return " Add thất bại";
+            return " Sửa thất bại";
+        }else{
+            
+        return "Sửa thành công ";
         }
-        return "Add thành công ";
     }
 
     @Override
@@ -44,9 +46,9 @@ public class NhanVienServiceImpl implements NhanVienService {
          // Muốn check gì thì check ở đây
         NhanVien add = nhanVienRepository.delete(nv);
         if (add == null) {
-            return " Add thất bại";
+            return " Xóa thất bại";
         }
-        return "Add thành công ";
+        return "Xóa thành công ";
     }
 
     @Override
@@ -58,5 +60,12 @@ public class NhanVienServiceImpl implements NhanVienService {
     public List<NhanVien> getAll() {
         return nhanVienRepository.getAll();
     }
+
+    @Override
+    public List<NhanVien> search(List<NhanVien> list, String hoTen, String email, String soDienThoai) {
+        return nhanVienRepository.search(hoTen, email, soDienThoai);
+    }
+
+    
 
 }

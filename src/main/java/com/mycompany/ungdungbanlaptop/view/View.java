@@ -302,7 +302,7 @@ public class View extends javax.swing.JFrame {
         jPanel8.setBackground(one);
         jPanel7.setBackground(Color.black);
         jPanel6.setBackground(one);
-        ViewSanPham viewsp = new ViewSanPham();
+        AdQuanLiManHinh viewsp = new AdQuanLiManHinh();
         DeskTop.add(viewsp);
         DeskTop.setLayout(new FlowLayout());
         this.pack();

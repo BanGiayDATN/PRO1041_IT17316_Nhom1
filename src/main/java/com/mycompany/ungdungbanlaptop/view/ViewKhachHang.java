@@ -30,7 +30,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
         
         jTableLichSuMuahang.setModel(dtm1);
         String [] b = {"Mã Hóa Đơn","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán","Tổng tiền","Tình trạng"};
-        dtm.setColumnIdentifiers(b);
+        dtm1.setColumnIdentifiers(b);
     }
     private void showData(List<KhachHang> list){
         dtm.setRowCount(0);
@@ -86,6 +86,11 @@ public class ViewKhachHang extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableKhachHangMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableKhachHang);
 
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
@@ -251,6 +256,11 @@ public class ViewKhachHang extends javax.swing.JPanel {
         List<KhachHang> listNew = khachHangService.search(khachHangService.getAll(), timKiem);
         showData(listNew);
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jTableKhachHangMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -83,6 +83,6 @@ public class HoaDonChiTietRepository {
 //    }
     public static void main(String[] args) {
 //        HoaDonChiTiet hdct = new HoaDonChiTiet(1, BigDecimal.valueOf(Double.valueOf(2000)), new HoaDon(UUID.fromString("c0a83801-847e-19b9-8184-7ea9be380000")));
-//        System.out.println(new HoaDonChiTietRepository().add(hdct));
+        System.out.println(new HoaDonChiTietRepository().getAll());
     }
 }

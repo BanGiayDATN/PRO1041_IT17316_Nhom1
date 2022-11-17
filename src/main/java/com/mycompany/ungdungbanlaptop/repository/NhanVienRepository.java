@@ -18,11 +18,11 @@ import org.hibernate.query.Query;
  */
 public class NhanVienRepository {
 
-    private Session session = HibernateUtil.getFACTORY().openSession();
+    
     
     public List<NhanVien> getAll() {
         List<NhanVien> list = new ArrayList<>();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession();){
             Query query = session.createQuery("FROM NhanVien");
             list = query.getResultList();
             return list;
@@ -34,7 +34,7 @@ public class NhanVienRepository {
     }
     public NhanVien addNhanVien(NhanVien nhanVien) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.save(nhanVien);
             transaction.commit();
@@ -46,7 +46,7 @@ public class NhanVienRepository {
 
     public NhanVien update(NhanVien nv) {
         Transaction transaction = null;
-        try {
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
             transaction = session.beginTransaction();
             session.update(nv);
             transaction.commit();
@@ -58,7 +58,7 @@ public class NhanVienRepository {
 
     public NhanVien delete(NhanVien nv) {
         Transaction transaction = null;
-        try {
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
             transaction = session.beginTransaction();
             session.delete(nv);
             transaction.commit();
@@ -70,7 +70,7 @@ public class NhanVienRepository {
 
     public NhanVien getNhanVienByEmail(String email) {
         NhanVien nv = new NhanVien();
-        try {
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.email = :email ";
@@ -85,9 +85,9 @@ public class NhanVienRepository {
 
     public NhanVien getNhanVienByEmailAndPass(String email, String password) {
         NhanVien nv = new NhanVien();
-        try {
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
             String query = "SELECT nv "
-                    + "FROM NhanVien nv "
+                    + "FROM NhanVienhth.setParameter(\"email\", email); nv "
                     + "WHERE nv.email = :email AND nv.password = :password";
             Query<NhanVien> hth = session.createQuery(query);
             hth.setParameter("email", email);
@@ -101,7 +101,7 @@ public class NhanVienRepository {
 
     public NhanVien getNhanVienByEmailAndSDT(String email, String sdt) {
         NhanVien nv = new NhanVien();
-        try {
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.email = :email AND nv.sdt = :sdt ";
@@ -114,21 +114,25 @@ public class NhanVienRepository {
         }
         return nv;
     }
-
+    
+    public List<NhanVien> search(String hoTen,String email,String soDienThoai) {
+        List<NhanVien> list = new ArrayList<>();
+        try  (Session session = HibernateUtil.getFACTORY().openSession();){
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.hoTen like :hoTen AND nv.email like :email AND nv.sdt like :sdt";
+            Query<NhanVien> hth = session.createQuery(query);
+            hth.setParameter("hoTen","%" +hoTen +"%");
+            hth.setParameter("email","%" +email +"%");
+            hth.setParameter("sdt","%" +soDienThoai +"%");
+            list = hth.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public static void main(String[] args) {
-        //String ma, String hoTen, String gioiTinh, long ngaySinh, String sdt, String email, String password,
-        //String diaChi, int trangThai, ChucVu chucVu
-        long ngay = new ConverDate().dateToLong("17/10/1999", "dd/MM/yyyy");
-//        NhanVien nhanVien = new NhanVien("455", "Nguyen Van A", "Nam", ngay, "0963852741", "anhvinh12a888@gmail.com", "123",
-//                "Ha Noi", 0, null);
-//        NhanVien add = new NhanVienRepository().addNhanVien(nhanVien);
-//        System.out.println(add.toString());
-
-        NhanVien getOne = new NhanVienRepository().getNhanVienByEmailAndPass("anhvinh12a888@gmail.com", "25F9E794323B453885F5181F1B624D0B");
-        System.out.println(getOne);
-
-
-//        NhanVien delete = new NhanVienRepository().delete(add);
-//        System.out.println(delete);
+        System.out.println(new NhanVienRepository().search("Diệm", "", ""));
     }
 }

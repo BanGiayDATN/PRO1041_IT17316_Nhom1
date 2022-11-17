@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;
+import java.util.Random;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -91,6 +92,7 @@ public class ManHinhRepository {
         }
         return null;
     }
+    
     public static void main(String[] args) {
 //        ManHinh mh = new ManHinh("MH3", "HD", "14 inch", "Cảm ứng", "120hz");
 //        System.out.println(new ManHinhRepository().add(mh));
