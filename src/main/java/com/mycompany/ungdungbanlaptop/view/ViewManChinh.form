@@ -44,7 +44,7 @@
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jMenu2MouseClicked"/>
           </Events>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenu3">
+        <Menu class="javax.swing.JMenu" name="menu">
           <Properties>
             <Property name="text" type="java.lang.String" value="C&#x1ea5;u h&#xec;nh m&#xe1;y"/>
           </Properties>
@@ -229,7 +229,7 @@
                           <Component id="btnSanPham" alignment="0" max="32767" attributes="0"/>
                           <Component id="btnNhanVien" alignment="0" pref="149" max="32767" attributes="0"/>
                           <Component id="jButton5" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jButton10" alignment="0" pref="149" max="32767" attributes="0"/>
+                          <Component id="btnThongKe" alignment="0" pref="149" max="32767" attributes="0"/>
                           <Component id="jButton9" alignment="0" max="32767" attributes="0"/>
                           <Component id="jButton8" alignment="0" pref="149" max="32767" attributes="0"/>
                       </Group>
@@ -253,7 +253,7 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton5" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="jButton10" min="-2" pref="30" max="-2" attributes="0"/>
+                      <Component id="btnThongKe" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton9" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -328,12 +328,12 @@
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton9ActionPerformed"/>
               </Events>
             </Component>
-            <Component class="javax.swing.JButton" name="jButton10">
+            <Component class="javax.swing.JButton" name="btnThongKe">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Th&#x1ed1;ng k&#xea;"/>
               </Properties>
               <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton10ActionPerformed"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThongKeActionPerformed"/>
               </Events>
             </Component>
           </SubComponents>

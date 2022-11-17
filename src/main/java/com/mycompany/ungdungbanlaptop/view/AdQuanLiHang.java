@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.Hang;
-import com.mycompany.ungdungbanlaptop.repository.impl.HangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HangService;
 import com.mycompany.ungdungbanlaptop.service.impl.HangServiceImpl;
 import java.util.List;
@@ -20,10 +19,12 @@ import javax.swing.table.DefaultTableModel;
 public class AdQuanLiHang extends javax.swing.JPanel {
 
     private HangService hangService = new HangServiceImpl();
+    private List<Hang> listHang = hangService.getList();
+    private int index = 0;
     
     public AdQuanLiHang() {
         initComponents();
-        loadTable(hangService.getList());
+        loadTable(listHang);
     }
 
     private void loadTable(List<Hang> list){
@@ -220,9 +221,10 @@ public class AdQuanLiHang extends javax.swing.JPanel {
             }else{
                 errorMa.setText("");
                 hangService.insert(hang);
+                listHang.add(hang);
             }
         }
-        loadTable(hangService.getList());
+        loadTable(listHang);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -234,15 +236,18 @@ public class AdQuanLiHang extends javax.swing.JPanel {
             Hang hang = hangRequest();
             UUID id = UUID.fromString(txtId.getText());
                 hangService.update(id,hang);
+                listHang.set(index, hang);
+            
         }
-        loadTable(hangService.getList());
+        loadTable(listHang);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tblHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHangMouseClicked
-        int index = tblHang.getSelectedRow();
+         index = tblHang.getSelectedRow();
         txtId.setText(tblHang.getModel().getValueAt(index, 0).toString());
         txtMa.setText(tblHang.getModel().getValueAt(index, 1).toString());
         txtTen.setText(tblHang.getModel().getValueAt(index, 2).toString());
+        System.out.println(txtId.getText());
     }//GEN-LAST:event_tblHangMouseClicked
 
 
