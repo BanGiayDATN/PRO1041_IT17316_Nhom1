@@ -23,5 +23,7 @@ public interface KhachHangService {
     String delete(KhachHang khachHang);
 
     List<KhachHang> search(List<KhachHang> list, String tenKh);
+    
+    KhachHang getByTen(String ten);
 
 }

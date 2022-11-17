@@ -77,4 +77,8 @@ public class NhanVien implements Serializable {
     @JoinColumn(name = "idChucVu")
     private ChucVu chucVu;
 
+    public NhanVien(UUID idNhanVien) {
+        this.idNhanVien = idNhanVien;
+    }
+ 
 }

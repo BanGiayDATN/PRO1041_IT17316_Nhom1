@@ -54,5 +54,10 @@ public class KhachHangServiceImpl implements KhachHangService{
     public List<KhachHang> search(List<KhachHang> list, String tenKh) {
         return khachHangRepository.sreach(tenKh);
     }
+
+    @Override
+    public KhachHang getByTen(String ten) {
+        return khachHangRepository.getByTen(ten);
+    }
     
 }
