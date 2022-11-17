@@ -186,12 +186,14 @@ public class ViewLogin extends javax.swing.JFrame {
             txt_errorPassword.setText("");
         }
         if (nhanVien != null) {
-            new ViewMenuKhachHang().setVisible(false);
+            
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
             if(nhanVien.getChucVu().getTen().equals("Quản lý")){
                 new ViewMenuQuanLi().setVisible(true);
+                this.setVisible(false);
             }else{
                new ViewMenuNhanVien().setVisible(true);
+               this.setVisible(false);
             }
         }
     }//GEN-LAST:event_btn_loginActionPerformed
