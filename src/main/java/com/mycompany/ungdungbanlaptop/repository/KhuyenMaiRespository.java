@@ -6,7 +6,9 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -72,6 +74,34 @@ public class KhuyenMaiRespository {
         }
         return false;
     }
+     public List<KhuyenMai> search(String ma){
+        List<KhuyenMai> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            String hql = "SELECT km FROM KhuyenMai km WHERE km.ma like :ma ";
+            Query query = session.createQuery(hql);
+            
+            query.setParameter("ma", "%"+ ma+ "%");
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+             e.printStackTrace(System.out);
+        }
+        return null;
+    }
+//    public List<KhuyenMai> searchByTen(String tenSp){
+//        List<KhuyenMai> list = new ArrayList<>();
+//        try (Session session = HibernateUtil.getFACTORY().openSession()){
+//            String hql = "SELECT sp FROM KhuyenMai sp WHERE sp.ten like :ten ";
+//            Query query = session.createQuery(hql);
+//            
+//            query.setParameter("ten", "%"+ tenSp+ "%");
+//            list = query.getResultList();
+//            return list;
+//        } catch (Exception e) {
+//             e.printStackTrace(System.out);
+//        }
+//        return null;
+//    }
     public static void main(String[] args) {
 //        boolean add = new KhuyenMai
     }

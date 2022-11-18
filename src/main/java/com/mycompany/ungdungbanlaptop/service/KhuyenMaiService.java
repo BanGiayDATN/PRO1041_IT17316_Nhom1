@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import java.util.List;
 
 /**
@@ -18,7 +19,7 @@ public interface KhuyenMaiService {
 
     String add(KhuyenMai km);
 
-    String update(KhuyenMai km);
+     List<KhuyenMai> search(List<KhuyenMai> list, String km);
 
     KhuyenMai getOne(String ma);
 
