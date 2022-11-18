@@ -4,10 +4,15 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
+import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import java.util.List;
+
 /**
  *
  * @author Du
  */
 public interface BaoHanhService {
+    List<BaoHanh> getAll();
     
+    String add(BaoHanh baohanh);
 }

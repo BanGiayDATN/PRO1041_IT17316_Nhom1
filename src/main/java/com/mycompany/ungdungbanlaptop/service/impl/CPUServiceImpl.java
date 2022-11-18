@@ -6,8 +6,10 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.repository.CPURespository;
-import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.CPURespositoryImpl;
+import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import java.util.List;
 
@@ -17,7 +19,7 @@ import java.util.List;
  */
 public class CPUServiceImpl implements CPUService {
 
-    private CPURespository cpuRespository = new CPURespository();
+    private CPURespository cpuRespository = new CPURespositoryImpl();
 
     @Override
     public String add(CPU cpu) {
@@ -57,7 +59,7 @@ public class CPUServiceImpl implements CPUService {
     }
 
     @Override
-    public List<CPU> getALl() {
+    public List<CPUViewModel> getALl() {
         return cpuRespository.getAll();
     }
 

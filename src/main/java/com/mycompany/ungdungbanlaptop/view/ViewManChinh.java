@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -12,15 +13,23 @@ import javax.swing.ImageIcon;
  *
  * @author thang
  */
-public class ViewMenuQuanLi extends javax.swing.JFrame {
+public class ViewManChinh extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public ViewMenuQuanLi() {
-        initComponents();
+    public ViewManChinh(NhanVien nhanVien) {
+       initComponents();
         this.setLocationRelativeTo(null);
-        jMenu3.setIcon(new ImageIcon(new File("").getAbsolutePath()+"//src//main//resources//img//icon.png"));
+        if(nhanVien.getChucVu().getTen().equals("Nhân viên")){
+            btnSanPham.setVisible(false);
+            btnNhanVien.setVisible(false);
+            btnThongKe.setVisible(false);
+            menu.setVisible(false);
+        }
+        menu.setIcon(new ImageIcon(new File("").getAbsolutePath()+"//src//main//resources//img//icon.png"));
+        
+
     }
 
     /**
@@ -48,10 +57,10 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         btnNhanVien = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
-        jButton10 = new javax.swing.JButton();
+        btnThongKe = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
-        jMenu3 = new javax.swing.JMenu();
+        menu = new javax.swing.JMenu();
         menuHang = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenuItem4 = new javax.swing.JMenuItem();
@@ -146,10 +155,10 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
             }
         });
 
-        jButton10.setText("Thống kê");
-        jButton10.addActionListener(new java.awt.event.ActionListener() {
+        btnThongKe.setText("Thống kê");
+        btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                btnThongKeActionPerformed(evt);
             }
         });
 
@@ -166,7 +175,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                     .addComponent(btnSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
                 .addContainerGap())
@@ -187,7 +196,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -224,7 +233,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         });
         jMenuBar1.add(jMenu2);
 
-        jMenu3.setText("Cấu hình máy");
+        menu.setText("Cấu hình máy");
 
         menuHang.setText("Hãng");
         menuHang.addActionListener(new java.awt.event.ActionListener() {
@@ -232,7 +241,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 menuHangActionPerformed(evt);
             }
         });
-        jMenu3.add(menuHang);
+        menu.add(menuHang);
 
         jMenuItem2.setText("Ram");
         jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
@@ -240,7 +249,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 jMenuItem2ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem2);
+        menu.add(jMenuItem2);
 
         jMenuItem4.setText("Version hệ điều hành");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
@@ -248,7 +257,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu3.add(jMenuItem4);
+        menu.add(jMenuItem4);
 
         menuCPU.setText("CPU");
         menuCPU.addActionListener(new java.awt.event.ActionListener() {
@@ -256,7 +265,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 menuCPUActionPerformed(evt);
             }
         });
-        jMenu3.add(menuCPU);
+        menu.add(menuCPU);
 
         menuChatLieu.setText("Chất liệu");
         menuChatLieu.addActionListener(new java.awt.event.ActionListener() {
@@ -264,7 +273,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 menuChatLieuActionPerformed(evt);
             }
         });
-        jMenu3.add(menuChatLieu);
+        menu.add(menuChatLieu);
 
         MenuGPM.setText("GPM");
         MenuGPM.addActionListener(new java.awt.event.ActionListener() {
@@ -272,9 +281,9 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 MenuGPMActionPerformed(evt);
             }
         });
-        jMenu3.add(MenuGPM);
+        menu.add(MenuGPM);
 
-        jMenuBar1.add(jMenu3);
+        jMenuBar1.add(menu);
 
         jMenu10.setText("Sản phẩm");
         jMenuBar1.add(jMenu10);
@@ -403,9 +412,9 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton9ActionPerformed
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton10ActionPerformed
+    }//GEN-LAST:event_btnThongKeActionPerformed
 
   
     public static void main(String args[]) {
@@ -422,21 +431,23 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuQuanLi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewManChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuQuanLi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewManChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuQuanLi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewManChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewMenuQuanLi.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewManChinh.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewMenuQuanLi().setVisible(true);
+//                new ViewMenuQuanLi().setVisible(true);
             }
         });
     }
@@ -446,8 +457,8 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
     private javax.swing.JPanel ViewMenu;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
+    private javax.swing.JButton btnThongKe;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
@@ -456,7 +467,6 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
@@ -465,6 +475,7 @@ public class ViewMenuQuanLi extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JMenu menu;
     private javax.swing.JMenuItem menuCPU;
     private javax.swing.JMenuItem menuChatLieu;
     private javax.swing.JMenuItem menuHang;

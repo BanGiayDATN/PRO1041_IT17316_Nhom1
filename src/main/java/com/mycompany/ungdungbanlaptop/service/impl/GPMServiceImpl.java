@@ -3,13 +3,14 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.GPM;
 import com.mycompany.ungdungbanlaptop.repository.GPMRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.GPMRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.GPMService;
 import java.util.List;
 
 
 public class GPMServiceImpl implements GPMService {
 
-    private GPMRepository gpmRepo = new GPMRepository();
+    private GPMRepository gpmRepo = new GPMRepositoryImpl();
 
     @Override
     public List<GPM> getAll() {
