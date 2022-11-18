@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
+import com.mycompany.ungdungbanlaptop.view.ViewNhanVien;
 import javax.swing.ButtonGroup;
 import javax.swing.JOptionPane;
 
@@ -320,6 +321,8 @@ public class ViewDangKy extends javax.swing.JFrame {
         }
         if (ktra == 0) {
             JOptionPane.showMessageDialog(this, "Đăng ký thành công");
+            this.dispose();
+            new ViewNhanVien().setVisible(true);
         }
     }//GEN-LAST:event_btn_dangKyActionPerformed
 
