@@ -21,12 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
 
     private HeDieuHanhService heDieuHanhService = new HeDieuHanhServiceImpl();
+    private List<HeDieuHanh> listHeDieuHanh = heDieuHanhService.getList();
+    private int index = 0;
 
     public AdQuanLiVersionHeDieuHanh() {
         initComponents();
         loadCbo();
-        List<HeDieuHanh> list = heDieuHanhService.getList();
-        loadTable(list);
+        loadTable(listHeDieuHanh);
     }
 
     private String getHeDieuHanh(EnumHeDieuHanh heDieuHanh) {
@@ -215,16 +216,17 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
                 if (heDieuHanhService.findById(heDieuHanh.getMa()) != null) {
                     JOptionPane.showMessageDialog(this, "Mã version hệ điều hành đã tồn tại");
                 } else {
-                    int index;
-                    index = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu " + txtMa.getText() + ": " + txtTenVersion.getText());
-                    if (index == 0) {
+                    int check;
+                    check = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu " + txtMa.getText() + ": " + txtTenVersion.getText());
+                    if (check == 0) {
                         heDieuHanhService.insert(heDieuHanh);
+                        listHeDieuHanh.add(heDieuHanh);
                     }
                 }
             } catch (Exception e) {
             }
         }
-        loadTable(heDieuHanhService.getList());
+        loadTable(listHeDieuHanh);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -240,11 +242,12 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
         heDieuHanh.setTen(txtTenVersion.getText());
         heDieuHanh.setHeDieuHanh(getEumHeDieuHanh());
         heDieuHanhService.update(id, heDieuHanh);
-        loadTable(heDieuHanhService.getList());
+        listHeDieuHanh.set(index, heDieuHanh);
+        loadTable(listHeDieuHanh);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void tblHeDieuHanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHeDieuHanhMouseClicked
-        int index = tblHeDieuHanh.getSelectedRow();
+        index = tblHeDieuHanh.getSelectedRow();
         txtID.setText(tblHeDieuHanh.getModel().getValueAt(index, 0).toString());
         txtMa.setText(tblHeDieuHanh.getModel().getValueAt(index, 1).toString());
         txtTenVersion.setText(tblHeDieuHanh.getModel().getValueAt(index, 2).toString());

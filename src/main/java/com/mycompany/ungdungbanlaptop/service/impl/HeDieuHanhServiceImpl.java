@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.repository.HeDieuHanhRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.HeDieuHanhRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HeDieuHanhService;
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 public class HeDieuHanhServiceImpl implements HeDieuHanhService {
 
-    private HeDieuHanhRepository heDieuHanhRepository = new HeDieuHanhRepository();
+    private HeDieuHanhRepository heDieuHanhRepository = new HeDieuHanhRepositoryImpl();
 
     @Override
     public List<HeDieuHanh> getList() {

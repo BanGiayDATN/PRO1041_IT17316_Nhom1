@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.repository.HangRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.HangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HangService;
 import java.util.List;
 import java.util.UUID;
@@ -16,7 +17,7 @@ import java.util.UUID;
  */
 public class HangServiceImpl implements HangService{
 
-    private HangRepository hangRepository = new HangRepository();
+    private HangRepository hangRepository = new HangRepositoryImpl();
     
     @Override
     public List<Hang> getList() {
@@ -34,8 +35,9 @@ public class HangServiceImpl implements HangService{
 
     @Override
     public String update(UUID id, Hang hang) {
-       
-        if(hangRepository.update(hang)){
+       Hang hangUpdate = hang;
+       hangUpdate.setIdHang(id);
+        if(hangRepository.update(hangUpdate)){
             return "Sửa thành công";
         }
         return "Sửa thất bại";

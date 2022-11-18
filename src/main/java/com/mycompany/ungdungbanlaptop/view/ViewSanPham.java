@@ -14,6 +14,7 @@ import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
 import com.mycompany.ungdungbanlaptop.service.GPMService;
@@ -66,7 +67,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private RamService ramService = new RamServiceImpl();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     
-    private List<CPU> listCPU = cPUService.getALl();
+    private List<CPUViewModel> listCPU = cPUService.getALl();
     private List<ChatLieu> listChatLieu = chatLieuSevice.getAll();
     private List<GPM> listGPM = gPMService.getAll();
     private List<Hang> listHang = hangService.getList();
@@ -88,7 +89,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             dcm1.addElement("Trắng");
             
         cbbCPU.setModel(dcm2);
-        for (CPU x : listCPU) {
+        for (CPUViewModel x : listCPU) {
             dcm2.addElement(x.getTen());
         }
         
@@ -597,6 +598,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         // TODO add your handling code here:
         SanPham sanPham = new SanPham();
+        
         sanPham.setChatLieu(new ChatLieu(chatLieuSevice.getByTen(cbbChatLieu.getSelectedItem().toString()).getIdChatLieu()));
         sanPham.setCpu(new CPU(cPUService.getByTen(cbbCPU.getSelectedItem().toString()).getIdCPU()));
         sanPham.setGiaBan(BigDecimal.valueOf(Double.valueOf(txtGiaBan.getText())));
@@ -669,16 +671,16 @@ public class ViewSanPham extends javax.swing.JPanel {
         cbbManHinh.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getManHinh().getMa());
         cbbNhaSanXuat.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getHang().getTen());
         cbbRam.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getRam().getTen());
-//        cbbMauSac.setSelectedItem(sanPham.getm);
+       
     }//GEN-LAST:event_jTableSanPhamMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
         String timKiem = txtTimKiem.getText();
-        List<SanPham> list1  = sanPhamService.search(sanPhamService.getAll(), timKiem);
+//        List<SanPham> list1  = sanPhamService.search(sanPhamService.getAll(), timKiem);
          List<SanPham> list2 = sanPhamService.searchByTen(sanPhamService.getAll(), timKiem);
          showData(list2);
-        showData(list1);
+//        showData(list1);
         
         
         

@@ -4,7 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
+import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import javax.swing.ButtonGroup;
@@ -276,7 +276,7 @@ public class ViewDangKy extends javax.swing.JFrame {
         } else {
             gioiTinh = "Nữ";
         }
-        NhanVienResponse response = new NhanVienResponse(hoten, gioiTinh, ngaySinh, sdt, email, password, diaChi);
+        NhanVienResquest response = new NhanVienResquest(hoten, gioiTinh, ngaySinh, sdt, email, password, diaChi);
         int ktra = loginService.dangKy(response);
         if (hoten.isEmpty()) {
             txt_errorHoten.setText("Không để trống Họ tên");

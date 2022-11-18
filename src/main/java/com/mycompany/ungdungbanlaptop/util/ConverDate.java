@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.util;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
 
@@ -19,7 +20,6 @@ public class ConverDate {
         Date date = new SimpleDateFormat("yyyy/MM/dd").parse(sDate);
         return date;
     }
-
 
     public long dateToLong(String date, String fomat) {
         long milliseconds = -1;
@@ -39,6 +39,16 @@ public class ConverDate {
         SimpleDateFormat df2 = new SimpleDateFormat(format);
         return df2.format(date);
     }
+
+    public Calendar longToCalendar(Long time) {
+        Calendar calendar = null;
+        if (time != null) {
+            calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(time);
+        }
+        return calendar;
+    }
+    
 
     public static void main(String[] args) throws ParseException {
         String sDate = "2017/07/17";

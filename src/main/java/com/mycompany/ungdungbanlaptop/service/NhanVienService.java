@@ -23,5 +23,9 @@ public interface NhanVienService {
     
     List<NhanVien> getAll();
     
+
     List<NhanVien> search(List<NhanVien> list,String hoTen,String email,String soDienThoai);
+
+    NhanVien getByTen(String ten);
+
 }

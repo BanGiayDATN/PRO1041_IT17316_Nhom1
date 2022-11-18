@@ -7,10 +7,7 @@ package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
-import com.mycompany.ungdungbanlaptop.view.ViewMenuKhachHang;
-import com.mycompany.ungdungbanlaptop.view.ViewMenuNhanVien;
-import com.mycompany.ungdungbanlaptop.view.ViewMenuQuanLi;
-import com.mycompany.ungdungbanlaptop.view.viewlogin.login.QuenMatKhau;
+import com.mycompany.ungdungbanlaptop.view.ViewManChinh;
 
 import javax.swing.JOptionPane;
 
@@ -188,13 +185,7 @@ public class ViewLogin extends javax.swing.JFrame {
         if (nhanVien != null) {
             
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-            if(nhanVien.getChucVu().getTen().equals("Quản lý")){
-                new ViewMenuQuanLi().setVisible(true);
-                this.setVisible(false);
-            }else{
-               new ViewMenuNhanVien().setVisible(true);
-               this.setVisible(false);
-            }
+                new ViewManChinh(nhanVien).setVisible(true);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
