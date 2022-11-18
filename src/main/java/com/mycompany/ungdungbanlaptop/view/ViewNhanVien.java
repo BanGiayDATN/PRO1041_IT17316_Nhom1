@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import com.mycompany.ungdungbanlaptop.view.viewlogin.login.ViewDangKy;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,7 +20,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private DefaultTableModel dtm = new DefaultTableModel();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
-    private List<NhanVien> list;
 
     /**
      * Creates new form ViewNhanVien
@@ -27,11 +27,10 @@ public class ViewNhanVien extends javax.swing.JPanel {
     public ViewNhanVien() {
         initComponents();
         txtMaNhanVien.setEditable(false);
-        list = nhanVienService.getAll();
         jTableNhanVien.setModel(dtm);
         String[] a = {"STT", "mã NV", "Tên NV", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Mật khẩu", "Trạng thai"};
         dtm.setColumnIdentifiers(a);
-        showData(list);
+        showData(nhanVienService.getAll());
     }
 
     private void showData(List<NhanVien> list) {
@@ -451,6 +450,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void btn_addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_addActionPerformed
         // TODO add your handling code here:
+        new ViewDangKy().setVisible(true);
 
     }//GEN-LAST:event_btn_addActionPerformed
 
