@@ -4,7 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.view.ViewNhanVien;
@@ -67,6 +67,7 @@ public class ViewDangKy extends javax.swing.JFrame {
         txt_email = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         txt_password = new javax.swing.JPasswordField();
+        txt_errorGioiTinh1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -148,6 +149,8 @@ public class ViewDangKy extends javax.swing.JFrame {
 
         txt_password.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
+        txt_errorGioiTinh1.setForeground(new java.awt.Color(255, 0, 0));
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,6 +194,11 @@ public class ViewDangKy extends javax.swing.JFrame {
                             .addComponent(txt_errorGioiTinh, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_dangKy, javax.swing.GroupLayout.PREFERRED_SIZE, 223, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(118, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(186, Short.MAX_VALUE)
+                    .addComponent(txt_errorGioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(119, 119, 119)))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,6 +250,11 @@ public class ViewDangKy extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 18, Short.MAX_VALUE)
                 .addComponent(btn_dangKy, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addContainerGap(537, Short.MAX_VALUE)
+                    .addComponent(txt_errorGioiTinh1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(62, 62, 62)))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -381,6 +394,7 @@ public class ViewDangKy extends javax.swing.JFrame {
     private javax.swing.JLabel txt_errorDiaChi;
     private javax.swing.JLabel txt_errorEmail;
     private javax.swing.JLabel txt_errorGioiTinh;
+    private javax.swing.JLabel txt_errorGioiTinh1;
     private javax.swing.JLabel txt_errorHoten;
     private javax.swing.JLabel txt_errorPassword;
     private javax.swing.JLabel txt_errorSDT;
