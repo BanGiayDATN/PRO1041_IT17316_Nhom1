@@ -20,8 +20,10 @@ public interface NhanVienService {
     String deleteNhanVien(NhanVien nv);
 
     NhanVien getNhanVienByEmail(String email);
-    
+
     List<NhanVien> getAll();
-    
+
     NhanVien getByTen(String ten);
+
+    NhanVien getNhanVienByMa(String ma);
 }

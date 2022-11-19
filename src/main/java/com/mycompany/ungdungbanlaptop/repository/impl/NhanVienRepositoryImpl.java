@@ -143,4 +143,20 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     public static void main(String[] args) {
         System.out.println(new NhanVienRepositoryImpl().getByTen("Nguyễn Văn Vinh"));
     }
+
+    @Override
+    public NhanVien getNhanVienByMa(String ma) {
+        NhanVien nv = new NhanVien();
+        try {
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.ma = :ma ";
+            Query<NhanVien> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            nv = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return nv;
+    }
 }

@@ -65,4 +65,9 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getByTen(ten);
     }
 
+    @Override
+    public NhanVien getNhanVienByMa(String ma) { 
+         return nhanVienRepository.getNhanVienByMa(ma);
+    }
+
 }
