@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.repository.CPURespository;
 import com.mycompany.ungdungbanlaptop.repository.impl.CPURespositoryImpl;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
@@ -58,7 +59,7 @@ public class CPUServiceImpl implements CPUService {
     }
 
     @Override
-    public List<CPU> getALl() {
+    public List<CPUViewModel> getALl() {
         return cpuRespository.getAll();
     }
 

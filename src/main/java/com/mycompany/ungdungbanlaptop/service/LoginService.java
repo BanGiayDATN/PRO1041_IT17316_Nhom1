@@ -5,7 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResponse;
+import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
 
 /**
  *
@@ -19,7 +19,7 @@ public interface LoginService {
 
     String quenMK(String email, String sdt);
 
-    int dangKy(NhanVienResponse response);
+    int dangKy(NhanVienResquest response);
     
     String matKhauMD5(String matKhau);
 }

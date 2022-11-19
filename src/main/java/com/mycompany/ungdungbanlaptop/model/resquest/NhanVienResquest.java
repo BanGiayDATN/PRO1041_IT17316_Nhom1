@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.mycompany.ungdungbanlaptop.model.response;
+package com.mycompany.ungdungbanlaptop.model.resquest;
 
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import lombok.Data;
  * @author vinhnv
  */
 @Data
-public class NhanVienResponse {
+public class NhanVienResquest {
 
     private String ma;
     private String hoTen;
@@ -23,7 +23,8 @@ public class NhanVienResponse {
     private String diaChi;
     private int trangThai;
 
-    public NhanVienResponse(String hoTen, String gioiTinh, String ngaySinh, String sdt, String email, String password, String diaChi) {
+ 
+    public NhanVienResquest(String hoTen, String gioiTinh, String ngaySinh, String sdt, String email, String password, String diaChi) {
         this.hoTen = hoTen;
         this.gioiTinh = gioiTinh;
         this.ngaySinh = ngaySinh;
@@ -31,8 +32,7 @@ public class NhanVienResponse {
         this.email = email;
         this.password = password;
         this.diaChi = diaChi;
-    }
-    
+    }   
     
     
 }

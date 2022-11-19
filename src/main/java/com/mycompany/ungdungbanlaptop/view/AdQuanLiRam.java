@@ -21,11 +21,13 @@ import javax.swing.table.DefaultTableModel;
 public class AdQuanLiRam extends javax.swing.JPanel {
 
     private RamService ramService = new RamServiceImpl();
+    private List<Ram> listRam = ramService.getList();
+    private int index = 0;
 
     public AdQuanLiRam() {
         initComponents();
         loadCbo();
-        loadTable(ramService.getList());
+        loadTable(listRam);
     }
 
 
@@ -258,14 +260,15 @@ public class AdQuanLiRam extends javax.swing.JPanel {
                 int check = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu ram " + ram.getTen() + ", Dung lượng: " + ram.getDungLuong() + "GB");
                 if (check == 0) {
                     ramService.insert(ram);
+                    listRam.add(ram);
                 }
             }
         }
-        loadTable(ramService.getList());
+        loadTable(listRam);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void tblRamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblRamMouseClicked
-        int index = tblRam.getSelectedRow();
+         index = tblRam.getSelectedRow();
         txtId.setText(tblRam.getModel().getValueAt(index, 0).toString());
         txtMa.setText(tblRam.getModel().getValueAt(index, 1).toString());
         txtTen.setText(tblRam.getModel().getValueAt(index, 2).toString());
@@ -284,9 +287,10 @@ public class AdQuanLiRam extends javax.swing.JPanel {
             int check = JOptionPane.showConfirmDialog(this, "bạn có muốn lưu ram " + ram.getTen() + ", Dung lượng: " + ram.getDungLuong() + "GB");
             if (check == 0) {
                 JOptionPane.showMessageDialog(this, ramService.update(id, ram));
+                listRam.set(index, ram);
             }
         }
-        loadTable(ramService.getList());
+        loadTable(listRam);
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private boolean checkFrom() {

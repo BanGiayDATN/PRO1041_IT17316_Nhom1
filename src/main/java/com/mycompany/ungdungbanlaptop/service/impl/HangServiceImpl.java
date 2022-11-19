@@ -35,8 +35,9 @@ public class HangServiceImpl implements HangService{
 
     @Override
     public String update(UUID id, Hang hang) {
-       
-        if(hangRepository.update(hang)){
+       Hang hangUpdate = hang;
+       hangUpdate.setIdHang(id);
+        if(hangRepository.update(hangUpdate)){
             return "Sửa thành công";
         }
         return "Sửa thất bại";
