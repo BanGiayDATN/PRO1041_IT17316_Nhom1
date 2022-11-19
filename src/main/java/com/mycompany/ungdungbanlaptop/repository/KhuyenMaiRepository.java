@@ -4,10 +4,12 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import java.util.List;
 import java.util.UUID;
+
 
 /**
  *
@@ -28,4 +30,5 @@ public interface KhuyenMaiRepository {
     List<KhuyenMai> searchNgayKt(String km);
 
     KhuyenMai getOne(String ma);
+
 }
