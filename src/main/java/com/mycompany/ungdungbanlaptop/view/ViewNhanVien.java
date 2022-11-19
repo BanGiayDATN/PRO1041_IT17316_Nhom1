@@ -5,13 +5,11 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.view.viewlogin.login.DoiMatKhau;
-import com.mycompany.ungdungbanlaptop.view.viewlogin.login.QuenMatKhau;
-import com.mycompany.ungdungbanlaptop.view.viewlogin.login.ViewDangKy;
 import java.util.Date;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -33,7 +31,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         initComponents();
         txtMaNhanVien.setEditable(false);
         jTableNhanVien.setModel(dtm);
-        String[] a = {"STT", "mã NV", "Tên NV", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Mật khẩu", "Trạng thai"};
+        String[] a = {"STT", "Mã", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Trạng thai"};
         dtm.setColumnIdentifiers(a);
         showData(nhanVienService.getAll());
     }
@@ -43,7 +41,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         for (NhanVien x : list) {
             dtm.addRow(new Object[]{jTableNhanVien.getRowCount() + 1, x.getMa(), x.getHoTen(),
                 new ConverDate().longToDate(x.getNgaySinh(), "dd/MM/yyyy"), x.getGioiTinh(),
-                x.getDiaChi(), x.getSdt(), x.getEmail(), x.getPassword(), x.getTrangThai() == 0 ? "Còn làm" : "Nghỉ làm"});
+                x.getDiaChi(), x.getSdt(), x.getEmail(), x.getTrangThai() == 0 ? "Còn làm" : "Nghỉ làm"});
         }
     }
 
@@ -573,7 +571,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         if (ngaySinh == null) {
             txt_errorDate.setText("Không để trống Date");
             return;
-        } 
+        }
         String conver = new ConverDate().convertDateToString(ngaySinh, "dd/MM/yyyy");
         NhanVienResquest response = new NhanVienResquest(hoten, gioiTinh, conver, sdt, email, password, diaChi);
         int ktra = nhanVienService.addNhanVien(response);
@@ -655,6 +653,75 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
         // TODO add your handling code here:
+        String ma = txtMaNhanVien.getText().trim();
+        String hoten = txtHoTen.getText().trim();
+        Date ngaySinh = txtNgaySinh.getDate();
+        String sdt = txtSoDienThoai.getText().trim();
+        String password = txtMatKhau.getText().trim();
+        String diaChi = txtDiaChi.getText().trim();
+        String email = txtEmail.getText().trim();
+        int trangThai = 0;
+        String gioiTinh = "";
+        if (!rdNam.isSelected() && !rdNu.isSelected()) {
+            txt_errorGioiTinh.setText("Không để trống giới tính");
+        } else {
+            txt_errorGioiTinh.setText("");
+        }
+        if (rdNam.isSelected()) {
+            gioiTinh = "Nam";
+        } else {
+            gioiTinh = "Nữ";
+        }
+        if (ngaySinh == null) {
+            txt_errorDate.setText("Không để trống Date");
+            return;
+        }
+        if (!rdConLam.isSelected()) {
+            trangThai = 1;
+        }
+        String conver = new ConverDate().convertDateToString(ngaySinh, "dd/MM/yyyy");
+        NhanVienResquest response = new NhanVienResquest(ma, hoten, gioiTinh, conver, sdt, email, password, diaChi, trangThai);
+        int ktra = nhanVienService.updateNhanVien(response);
+        if (hoten.isEmpty()) {
+            txt_errorHoten.setText("Không để trống Họ tên");
+        } else {
+            txt_errorHoten.setText("");
+        }
+        if (ngaySinh == null) {
+            txt_errorDate.setText("Không để trống Date");
+        } else {
+            txt_errorDate.setText("");
+        }
+        if (sdt.isEmpty()) {
+            txt_errorSDT.setText("Không để trống SDT");
+        } else if (ktra == 3) {
+            txt_errorSDT.setText("SDT sai định dạng");
+        } else {
+            txt_errorSDT.setText("");
+        }
+        if (email.isEmpty()) {
+            txt_errorEmail.setText("Không để trống email");
+        } else if (ktra == 2) {
+            txt_errorEmail.setText("Email sai định dạng ");
+        } else {
+            txt_errorEmail.setText("");
+        }
+        if (password.isEmpty()) {
+            txt_errorPassword.setText("Không để trống password");
+        } else if (ktra == 6) {
+            txt_errorPassword.setText("Password phải dài hơn hoặc bằng 8 kí tự");
+        } else {
+            txt_errorPassword.setText("");
+        }
+        if (diaChi.isEmpty()) {
+            txt_errorDiaChi.setText("Không để trống địa chỉ");
+        } else {
+            txt_errorDiaChi.setText("");
+        }
+        if (ktra == 0) {
+            JOptionPane.showMessageDialog(this, "Update thành công");
+            showData(nhanVienService.getAll());
+        }
     }//GEN-LAST:event_btn_updateActionPerformed
 
     private void btnDoiMKActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiMKActionPerformed

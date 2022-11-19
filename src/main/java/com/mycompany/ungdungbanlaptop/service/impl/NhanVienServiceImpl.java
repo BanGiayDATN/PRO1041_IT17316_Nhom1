@@ -7,17 +7,13 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ChucVuService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
-import static com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl.isValid;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+;
 import java.util.List;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
@@ -26,6 +22,8 @@ import org.apache.commons.validator.routines.EmailValidator;
  *
  * @author vinhnv
  */
+
+
 public class NhanVienServiceImpl implements NhanVienService {
 
     private String regexSDT = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$";
@@ -79,13 +77,45 @@ public class NhanVienServiceImpl implements NhanVienService {
     ;
 
     @Override
-    public String updateNhanVien(NhanVien nv) {
-        // Muốn check gì thì check ở đây
-        NhanVien add = nhanVienRepository.update(nv);
-        if (add == null) {
-            return " Add thất bại";
+    public int updateNhanVien(NhanVienResquest response) {
+        String ma = response.getMa().trim();
+        String hoTen = response.getHoTen().trim();
+        String gioiTinh = response.getGioiTinh().trim();
+        String dateStr = response.getNgaySinh();
+        String sdt = response.getSdt().trim();
+        String email = response.getEmail().trim();
+        String password = response.getPassword().trim();
+        String diaChi = response.getDiaChi().trim();
+        int trangThai = response.getTrangThai();
+        if (ma.isBlank() || hoTen.isBlank() || dateStr == null || sdt.isBlank() || email.isBlank()
+                || password.isBlank() || diaChi.isBlank() || gioiTinh.isBlank()) {
+            return 1;
         }
-        return "Add thành công ";
+        if (!EmailValidator.getInstance().isValid(email)) {
+            return 2;
+        }
+        if (!sdt.matches(regexSDT)) {
+            return 3;
+        }
+
+        if (password.length() < 8) {
+            return 6;
+        }
+        ChucVu chucVu = chucVuService.getOneByName("Nhân viên");
+        NhanVien nhanVien = nhanVienRepository.getNhanVienByMa(ma);
+        System.out.println(nhanVien+"11111111111");
+        nhanVien.setEmail(email);
+        nhanVien.setMa(ma);
+        nhanVien.setDiaChi(diaChi);
+        nhanVien.setGioiTinh(gioiTinh);
+        nhanVien.setNgaySinh(new ConverDate().dateToLong(dateStr, "yyyy/MM/dd"));
+        nhanVien.setPassword(matKhauMD5(password)); // tạo mật khẩu mã hóa
+        nhanVien.setSdt(sdt);
+        nhanVien.setHoTen(hoTen);
+        nhanVien.setTrangThai(trangThai);
+        nhanVien.setChucVu(chucVu); // chua them chuc vu
+        nhanVienRepository.update(nhanVien);
+        return 0;
     }
 
     @Override
@@ -121,5 +151,10 @@ public class NhanVienServiceImpl implements NhanVienService {
     @Override
     public List<NhanVien> getSearchByName(String hoTen) {
         return nhanVienRepository.getSearchByName(hoTen);
+    }
+
+    @Override
+    public NhanVien getNhanVienByMa(String ma) {
+        return nhanVienRepository.getNhanVienByMa(ma);
     }
 }

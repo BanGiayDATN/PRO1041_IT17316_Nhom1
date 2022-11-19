@@ -157,8 +157,23 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         return list;
     }
 
+    @Override
+    public NhanVien getNhanVienByMa(String ma) {
+        NhanVien nv = new NhanVien();
+        try {
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.ma = :ma ";
+            Query<NhanVien> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            nv = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return nv;
+    }
     public static void main(String[] args) {
-        List<NhanVien> list = new NhanVienRepositoryImpl().getSearchByName("nh");
-        list.forEach(a->System.out.println(a));
+        NhanVien nhanVien = new NhanVienRepositoryImpl().getNhanVienByMa("NV215");
+        System.out.println(nhanVien);
     }
 }

@@ -30,4 +30,6 @@ public interface NhanVienRepository {
     NhanVien getNhanVienByEmailAndSDT(String email, String sdt);
 
     NhanVien getByTen(String ten);
+    
+    NhanVien getNhanVienByMa(String ma);
 }
