@@ -602,10 +602,10 @@ public class ViewSanPham extends javax.swing.JPanel {
         sanPham.setCpu(new CPU(cPUService.getByTen(cbbCPU.getSelectedItem().toString()).getIdCPU()));
         sanPham.setGiaBan(BigDecimal.valueOf(Double.valueOf(txtGiaBan.getText())));
         sanPham.setGiaNhap(BigDecimal.valueOf(Double.valueOf(txtGiaNHap.getText())));
-        sanPham.setGpm(new GPM(gPMService.getByTen(cbbGPM.getSelectedItem().toString()).getIdGPU()));
+//        sanPham.setGpm(new GPM(gPMService.getByTen(cbbGPM.getSelectedItem().toString()).getIdGPU()));
         sanPham.setHang(new Hang(hangService.getByTen(cbbNhaSanXuat.getSelectedItem().toString()).getIdHang()));
         sanPham.setHeDieuHanh(new HeDieuHanh(dieuHanhService.getByTen(cbbHeDieuHanh.getSelectedItem().toString()).getIdHeDieuHanh()));
-        sanPham.setImei(new Imei(imeiService.getOne(cbbImai.getSelectedItem().toString()).getIdImei()));
+//        sanPham.setImei(new Imei(imeiService.getOne(cbbImai.getSelectedItem().toString()).getIdImei()));
         sanPham.setMa(txtMaSanPham.getText());
         sanPham.setManHinh(new ManHinh(manHinhService.getOne(cbbManHinh.getSelectedItem().toString()).getIdManHinh()));
         sanPham.setMoTa(txtMoTa.getText());
@@ -614,22 +614,23 @@ public class ViewSanPham extends javax.swing.JPanel {
         sanPham.setSoLuongTon(Integer.valueOf(txtSoLuongTon.getText()));
         sanPham.setTen(txtTenSanPham.getText());
         sanPham.setTrongLuong(Float.valueOf(txtTrongLuong.getText()));
-        
+        sanPham.setGpm(null);
+        sanPham.setImei(null);
         JOptionPane.showMessageDialog(this, sanPhamService.add(sanPham));
         showData(sanPhamService.getAll());
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         // TODO add your handling code here:
-         SanPham sanPham = new SanPham();
+        SanPham sanPham = new SanPham();
         sanPham.setChatLieu(new ChatLieu(chatLieuSevice.getByTen(cbbChatLieu.getSelectedItem().toString()).getIdChatLieu()));
         sanPham.setCpu(new CPU(cPUService.getByTen(cbbCPU.getSelectedItem().toString()).getIdCPU()));
         sanPham.setGiaBan(BigDecimal.valueOf(Double.valueOf(txtGiaBan.getText())));
         sanPham.setGiaNhap(BigDecimal.valueOf(Double.valueOf(txtGiaNHap.getText())));
-        sanPham.setGpm(new GPM(gPMService.getByTen(cbbGPM.getSelectedItem().toString()).getIdGPU()));
+//        sanPham.setGpm(new GPM(gPMService.getByTen(cbbGPM.getSelectedItem().toString()).getIdGPU()));
         sanPham.setHang(new Hang(hangService.getByTen(cbbNhaSanXuat.getSelectedItem().toString()).getIdHang()));
         sanPham.setHeDieuHanh(new HeDieuHanh(dieuHanhService.getByTen(cbbHeDieuHanh.getSelectedItem().toString()).getIdHeDieuHanh()));
-        sanPham.setImei(new Imei(imeiService.getOne(cbbImai.getSelectedItem().toString()).getIdImei()));
+//        sanPham.setImei(new Imei(imeiService.getOne(cbbImai.getSelectedItem().toString()).getIdImei()));
         sanPham.setMa(txtMaSanPham.getText());
         sanPham.setManHinh(new ManHinh(manHinhService.getOne(cbbManHinh.getSelectedItem().toString()).getIdManHinh()));
         sanPham.setMoTa(txtMoTa.getText());
@@ -664,9 +665,9 @@ public class ViewSanPham extends javax.swing.JPanel {
         txtTrongLuong.setText(String.valueOf(sanPham.getTrongLuong()));
         cbbCPU.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getCpu().getTen());
         cbbChatLieu.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getChatLieu().getTen());
-        cbbGPM.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getGpm().getTen());
+        cbbGPM.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getGpm().getTen());// chua cos du lieu
         cbbHeDieuHanh.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getHeDieuHanh().getTen());
-        cbbImai.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getImei().getMa());
+        cbbImai.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getImei().getMa()); // chua cos du lieu
         cbbManHinh.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getManHinh().getMa());
         cbbNhaSanXuat.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getHang().getTen());
         cbbRam.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getRam().getTen());

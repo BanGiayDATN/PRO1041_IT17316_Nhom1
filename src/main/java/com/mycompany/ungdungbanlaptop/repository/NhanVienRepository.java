@@ -15,6 +15,8 @@ public interface NhanVienRepository {
 
     List<NhanVien> getAll();
 
+    List<NhanVien> getSearchByName(String hoTen);
+
     NhanVien addNhanVien(NhanVien nhanVien);
 
     NhanVien update(NhanVien nv);
@@ -28,4 +30,6 @@ public interface NhanVienRepository {
     NhanVien getNhanVienByEmailAndSDT(String email, String sdt);
 
     NhanVien getByTen(String ten);
+    
+    NhanVien getNhanVienByMa(String ma);
 }

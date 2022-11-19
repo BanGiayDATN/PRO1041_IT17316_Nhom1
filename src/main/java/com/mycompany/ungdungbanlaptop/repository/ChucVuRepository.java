@@ -4,10 +4,13 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.ChucVu;
+
 /**
  *
  * @author vinhnv
  */
 public interface ChucVuRepository {
-    
+
+    ChucVu getOneByeName(String name);
 }
