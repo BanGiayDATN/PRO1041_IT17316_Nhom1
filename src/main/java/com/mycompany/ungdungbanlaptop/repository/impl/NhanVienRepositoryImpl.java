@@ -140,7 +140,25 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         return nv;
     }
 
+    @Override
+    public List<NhanVien> getSearchByName(String hoTen) {
+        List<NhanVien> list = new ArrayList<>();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.hoTen LIKE :hoTen ";
+            list = session.createQuery(query).setParameter("hoTen", "%" + hoTen + "%").list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
     public static void main(String[] args) {
-        System.out.println(new NhanVienRepositoryImpl().getByTen("Nguyễn Văn Vinh"));
+        List<NhanVien> list = new NhanVienRepositoryImpl().getSearchByName("nh");
+        list.forEach(a->System.out.println(a));
     }
 }

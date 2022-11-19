@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
 import java.util.List;
 
 /**
@@ -13,7 +14,7 @@ import java.util.List;
  */
 public interface NhanVienService {
 
-    String addNhanVien(NhanVien nv);
+    int addNhanVien(NhanVienResquest response);
 
     String updateNhanVien(NhanVien nv);
 
@@ -22,6 +23,8 @@ public interface NhanVienService {
     NhanVien getNhanVienByEmail(String email);
     
     List<NhanVien> getAll();
+    
+    List<NhanVien> getSearchByName(String hoTen);
     
     NhanVien getByTen(String ten);
 }
