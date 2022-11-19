@@ -15,11 +15,4 @@ import com.mycompany.ungdungbanlaptop.service.ChucVuService;
  */
 public class ChucVuServiceImpl implements ChucVuService {
 
-    private ChucVuRepository chucVuRepository = new ChucVuRepositoryImpl();
-
-    @Override
-    public ChucVu getOneByName(String name) {
-        return chucVuRepository.getOneByeName(name);
-    }
-
 }

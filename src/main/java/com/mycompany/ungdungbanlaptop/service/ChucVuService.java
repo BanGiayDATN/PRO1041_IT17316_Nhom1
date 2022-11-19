@@ -11,6 +11,4 @@ import com.mycompany.ungdungbanlaptop.entity.ChucVu;
  * @author vinhnv
  */
 public interface ChucVuService {
-
-    ChucVu getOneByName(String name);
 }

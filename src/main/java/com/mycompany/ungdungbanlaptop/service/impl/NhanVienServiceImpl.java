@@ -45,9 +45,9 @@ public class NhanVienServiceImpl implements NhanVienService {
          // Muốn check gì thì check ở đây
         NhanVien add = nhanVienRepository.delete(nv);
         if (add == null) {
-            return " Add thất bại";
+            return " Delete thất bại";
         }
-        return "Add thành công ";
+        return "Delete thành công ";
     }
 
     @Override

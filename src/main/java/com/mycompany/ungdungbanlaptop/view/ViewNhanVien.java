@@ -484,6 +484,11 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void btn_deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_deleteActionPerformed
         // TODO add your handling code here:
+        String ma = txtMaNhanVien.getText().trim();
+        NhanVien nhanVien = nhanVienService.getNhanVienByMa(ma);
+        String ktra = nhanVienService.deleteNhanVien(nhanVien);
+        JOptionPane.showMessageDialog(this, ktra);
+        showData(nhanVienService.getAll());
     }//GEN-LAST:event_btn_deleteActionPerformed
 
     private void btn_updateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_updateActionPerformed
