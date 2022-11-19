@@ -68,5 +68,10 @@ public class KhuyenMai {
         this.soLuong = soLuong;
         this.phanTram = phanTram;
     }
+
+    public KhuyenMai(String ma) {
+        this.ma = ma;
+    }
+    
     
 }

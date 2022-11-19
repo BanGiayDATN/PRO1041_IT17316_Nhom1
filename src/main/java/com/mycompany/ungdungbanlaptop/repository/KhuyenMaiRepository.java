@@ -4,8 +4,10 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -13,13 +15,17 @@ import java.util.List;
  */
 public interface KhuyenMaiRepository {
 
-    List<SanPham> getAll();
+    List<KhuyenMai> getALl();
 
-    SanPham add(SanPham sanPham);
+    boolean add(KhuyenMai km);
 
-    SanPham update(SanPham sanPham);
+    boolean update(KhuyenMai ma);
 
-    SanPham delete(SanPham sanPham);
+    List<KhuyenMai> search(String km);
 
-    SanPham getOne(String maSp);
+    List<KhuyenMai> searchNgayBd(String km);
+
+    List<KhuyenMai> searchNgayKt(String km);
+
+    KhuyenMai getOne(String ma);
 }
