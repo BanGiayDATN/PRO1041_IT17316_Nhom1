@@ -4,29 +4,28 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
-import com.mycompany.ungdungbanlaptop.service.GPMService;
 import com.mycompany.ungdungbanlaptop.service.HangService;
 import com.mycompany.ungdungbanlaptop.service.HeDieuHanhService;
 import com.mycompany.ungdungbanlaptop.service.ImeiService;
 import com.mycompany.ungdungbanlaptop.service.ManHinhService;
+import com.mycompany.ungdungbanlaptop.service.MauService;
 import com.mycompany.ungdungbanlaptop.service.RamService;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.CPUServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ChatLieuServiceImpl;
-import com.mycompany.ungdungbanlaptop.service.impl.GPMServiceImpl;
+import com.mycompany.ungdungbanlaptop.service.impl.MauServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.HangServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.HeDieuHanhServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
@@ -46,6 +45,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Diệm DZ
  */
 public class ViewSanPham extends javax.swing.JPanel {
+
     private DefaultTableModel dtm = new DefaultTableModel();
     private DefaultComboBoxModel dcm1 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm2 = new DefaultComboBoxModel();
@@ -56,50 +56,51 @@ public class ViewSanPham extends javax.swing.JPanel {
     private DefaultComboBoxModel dcm7 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm8 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm9 = new DefaultComboBoxModel();
-    
+
     private CPUService cPUService = new CPUServiceImpl();
     private ChatLieuService chatLieuSevice = new ChatLieuServiceImpl();
-    private GPMService gPMService = new GPMServiceImpl();
+    private MauService gPMService = new MauServiceImpl();
     private HangService hangService = new HangServiceImpl();
-    private  HeDieuHanhService dieuHanhService = new HeDieuHanhServiceImpl();
+    private HeDieuHanhService dieuHanhService = new HeDieuHanhServiceImpl();
     private ImeiService imeiService = new ImeiServiceImpl();
     private ManHinhService manHinhService = new ManHinhServiceImpl();
     private RamService ramService = new RamServiceImpl();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
-    
+
     private List<CPUViewModel> listCPU = cPUService.getALl();
     private List<ChatLieu> listChatLieu = chatLieuSevice.getAll();
-    private List<GPM> listGPM = gPMService.getAll();
+    private List<Mau> listGPM = gPMService.getAll();
     private List<Hang> listHang = hangService.getList();
     private List<HeDieuHanh> listHeDieuHanh = dieuHanhService.getList();
     private List<Imei> listImei = imeiService.getAll();
     private List<ManHinh> listManHinh = manHinhService.getAll();
     private List<Ram> listRam = ramService.getList();
+
     /**
      * Creates new form ViewSanPham
      */
     public ViewSanPham() {
         initComponents();
         jTableSanPham.setModel(dtm);
-        String [] a ={"STT","Mã SP","Tên Sp","Trọng lượng","Năm bảo hành","Số lượng tồn","Giá nhập","Giá bán","Mô tả"};
+        String[] a = {"STT", "Mã SP", "Tên Sp", "Trọng lượng", "Năm bảo hành", "Số lượng tồn", "Giá nhập", "Giá bán", "Mô tả"};
         dtm.setColumnIdentifiers(a);
-        
+
         cbbMauSac.setModel(dcm1);
-            dcm1.addElement("Đen");
-            dcm1.addElement("Trắng");
-            
+        dcm1.addElement("Đen");
+        dcm1.addElement("Trắng");
+
         cbbCPU.setModel(dcm2);
         for (CPUViewModel x : listCPU) {
             dcm2.addElement(x.getTen());
         }
-        
+
         cbbChatLieu.setModel(dcm3);
         for (ChatLieu x : listChatLieu) {
             dcm3.addElement(x.getTen());
         }
-        
+
         cbbGPM.setModel(dcm4);
-        for (GPM x : listGPM) {
+        for (Mau x : listGPM) {
             dcm4.addElement(x.getTen());
         }
         cbbHeDieuHanh.setModel(dcm5);
@@ -123,14 +124,16 @@ public class ViewSanPham extends javax.swing.JPanel {
             dcm9.addElement(x.getMa());
         }
         showData(sanPhamService.getAll());
-        
+
     }
-    private void showData(List<SanPham> list){
+
+    private void showData(List<SanPham> list) {
         dtm.setRowCount(0);
         for (SanPham x : list) {
-            dtm.addRow(new Object[]{jTableSanPham.getRowCount()+1,x.getMa(),x.getTen(),x.getTrongLuong(),x.getNamBH(),x.getSoLuongTon(),x.getGiaNhap(),x.getGiaBan(),x.getMoTa()});
+            dtm.addRow(new Object[]{jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getTrongLuong(), x.getNamBH(), x.getSoLuongTon(), x.getGiaNhap(), x.getGiaBan(), x.getMoTa()});
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -207,7 +210,7 @@ public class ViewSanPham extends javax.swing.JPanel {
 
         jLabel15.setText("Năm bảo hành:");
 
-        jLabel16.setText("Nhà sản xuất:");
+        jLabel16.setText("Hãng");
 
         jLabel17.setText("Màu sắc:");
 
@@ -369,9 +372,9 @@ public class ViewSanPham extends javax.swing.JPanel {
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(10, 10, 10)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(txtMaSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel1)
@@ -425,7 +428,6 @@ public class ViewSanPham extends javax.swing.JPanel {
                                 .addComponent(jLabel16)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(8, 8, 8)))
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -545,19 +547,20 @@ public class ViewSanPham extends javax.swing.JPanel {
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+            .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(52, 52, 52))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel26))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))))
         );
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -614,7 +617,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         sanPham.setSoLuongTon(Integer.valueOf(txtSoLuongTon.getText()));
         sanPham.setTen(txtTenSanPham.getText());
         sanPham.setTrongLuong(Float.valueOf(txtTrongLuong.getText()));
-        sanPham.setGpm(null);
+        sanPham.setMau(null);
         sanPham.setImei(null);
         JOptionPane.showMessageDialog(this, sanPhamService.add(sanPham));
         showData(sanPhamService.getAll());
@@ -639,12 +642,12 @@ public class ViewSanPham extends javax.swing.JPanel {
         sanPham.setSoLuongTon(Integer.valueOf(txtSoLuongTon.getText()));
         sanPham.setTen(txtTenSanPham.getText());
         sanPham.setTrongLuong(Float.valueOf(txtTrongLuong.getText()));
-        
+
         int row = jTableSanPham.getSelectedRow();
-        sanPham.setIdSanPham(sanPhamService.getOne(jTableSanPham.getValueAt(row,1).toString()).getIdSanPham());
+        sanPham.setIdSanPham(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getIdSanPham());
         JOptionPane.showMessageDialog(this, sanPhamService.update(sanPham));
         showData(sanPhamService.getAll());
-        
+
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
@@ -665,7 +668,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         txtTrongLuong.setText(String.valueOf(sanPham.getTrongLuong()));
         cbbCPU.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getCpu().getTen());
         cbbChatLieu.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getChatLieu().getTen());
-        cbbGPM.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getGpm().getTen());// chua cos du lieu
+        cbbGPM.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getMau().getTen());// chua cos du lieu
         cbbHeDieuHanh.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getHeDieuHanh().getTen());
         cbbImai.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getImei().getMa()); // chua cos du lieu
         cbbManHinh.setSelectedItem(sanPhamService.getOne(jTableSanPham.getValueAt(row, 1).toString()).getManHinh().getMa());
@@ -677,13 +680,10 @@ public class ViewSanPham extends javax.swing.JPanel {
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
         String timKiem = txtTimKiem.getText();
-        List<SanPham> list1  = sanPhamService.search(sanPhamService.getAll(), timKiem);
-         List<SanPham> list2 = sanPhamService.searchByTen(sanPhamService.getAll(), timKiem);
-         showData(list2);
-        showData(list1);
-        
-        
-        
+        List<SanPham> list2 = sanPhamService.searchByTen(sanPhamService.getAll(), timKiem);
+        showData(list2);
+
+
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
