@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.Ram;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,5 +24,7 @@ public interface RamService {
     Ram findByMa(String ma);
     
     Ram getByTen(String ten);
+    
+    List<Ram> getSeachListRam(String ten, String dungLuong, EnumLoaiRam loaiRam);
     
 }
