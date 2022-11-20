@@ -5,7 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 
 /**
  *

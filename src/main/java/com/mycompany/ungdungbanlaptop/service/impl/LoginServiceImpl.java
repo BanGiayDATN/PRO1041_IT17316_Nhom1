@@ -8,7 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.SendEmail;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.LoginService;

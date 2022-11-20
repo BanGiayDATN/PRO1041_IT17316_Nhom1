@@ -340,8 +340,8 @@ public class AdQuanLyKhuyenMai extends javax.swing.JPanel {
 
     private void btnThemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemActionPerformed
         String ma = txtMa.getText();
-        String ngayBd = txtNgayBatDau.getCalendar().getCalendarType();
-        String ngayKt = txtNgayKetThuc.getCalendar().getCalendarType();
+        Date ngayBd = (Date) txtNgayBatDau.getDate();
+        Date ngayKt = (Date) txtNgayKetThuc.getDate();
         String soLuong = txtSoLuong.getText();
         String giamGia = txtGiamGia.getText();
         int tt;
@@ -350,10 +350,10 @@ public class AdQuanLyKhuyenMai extends javax.swing.JPanel {
         } else {
             tt = 1;
         }
-        KhuyenMai km = new KhuyenMai(ma, new ConverDate().dateToLong(ngayBd, "dd/mm/yyyy"),
-                new ConverDate().dateToLong(ngayKt, "dd/mm/yyyy"), tt, Integer.valueOf(soLuong),
-                Integer.valueOf(giamGia));
-        JOptionPane.showMessageDialog(this, ql.add(km));
+        String conver = new ConverDate().convertDateToString(ngayBd, "dd/MM/yyyy");
+        String conver1 = new ConverDate().convertDateToString(ngayKt, "dd/MM/yyyy");
+       KhuyenMaiViewModel km = new KhuyenMaiViewModel(ma, conver, conver1, tt, Integer.valueOf(soLuong), Integer.valueOf(giamGia));
+//        JOptionPane.showMessageDialog(this, ql.add(km));
         showData(ql.getALl());
     }//GEN-LAST:event_btnThemActionPerformed
 

@@ -15,6 +15,8 @@ public interface NhanVienRepository {
 
     List<NhanVien> getAll();
 
+    List<NhanVien> getSearchByName(String hoTen);
+
     NhanVien addNhanVien(NhanVien nhanVien);
 
     NhanVien update(NhanVien nv);

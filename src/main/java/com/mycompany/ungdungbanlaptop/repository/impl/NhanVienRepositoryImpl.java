@@ -159,4 +159,9 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         }
         return nv;
     }
+
+    @Override
+    public List<NhanVien> getSearchByName(String hoTen) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }
