@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.Ram;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import java.util.List;
 
 /**
@@ -22,4 +23,6 @@ public interface RamRepository {
     Ram findByMa(String ma);
 
     Ram getByTen(String ten);
+    
+    List<Ram> getSeachListRam(String ten, String dungLuong, EnumLoaiRam loaiRam);
 }
