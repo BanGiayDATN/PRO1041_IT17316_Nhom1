@@ -5,8 +5,12 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -18,6 +22,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
     private DefaultTableModel dtm = new DefaultTableModel();
     private DefaultTableModel dtm1 = new DefaultTableModel();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
+    
     /**
      * Creates new form ViewNhanVien
      */
@@ -28,14 +33,23 @@ public class ViewKhachHang extends javax.swing.JPanel {
         dtm.setColumnIdentifiers(a);
         showData(khachHangService.getAll());
         
-        jTableLichSuMuahang.setModel(dtm1);
-        String [] b = {"Mã Hóa Đơn","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán","Tổng tiền","Tình trạng"};
+         jTableLichSuMuahang.setModel(dtm1);
+        String [] b = {"Mã Hóa Đơn","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán","Tổng tiền","Tình trạng" };
         dtm1.setColumnIdentifiers(b);
+        
+       
+        
     }
     private void showData(List<KhachHang> list){
         dtm.setRowCount(0);
         for (KhachHang x : list) {
             dtm.addRow(new Object[]{x.getMa(),x.getHoTen(),x.getGioiTinh(),x.getSdt(),x.getEmail(),x.getDiaChi(),x.getTrangThai() == 0 ? "Còn hoạt động":"Ngưng hoạt động"});
+        }
+    }
+    private void showLichSuMua(List<LichSuMuaHangViewModel>list){
+        dtm1.setRowCount(0);
+        for (LichSuMuaHangViewModel x : list) {            
+            dtm1.addRow(new Object[]{x.getMa(),x.getSoLuong(),x.getDonGia(),new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy"),new BigDecimal(x.getSoLuong()).multiply(x.getDonGia()),x.getTinhTrang()==0 ?"Đã thanh toán":"Đã thanh toán"});
         }
     }
     /**
@@ -152,41 +166,41 @@ public class ViewKhachHang extends javax.swing.JPanel {
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addGap(103, 103, 103)
                 .addComponent(jLabel8)
-                .addGap(18, 18, 18)
+                .addGap(75, 75, 75)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 347, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGap(65, 65, 65)
+                .addGap(63, 63, 63)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 683, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
                         .addComponent(jLabel9)
                         .addGap(100, 100, 100))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(22, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(32, Short.MAX_VALUE)
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel8)
-                            .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(196, 196, 196)
                         .addComponent(jLabel9)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(13, 13, 13)))
-                .addGap(18, 18, 18))
+                        .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(41, 41, 41)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(107, 107, 107))
         );
 
         jTabbedPane1.addTab("Thông tin khách hàng", jPanel4);
@@ -211,16 +225,16 @@ public class ViewKhachHang extends javax.swing.JPanel {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(237, 237, 237)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 435, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(271, Short.MAX_VALUE))
+                .addGap(122, 122, 122)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 530, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(291, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
+                .addGap(133, 133, 133)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addContainerGap(190, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Lịch sử mua hàng", jPanel3);
@@ -245,8 +259,8 @@ public class ViewKhachHang extends javax.swing.JPanel {
                 .addGap(36, 36, 36)
                 .addComponent(jLabel1)
                 .addGap(48, 48, 48)
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 500, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(162, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -259,7 +273,11 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
         // TODO add your handling code here:
+       
+         int row = jTableKhachHang.getSelectedRow();
+        List<LichSuMuaHangViewModel> list = khachHangService.getLichSuMuaHang(jTableKhachHang.getValueAt(row, 0).toString());
         
+        showLichSuMua(list);
     }//GEN-LAST:event_jTableKhachHangMouseClicked
 
 

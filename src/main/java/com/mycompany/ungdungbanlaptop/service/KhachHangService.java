@@ -5,8 +5,10 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -25,5 +27,7 @@ public interface KhachHangService {
     List<KhachHang> search(List<KhachHang> list, String tenKh);
     
     KhachHang getByTen(String ten);
+    
+      List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
 
 }

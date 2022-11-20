@@ -555,6 +555,9 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
+        String email = txtTimKiem.getText();
+        List<NhanVien> listNew = nhanVienService.searchByEmail(nhanVienService.getAll(), email);
+        showData(listNew);
          
     }//GEN-LAST:event_txtTimKiemKeyReleased
 

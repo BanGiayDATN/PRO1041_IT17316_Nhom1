@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
@@ -120,7 +121,19 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return null;
     }
-
+    @Override
+    public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
+        List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public static void main(String[] args) {
 //        SanPham sp = new SanPham(1, "MH3", "MSI", 100);
 //        SanPham add = new SanPhamRepositoryImpl().add(sp);
@@ -130,6 +143,8 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
 //        System.out.println(delete);
 
 //        System.out.println(new SanPhamRepositoryImpl().getAll());
-        System.out.println(new SanPhamRepositoryImpl().getOne("SP3"));
+        System.out.println(new SanPhamRepositoryImpl().getSanPhamBanHang());
     }
+
+    
 }

@@ -5,7 +5,9 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -28,5 +30,7 @@ public interface NhanVienRepository {
 
     NhanVien getByTen(String ten);
     
-
+    List<NhanVien> searchByEmail(String email);
+    
+   
 }

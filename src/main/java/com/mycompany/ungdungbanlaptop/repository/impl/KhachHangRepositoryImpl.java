@@ -5,11 +5,13 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -118,5 +120,25 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
         }
         return list;
     }
-
+     @Override
+    public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma) {
+        List<LichSuMuaHangViewModel> list = new ArrayList<>();
+        try  (Session session = HibernateUtil.getFACTORY().openSession()){
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel(hd.ma,hdct.soLuong,hdct.donGia,hd.ngayTao,hd.ngayThanhToan,hd.tinhTrang) FROM HoaDonChiTiet hdct "
+                    + "inner join HoaDon hd "
+                    + "ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " inner join KhachHang kh"
+                    + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " WHERE kh.ma like :ma";
+            Query<LichSuMuaHangViewModel> query = session.createQuery(hql);
+            query.setParameter("ma","%"+ ma+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    public static void main(String[] args) {
+        System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH709"));
+    }
 }

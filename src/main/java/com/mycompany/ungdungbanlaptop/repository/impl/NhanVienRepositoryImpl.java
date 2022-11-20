@@ -8,8 +8,10 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -139,8 +141,24 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         }
         return nv;
     }
+    @Override
+    public List<NhanVien> searchByEmail(String email) {
+        List<NhanVien> list = new ArrayList<>();
+        try  (Session session = HibernateUtil.getFACTORY().openSession()){
+            String hql ="SELECT nv FROM NhanVien nv WHERE nv.email like :email";
+            Query<NhanVien> query = session.createQuery(hql);
+            query.setParameter("email","%"+ email+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
 
     public static void main(String[] args) {
-        System.out.println(new NhanVienRepositoryImpl().getNhanVienByEmail("diem05152003@gmail.com"));
     }
+
+   
+    
 }

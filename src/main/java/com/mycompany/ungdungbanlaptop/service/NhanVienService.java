@@ -5,7 +5,9 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -24,8 +26,10 @@ public interface NhanVienService {
     List<NhanVien> getAll();
     
 
-    List<NhanVien> search(List<NhanVien> list,String hoTen,String email,String soDienThoai);
+    List<NhanVien> searchByEmail(List<NhanVien> list,String email);
 
     NhanVien getByTen(String ten);
+    
+    
 
 }
