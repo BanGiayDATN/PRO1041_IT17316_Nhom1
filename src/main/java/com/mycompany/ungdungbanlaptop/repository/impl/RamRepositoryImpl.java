@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.repository.RamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
@@ -84,4 +85,28 @@ public class RamRepositoryImpl implements RamRepository {
         }
         return ram;
     }
+    
+    @Override
+    public List<Ram> getSeachListRam(String ten, String dungLuong, EnumLoaiRam loaiRam) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("""
+                                              FROM Ram
+                                              WHERE  (:ten IS NULL 
+                                               OR :ten LIKE '' 
+                                               OR ten LIKE CONCAT('%',:ten,'%') )
+                                              AND
+                                              (:dungLuong IS NULL 
+                                                OR dungLuong = :dungLuong )
+                                                AND( 
+                                              :loaiRam IS NULL OR
+                                              enumLoaiRam = :loaiRam) 
+                                              """).setParameter("ten", ten).setParameter("dungLuong", dungLuong).setParameter("loaiRam", loaiRam);
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+            return null;
+        }
+    }
+    
+    
 }
