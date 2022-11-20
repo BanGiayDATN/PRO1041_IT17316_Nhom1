@@ -156,7 +156,43 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     }
     
 
+    @Override
+    public List<NhanVien> getSearchByName(String hoTen) {
+        List<NhanVien> list = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            transaction = session.beginTransaction();
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.hoTen LIKE :hoTen ";
+            list = session.createQuery(query).setParameter("hoTen", "%" + hoTen + "%").list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
+    @Override
+    public NhanVien getNhanVienByMa(String ma) {
+        NhanVien nv = new NhanVien();
+        try(Session session = HibernateUtil.getFACTORY().openSession()) {
+            String query = "SELECT nv "
+                    + "FROM NhanVien nv "
+                    + "WHERE nv.ma = :ma ";
+            Query<NhanVien> hth = session.createQuery(query);
+            hth.setParameter("ma", ma);
+            nv = hth.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return nv;
+    }
     public static void main(String[] args) {
+
+        NhanVien nhanVien = new NhanVienRepositoryImpl().getNhanVienByMa("NV215");
+        System.out.println(nhanVien);
+
     }
 
    

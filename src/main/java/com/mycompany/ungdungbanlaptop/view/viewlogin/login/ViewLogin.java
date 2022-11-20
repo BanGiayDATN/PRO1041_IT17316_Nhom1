@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.view.ViewManChinh;
+import com.mycompany.ungdungbanlaptop.view.ViewNhanVien;
 
 import javax.swing.JOptionPane;
 
@@ -183,9 +184,9 @@ public class ViewLogin extends javax.swing.JFrame {
             txt_errorPassword.setText("");
         }
         if (nhanVien != null) {
-            
+
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
-                new ViewManChinh(nhanVien).setVisible(true);
+            new ViewManChinh(nhanVien).setVisible(true);
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 

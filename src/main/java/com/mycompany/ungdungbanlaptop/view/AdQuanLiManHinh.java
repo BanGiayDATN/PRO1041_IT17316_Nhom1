@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.service.ManHinhService;
@@ -27,6 +26,7 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
     private DefaultComboBoxModel dcm3 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm4 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm5 = new DefaultComboBoxModel();
+    private List<ManHinh> list = manHinhService.getAll();
 
     /**
      * Creates new form AdQuanLiManHinh
@@ -37,32 +37,13 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         String[] a = {"Mã Màn Hình", "Độ phân giải", "Kích thước", "Tần số", "Loại cảm ứng", "Công nghệ"};
         dtm.setColumnIdentifiers(a);
         showData(manHinhService.getAll());
-        
-        
-        cbbCongNghe.setModel(dcm1);
-        dcm1.addElement("Retina");
-        dcm1.addElement("Anti_glare");
-        dcm1.addElement("IPS LCD");
 
-        cbbDoPhanGiai.setModel(dcm2);
-        dcm2.addElement("1920 x 1080 Pixels");
-        dcm2.addElement("2560 x 1600 Pixels");
-        dcm2.addElement("1600 x 900 Pixel");
-
-        cbbKichThuoc.setModel(dcm3);
-        dcm3.addElement("15.6 inch");
-        dcm3.addElement("14.0 inch");
-        dcm3.addElement("13.0inch");
+        
 
         cbbLoaiCamUng.setModel(dcm4);
-        dcm4.addElement("Không cảm ứng");
-        dcm4.addElement("Có cảm ứng");
-
-        cbbTanSo.setModel(dcm5);
-        dcm5.addElement("60 Hz");
-        dcm5.addElement("120 Hz");
-        dcm5.addElement("144 Hz");
-        dcm5.addElement("240 Hz");
+        for (ManHinh x : list) {
+            dcm4.addElement(x.getLoaiCamUng());
+        }
     }
 
     private void showData(List<ManHinh> list) {
@@ -70,8 +51,6 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         for (ManHinh x : list) {
             dtm.addRow(new Object[]{x.getMa(), x.getDoPhanGiaMan(), x.getKichThuoc(), x.getTanSo(), x.getLoaiCamUng(), x.getCongNgheMH()});
         }
-
-        
 
     }
 
@@ -305,7 +284,7 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         mh.setKichThuoc(cbbKichThuoc.getSelectedItem().toString());
         mh.setLoaiCamUng(cbbLoaiCamUng.getSelectedItem().toString());
         mh.setTanSo(cbbTanSo.getSelectedItem().toString());
-        
+
         int row = jTableManHinh.getSelectedRow();
         mh.setIdManHinh(manHinhService.getOne(jTableManHinh.getValueAt(row, 0).toString()).getIdManHinh());
         JOptionPane.showMessageDialog(this, manHinhService.update(mh));
@@ -314,6 +293,12 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
         // TODO add your handling code here:
+        txtMaManHinh.setText("");
+        cbbCongNghe.setSelectedIndex(0);
+        cbbDoPhanGiai.setSelectedIndex(0);
+        cbbKichThuoc.setSelectedIndex(0);
+        cbbLoaiCamUng.setSelectedIndex(0);
+        cbbTanSo.setSelectedIndex(0);
     }//GEN-LAST:event_btnLamMoiActionPerformed
 
 

@@ -8,7 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.SendEmail;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.model.response.NhanVienResquest;
+import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
@@ -21,7 +21,6 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
-import javax.xml.bind.DatatypeConverter;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 

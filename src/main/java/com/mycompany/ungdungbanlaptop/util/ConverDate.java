@@ -40,6 +40,11 @@ public class ConverDate {
         return df2.format(date);
     }
 
+    public String convertDateToString(Date date, String format) {
+        SimpleDateFormat mySimpleDateFormat = new SimpleDateFormat(format);
+        return mySimpleDateFormat.format(date);
+    }
+
     public Calendar longToCalendar(Long time) {
         Calendar calendar = null;
         if (time != null) {

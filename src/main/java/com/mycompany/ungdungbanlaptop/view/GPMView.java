@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
+import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.GPM;
 import com.mycompany.ungdungbanlaptop.service.GPMService;
 import com.mycompany.ungdungbanlaptop.service.impl.GPMServiceImpl;
@@ -25,12 +26,17 @@ public class GPMView extends javax.swing.JPanel {
     }
 
     public void loadTable(List<GPM> list) {
-        tbmodel = (DefaultTableModel) tbGPM.getModel();
+        tbmodel = (DefaultTableModel) tbGPM1.getModel();
         tbmodel.setRowCount(0);
         tbmodel.setColumnIdentifiers(new String[]{"Mã", "Tên GPM"});
         for (GPM x : list) {
             tbmodel.addRow(new Object[]{x.getMa(), x.getTen()});
         }
+    }
+
+    public void clearForm() {
+        txtMaGPM.setText(null);
+        txttenGPM.setText(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -50,8 +56,8 @@ public class GPMView extends javax.swing.JPanel {
         jPanel2 = new javax.swing.JPanel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtma1 = new javax.swing.JTextField();
-        txtGPM1 = new javax.swing.JTextField();
+        txtMaGPM = new javax.swing.JTextField();
+        txttenGPM = new javax.swing.JTextField();
         btnthem1 = new javax.swing.JButton();
         btnsua1 = new javax.swing.JButton();
         btnxem1 = new javax.swing.JButton();
@@ -202,8 +208,8 @@ public class GPMView extends javax.swing.JPanel {
                             .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(33, 33, 33)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtma1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGPM1, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtMaGPM, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txttenGPM, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -219,13 +225,13 @@ public class GPMView extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(txtma1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMaGPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnthem1)
                     .addComponent(btnxem1))
                 .addGap(28, 28, 28)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtGPM1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txttenGPM, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnsua1))
                 .addGap(38, 38, 38)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 168, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -256,8 +262,8 @@ public class GPMView extends javax.swing.JPanel {
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
         GPM gpm = new GPM();
-        gpm.setMa(txtma.getText());
-        gpm.setTen(txtGPM.getText());
+        gpm.setMa(txtMaGPM.getText());
+        gpm.setTen(txttenGPM.getText());
         try {
             JOptionPane.showMessageDialog(this, service.addNew(gpm));
             loadTable(service.getAll());
@@ -278,8 +284,8 @@ public class GPMView extends javax.swing.JPanel {
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(gpm));
         } else if (check == JOptionPane.NO_OPTION) {
-            txtma.setText("");
-            txtGPM.setText("");
+            txtMaGPM.setText("");
+            txttenGPM.setText("");
         }
         loadTable(service.getAll());
     }//GEN-LAST:event_btnsuaActionPerformed
@@ -291,14 +297,14 @@ public class GPMView extends javax.swing.JPanel {
     private void tbGPMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGPMMouseClicked
         int row = tbGPM.getSelectedRow();
         GPM gpm = service.getAll().get(row);
-        txtma.setText(gpm.getMa());
-        txtGPM.setText(gpm.getTen());
+        txtMaGPM.setText(gpm.getMa());
+        txttenGPM.setText(gpm.getTen());
     }//GEN-LAST:event_tbGPMMouseClicked
 
     private void btnthem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthem1ActionPerformed
         GPM gpm = new GPM();
-        gpm.setMa(txtma.getText());
-        gpm.setTen(txtGPM.getText());
+        gpm.setMa(txtMaGPM.getText());
+        gpm.setTen(txttenGPM.getText());
         try {
             JOptionPane.showMessageDialog(this, service.addNew(gpm));
             loadTable(service.getAll());
@@ -309,8 +315,8 @@ public class GPMView extends javax.swing.JPanel {
     }//GEN-LAST:event_btnthem1ActionPerformed
 
     private void btnsua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsua1ActionPerformed
-        String ma = txtma.getText();
-        String ten = txtGPM.getText();
+        String ma = txtMaGPM.getText();
+        String ten = txttenGPM.getText();
         GPM gpm = service.getOne(ma);
         System.out.println(gpm);
         gpm.setMa(ma);
@@ -319,21 +325,22 @@ public class GPMView extends javax.swing.JPanel {
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(gpm));
         } else if (check == JOptionPane.NO_OPTION) {
-            txtma.setText("");
-            txtGPM.setText("");
+            txtMaGPM.setText("");
+            txttenGPM.setText("");
         }
         loadTable(service.getAll());
     }//GEN-LAST:event_btnsua1ActionPerformed
 
     private void btnxem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxem1ActionPerformed
         loadTable(service.getAll());
+        clearForm();
     }//GEN-LAST:event_btnxem1ActionPerformed
 
     private void tbGPM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGPM1MouseClicked
-        int row = tbGPM.getSelectedRow();
+        int row = tbGPM1.getSelectedRow();
         GPM gpm = service.getAll().get(row);
-        txtma.setText(gpm.getMa());
-        txtGPM.setText(gpm.getTen());
+        txtMaGPM.setText(gpm.getMa());
+        txttenGPM.setText(gpm.getTen());
     }//GEN-LAST:event_tbGPM1MouseClicked
 
 
@@ -355,8 +362,8 @@ public class GPMView extends javax.swing.JPanel {
     private javax.swing.JTable tbGPM;
     private javax.swing.JTable tbGPM1;
     private javax.swing.JTextField txtGPM;
-    private javax.swing.JTextField txtGPM1;
+    private javax.swing.JTextField txtMaGPM;
     private javax.swing.JTextField txtma;
-    private javax.swing.JTextField txtma1;
+    private javax.swing.JTextField txttenGPM;
     // End of variables declaration//GEN-END:variables
 }

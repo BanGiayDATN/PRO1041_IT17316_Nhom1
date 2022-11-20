@@ -14,7 +14,10 @@ import java.util.UUID;
  * @author vinhnv
  */
 public interface NhanVienRepository {
+
     List<NhanVien> getAll();
+
+    List<NhanVien> getSearchByName(String hoTen);
 
     NhanVien addNhanVien(NhanVien nhanVien);
 
@@ -29,8 +32,9 @@ public interface NhanVienRepository {
     NhanVien getNhanVienByEmailAndSDT(String email, String sdt);
 
     NhanVien getByTen(String ten);
-    
+
     List<NhanVien> searchByEmail(String email);
-    
-   
+
+    NhanVien getNhanVienByMa(String ma);
+
 }
