@@ -4,22 +4,22 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import java.util.List;
 
 /**
  *
  * @author vinhnv
  */
-public interface GPMRepository {
+public interface MauRepository {
 
-    List<GPM> getAll();
+    List<Mau> getAll();
 
-    boolean addNew(GPM gpm);
+    boolean addNew(Mau mau);
 
-    boolean update(GPM gpm);
+    boolean update(Mau mau);
 
-    GPM getOne(String ma);
+    Mau getOne(String ma);
 
-    GPM getByTen(String ten);
+    Mau getByTen(String ten);
 }

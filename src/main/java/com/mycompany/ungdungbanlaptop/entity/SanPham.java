@@ -81,8 +81,8 @@ public class SanPham implements Serializable {
     private CPU cpu;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idGPM")
-    private GPM gpm;
+    @JoinColumn(name = "idMau")
+    private Mau mau;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "idHeDieuHanh")
