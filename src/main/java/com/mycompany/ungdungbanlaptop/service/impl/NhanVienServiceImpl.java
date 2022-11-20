@@ -168,9 +168,13 @@ public class NhanVienServiceImpl implements NhanVienService {
 
         NhanVien add = nhanVienRepository.delete(nv);
         if (add == null) {
+
             return " Xóa thất bại";
         }
         return "Xóa thành công ";
+
+        
+
     }
 
     @Override

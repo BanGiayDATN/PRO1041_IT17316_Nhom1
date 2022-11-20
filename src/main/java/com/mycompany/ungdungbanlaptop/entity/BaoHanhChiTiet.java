@@ -4,8 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,9 +13,11 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Parameter;
 
 /**
@@ -27,8 +27,9 @@ import org.hibernate.annotations.Parameter;
 @Entity
 @Data
 @Table
-@ToString
-public class HoaDonChiTiet implements Serializable {
+@AllArgsConstructor
+@NoArgsConstructor
+public class BaoHanhChiTiet {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -43,21 +44,19 @@ public class HoaDonChiTiet implements Serializable {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idHoaDonChiTiet;
+    private UUID idHaoHanhChiTiet;
 
-    @Column(name = "so_luong")
-    private int soLuong;
+    @Column(name = "ma")
+    private String ma;
 
-    @Column(name = "don_gia")
-    private BigDecimal donGia;
-
+    @Column(name = "trang_thai")
+    private String trangThai;
+    
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDon")
-    private HoaDon hoaDon;
-
+    @JoinColumn(name = "idHoaDonChiTiet")
+    private HoaDonChiTiet hoaDonChiTiet;
+    
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idImei")
-    private Imei imei;
-
-
+    @JoinColumn(name = "idBaoHanh")
+    private BaoHanh baoHanh;
 }

@@ -39,10 +39,26 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         showData(manHinhService.getAll());
 
         
-
+        cbbDoPhanGiai.setModel(dcm1);
+        for (ManHinh x : list) {
+            dcm1.addElement(x.getDoPhanGiaMan());
+        }
+        cbbKichThuoc.setModel(dcm2);
+        for (ManHinh x : list) {
+            dcm2.addElement(x.getKichThuoc());
+        }
+        cbbTanSo.setModel(dcm3);
+        for (ManHinh x : list) {
+            dcm3.addElement(x.getTanSo());
+        }
+       
         cbbLoaiCamUng.setModel(dcm4);
         for (ManHinh x : list) {
             dcm4.addElement(x.getLoaiCamUng());
+        }
+         cbbCongNghe.setModel(dcm5);
+        for (ManHinh x : list) {
+            dcm5.addElement(x.getCongNgheMH());
         }
     }
 

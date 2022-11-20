@@ -4,8 +4,8 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.GPM;
-import com.mycompany.ungdungbanlaptop.repository.GPMRepository;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
+import com.mycompany.ungdungbanlaptop.repository.MauRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,16 +13,16 @@ import org.hibernate.Transaction;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
-public class GPMRepositoryImpl implements GPMRepository {
+public class MauRepositoryImpl implements MauRepository {
 
     private Session session = HibernateUtil.getFACTORY().openSession();
 
     @Override
-    public List<GPM> getAll() {
+    public List<Mau> getAll() {
 
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery("FROM GPM");
-            List<GPM> list = query.getResultList();
+            Query query = session.createQuery("FROM Mau");
+            List<Mau> list = query.getResultList();
             return list;
         } catch (Exception e) {
         }
@@ -30,11 +30,11 @@ public class GPMRepositoryImpl implements GPMRepository {
     }
 
     @Override
-    public boolean addNew(GPM gpm) {
+    public boolean addNew(Mau mau) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
-            session.save(gpm);
+            session.save(mau);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -44,11 +44,11 @@ public class GPMRepositoryImpl implements GPMRepository {
     }
 
     @Override
-    public boolean update(GPM gpm) {
+    public boolean update(Mau mau) {
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
-            session.update(gpm);
+            session.update(mau);
             transaction.commit();
             return true;
         } catch (Exception e) {
@@ -59,37 +59,37 @@ public class GPMRepositoryImpl implements GPMRepository {
     }
 
     @Override
-    public GPM getOne(String ma) {
+    public Mau getOne(String ma) {
         Transaction transaction = null;
-        GPM gpm = new GPM();
+        Mau mau = new Mau();
         try {
-            String query = "SELECT gpm "
-                    + "FROM GPM gpm "
-                    + "WHERE gpm.ma = :ma ";
-            Query<GPM> hth = session.createQuery(query);
+            String query = "SELECT mau "
+                    + "FROM Mau mau "
+                    + "WHERE mau.ma = :ma ";
+            Query<Mau> hth = session.createQuery(query);
             hth.setParameter("ma", ma);
-            gpm = hth.uniqueResult();
+            mau = hth.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return gpm;
+        return mau;
     }
 
     @Override
-    public GPM getByTen(String ten) {
+    public Mau getByTen(String ten) {
         Transaction transaction = null;
-        GPM gpm = new GPM();
+        Mau mau = new Mau();
         try {
-            String query = "SELECT gpm "
-                    + "FROM GPM gpm "
-                    + "WHERE gpm.ten = :ten ";
-            Query<GPM> hth = session.createQuery(query);
+            String query = "SELECT mau "
+                    + "FROM Mau mau "
+                    + "WHERE mau.ten = :ten ";
+            Query<Mau> hth = session.createQuery(query);
             hth.setParameter("ten", ten);
-            gpm = hth.uniqueResult();
+            mau = hth.uniqueResult();
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return gpm;
+        return mau;
     }
     
 }
