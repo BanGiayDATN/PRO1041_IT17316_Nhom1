@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.view;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +21,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private DefaultTableModel dtm2 = new DefaultTableModel();
     private DefaultTableModel dtm3 = new DefaultTableModel();
     private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
+    private DefaultComboBoxModel dcm1 = new DefaultComboBoxModel();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     /**
      * Creates new form ViewBanHang
@@ -42,6 +44,14 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbHinhThucThanhToan.setModel(dcm);
         dcm.addElement("Quét QR");
         dcm.addElement("Tiền mặt");
+        
+        cbbPhanLoai.setModel(dcm1);
+        dcm1.addElement("Tất cả");
+        dcm1.addElement("10.000.000 - 15.000.000");
+        dcm1.addElement("15.000.000 - 20.000.000");
+        dcm1.addElement("20.000.000 - 30.000.000");
+        dcm1.addElement("30.000.000 - 50.000.000");
+        dcm1.addElement("Trên 50.000.000");
     }
 private void showSanPham(List<SanPhamBanHangViewModel>list){
     dtm3.setRowCount(0);
@@ -97,7 +107,7 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         jLabel2 = new javax.swing.JLabel();
         txtTimKiem = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbbPhanLoai = new javax.swing.JComboBox<>();
         jScrollPane3 = new javax.swing.JScrollPane();
         jTableHoaDon = new javax.swing.JTable();
 
@@ -399,7 +409,12 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("Phân loại");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbPhanLoai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbPhanLoai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbbPhanLoaiActionPerformed(evt);
+            }
+        });
 
         jTableHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -431,11 +446,11 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
                                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(32, 32, 32)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
                                 .addGap(42, 42, 42)
-                                .addComponent(jLabel15))))
+                                .addComponent(jLabel15))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addComponent(cbbPhanLoai, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(10, 10, 10)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -472,7 +487,7 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE)
-                    .addComponent(jComboBox1))
+                    .addComponent(cbbPhanLoai))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -481,13 +496,37 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void cbbPhanLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPhanLoaiActionPerformed
+        // TODO add your handling code here:
+        switch (cbbPhanLoai.getSelectedIndex()) {
+                        case 0:
+                            showSanPham(sanPhamService.getSanPhamBanHang());
+                            break;
+                        case 1:
+                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(10000000), BigDecimal.valueOf(15000000)));
+                            break;
+                        case 2:
+                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(15000000), BigDecimal.valueOf(20000000)));
+                            break;
+                        case 3:
+                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(20000000), BigDecimal.valueOf(30000000)));
+                            break;
+                        case 4:
+                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(30000000), BigDecimal.valueOf(50000000)));
+                            break;
+                        default:
+                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(50000000), BigDecimal.valueOf(2000000000)));
+                            break;
+                    }
+    }//GEN-LAST:event_cbbPhanLoaiActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnTaoHoaDon;
     private javax.swing.JButton btnTaoHoaDon1;
     private javax.swing.JComboBox<String> cbbHinhThucThanhToan;
     private javax.swing.JComboBox<String> cbbHinhThucThanhToan1;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> cbbPhanLoai;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

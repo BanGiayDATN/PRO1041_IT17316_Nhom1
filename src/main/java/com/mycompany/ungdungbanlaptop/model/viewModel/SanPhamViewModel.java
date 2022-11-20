@@ -6,7 +6,7 @@ package com.mycompany.ungdungbanlaptop.model.viewModel;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
@@ -50,7 +50,7 @@ public class SanPhamViewModel {
 
     private CPU cpu;
 
-    private GPM gpm;
+    private Mau mau;
 
     private HeDieuHanh heDieuHanh;
 

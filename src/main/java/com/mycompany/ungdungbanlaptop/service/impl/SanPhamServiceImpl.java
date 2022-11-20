@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -26,10 +27,10 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public String add(SanPham sanPham) {
-        String ma = sanPhamRepository.getOne(sanPham.getMa()).getMa();
-        if(ma != null){
-            return "Mã đã tồn tại";
-        }
+//        String ma = sanPhamRepository.getOne(sanPham.getMa()).getMa();
+//        if(ma != null){
+//            return "Mã đã tồn tại";
+//        }
         if(sanPham.getMa().isEmpty()){
             return "Vui lòng nhập mã";
         }
@@ -39,15 +40,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         if(sanPham.getTen().isEmpty()){
             return "Vui lòng nhập tên";
         }
-//        if(String.valueOf(sanPham.getNamBH()).isEmpty()){
-//            return "Vui lòng nhập nam bảo hành";
-//        }
-//        if(String.valueOf(sanPham.getSoLuongTon()).isEmpty()){
-//            return "Vui lòng nhập mã";
-//        }
-//        if(String.valueOf(sanPham.getTrongLuong()).isEmpty()){
-//            return "Vui lòng nhập mã";
-//        }
+
         
         
         SanPham add = sanPhamRepository.add(sanPham);
@@ -96,6 +89,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         return sanPhamRepository.getSanPhamBanHang();
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max) {
+        return sanPhamRepository.getByGia(min, max);
     }
 
 }

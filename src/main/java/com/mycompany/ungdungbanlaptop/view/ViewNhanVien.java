@@ -31,7 +31,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
      */
     public ViewNhanVien() {
         initComponents();
-        btn_search.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//Search.png"));
+//        btn_search.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//Search.png"));
         btn_add.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//add.png"));
         btn_delete.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//delete.png"));
         btn_update.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//update.png"));
@@ -120,7 +120,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cbbLocTrangThai = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
-        btn_search = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setPreferredSize(new java.awt.Dimension(996, 683));
@@ -425,6 +424,11 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 txtTimKiemMouseClicked(evt);
             }
         });
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         jLabel26.setText("Tìm kiếm:");
 
@@ -471,13 +475,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Lọc");
 
-        btn_search.setText("Search");
-        btn_search.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_searchActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -493,8 +490,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_search)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
                 .addGap(128, 128, 128))
@@ -506,7 +501,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addComponent(btn_search)
                     .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -734,16 +728,17 @@ public class ViewNhanVien extends javax.swing.JPanel {
         new DoiMatKhau().setVisible(true);
     }//GEN-LAST:event_btnDoiMKActionPerformed
 
-    private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
-        // TODO add your handling code here:
-        String hoTen = txtTimKiem.getText().trim();
-        showData(nhanVienService.getSearchByName(hoTen));
-    }//GEN-LAST:event_btn_searchActionPerformed
-
     private void txtTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtTimKiemMouseClicked
         // TODO add your handling code here:
         txtTimKiem.setText("");
     }//GEN-LAST:event_txtTimKiemMouseClicked
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        String timKiem = txtTimKiem.getText();
+        List<NhanVien> list = nhanVienService.searchByEmail(nhanVienService.getAll(), timKiem);
+        showData(list);
+    }//GEN-LAST:event_txtTimKiemKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -751,7 +746,6 @@ public class ViewNhanVien extends javax.swing.JPanel {
     private javax.swing.JButton btnLamMoi;
     private javax.swing.JButton btn_add;
     private javax.swing.JButton btn_delete;
-    private javax.swing.JButton btn_search;
     private javax.swing.JButton btn_update;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;

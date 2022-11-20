@@ -29,6 +29,10 @@ public class TaoChuoiNgauNhien {
         String generator = ma + RandomStringUtils.randomNumeric(soLuong);
         return generator;
     }
+    public String getMaSanPham(String ma,int soLuong){
+        String generator = ma + RandomStringUtils.randomNumeric(soLuong);
+        return generator;
+    }
 
     public static void main(String[] args) {
         String ktra = new TaoChuoiNgauNhien().getIMEI("Mật khẩu mới : ", 15);

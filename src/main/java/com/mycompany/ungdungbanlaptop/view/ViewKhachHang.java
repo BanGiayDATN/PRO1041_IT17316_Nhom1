@@ -273,7 +273,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
         // TODO add your handling code here:
-       
+       jTabbedPane1.setSelectedIndex(1);
          int row = jTableKhachHang.getSelectedRow();
         List<LichSuMuaHangViewModel> list = khachHangService.getLichSuMuaHang(jTableKhachHang.getValueAt(row, 0).toString());
         
