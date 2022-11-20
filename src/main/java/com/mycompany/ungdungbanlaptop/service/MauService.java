@@ -4,22 +4,22 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import java.util.List;
 
 /**
  *
  * @author Hoàng Ngô
  */
-public interface GPMService {
+public interface MauService {
 
-    List<GPM> getAll();
+    List<Mau> getAll();
 
-    String addNew(GPM gpm);
+    String addNew(Mau mau);
 
-    String update(GPM gpm);
+    String update(Mau mau);
 
-    GPM getOne(String ma);
+    Mau getOne(String ma);
 
-    GPM getByTen(String ten);
+    Mau getByTen(String ten);
 }

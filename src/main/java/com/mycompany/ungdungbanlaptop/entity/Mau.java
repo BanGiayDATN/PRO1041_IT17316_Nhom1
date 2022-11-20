@@ -25,7 +25,7 @@ import org.hibernate.annotations.Parameter;
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
-public class GPM {
+public class Mau {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -40,7 +40,7 @@ public class GPM {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idGPU;
+    private UUID idMau;
 
     @Column(name = "ma")
     private String ma;
@@ -48,8 +48,8 @@ public class GPM {
     @Column(name = "ten_gpm",columnDefinition = "nvarchar(Max)")
     private String ten;
 
-    public GPM(UUID idGPU) {
-        this.idGPU = idGPU;
+    public Mau(UUID idMau) {
+        this.idMau = idMau;
     }
     
     

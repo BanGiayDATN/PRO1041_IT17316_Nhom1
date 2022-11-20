@@ -5,9 +5,9 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
-import com.mycompany.ungdungbanlaptop.service.GPMService;
-import com.mycompany.ungdungbanlaptop.service.impl.GPMServiceImpl;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
+import com.mycompany.ungdungbanlaptop.service.MauService;
+import com.mycompany.ungdungbanlaptop.service.impl.MauServiceImpl;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -19,17 +19,17 @@ import javax.swing.table.DefaultTableModel;
 public class GPMView extends javax.swing.JPanel {
 
     private DefaultTableModel tbmodel;
-    private GPMService service = new GPMServiceImpl();
+    private MauService service = new MauServiceImpl();
 
     public GPMView() {
         initComponents();
     }
 
-    public void loadTable(List<GPM> list) {
+    public void loadTable(List<Mau> list) {
         tbmodel = (DefaultTableModel) tbGPM1.getModel();
         tbmodel.setRowCount(0);
         tbmodel.setColumnIdentifiers(new String[]{"Mã", "Tên GPM"});
-        for (GPM x : list) {
+        for (Mau x : list) {
             tbmodel.addRow(new Object[]{x.getMa(), x.getTen()});
         }
     }
@@ -261,7 +261,7 @@ public class GPMView extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnthemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthemActionPerformed
-        GPM gpm = new GPM();
+        Mau gpm = new Mau();
         gpm.setMa(txtMaGPM.getText());
         gpm.setTen(txttenGPM.getText());
         try {
@@ -276,7 +276,7 @@ public class GPMView extends javax.swing.JPanel {
     private void btnsuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsuaActionPerformed
         String ma = txtma.getText();
         String ten = txtGPM.getText();
-        GPM gpm = service.getOne(ma);
+        Mau gpm = service.getOne(ma);
         System.out.println(gpm);
         gpm.setMa(ma);
         gpm.setTen(ten);
@@ -296,17 +296,17 @@ public class GPMView extends javax.swing.JPanel {
 
     private void tbGPMMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGPMMouseClicked
         int row = tbGPM.getSelectedRow();
-        GPM gpm = service.getAll().get(row);
-        txtMaGPM.setText(gpm.getMa());
-        txttenGPM.setText(gpm.getTen());
+        Mau mau = service.getAll().get(row);
+        txtMaGPM.setText(mau.getMa());
+        txttenGPM.setText(mau.getTen());
     }//GEN-LAST:event_tbGPMMouseClicked
 
     private void btnthem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthem1ActionPerformed
-        GPM gpm = new GPM();
-        gpm.setMa(txtMaGPM.getText());
-        gpm.setTen(txttenGPM.getText());
+        Mau mau = new Mau();
+        mau.setMa(txtMaGPM.getText());
+        mau.setTen(txttenGPM.getText());
         try {
-            JOptionPane.showMessageDialog(this, service.addNew(gpm));
+            JOptionPane.showMessageDialog(this, service.addNew(mau));
             loadTable(service.getAll());
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
@@ -317,7 +317,7 @@ public class GPMView extends javax.swing.JPanel {
     private void btnsua1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnsua1ActionPerformed
         String ma = txtMaGPM.getText();
         String ten = txttenGPM.getText();
-        GPM gpm = service.getOne(ma);
+        Mau gpm = service.getOne(ma);
         System.out.println(gpm);
         gpm.setMa(ma);
         gpm.setTen(ten);
@@ -338,7 +338,7 @@ public class GPMView extends javax.swing.JPanel {
 
     private void tbGPM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGPM1MouseClicked
         int row = tbGPM1.getSelectedRow();
-        GPM gpm = service.getAll().get(row);
+        Mau gpm = service.getAll().get(row);
         txtMaGPM.setText(gpm.getMa());
         txttenGPM.setText(gpm.getTen());
     }//GEN-LAST:event_tbGPM1MouseClicked

@@ -309,7 +309,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel16">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Nha&#x300; sa&#x309;n xu&#xe2;&#x301;t:"/>
+            <Property name="text" type="java.lang.String" value="H&#xe3;ng"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel17">
