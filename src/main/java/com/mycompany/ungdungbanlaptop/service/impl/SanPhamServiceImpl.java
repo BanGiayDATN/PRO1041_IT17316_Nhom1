@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
@@ -33,17 +34,15 @@ public class SanPhamServiceImpl implements SanPhamService {
 //        if(ma != null){
 //            return "Mã đã tồn tại";
 //        }
-        if(sanPham.getMa().isEmpty()){
+        if (sanPham.getMa().isEmpty()) {
             return "Vui lòng nhập mã";
         }
-        if(sanPham.getMoTa().isEmpty()){
+        if (sanPham.getMoTa().isEmpty()) {
             return "Vui lòng nhập mô tả";
         }
-        if(sanPham.getTen().isEmpty()){
+        if (sanPham.getTen().isEmpty()) {
             return "Vui lòng nhập tên";
         }
-
-
 
         SanPham add = sanPhamRepository.add(sanPham);
         if (add != null) {
@@ -89,6 +88,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
+    public List<SanPham> searchFill(SanPhamSearchRequest request) {
+        return sanPhamRepository.searchFill(request);
+    }
+
+    @Override
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         return sanPhamRepository.getSanPhamBanHang();
     }
@@ -101,6 +105,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list, String tenSp) {
         return sanPhamRepository.searchByTenBanHang(tenSp);
+
     }
 
     @Override

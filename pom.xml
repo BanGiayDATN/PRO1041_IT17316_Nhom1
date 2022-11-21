@@ -135,6 +135,11 @@
             <version>RELEASE150</version>
         </dependency>
         <!-- Thanks for using https://jar-download.com -->
-
+        
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-search-orm</artifactId>
+            <version>5.8.2.Final</version>
+        </dependency>
     </dependencies>
 </project>

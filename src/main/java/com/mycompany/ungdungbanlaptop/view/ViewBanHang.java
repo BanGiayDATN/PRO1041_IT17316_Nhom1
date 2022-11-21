@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Diệm DZ
  */
 public class ViewBanHang extends javax.swing.JPanel {
+
     private DefaultTableModel dtm1 = new DefaultTableModel();
     private DefaultTableModel dtm2 = new DefaultTableModel();
     private DefaultTableModel dtm3 = new DefaultTableModel();
@@ -27,28 +28,29 @@ public class ViewBanHang extends javax.swing.JPanel {
     private DefaultComboBoxModel dcm1 = new DefaultComboBoxModel();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     private List<GioHangViewModel> list = new ArrayList<>();
+
     /**
      * Creates new form ViewBanHang
      */
     public ViewBanHang() {
         initComponents();
         jTableHoaDon.setModel(dtm1);
-        String [] hd = {"Mã HĐ"};
+        String[] hd = {"Mã HĐ"};
         dtm1.setColumnIdentifiers(hd);
-        
+
         jTableGiohang.setModel(dtm2);
-        String [] gh = {"STT","Mã SP","Tên SP","Số lượng","Đơn Giá","Thành tiền"};
+        String[] gh = {"STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá", "Thành tiền"};
         dtm2.setColumnIdentifiers(gh);
-        
+
         jTableSanPham.setModel(dtm3);
-        String [] sp = {"STT","Mã SP","Tên SP","Năm BH","Trọng lượng","Số lượng","Giá bán","Mô tả"};
+        String[] sp = {"STT", "Mã SP", "Tên SP", "Năm BH", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
         dtm3.setColumnIdentifiers(sp);
         showSanPham(sanPhamService.getSanPhamBanHang());
-        
+
         cbbHinhThucThanhToan.setModel(dcm);
         dcm.addElement("Quét QR");
         dcm.addElement("Tiền mặt");
-        
+
         cbbPhanLoai.setModel(dcm1);
         dcm1.addElement("Tất cả");
         dcm1.addElement("10.000.000 - 15.000.000");
@@ -57,19 +59,22 @@ public class ViewBanHang extends javax.swing.JPanel {
         dcm1.addElement("30.000.000 - 50.000.000");
         dcm1.addElement("Trên 50.000.000");
     }
-private void showSanPham(List<SanPhamBanHangViewModel>list){
-    dtm3.setRowCount(0);
-    for (SanPhamBanHangViewModel x : list) {
-        dtm3.addRow(new Object[]{jTableSanPham.getRowCount() +1,x.getMa(),x.getTen(),x.getNamBH(),x.getTrongLuong(),x.getSoLuongTon(),x.getGiaBan(),x.getMoTa()});
+
+    private void showSanPham(List<SanPhamBanHangViewModel> list) {
+        dtm3.setRowCount(0);
+        for (SanPhamBanHangViewModel x : list) {
+            dtm3.addRow(new Object[]{jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
+        }
     }
-}
- private void showGioHang(List<GioHangViewModel> list) {
+
+    private void showGioHang(List<GioHangViewModel> list) {
         dtm2.setRowCount(0);
         for (GioHangViewModel x : list) {
             BigDecimal soLuong = new BigDecimal(x.getSoLuong());
             dtm2.addRow(new Object[]{jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), soLuong.multiply(x.getDonGia())});
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -526,25 +531,25 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
     private void cbbPhanLoaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbPhanLoaiActionPerformed
         // TODO add your handling code here:
         switch (cbbPhanLoai.getSelectedIndex()) {
-                        case 0:
-                            showSanPham(sanPhamService.getSanPhamBanHang());
-                            break;
-                        case 1:
-                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(10000000), BigDecimal.valueOf(15000000)));
-                            break;
-                        case 2:
-                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(15000000), BigDecimal.valueOf(20000000)));
-                            break;
-                        case 3:
-                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(20000000), BigDecimal.valueOf(30000000)));
-                            break;
-                        case 4:
-                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(30000000), BigDecimal.valueOf(50000000)));
-                            break;
-                        default:
-                            showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(50000000), BigDecimal.valueOf(2000000000)));
-                            break;
-                    }
+            case 0:
+                showSanPham(sanPhamService.getSanPhamBanHang());
+                break;
+            case 1:
+                showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(10000000), BigDecimal.valueOf(15000000)));
+                break;
+            case 2:
+                showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(15000000), BigDecimal.valueOf(20000000)));
+                break;
+            case 3:
+                showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(20000000), BigDecimal.valueOf(30000000)));
+                break;
+            case 4:
+                showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(30000000), BigDecimal.valueOf(50000000)));
+                break;
+            default:
+                showSanPham(sanPhamService.getByGia(BigDecimal.valueOf(50000000), BigDecimal.valueOf(2000000000)));
+                break;
+        }
     }//GEN-LAST:event_cbbPhanLoaiActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased

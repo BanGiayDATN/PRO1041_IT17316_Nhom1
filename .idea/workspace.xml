@@ -5,6 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="diem">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhuyenMaiRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhuyenMaiRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/SanPhamRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/SanPhamRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/HibernateUtil.class" afterDir="false" />
+=======
       <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/GenerateQRCode.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/Menu.form" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/Menu.java" afterDir="false" />
@@ -105,6 +112,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/NhanVienService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/NhanVienService.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" afterDir="false" />
+>>>>>>> develop
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -141,6 +149,14 @@
     &quot;last_opened_file_path&quot;: &quot;E:/PRO1041_DuAn1/PRO1041_IT17346_Nhom1&quot;
   }
 }</component>
+<<<<<<< HEAD
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DuAn1\PRO1041_IT17346_Nhom1\src\main\java" />
+    </key>
+  </component>
+=======
+>>>>>>> develop
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
