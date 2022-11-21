@@ -5,11 +5,12 @@
 package com.mycompany.ungdungbanlaptop.util;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
@@ -58,12 +59,12 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1;encrypt=true;trustServerCertificate=true");
-        properties.put(Environment.USER, "sa"); // nhớ thay tài khoản SQL
-        properties.put(Environment.PASS, "diem15052003"); // nhớ thay mật khẩu SQL
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
+        properties.put(Environment.USER, ""); // nhớ thay tài khoản SQL
+        properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-//        properties.put(Environment.HBM2DDL_AUTO, "cretae");
+//        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
@@ -77,7 +78,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(Imei.class);
         conf.addAnnotatedClass(ManHinh.class);
-        conf.addAnnotatedClass(GPM.class);
+        conf.addAnnotatedClass(Mau.class);
         conf.addAnnotatedClass(CPU.class);
         conf.addAnnotatedClass(Hang.class);
         conf.addAnnotatedClass(ChucVu.class);
@@ -88,6 +89,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(DoiTRa.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(BaoHanh.class);
+        conf.addAnnotatedClass(BaoHanhChiTiet.class);
         return conf;
     }
 }

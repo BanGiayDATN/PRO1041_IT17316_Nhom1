@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -24,6 +26,8 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
+@Setter
+@Getter
 @Table(name="bao_hanh")
 @ToString
 public class BaoHanh {
