@@ -17,7 +17,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -28,7 +30,9 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Setter
+@Getter
+@Table(name="san_pham")
 @AllArgsConstructor
 @NoArgsConstructor
 public class SanPham implements Serializable {
@@ -74,39 +78,39 @@ public class SanPham implements Serializable {
 
     //Map cac bang
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idManHinh")
+    @JoinColumn(name = "id_man_hinh")
     private ManHinh manHinh;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idCPU")
+    @JoinColumn(name = "id_cpu")
     private CPU cpu;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idMau")
+    @JoinColumn(name = "id_mau")
     private Mau mau;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHeDieuHanh")
+    @JoinColumn(name = "id_he_dieu_hanh")
     private HeDieuHanh heDieuHanh;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idRam")
+    @JoinColumn(name = "id_ram")
     private Ram ram;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idKhuyenMai")
+    @JoinColumn(name = "id_khuyen_mai")
     private KhuyenMai khuyenMai;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idChatLieu")
+    @JoinColumn(name = "id_chat_lieu")
     private ChatLieu chatLieu;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHang")
+    @JoinColumn(name = "id_hang")
     private Hang hang;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idImei")
+    @JoinColumn(name = "id_imei")
     private Imei imei;
 
 }

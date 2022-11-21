@@ -16,6 +16,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -26,7 +28,9 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Setter
+@Getter
+@Table(name= "hoa_don_chi_tiet")
 @ToString
 public class HoaDonChiTiet implements Serializable {
 
@@ -52,11 +56,19 @@ public class HoaDonChiTiet implements Serializable {
     private BigDecimal donGia;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDon")
+    @JoinColumn(name = "id_hoa_don")
     private HoaDon hoaDon;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idImei")
+    @JoinColumn(name = "id_san_pham")
+    private SanPham sanPham;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_bao_hanh")
+    private BaoHanh baoHanh;
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "imei")
     private Imei imei;
 
 

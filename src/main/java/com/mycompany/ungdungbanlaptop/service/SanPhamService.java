@@ -9,6 +9,8 @@ import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -33,8 +35,10 @@ public interface SanPhamService {
     List<SanPham> searchFill(SanPhamSearchRequest request);
 
     List<SanPhamBanHangViewModel> getSanPhamBanHang();
-    
+
     List<SanPhamBanHangViewModel> getByGia(BigDecimal min ,BigDecimal max);
-    
+
     List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list,String tenSp);
+
+    void updateSoLuongSanPham(Map<UUID, SanPham> list );
 }
