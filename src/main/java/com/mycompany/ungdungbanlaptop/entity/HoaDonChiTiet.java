@@ -62,7 +62,9 @@ public class HoaDonChiTiet implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_bao_hanh")
     private BaoHanh baoHanh;
-    @JoinColumn(name = "idImei")
+    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "imei")
     private Imei imei;
 
 

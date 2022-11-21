@@ -53,10 +53,10 @@ public class BaoHanhChiTiet {
     private String trangThai;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDonChiTiet")
+    @JoinColumn(name = "id_hoa_don_chi_tiet")
     private HoaDonChiTiet hoaDonChiTiet;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idBaoHanh")
+    @JoinColumn(name = "id_bao_hanh")
     private BaoHanh baoHanh;
 }
