@@ -6,6 +6,8 @@ package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -26,4 +28,6 @@ public interface SanPhamService {
     List<SanPham> search(List<SanPham> list, String maSp);
 
     List<SanPham> searchByTen(List<SanPham> list, String tenSp);
+    
+    void updateSoLuongSanPham(Map<UUID, SanPham> list );
 }

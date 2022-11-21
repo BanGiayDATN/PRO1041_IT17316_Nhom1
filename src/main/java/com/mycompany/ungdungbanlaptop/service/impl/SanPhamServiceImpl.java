@@ -9,6 +9,8 @@ import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -66,6 +68,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPham> searchByTen(List<SanPham> list, String tenSp) {
         return sanPhamRepository.searchByTen(tenSp);
+    }
+
+    @Override
+    public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
+        sanPhamRepository.updateSoLuongSanPham(list);
     }
 
 }
