@@ -121,10 +121,10 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         List<KhuyenMai> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ngayBatDau like :ngayBatDau ";
+                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ngayBatDau >= :ngayBatDau ";
             Query query = session.createQuery(hql);
 
-            query.setParameter("ngayBatDau", "%" + ngayBatDau + "%");
+            query.setParameter("ngayBatDau",ngayBatDau);
             list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -142,10 +142,11 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
 //        List<KhuyenMai> list = new KhuyenMaiRepositoryImpl().getALl();
 //        System.out.println(list);
 
-//        KhuyenMai km = new KhuyenMaiRepositoryImpl().getOne("KM555");
-        System.out.println(new KhuyenMaiRepositoryImpl().searchNgayBd(Long.valueOf("01/01/2022")));
-//        System.out.println(km);
+    
+
 // SEARCH NGAY
+
+    
     }
 
 }
