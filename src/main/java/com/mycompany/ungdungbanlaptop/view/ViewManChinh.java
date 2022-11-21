@@ -19,16 +19,19 @@ public class ViewManChinh extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
+    private NhanVien nhanVien;
+    
     public ViewManChinh(NhanVien nhanVien) {
         initComponents();
+        this.nhanVien = nhanVien;
         this.setLocationRelativeTo(null);
-        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
-            btnSanPham.setVisible(false);
-            btnNhanVien.setVisible(false);
-            btnThongKe.setVisible(false);
-            menu.setVisible(false);
-        }
-        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
+//        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+//            btnSanPham.setVisible(false);
+//            btnNhanVien.setVisible(false);
+//            btnThongKe.setVisible(false);
+//            menu.setVisible(false);
+//        }
+//        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
 
     }
 
@@ -382,7 +385,12 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+       viewChucNang.removeAll();
+        ViewBanHang form = new ViewBanHang(nhanVien);
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -463,7 +471,8 @@ public class ViewManChinh extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new ViewMenuQuanLi().setVisible(true);
+                
+                new ViewManChinh(new NhanVien()).setVisible(true);
             }
         });
     }

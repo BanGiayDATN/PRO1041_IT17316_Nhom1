@@ -211,7 +211,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             return list;
@@ -271,6 +271,14 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
 
         } catch (Exception e) {
             transaction.rollback();
+        }
+    }
+    
+    public static void main(String[] args) {
+        SanPhamRepositoryImpl sanPhamRepositoryImpl = new SanPhamRepositoryImpl();
+        try {
+            System.out.println(sanPhamRepositoryImpl.getSanPhamBanHang());
+        } catch (Exception e) {
         }
     }
 }
