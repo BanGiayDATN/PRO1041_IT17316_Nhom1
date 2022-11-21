@@ -4,12 +4,15 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +26,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm1 = new DefaultComboBoxModel();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
+    private List<GioHangViewModel> list = new ArrayList<>();
     /**
      * Creates new form ViewBanHang
      */
@@ -59,6 +63,13 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         dtm3.addRow(new Object[]{jTableSanPham.getRowCount() +1,x.getMa(),x.getTen(),x.getNamBH(),x.getTrongLuong(),x.getSoLuongTon(),x.getGiaBan(),x.getMoTa()});
     }
 }
+ private void showGioHang(List<GioHangViewModel> list) {
+        dtm2.setRowCount(0);
+        for (GioHangViewModel x : list) {
+            BigDecimal soLuong = new BigDecimal(x.getSoLuong());
+            dtm2.addRow(new Object[]{jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), soLuong.multiply(x.getDonGia())});
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -321,6 +332,11 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         jScrollPane2.setViewportView(jTableGiohang);
 
         btnTaoHoaDon1.setText("Xóa Sản Phẩm");
+        btnTaoHoaDon1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnTaoHoaDon1ActionPerformed(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Đơn hàng");
@@ -330,25 +346,26 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(34, 34, 34)
-                .addComponent(btnTaoHoaDon1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(19, 19, 19)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(29, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 572, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel6)))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btnTaoHoaDon1, javax.swing.GroupLayout.PREFERRED_SIZE, 516, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addComponent(jLabel6)
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(50, 50, 50)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btnTaoHoaDon1)
-                .addContainerGap(70, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 102, 102)));
@@ -369,6 +386,11 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableSanPhamMouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTableSanPham);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
@@ -378,7 +400,7 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(538, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addContainerGap()
@@ -394,8 +416,8 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(37, 37, 37)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(154, Short.MAX_VALUE)))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
 
         btnTaoHoaDon.setText("Tạo hóa đơn");
@@ -405,6 +427,11 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
 
         txtTimKiem.setBackground(new java.awt.Color(209, 208, 208));
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTimKiemKeyReleased(evt);
+            }
+        });
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel15.setText("Phân loại");
@@ -478,7 +505,7 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
                         .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -519,6 +546,35 @@ private void showSanPham(List<SanPhamBanHangViewModel>list){
                             break;
                     }
     }//GEN-LAST:event_cbbPhanLoaiActionPerformed
+
+    private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
+        // TODO add your handling code here:
+        String ten = txtTimKiem.getText();
+        List<SanPhamBanHangViewModel> list = sanPhamService.searchByTenBanHang(sanPhamService.getSanPhamBanHang(), ten);
+        showSanPham(list);
+    }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
+        // TODO add your handling code here:
+        String soLuong = JOptionPane.showInputDialog("Nhập số lượng", 0);
+
+        int row = jTableSanPham.getSelectedRow();
+        GioHangViewModel ghvm = new GioHangViewModel();
+        ghvm.setMa(jTableSanPham.getValueAt(row, 1).toString());
+        ghvm.setTen(jTableSanPham.getValueAt(row, 2).toString());
+        ghvm.setSoLuong(Integer.valueOf(soLuong));
+        ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(jTableSanPham.getValueAt(row, 6).toString())));
+        list.add(ghvm);
+
+        showGioHang(list);
+    }//GEN-LAST:event_jTableSanPhamMouseClicked
+
+    private void btnTaoHoaDon1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDon1ActionPerformed
+        // TODO add your handling code here:
+        int row1 = jTableGiohang.getSelectedRow();
+        list.remove(row1);
+        showGioHang(list);
+    }//GEN-LAST:event_btnTaoHoaDon1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

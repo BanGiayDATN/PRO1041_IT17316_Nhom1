@@ -32,4 +32,6 @@ public interface SanPhamService {
     List<SanPhamBanHangViewModel> getSanPhamBanHang();
     
     List<SanPhamBanHangViewModel> getByGia(BigDecimal min ,BigDecimal max);
+    
+    List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list,String tenSp);
 }

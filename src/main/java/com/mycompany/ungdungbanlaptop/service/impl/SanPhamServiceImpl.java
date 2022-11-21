@@ -96,4 +96,9 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.getByGia(min, max);
     }
 
+    @Override
+    public List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list, String tenSp) {
+        return sanPhamRepository.searchByTenBanHang(tenSp);
+    }
+
 }

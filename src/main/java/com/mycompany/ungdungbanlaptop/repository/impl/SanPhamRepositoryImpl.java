@@ -162,5 +162,20 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         System.out.println(new SanPhamRepositoryImpl().getByGia(BigDecimal.valueOf(200000), BigDecimal.valueOf(500000)));
     }
 
+    @Override
+    public List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp) {
+         List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.ten like :ten";
+            Query query = session.createQuery(hql);
+            query.setParameter("ten","%"+ tenSp +"%");
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
     
 }
