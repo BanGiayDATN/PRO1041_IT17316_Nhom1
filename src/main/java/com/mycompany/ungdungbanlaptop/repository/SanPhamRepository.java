@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import java.util.List;
 
 /**
@@ -26,4 +27,6 @@ public interface SanPhamRepository {
     List<SanPham> search(String maSp);
 
     List<SanPham> searchByTen(String tenSp);
+    
+    List<SanPham> searchFill(SanPhamSearchRequest request);
 }

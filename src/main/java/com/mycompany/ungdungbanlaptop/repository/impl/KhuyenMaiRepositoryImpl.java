@@ -4,13 +4,8 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
-import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import java.util.List;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
-import org.hibernate.query.Query;
+
 
 /**
  *
