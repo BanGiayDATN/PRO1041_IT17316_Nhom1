@@ -91,4 +91,18 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
+
+    @Override
+    public boolean setTrangThai(UUID id, HoaDon hoaDon) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            Transaction transaction = session.beginTransaction();
+            hoaDon.setIdHoaDon(id);
+            hoaDon.setTinhTrang(1);
+            session.update(hoaDon);
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+        }
+        return false;
+    }
 }

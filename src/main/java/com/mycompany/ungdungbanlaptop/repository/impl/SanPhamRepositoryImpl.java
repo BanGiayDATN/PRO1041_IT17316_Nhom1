@@ -5,12 +5,15 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -20,6 +23,8 @@ import org.hibernate.query.Query;
  * @author Diệm DZ
  */
 public class SanPhamRepositoryImpl implements SanPhamRepository {
+
+    private Session session = new HibernateUtil().getFACTORY().openSession();
 
     @Override
     public List<SanPham> getAll() {
@@ -122,6 +127,86 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return null;
     }
+
+    @Override
+    public List<SanPham> searchFill(SanPhamSearchRequest request) {
+        List<SanPham> list = new ArrayList<>();
+        Transaction transaction = null;
+        try {
+            transaction = session.beginTransaction();
+            Query query = session.createQuery("""
+                        FROM SanPham sp
+                        WHERE  
+                            (:ten IS NULL 
+                            OR :ten LIKE '' 
+                            OR sp.ten LIKE CONCAT('%',:ten,'%'))
+                        AND
+                            (:ma IS NULL 
+                            OR :ma LIKE '' 
+                            OR sp.ma LIKE CONCAT('%',:ma,'%'))
+                        AND( 
+                            :tenManHinh IS NULL 
+                            OR  :tenManHinh LIKE ''
+                            OR manHinh.ma LIKE CONCAT('%',:tenManHinh,'%')) 
+                        AND
+                            (:tenCpu IS NULL 
+                            OR :tenCpu LIKE '' 
+                            OR cpu.ten LIKE CONCAT('%',:tenCpu,'%'))
+                        AND( 
+                            :tenMau IS NULL 
+                            OR  :tenMau LIKE ''
+                            OR mau.ten LIKE CONCAT('%',:tenMau,'%'))                                        
+                        AND
+                            (:tenHeDieuHanh IS NULL 
+                            OR :tenHeDieuHanh LIKE '' 
+                            OR heDieuHanh.ten LIKE CONCAT('%',:tenHeDieuHanh,'%'))
+                        AND( 
+                            :tenRam IS NULL 
+                            OR  :tenRam LIKE ''
+                            OR ram.ten LIKE CONCAT('%',:tenRam,'%')) 
+                        AND
+                            (:tenChatLieu IS NULL 
+                            OR :tenChatLieu LIKE '' 
+                            OR chatLieu.ten LIKE CONCAT('%',:tenChatLieu,'%'))
+                        AND( 
+                            :tenHang IS NULL 
+                            OR  :tenHang LIKE ''
+                            OR hang.ten LIKE CONCAT('%',:tenHang,'%'))
+                        AND( 
+                            sp.namBH  = :namSX                          
+                            OR  :namSX  = 0 )                      
+                        AND( 
+                            sp.trongLuong  = :trongLuong                          
+                            OR  :trongLuong  = 0 )
+                        AND( 
+                            sp.soLuongTon  = :soLuong                          
+                            OR  :soLuong  = 0 ) 
+                        AND( 
+                             sp.giaBan BETWEEN :startsGiaBan AND :giaBan                       
+                             OR  :giaBan  < 0 ) 
+                        """);
+            query.setParameter("ten", request.getTen());
+            query.setParameter("ma", request.getMa());
+            query.setParameter("tenManHinh", request.getManHinh());
+            query.setParameter("tenCpu", request.getTenCpu());
+            query.setParameter("tenMau", request.getTenMau());
+            query.setParameter("tenHeDieuHanh", request.getTenHeDieuHanh());
+            query.setParameter("tenRam", request.getTenRam());
+            query.setParameter("tenChatLieu", request.getTenChatLieu());
+            query.setParameter("tenHang", request.getTenHang());
+            query.setParameter("namSX", request.getNamSX());
+            query.setParameter("trongLuong", request.getTrongLuong());
+            query.setParameter("soLuong", request.getSoLuong());
+            query.setParameter("startsGiaBan", request.getStartsGiaBan());
+            query.setParameter("giaBan", request.getGiaBan());           
+            list = query.list();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
     @Override
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
@@ -150,17 +235,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return null;
     }
-    public static void main(String[] args) {
-//        SanPham sp = new SanPham(1, "MH3", "MSI", 100);
-//        SanPham add = new SanPhamRepositoryImpl().add(sp);
-//        System.out.println(add);
-//        
-//         SanPham delete = new SanPhamRepositoryImpl().delete(add);
-//        System.out.println(delete);
 
-//        System.out.println(new SanPhamRepositoryImpl().getAll());
-        System.out.println(new SanPhamRepositoryImpl().getByGia(BigDecimal.valueOf(200000), BigDecimal.valueOf(500000)));
-    }
 
     @Override
     public List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp) {
@@ -177,5 +252,25 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-    
+
+
+    @Override
+    public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
+       Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            for(Map.Entry<UUID, SanPham> entry : list.entrySet()){
+//                if (entry.getValue().getStatus() != 0) {
+                    Query query = session.createQuery("UPDATE SanPham SET soLuongTon = :soLuong WHERE id = :id");
+//                            setParameter("soLuong", entry.getValue().getSoLuongTon()).
+//                            setParameter("id", entry.getValue().getIdChiTietSP());
+                    query.executeUpdate();
+//                }
+            }
+            transaction.commit();
+
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
 }

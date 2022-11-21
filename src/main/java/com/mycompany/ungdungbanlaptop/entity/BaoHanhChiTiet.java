@@ -15,7 +15,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Parameter;
@@ -26,6 +28,8 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
+@Setter
+@Getter
 @Table
 @AllArgsConstructor
 @NoArgsConstructor
@@ -53,10 +57,10 @@ public class BaoHanhChiTiet {
     private String trangThai;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDonChiTiet")
+    @JoinColumn(name = "id_hoa_don_chi_tiet")
     private HoaDonChiTiet hoaDonChiTiet;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idBaoHanh")
+    @JoinColumn(name = "id_bao_hanh")
     private BaoHanh baoHanh;
 }

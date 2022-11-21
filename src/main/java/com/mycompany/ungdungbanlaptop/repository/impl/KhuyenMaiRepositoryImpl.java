@@ -4,9 +4,8 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.CPU;
+
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
@@ -20,9 +19,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
+import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
+
+
+
 /**
  *
- * @author Diệm DZ
+ * @author huynhphung
  */
 public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
 
