@@ -11,7 +11,9 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.time.Instant;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -54,18 +56,31 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
     }
 
     @Override
-    public boolean update(KhuyenMai ma) {
+    public KhuyenMai update(KhuyenMai km) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession();) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            session.save(ma);
+            session.update(km);
             transaction.commit();
-            return true;
+
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return false;
+        return km;
+    }
 
+    @Override
+    public KhuyenMai delete(KhuyenMai km) {
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            session.delete(km);
+            transaction.commit();
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return km;
     }
 
     @Override
@@ -73,7 +88,7 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         List<KhuyenMai> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ma like :ma ";
+                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ma like :ma ";
             Query query = session.createQuery(hql);
 
             query.setParameter("ma", "%" + ma + "%");
@@ -91,7 +106,7 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         KhuyenMai km = new KhuyenMai();
         try {
             String query = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ma like :ma";
+                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ma like :ma";
             Query<KhuyenMai> hth = session.createQuery(query);
             hth.setParameter("ma", ma);
             km = hth.uniqueResult();
@@ -101,17 +116,15 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         return km;
     }
 
-   
-
     @Override
-    public List<KhuyenMai> searchNgayBd(String ngayBatDau) {
+    public List<KhuyenMai> searchNgayBd(Long ngayBatDau) {
         List<KhuyenMai> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ngayBatDau like :ngayBatDau ";
+                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ngayBatDau like :ngayBatDau ";
             Query query = session.createQuery(hql);
 
-            query.setParameter("ma", "%" + ngayBatDau + "%");
+            query.setParameter("ngayBatDau", "%" + ngayBatDau + "%");
             list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -120,30 +133,19 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         return null;
     }
 
-    @Override
-    public List<KhuyenMai> searchNgayKt(String ngayKetThuc) {
-        List<KhuyenMai> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ngayKetThuc like :ngayKetThuc ";
-            Query query = session.createQuery(hql);
-
-            query.setParameter("ma", "%" + ngayKetThuc + "%");
-            list = query.getResultList();
-            return list;
-        } catch (Exception e) {
-            e.printStackTrace(System.out);
-        }
-        return null;
-    }
-
-     public static void main(String[] args) {
-//                KhuyenMai khuyenMai = new KhuyenMaiRepositoryImpl().getOne("KM111");
-//                System.out.println(khuyenMai)
-        KhuyenMai km = new KhuyenMai("KM777", 06/11/2022, 07/12/2022, 1, 50, 10);
-        boolean add = new KhuyenMaiRepositoryImpl().add(km);
-        System.out.println(add);
+    public static void main(String[] args) {
+//                KhuyenMai khuyenMai = new KhuyenMaiRepositoryImpl().getOne("KM555");
+//                System.out.println(khuyenMai);
+//        KhuyenMai km = new KhuyenMai("KM777", 06 / 11 / 2022, 07 / 12 / 2022, 1, 50, 10);
+//        boolean add = new KhuyenMaiRepositoryImpl().add(km);
+//        System.out.println(add);
 //        List<KhuyenMai> list = new KhuyenMaiRepositoryImpl().getALl();
 //        System.out.println(list);
+
+//        KhuyenMai km = new KhuyenMaiRepositoryImpl().getOne("KM555");
+        System.out.println(new KhuyenMaiRepositoryImpl().searchNgayBd(Long.valueOf("01/01/2022")));
+//        System.out.println(km);
+// SEARCH NGAY
     }
+
 }

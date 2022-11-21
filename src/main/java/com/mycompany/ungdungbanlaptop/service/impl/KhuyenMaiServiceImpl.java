@@ -64,8 +64,8 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
 
     @Override
     public String update(KhuyenMai ma) {
-        boolean up = ql.update(ma);
-        if (up) {
+        KhuyenMai up = ql.update(ma);
+        if (up != null) {
             return "Sua thanh cong";
         }
         return "Sua that bai";
@@ -73,13 +73,20 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public List<KhuyenMai> searchNgayBd(List<KhuyenMai> list, String km) {
+    public List<KhuyenMai> searchNgayBd(List<KhuyenMai> list, Long km) {
         return ql.searchNgayBd(km);
     }
 
-    @Override
-    public List<KhuyenMai> searchNgayKt(List<KhuyenMai> list, String km) {
-        return ql.searchNgayKt(km);
-    }
 
+    @Override
+    public String delete(KhuyenMai km) {
+        KhuyenMai getMa = ql.getOne(km.getMa());
+        KhuyenMai delete = ql.delete(getMa);
+
+        if (delete != null) {
+            return "Xóa thành công";
+        }
+        return "Xóa thất bại";
+
+    }
 }

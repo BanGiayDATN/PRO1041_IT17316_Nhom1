@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
+import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
@@ -21,13 +22,13 @@ public interface KhuyenMaiRepository {
 
     boolean add(KhuyenMai km);
 
-    boolean update(KhuyenMai ma);
+    KhuyenMai update(KhuyenMai ma);
+    
+    KhuyenMai delete(KhuyenMai km);
 
     List<KhuyenMai> search(String km);
 
-    List<KhuyenMai> searchNgayBd(String km);
-
-    List<KhuyenMai> searchNgayKt(String km);
+    List<KhuyenMai> searchNgayBd(Long km);
 
     KhuyenMai getOne(String ma);
 
