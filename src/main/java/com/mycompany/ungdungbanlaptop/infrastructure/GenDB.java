@@ -12,6 +12,7 @@ import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
@@ -59,6 +60,17 @@ public class GenDB {
         // tạo giao dịch tương ứng 
         Transaction trans = session.beginTransaction();
 
+        Imei imei = new Imei();
+        imei.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        session.save(imei);
+        
+        Imei imei1 = new Imei();
+        imei1.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        session.save(imei1);
+        
+        Imei imei2 = new Imei();
+        imei2.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        session.save(imei2);
         
         Mau mauSac1 = new Mau();
         mauSac1.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
