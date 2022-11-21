@@ -4,19 +4,15 @@
  */
 package com.mycompany.ungdungbanlaptop.entity;
 
-import java.io.Serializable;
-import java.math.BigDecimal;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -26,9 +22,10 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table(name= "hoa_don_chi_tiet")
-@ToString
-public class HoaDonChiTiet implements Serializable {
+@Table(name = "gpm")
+@AllArgsConstructor
+@NoArgsConstructor
+public class Mau {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -43,27 +40,17 @@ public class HoaDonChiTiet implements Serializable {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idHoaDonChiTiet;
+    private UUID idMau;
 
-    @Column(name = "so_luong")
-    private int soLuong;
+    @Column(name = "ma")
+    private String ma;
 
-    @Column(name = "don_gia")
-    private BigDecimal donGia;
+    @Column(name = "ten_mau",columnDefinition = "nvarchar(Max)")
+    private String ten;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_hoa_don")
-    private HoaDon hoaDon;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_san_pham")
-    private SanPham sanPham;
+    public Mau(UUID idMau) {
+        this.idMau = idMau;
+    }
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_bao_hanh")
-    private BaoHanh baoHanh;
-    @JoinColumn(name = "idImei")
-    private Imei imei;
-
-
+    
 }

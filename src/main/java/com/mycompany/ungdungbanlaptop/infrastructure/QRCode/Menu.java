@@ -20,6 +20,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
 
     private WebcamPanel panel = null;
     private Webcam webcam = null;
+    private static String resultField = null;
 
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
@@ -146,6 +147,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
 
             if (result != null) {
                 result_field.setText(result.getText());
+                resultField = result.getText();
             }
         } while (true);
     }
@@ -156,4 +158,9 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
         t.setDaemon(true);
         return t;
     }
+    
+    public static String getResult(){
+        return resultField;
+    }
+    
 }

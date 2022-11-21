@@ -83,6 +83,8 @@ public class SanPham implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_gpm")
     private GPM gpm;
+    @JoinColumn(name = "idMau")
+    private Mau mau;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_he_dieu_hanh")

@@ -7,10 +7,14 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import java.util.List;
 
+
+
+
 /**
  *
  * @author vinhnv
  */
+
 public interface ManHinhRepository {
 
     List<ManHinh> getAll();
@@ -24,4 +28,5 @@ public interface ManHinhRepository {
     ManHinh getOne(String maMh);
 
     ManHinh getByTen(String ten);
+
 }

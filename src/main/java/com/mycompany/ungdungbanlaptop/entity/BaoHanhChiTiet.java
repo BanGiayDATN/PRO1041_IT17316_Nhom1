@@ -7,13 +7,17 @@ package com.mycompany.ungdungbanlaptop.entity;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Parameter;
 
 /**
@@ -22,10 +26,10 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table(name = "gpm")
+@Table
 @AllArgsConstructor
 @NoArgsConstructor
-public class GPM {
+public class BaoHanhChiTiet {
 
     @Id
     @GeneratedValue(generator = "UUID")
@@ -40,17 +44,19 @@ public class GPM {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idGPU;
+    private UUID idHaoHanhChiTiet;
 
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_gpm",columnDefinition = "nvarchar(Max)")
-    private String ten;
-
-    public GPM(UUID idGPU) {
-        this.idGPU = idGPU;
-    }
+    @Column(name = "trang_thai")
+    private String trangThai;
     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idHoaDonChiTiet")
+    private HoaDonChiTiet hoaDonChiTiet;
     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "idBaoHanh")
+    private BaoHanh baoHanh;
 }

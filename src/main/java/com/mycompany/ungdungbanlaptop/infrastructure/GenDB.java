@@ -15,6 +15,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
@@ -58,6 +59,32 @@ public class GenDB {
         // tạo giao dịch tương ứng 
         Transaction trans = session.beginTransaction();
 
+        
+        Mau mauSac1 = new Mau();
+        mauSac1.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac1.setTen("Red");
+        session.save(mauSac1);
+
+        Mau mauSac2 = new Mau();
+        mauSac2.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac2.setTen("Yellow");
+        session.save(mauSac2);
+
+        Mau mauSac3 = new Mau();
+        mauSac3.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac3.setTen("Blue");
+        session.save(mauSac3);
+
+        Mau mauSac4 = new Mau();
+        mauSac4.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac4.setTen("Black");
+        session.save(mauSac4);
+
+        Mau mauSac5 = new Mau();
+        mauSac5.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac5.setTen("White");
+        session.save(mauSac5);
+        
         Ram ram = new Ram();
         ram.setMa(new TaoChuoiNgauNhien().getMkRanMa("Ram", 4));
         ram.setTen("Static RAM");
@@ -159,7 +186,6 @@ public class GenDB {
         manHinh3.setTanSo("144 Hz");
         session.save(manHinh3);
 
-        // sản phẩm cáp sạc
         HeDieuHanh dieuHanh = new HeDieuHanh();
         dieuHanh.setTen(" Windows XP");
         dieuHanh.setMa(new TaoChuoiNgauNhien().getMkRanMa("HDH", 3));
@@ -184,41 +210,34 @@ public class GenDB {
         dieuHanh3.setHeDieuHanh(EnumHeDieuHanh.LINUX);
         session.save(dieuHanh3);
 
-        // sản phẩm bàn phím
         Hang hang = new Hang();
         hang.setTen("Asus");
         hang.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang);
 
         Hang hang1 = new Hang();
         hang1.setTen("Dell");
         hang1.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang1);
 
         Hang hang2 = new Hang();
         hang2.setTen("MSI");
         hang2.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang2);
 
         Hang hang3 = new Hang();
         hang3.setTen("Lenovo");
         hang3.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang3);
 
         Hang hang4 = new Hang();
         hang4.setTen("Razer");
         hang4.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang4);
 
         Hang hang5 = new Hang();
         hang5.setTen("Samsung");
         hang5.setMa(new TaoChuoiNgauNhien().getMkRanMa("H", 3));
-//        sanPham8.setIdSanPham(sanPham.getIdSanPham());
         session.save(hang5);
 
         KhuyenMai khuyenMai = new KhuyenMai();
@@ -321,7 +340,7 @@ public class GenDB {
                 + "chiếc laptop gaming rất nổi bật trong tầm giá rẻ.");
         sanPham.setManHinh(manHinh);
         sanPham.setCpu(cpu);
-        sanPham.setGpm(null);
+        sanPham.setMau(mauSac1);
         sanPham.setHeDieuHanh(dieuHanh);
         sanPham.setRam(ram);
         sanPham.setKhuyenMai(khuyenMai);
@@ -345,7 +364,7 @@ public class GenDB {
         sanPham1.setManHinh(manHinh);
 
         sanPham1.setCpu(cpu1);
-        sanPham1.setGpm(null);
+        sanPham1.setMau(mauSac2);
         sanPham1.setHeDieuHanh(dieuHanh);
         sanPham1.setRam(ram2);
         sanPham1.setKhuyenMai(khuyenMai2);
@@ -368,7 +387,7 @@ public class GenDB {
                 + "làm mát mang tính cách mạng.");
         sanPham2.setManHinh(manHinh3);
         sanPham2.setCpu(cpu3);
-        sanPham2.setGpm(null);
+        sanPham2.setMau(mauSac3);
         sanPham2.setHeDieuHanh(dieuHanh2);
         sanPham2.setRam(ram3);
         sanPham2.setKhuyenMai(khuyenMai1);
@@ -391,7 +410,7 @@ public class GenDB {
                 + "chiếc laptop gaming rất nổi bật trong tầm giá rẻ.");
         sanPham3.setManHinh(manHinh);
         sanPham3.setCpu(cpu);
-        sanPham3.setGpm(null);
+        sanPham3.setMau(mauSac4);
         sanPham3.setHeDieuHanh(dieuHanh);
         sanPham3.setRam(ram);
         sanPham3.setKhuyenMai(khuyenMai);
@@ -460,17 +479,15 @@ public class GenDB {
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         hdct.setHoaDon(hd);
         hdct.setSoLuong(1);
-        hdct.setSanPham(sanPham3);
+        hdct.setImei(null);
         hdct.setDonGia(new BigDecimal(240000.0));
-        hdct.setBaoHanh(baoHanh);
         session.save(hdct);
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
         hdct.setSoLuong(1);
-        hdct.setSanPham(sanPham1);
+        hdct.setImei(null);
         hdct.setDonGia(new BigDecimal(184900.0));
-        hdct.setBaoHanh(baoHanh);
         session.save(hdct1);
       
         // db generator : gen bảng tự động

@@ -5,13 +5,18 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
+
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
  * @author vinhnv
  */
+
+
 public interface NhanVienService {
 
     int addNhanVien(NhanVienResquest response);
@@ -24,9 +29,12 @@ public interface NhanVienService {
 
     List<NhanVien> getAll();
 
-    List<NhanVien> getSearchByName(String hoTen);
+    List<NhanVien> searchByEmail(List<NhanVien> list, String email);
 
     NhanVien getByTen(String ten);
 
+    List<NhanVien> getSearchByName(String hoTen);
+
     NhanVien getNhanVienByMa(String ma);
+
 }
