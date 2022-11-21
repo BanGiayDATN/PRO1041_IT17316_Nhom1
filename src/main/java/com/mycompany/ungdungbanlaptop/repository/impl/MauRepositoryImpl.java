@@ -21,7 +21,7 @@ public class MauRepositoryImpl implements MauRepository {
     public List<Mau> getAll() {
 
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
-            Query query = session.createQuery("FROM GPM");
+            Query query = session.createQuery("FROM Mau");
             List<Mau> list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -63,9 +63,9 @@ public class MauRepositoryImpl implements MauRepository {
         Transaction transaction = null;
         Mau mau = new Mau();
         try {
-            String query = "SELECT gpm "
-                    + "FROM GPM gpm "
-                    + "WHERE gpm.ma = :ma ";
+            String query = "SELECT mau "
+                    + "FROM Mau mau "
+                    + "WHERE mau.ma = :ma ";
             Query<Mau> hth = session.createQuery(query);
             hth.setParameter("ma", ma);
             mau = hth.uniqueResult();
@@ -80,9 +80,9 @@ public class MauRepositoryImpl implements MauRepository {
         Transaction transaction = null;
         Mau mau = new Mau();
         try {
-            String query = "SELECT gpm "
-                    + "FROM GPM gpm "
-                    + "WHERE gpm.ten = :ten ";
+            String query = "SELECT mau "
+                    + "FROM Mau mau "
+                    + "WHERE mau.ten = :ten ";
             Query<Mau> hth = session.createQuery(query);
             hth.setParameter("ten", ten);
             mau = hth.uniqueResult();
@@ -91,5 +91,5 @@ public class MauRepositoryImpl implements MauRepository {
         }
         return mau;
     }
-
+    
 }

@@ -5,7 +5,12 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+<<<<<<< HEAD
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
+=======
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import java.math.BigDecimal;
+>>>>>>> develop
 import java.util.List;
 
 /**
@@ -28,5 +33,13 @@ public interface SanPhamService {
 
     List<SanPham> searchByTen(List<SanPham> list, String tenSp);
     
+<<<<<<< HEAD
     List<SanPham> searchFill(SanPhamSearchRequest request);
+=======
+    List<SanPhamBanHangViewModel> getSanPhamBanHang();
+    
+    List<SanPhamBanHangViewModel> getByGia(BigDecimal min ,BigDecimal max);
+    
+    List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list,String tenSp);
+>>>>>>> develop
 }

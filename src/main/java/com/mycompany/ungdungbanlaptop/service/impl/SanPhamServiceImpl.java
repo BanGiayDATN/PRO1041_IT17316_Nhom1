@@ -5,10 +5,15 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+<<<<<<< HEAD
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
+=======
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+>>>>>>> develop
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
+import java.math.BigDecimal;
 import java.util.List;
 
 /**
@@ -26,6 +31,22 @@ public class SanPhamServiceImpl implements SanPhamService {
 
     @Override
     public String add(SanPham sanPham) {
+//        String ma = sanPhamRepository.getOne(sanPham.getMa()).getMa();
+//        if(ma != null){
+//            return "Mã đã tồn tại";
+//        }
+        if(sanPham.getMa().isEmpty()){
+            return "Vui lòng nhập mã";
+        }
+        if(sanPham.getMoTa().isEmpty()){
+            return "Vui lòng nhập mô tả";
+        }
+        if(sanPham.getTen().isEmpty()){
+            return "Vui lòng nhập tên";
+        }
+
+        
+        
         SanPham add = sanPhamRepository.add(sanPham);
         if (add != null) {
             return "Thêm thành công";
@@ -70,8 +91,23 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
+<<<<<<< HEAD
     public List<SanPham> searchFill(SanPhamSearchRequest request) {
         return sanPhamRepository.searchFill(request);
+=======
+    public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
+        return sanPhamRepository.getSanPhamBanHang();
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max) {
+        return sanPhamRepository.getByGia(min, max);
+    }
+
+    @Override
+    public List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list, String tenSp) {
+        return sanPhamRepository.searchByTenBanHang(tenSp);
+>>>>>>> develop
     }
 
 }

@@ -5,10 +5,12 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhachHangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -63,4 +65,8 @@ public class KhachHangServiceImpl implements KhachHangService {
         return khachHangRepository.getByTen(ten);
     }
 
+    @Override
+    public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma ) {
+        return khachHangRepository.getLichSuMuaHang(ma);
+    }
 }

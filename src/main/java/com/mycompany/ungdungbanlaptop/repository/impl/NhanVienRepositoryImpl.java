@@ -8,8 +8,10 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -19,12 +21,12 @@ import org.hibernate.query.Query;
  */
 public class NhanVienRepositoryImpl implements NhanVienRepository {
 
-    private Session session = HibernateUtil.getFACTORY().openSession();
+//    private Session session = HibernateUtil.getFACTORY().openSession();
 
     @Override
     public List<NhanVien> getAll() {
         List<NhanVien> list = new ArrayList<>();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             Query query = session.createQuery("FROM NhanVien");
             list = query.getResultList();
             return list;
@@ -38,7 +40,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien addNhanVien(NhanVien nhanVien) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             transaction = session.beginTransaction();
             session.save(nhanVien);
             transaction.commit();
@@ -51,7 +53,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien update(NhanVien nv) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             transaction = session.beginTransaction();
             session.update(nv);
             transaction.commit();
@@ -64,7 +66,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien delete(NhanVien nv) {
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             transaction = session.beginTransaction();
             session.delete(nv);
             transaction.commit();
@@ -77,7 +79,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien getNhanVienByEmail(String email) {
         NhanVien nv = new NhanVien();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.email = :email ";
@@ -93,7 +95,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien getNhanVienByEmailAndPass(String email, String password) {
         NhanVien nv = new NhanVien();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.email = :email AND nv.password = :password";
@@ -110,7 +112,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien getNhanVienByEmailAndSDT(String email, String sdt) {
         NhanVien nv = new NhanVien();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.email = :email AND nv.sdt = :sdt ";
@@ -127,7 +129,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien getByTen(String ten) {
         NhanVien nv = new NhanVien();
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.hoTen = :hoTen ";
@@ -139,12 +141,26 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         }
         return nv;
     }
+    @Override
+    public List<NhanVien> searchByEmail(String email) {
+        List<NhanVien> list = new ArrayList<>();
+        try  (Session session = HibernateUtil.getFACTORY().openSession()){
+            String hql ="SELECT nv FROM NhanVien nv WHERE nv.email like :email";
+            Query<NhanVien> query = session.createQuery(hql);
+            query.setParameter("email","%"+ email+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
 
     @Override
     public List<NhanVien> getSearchByName(String hoTen) {
         List<NhanVien> list = new ArrayList<>();
         Transaction transaction = null;
-        try {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
             transaction = session.beginTransaction();
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
@@ -160,7 +176,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     @Override
     public NhanVien getNhanVienByMa(String ma) {
         NhanVien nv = new NhanVien();
-        try {
+        try(Session session = HibernateUtil.getFACTORY().openSession()) {
             String query = "SELECT nv "
                     + "FROM NhanVien nv "
                     + "WHERE nv.ma = :ma ";
@@ -173,7 +189,12 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         return nv;
     }
     public static void main(String[] args) {
+
         NhanVien nhanVien = new NhanVienRepositoryImpl().getNhanVienByMa("NV215");
         System.out.println(nhanVien);
+
     }
+
+   
+    
 }

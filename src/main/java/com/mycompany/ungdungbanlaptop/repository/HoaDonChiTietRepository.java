@@ -11,6 +11,7 @@ import java.util.List;
  *
  * @author vinhnv
  */
+
 public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTiet> getAll();
@@ -20,4 +21,5 @@ public interface HoaDonChiTietRepository {
     HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet);
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
+
 }

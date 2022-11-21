@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
+import com.mycompany.ungdungbanlaptop.entity.GPM;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
@@ -17,7 +18,6 @@ import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
-import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
@@ -58,12 +58,12 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DuAn1;encrypt=true;trustServerCertificate=true");
         properties.put(Environment.USER, "sa"); // nhớ thay tài khoản SQL
-        properties.put(Environment.PASS, "123"); // nhớ thay mật khẩu SQL
+        properties.put(Environment.PASS, "diem15052003"); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-//        properties.put(Environment.HBM2DDL_AUTO, "create");
+//        properties.put(Environment.HBM2DDL_AUTO, "cretae");
         return properties;
     }
 
@@ -77,7 +77,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(Imei.class);
         conf.addAnnotatedClass(ManHinh.class);
-        conf.addAnnotatedClass(Mau.class);
+        conf.addAnnotatedClass(GPM.class);
         conf.addAnnotatedClass(CPU.class);
         conf.addAnnotatedClass(Hang.class);
         conf.addAnnotatedClass(ChucVu.class);
