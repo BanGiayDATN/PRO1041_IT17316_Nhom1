@@ -16,7 +16,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
@@ -26,7 +28,9 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Setter
+@Getter
+@Table(name="nhan_vien")
 @AllArgsConstructor
 @NoArgsConstructor
 public class NhanVien implements Serializable {
@@ -74,7 +78,7 @@ public class NhanVien implements Serializable {
     private int trangThai;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idChucVu")
+    @JoinColumn(name = "id_chuc_vu")
     private ChucVu chucVu;
 
     public NhanVien(UUID idNhanVien) {

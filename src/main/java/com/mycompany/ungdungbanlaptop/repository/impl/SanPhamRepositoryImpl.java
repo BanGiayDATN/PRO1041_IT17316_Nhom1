@@ -12,6 +12,8 @@ import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -245,6 +247,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
+<<<<<<< HEAD
     public static void main(String[] args) {
         SanPhamSearchRequest request = new SanPhamSearchRequest();
         request.setManHinh("MH1797");
@@ -254,4 +257,27 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     }
            
     
+=======
+
+
+    @Override
+    public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
+       Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            for(Map.Entry<UUID, SanPham> entry : list.entrySet()){
+//                if (entry.getValue().getStatus() != 0) {
+                    Query query = session.createQuery("UPDATE SanPham SET soLuongTon = :soLuong WHERE id = :id");
+//                            setParameter("soLuong", entry.getValue().getSoLuongTon()).
+//                            setParameter("id", entry.getValue().getIdChiTietSP());
+                    query.executeUpdate();
+//                }
+            }
+            transaction.commit();
+
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+    }
+>>>>>>> develop
 }

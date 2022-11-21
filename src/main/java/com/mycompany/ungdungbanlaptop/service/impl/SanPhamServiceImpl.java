@@ -12,6 +12,8 @@ import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -104,6 +106,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     public List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list, String tenSp) {
         return sanPhamRepository.searchByTenBanHang(tenSp);
 
+    }
+
+    @Override
+    public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
+        sanPhamRepository.updateSoLuongSanPham(list);
     }
 
 }

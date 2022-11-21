@@ -14,6 +14,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
@@ -24,7 +26,9 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Setter
+@Getter
+@Table(name="doi_tra")
 @ToString
 public class DoiTRa {
     
@@ -53,15 +57,15 @@ public class DoiTRa {
     private String moTa;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idKhachHang")
+    @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDonChiTiet")
+    @JoinColumn(name = "id_hoa_don_chi_tiet")
     private HoaDonChiTiet hoaDonChiTiet;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idNhanVien")
+    @JoinColumn(name = "id_nhan_vien")
     private NhanVien nhanVien;
     
     
