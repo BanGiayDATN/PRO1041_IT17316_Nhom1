@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class SanPhamSearchRequest {
 
-    private String ma;
     private String ten;
     private String manHinh;
     private String tenCpu;
@@ -31,8 +30,6 @@ public class SanPhamSearchRequest {
     private int namSX;
     private float trongLuong;
     private int soLuong;
-    private BigDecimal giaNhap;
-    private BigDecimal startsGiaNhap;
     private BigDecimal startsGiaBan;
     private BigDecimal giaBan;
 }
