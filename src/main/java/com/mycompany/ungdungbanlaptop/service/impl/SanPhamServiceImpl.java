@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
@@ -66,6 +67,11 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public List<SanPham> searchByTen(List<SanPham> list, String tenSp) {
         return sanPhamRepository.searchByTen(tenSp);
+    }
+
+    @Override
+    public List<SanPham> searchFill(SanPhamSearchRequest request) {
+        return sanPhamRepository.searchFill(request);
     }
 
 }
