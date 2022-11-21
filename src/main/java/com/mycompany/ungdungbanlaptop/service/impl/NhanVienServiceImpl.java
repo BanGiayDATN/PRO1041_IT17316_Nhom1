@@ -6,16 +6,24 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+
+import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
+
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
+
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ChucVuService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
+
+import java.util.UUID;
+
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
+
 
 /**
  *
@@ -27,7 +35,9 @@ public class NhanVienServiceImpl implements NhanVienService {
     private NhanVienRepository nhanVienRepository = new NhanVienRepositoryImpl();
     private ChucVuService chucVuService = new ChucVuServiceImpl();
 
-    @Override
+
+ 
+
     public int addNhanVien(NhanVienResquest response) {
         String ma = "NV" + new TaoChuoiNgauNhien().getMkRanDum(5);
         String hoTen = response.getHoTen().trim();
@@ -41,6 +51,7 @@ public class NhanVienServiceImpl implements NhanVienService {
         if (ma.isBlank() || hoTen.isBlank() || dateStr == null || sdt.isBlank() || email.isBlank()
                 || password.isBlank() || diaChi.isBlank() || gioiTinh.isBlank()) {
             return 1;
+
         }
         if (!EmailValidator.getInstance().isValid(email)) {
             return 2;
@@ -73,7 +84,37 @@ public class NhanVienServiceImpl implements NhanVienService {
 
     ;
 
-    @Override
+//    @Override
+//
+//    public String updateNhanVien(NhanVien nv) {
+//        // Muốn check gì thì check ở đây
+//           if(nv.getMa().isEmpty()){
+//            return "Vui lòng nhập mã";
+//        }
+//        if(nv.getDiaChi().isEmpty()){
+//            return "Vui lòng nhập địa chỉ";
+//        }
+//        if(nv.getEmail().isEmpty()){
+//            return "Vui lòng nhập email";
+//        }
+//        if(nv.getHoTen().isEmpty()){
+//            return "Vui lòng nhập họ tên";
+//        }
+//        if(nv.getPassword().isBlank()){
+//            return "Vui lòng nhập mật khẩu";
+//        }
+//       
+//        if(nv.getSdt().isEmpty()){
+//            return "Vui lòng nhập số điện thoại";
+//        }
+//        NhanVien add = nhanVienRepository.update(nv);
+//        if (add == null) {
+//            return " Sửa thất bại";
+//        }else{
+//            
+//        return "Sửa thành công ";
+//        }
+
     public int updateNhanVien(NhanVienResquest response) {
         String ma = response.getMa().trim();
         String hoTen = response.getHoTen().trim();
@@ -113,16 +154,24 @@ public class NhanVienServiceImpl implements NhanVienService {
         nhanVien.setChucVu(chucVu); // chua them chuc vu
         nhanVienRepository.update(nhanVien);
         return 0;
+
     }
 
     @Override
     public String deleteNhanVien(NhanVien nv) {
+
+
         // Muốn check gì thì check ở đây
+
         NhanVien add = nhanVienRepository.delete(nv);
         if (add == null) {
-            return " Delete thất bại";
+
+            return " Xóa thất bại";
         }
-        return "Delete thành công ";
+        return "Xóa thành công ";
+
+        
+
     }
 
     @Override
@@ -135,10 +184,19 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getAll();
     }
 
-    @Override
     public NhanVien getByTen(String ten) {
         return nhanVienRepository.getByTen(ten);
     }
+
+
+    @Override
+    public List<NhanVien> searchByEmail(List<NhanVien> list, String email) {
+        return nhanVienRepository.searchByEmail(email);
+    }
+
+    
+
+
 
     public static String matKhauMD5(String matKhau) {
         String md5Hex = DigestUtils.md5Hex(matKhau).toUpperCase();

@@ -5,8 +5,10 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
@@ -120,7 +122,34 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return null;
     }
-
+    @Override
+    public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
+        List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+     @Override
+    public List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max) {
+        List<SanPhamBanHangViewModel> list ;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.giaBan >= :min AND sp.giaBan <= :max";
+            Query query = session.createQuery(hql);
+            query.setParameter("min", min);
+            query.setParameter("max", max);
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
     public static void main(String[] args) {
 //        SanPham sp = new SanPham(1, "MH3", "MSI", 100);
 //        SanPham add = new SanPhamRepositoryImpl().add(sp);
@@ -130,6 +159,23 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
 //        System.out.println(delete);
 
 //        System.out.println(new SanPhamRepositoryImpl().getAll());
-        System.out.println(new SanPhamRepositoryImpl().getOne("SP3"));
+        System.out.println(new SanPhamRepositoryImpl().getByGia(BigDecimal.valueOf(200000), BigDecimal.valueOf(500000)));
     }
+
+    @Override
+    public List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp) {
+         List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.ten like :ten";
+            Query query = session.createQuery(hql);
+            query.setParameter("ten","%"+ tenSp +"%");
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    
 }

@@ -25,12 +25,25 @@ public class ManHinhServiceImpl implements ManHinhService {
 
     @Override
     public String add(ManHinh mh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        ManHinh add = hinhRepository.add(mh);
+        if(mh.getMa().isEmpty()){
+            return "Vui lòng nhập mã";
+        }
+        if(add != null){
+            return "Thêm thành công";
+        }else{
+            return "Thêm thất bại";
+        }
     }
 
     @Override
     public String update(ManHinh mh) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+         ManHinh update = hinhRepository.update(mh);
+        if(update != null){
+            return "Sửa thành công";
+        }else{
+            return "Sửa thất bại";
+        }
     }
 
     @Override

@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.application;
 
 import com.mycompany.ungdungbanlaptop.view.ViewMenuKhachHang;
 import com.mycompany.ungdungbanlaptop.view.viewlogin.login.ViewLogin;
+import javax.swing.JLabel;
 
 /**
  *
@@ -16,4 +17,5 @@ public class Main {
     public static void main(String[] args) {
         new ViewLogin().setVisible(true);
     }
+    public JLabel jLabel5;
 }
