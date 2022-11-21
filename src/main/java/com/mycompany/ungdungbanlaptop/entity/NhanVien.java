@@ -26,7 +26,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name="nhan_vien")
 @AllArgsConstructor
 @NoArgsConstructor
 public class NhanVien implements Serializable {
@@ -74,7 +74,7 @@ public class NhanVien implements Serializable {
     private int trangThai;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idChucVu")
+    @JoinColumn(name = "id_chuc_vu")
     private ChucVu chucVu;
 
     public NhanVien(UUID idNhanVien) {

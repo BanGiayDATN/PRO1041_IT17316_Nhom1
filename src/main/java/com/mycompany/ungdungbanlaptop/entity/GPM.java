@@ -22,7 +22,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name = "gpm")
 @AllArgsConstructor
 @NoArgsConstructor
 public class GPM {

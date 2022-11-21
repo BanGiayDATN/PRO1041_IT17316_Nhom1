@@ -24,7 +24,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name="he_dieu_hanh")
 @AllArgsConstructor
 @NoArgsConstructor
 public class HeDieuHanh {

@@ -26,7 +26,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name= "hoa_don_chi_tiet")
 @ToString
 public class HoaDonChiTiet implements Serializable {
 
@@ -52,15 +52,15 @@ public class HoaDonChiTiet implements Serializable {
     private BigDecimal donGia;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idHoaDon")
+    @JoinColumn(name = "id_hoa_don")
     private HoaDon hoaDon;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idSanPham")
+    @JoinColumn(name = "id_san_pham")
     private SanPham sanPham;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idBaoHanh")
+    @JoinColumn(name = "id_bao_hanh")
     private BaoHanh baoHanh;
 
 }

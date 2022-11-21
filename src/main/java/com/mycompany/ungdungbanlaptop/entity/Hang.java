@@ -22,7 +22,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name="hang")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hang {

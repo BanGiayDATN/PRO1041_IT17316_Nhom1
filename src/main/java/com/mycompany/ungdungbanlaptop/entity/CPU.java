@@ -19,7 +19,7 @@ import org.hibernate.annotations.Parameter;
 
 @Entity
 @Data
-@Table
+@Table(name="cpu")
 @AllArgsConstructor
 @NoArgsConstructor
 public class CPU {

@@ -23,7 +23,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name= "chuc_vu")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChucVu implements Serializable {

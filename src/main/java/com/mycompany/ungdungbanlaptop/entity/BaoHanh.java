@@ -24,7 +24,7 @@ import org.hibernate.annotations.Parameter;
  */
 @Entity
 @Data
-@Table
+@Table(name="bao_hanh")
 @ToString
 public class BaoHanh {
 
@@ -53,10 +53,10 @@ public class BaoHanh {
     private String moTa;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idKhachHang")
+    @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "idNhanVien")
+    @JoinColumn(name = "id_nhan_vien")
     private NhanVien nhanVien;
 }
