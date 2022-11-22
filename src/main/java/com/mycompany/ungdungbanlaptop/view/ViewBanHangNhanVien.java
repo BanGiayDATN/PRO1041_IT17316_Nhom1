@@ -338,10 +338,10 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbPhanLoaiActionPerformed
 
     private void tblSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblSanPhamMouseClicked
-       String soLuong = JOptionPane.showInputDialog("Nhập số lượng", 0);
-
         int row = tblSanPham.getSelectedRow();
-        UUID idSanPham = UUID.fromString(tblSanPham.getModel().getValueAt(row, 0).toString());
+        int soLuong = soLuongSanPhamMua(row);
+        if(soLuong != 0){
+            UUID idSanPham = UUID.fromString(tblSanPham.getModel().getValueAt(row, 0).toString());
 //        UUID idHoaDon = hoaDon.getIdHoaDon();
         GioHangViewModel ghvm = new GioHangViewModel();
         ghvm.setMa(tblSanPham.getValueAt(row, 1).toString());
@@ -352,8 +352,28 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 //        ghvm.setIdHoaDon(idHoaDon);
         list.put(idSanPham,ghvm);
         loadtableGioHang(list);
+        }
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
+    private int soLuongSanPhamMua(int index) {
+        int soLuong = Integer.parseInt(tblSanPham.getModel().getValueAt(index, 6).toString());
+        int number = 0;
+        try {
+            number = Integer.parseInt(JOptionPane.showInputDialog("Nhập số lượng", 0));
+            if (number < 0) {
+                JOptionPane.showMessageDialog(this, "so luong mua phai > 0 ");
+                return 0;
+            }
+            if (number > soLuong) {
+                JOptionPane.showMessageDialog(this, "so luong mua phai > so luong con lai ");
+                return 0;
+            }
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "vui long nhap so");
+            return 0;
+        }
+        return number;
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> cbbPhanLoai;
