@@ -247,7 +247,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-<<<<<<< HEAD
     public static void main(String[] args) {
         SanPhamSearchRequest request = new SanPhamSearchRequest();
         request.setManHinh("MH1797");
@@ -257,7 +256,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     }
            
     
-=======
 
 
     @Override
@@ -279,5 +277,4 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             transaction.rollback();
         }
     }
->>>>>>> develop
 }
