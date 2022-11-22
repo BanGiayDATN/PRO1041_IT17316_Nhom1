@@ -139,11 +139,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
                         WHERE  
                             (:ten IS NULL 
                             OR :ten LIKE '' 
-                            OR sp.ten LIKE CONCAT('%',:ten,'%'))
-                        AND
-                            (:ma IS NULL 
-                            OR :ma LIKE '' 
-                            OR sp.ma LIKE CONCAT('%',:ma,'%'))
+                            OR sp.ten LIKE CONCAT('%',:ten,'%'))                       
                         AND( 
                             :tenManHinh IS NULL 
                             OR  :tenManHinh LIKE ''
@@ -183,10 +179,9 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
                             OR  :soLuong  = 0 ) 
                         AND( 
                              sp.giaBan BETWEEN :startsGiaBan AND :giaBan                       
-                             OR  :giaBan  < 0 ) 
+                             OR  :giaBan  IS NULL ) 
                         """);
             query.setParameter("ten", request.getTen());
-            query.setParameter("ma", request.getMa());
             query.setParameter("tenManHinh", request.getManHinh());
             query.setParameter("tenCpu", request.getTenCpu());
             query.setParameter("tenMau", request.getTenMau());
@@ -252,6 +247,15 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
+    public static void main(String[] args) {
+        SanPhamSearchRequest request = new SanPhamSearchRequest();
+        request.setManHinh("MH1797");
+        request.setTrongLuong((float) 2.2);
+        List<SanPham> list = new SanPhamRepositoryImpl().searchFill(request);
+        list.forEach(a -> System.out.println(a));
+    }
+           
+    
 
 
     @Override
