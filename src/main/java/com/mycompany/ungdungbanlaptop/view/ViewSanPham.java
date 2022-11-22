@@ -1007,8 +1007,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             startGiaBan = new BigDecimal(400000);
             endGiaBan = new BigDecimal(500000000);
         }
-        SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam,
-                tenChatLieu, tenHang, namSX, trongLuong, soLuong, startGiaBan, endGiaBan);
+        SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam,tenChatLieu, tenHang, namSX, trongLuong, soLuong, startGiaBan, endGiaBan);
         List<SanPham> listSearch = sanPhamService.searchFill(request);
         showData(listSearch);
 

@@ -31,7 +31,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewBanHang extends javax.swing.JPanel {
 
-    private DefaultTableModel dtm1 = new DefaultTableModel();
+
     private DefaultTableModel dtm2 = new DefaultTableModel();
     private DefaultTableModel dtm3 = new DefaultTableModel();
     private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
@@ -48,9 +48,6 @@ public class ViewBanHang extends javax.swing.JPanel {
     public ViewBanHang(NhanVien nhanVien) {
         initComponents();
         this.nhanVien = nhanVien;
-        jTableHoaDon.setModel(dtm1);
-        String[] hd = {"Mã HĐ"};
-        dtm1.setColumnIdentifiers(hd);
 
         String[] gh = {"STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá", "Thành tiền"};
         dtm2.setColumnIdentifiers(gh);
@@ -140,8 +137,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         txtTimKiem = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         cbbPhanLoai = new javax.swing.JComboBox<>();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTableHoaDon = new javax.swing.JTable();
 
         setPreferredSize(new java.awt.Dimension(1100, 683));
 
@@ -465,21 +460,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
         });
 
-        jTableHoaDon.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null},
-                {null},
-                {null},
-                {null}
-            },
-            new String [] {
-                "Hóa đơn"
-            }
-        ));
-        jTableHoaDon.setColumnSelectionAllowed(true);
-        jScrollPane3.setViewportView(jTableHoaDon);
-        jTableHoaDon.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -509,8 +489,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(70, 70, 70))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(163, 163, 163))))
@@ -518,15 +497,10 @@ public class ViewBanHang extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(133, 133, 133)
-                        .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(59, 59, 59)
+                .addComponent(btnTaoHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(70, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
@@ -666,10 +640,8 @@ public class ViewBanHang extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTable jTableGiohang;
-    private javax.swing.JTable jTableHoaDon;
     private javax.swing.JTable jTableSanPham;
     private javax.swing.JLabel lbMaHoaDon;
     private javax.swing.JLabel lbNgayTao;
