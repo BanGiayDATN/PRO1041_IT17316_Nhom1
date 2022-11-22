@@ -25,13 +25,13 @@ public class ViewManChinh extends javax.swing.JFrame {
         initComponents();
         this.nhanVien = nhanVien;
         this.setLocationRelativeTo(null);
-//        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
-//            btnSanPham.setVisible(false);
-//            btnNhanVien.setVisible(false);
-//            btnThongKe.setVisible(false);
-//            menu.setVisible(false);
-//        }
-//        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
+        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+            btnSanPham.setVisible(false);
+            btnNhanVien.setVisible(false);
+            btnThongKe.setVisible(false);
+            menu.setVisible(false);
+        }
+        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
 
     }
 
@@ -385,12 +385,21 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       viewChucNang.removeAll();
+       if(nhanVien.getChucVu().getTen().equals("Nhân viên")){
+           viewChucNang.removeAll();
+           ViewBanHangNhanVien form = new ViewBanHangNhanVien(nhanVien);
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+       }else{
+           viewChucNang.removeAll();
         ViewBanHang form = new ViewBanHang(nhanVien);
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
         form.setVisible(true);
+       }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
