@@ -31,7 +31,6 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewBanHang extends javax.swing.JPanel {
 
-
     private DefaultTableModel dtm2 = new DefaultTableModel();
     private DefaultTableModel dtm3 = new DefaultTableModel();
     private DefaultComboBoxModel dcm = new DefaultComboBoxModel();
@@ -552,7 +551,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
         // TODO add your handling code here:
-  
+
         int row = jTableSanPham.getSelectedRow();
         int soLuong = soLuongSanPhamMua(row);
         UUID idSanPham = UUID.fromString(jTableSanPham.getModel().getValueAt(row, 0).toString());
