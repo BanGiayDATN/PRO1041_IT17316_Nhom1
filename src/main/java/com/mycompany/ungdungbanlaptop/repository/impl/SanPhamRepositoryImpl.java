@@ -247,7 +247,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-<<<<<<< HEAD
     public static void main(String[] args) {
         SanPhamSearchRequest request = new SanPhamSearchRequest();
         request.setManHinh("MH1797");
@@ -256,10 +255,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         list.forEach(a -> System.out.println(a));
     }
            
-    
-=======
-
-
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
        Transaction transaction = null;
@@ -279,5 +274,4 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             transaction.rollback();
         }
     }
->>>>>>> develop
 }
