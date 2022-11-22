@@ -42,6 +42,8 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         lbMaNhanVien.setText(nhanVien.getMa());
         lbTenNhanVien.setText(nhanVien.getHoTen());
         lbNgayTao.setText(new Date().toString());
+        loadCbo();
+        loadTableSanPham(sanPhamService.getSanPhamBanHang());
     }
 
     private void loadCbo(){
@@ -73,11 +75,9 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         model.setRowCount(0);
         for (GioHangViewModel x : list.values()) {
             BigDecimal soLuong = new BigDecimal(x.getSoLuong());
-            model.addRow(new Object[]{x.getIdSanPham(),x.getIdHoaDon(),tblHoaDon.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), soLuong.multiply(x.getDonGia())});
+            model.addRow(new Object[]{tblHoaDon.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), soLuong.multiply(x.getDonGia())});
         }
         tblHoaDon.setModel(model);
-        tblHoaDon.removeColumn(tblHoaDon.getColumnModel().getColumn(0));
-        tblHoaDon.removeColumn(tblHoaDon.getColumnModel().getColumn(1));
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -342,13 +342,13 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
         int row = tblSanPham.getSelectedRow();
         UUID idSanPham = UUID.fromString(tblSanPham.getModel().getValueAt(row, 0).toString());
-        UUID idHoaDon = hoaDon.getIdHoaDon();
+//        UUID idHoaDon = hoaDon.getIdHoaDon();
         GioHangViewModel ghvm = new GioHangViewModel();
         ghvm.setMa(tblSanPham.getValueAt(row, 1).toString());
         ghvm.setTen(tblSanPham.getValueAt(row, 2).toString());
         ghvm.setSoLuong(Integer.valueOf(soLuong));
         ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(tblSanPham.getValueAt(row, 6).toString())));
-        ghvm.setIdSanPham(idSanPham);
+//        ghvm.setIdSanPham(idSanPham);
 //        ghvm.setIdHoaDon(idHoaDon);
         list.put(idSanPham,ghvm);
         loadtableGioHang(list);
