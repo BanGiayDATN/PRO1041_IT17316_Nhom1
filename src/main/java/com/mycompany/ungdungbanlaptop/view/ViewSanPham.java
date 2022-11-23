@@ -102,6 +102,14 @@ public class ViewSanPham extends javax.swing.JPanel {
         List<Imei> listImei = imeiService.getAll();
         List<ManHinh> listManHinh = manHinhService.getAll();
         List<Ram> listRam = ramService.getList();
+        // khoi tao gia tri mac dinh
+        this.listHeDieuHanh.add("Mời bạn chọn");
+         this.listMau.add("Mời bạn chọn");
+         this.listManHinh.add("Mời bạn chọn");
+         this.listCPU.add("Mời bạn chọn");
+         this.listChatLieu.add("Mời bạn chọn");
+         this.listHang.add("Mời bạn chọn");
+         this.listRam.add("Mời bạn chọn");
         listHeDieuHanh.forEach(a -> {
             this.listHeDieuHanh.add(a.getMa());
         });
@@ -214,6 +222,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbMauSacSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbMauSac.setSelectedIndex(0);
+       cbbMauSacSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxCPU(List<String> list) {
@@ -225,6 +235,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbCPUSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbCPU.setSelectedIndex(0);
+       cbbCPUSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxChatLieu(List<String> list) {
@@ -236,6 +248,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbChatLieuSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbChatLieu.setSelectedIndex(0);
+       cbbChatLieuSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxHang(List<String> list) {
@@ -247,6 +261,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbNhaSanXuatSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+         cbbNhaSanXuat.setSelectedIndex(0);
+       cbbNhaSanXuatSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxManHinh(List<String> list) {
@@ -258,6 +274,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbManHinhSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbManHinh.setSelectedIndex(0);
+       cbbManHinhSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxRam(List<String> list) {
@@ -269,6 +287,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbRamSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbRam.setSelectedIndex(0);
+       cbbRamSearch.setSelectedIndex(0);
     }
 
     private static void comBoBoxHeDieuHanh(List<String> list) {
@@ -280,6 +300,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModelSearch = (DefaultComboBoxModel) cbbHeDieuHanhSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+         cbbHeDieuHanh.setSelectedIndex(0);
+       cbbHeDieuHanhSearch.setSelectedIndex(0);
     }
 
     private void comBoBoxGiaBan() {
