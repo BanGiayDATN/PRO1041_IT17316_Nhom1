@@ -79,7 +79,7 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
     private void showSanPham(List<SanPhamBanHangViewModel> list) {
         DefaultTableModel model = new DefaultTableModel();
-        String[] sp = {"STT", "Mã SP", "Tên SP", "Năm BH", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
+        String[] sp = {"id","STT", "Mã SP", "Tên SP", "Năm BH", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
         model.setColumnIdentifiers(sp);
         int index =0;
         model.setRowCount(0);
@@ -608,10 +608,10 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         UUID idSanPham = UUID.fromString(jTableSanPham.getModel().getValueAt(row, 0).toString());
         UUID idHoaDon = hoaDon.getIdHoaDon();
         GioHangViewModel ghvm = new GioHangViewModel();
-        ghvm.setMa(jTableSanPham.getValueAt(row, 1).toString());
-        ghvm.setTen(jTableSanPham.getValueAt(row, 2).toString());
-        ghvm.setSoLuong(Integer.valueOf(soLuong));
-        ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(jTableSanPham.getValueAt(row, 6).toString())));
+        ghvm.setMa(jTableSanPham.getModel().getValueAt(row, 1).toString());
+        ghvm.setTen(jTableSanPham.getModel().getValueAt(row, 2).toString());
+        ghvm.setSoLuong(soLuong);
+        ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(jTableSanPham.getModel().getValueAt(row, 7).toString())));
         ghvm.setIdSanPham(idSanPham);
         ghvm.setIdHoaDon(idHoaDon);
         listGioHang.put(idSanPham, ghvm);
@@ -621,7 +621,7 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_jTableSanPhamMouseClicked
     private int soLuongMua(int index) {
 
-        int soLuong = Integer.valueOf(jTableSanPham.getModel().getValueAt(index, 5).toString());
+        int soLuong = Integer.valueOf(jTableSanPham.getModel().getValueAt(index, 6).toString());
         int numBer = 0;
         try {
             numBer = Integer.valueOf(JOptionPane.showInputDialog("Nhập số lượng", 0));
@@ -665,7 +665,9 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_cbbPhanLoaiActionPerformed
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
-        // TODO add your handling code here:
+         String ten = txtTimKiem.getText();
+        List<SanPhamBanHangViewModel> list = sanPhamService.searchByTenBanHang(sanPhamService.getSanPhamBanHang(), ten);
+        showSanPham(list);
 
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
