@@ -36,9 +36,11 @@ public interface SanPhamService {
 
     List<SanPhamBanHangViewModel> getSanPhamBanHang();
 
-    List<SanPhamBanHangViewModel> getByGia(BigDecimal min ,BigDecimal max);
+    List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max);
 
-    List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list,String tenSp);
+    List<SanPhamBanHangViewModel> searchByTenBanHang(List<SanPhamBanHangViewModel> list, String tenSp);
 
-    void updateSoLuongSanPham(Map<UUID, SanPham> list );
+    void updateSoLuongSanPham(Map<UUID, SanPham> list);
+
+    SanPham getById(UUID id);
 }

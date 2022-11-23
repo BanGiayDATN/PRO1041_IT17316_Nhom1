@@ -5,10 +5,11 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
+
+
 import java.awt.Color;
 import java.awt.FlowLayout;
-import java.awt.color.ColorSpace;
+
 
 /**
  *
@@ -16,7 +17,9 @@ import java.awt.color.ColorSpace;
  */
 public class View extends javax.swing.JFrame {
     private Color one = new Color(255,204,153);
+
     private NhanVien nhanVien;
+
     /**
      * Creates new form View
      */
@@ -405,9 +408,6 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(Color.black);
         jPanel6.setBackground(one);
         jPanel12.setBackground(one);
-
-//        AdQuanLiManHinh viewsp = new AdQuanLiManHinh();
-
         ViewSanPham viewsp = new ViewSanPham();
 
         DeskTop.add(viewsp);

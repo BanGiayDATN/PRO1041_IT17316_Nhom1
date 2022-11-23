@@ -113,4 +113,10 @@ public class SanPhamServiceImpl implements SanPhamService {
         sanPhamRepository.updateSoLuongSanPham(list);
     }
 
+    @Override
+    public SanPham getById(UUID id) {
+        return sanPhamRepository.getById(id);
+        
+    }
+
 }
