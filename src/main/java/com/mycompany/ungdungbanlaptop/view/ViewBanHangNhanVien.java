@@ -12,11 +12,14 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
+import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietServive;
+import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiveImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -33,12 +36,10 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
-    private DefaultTableModel dtm1 = new DefaultTableModel();
-    private DefaultTableModel dtm2 = new DefaultTableModel();
-    private DefaultTableModel dtm3 = new DefaultTableModel();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
-    private Map<UUID, GioHangViewModel> list = new HashMap<>();
+    private HoaDonChiTietServive hoaDonChiTietServive = new HoaDonChiTietServiveImpl();
+    private Map<UUID, GioHangViewModel> listGioHang = new HashMap<>();
     private List<HoaDonBanHangViewModel> listHoaDonCho = new ArrayList<>();
     private HoaDon hoaDon;
     private NhanVien nhanVien;
@@ -51,14 +52,7 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         this.nhanVien = nhanVien;
         listHoaDonCho = hoaDonService.getHoaDonCho();
         showHoaDon(listHoaDonCho);
-
-        
-        
-
-        
-        
         showSanPham(sanPhamService.getSanPhamBanHang());
-
         cbbHinhThucThanhToan();
         cbbPhanLoai();
 
@@ -153,8 +147,6 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         lbMaHoaDon = new javax.swing.JLabel();
         lbNgayTao = new javax.swing.JLabel();
         lbNhanVien = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
-        jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         cbbHinhThucThanhToan = new javax.swing.JComboBox<>();
@@ -162,6 +154,8 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         btnXuatHoaDon = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
+        txtSoDienThoai = new javax.swing.JTextField();
+        txtTenKhachHang = new javax.swing.JTextField();
         btnTaoHoaDon = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
@@ -215,12 +209,6 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
         lbNhanVien.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         lbNhanVien.setText("d");
-
-        jLabel18.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel18.setText("d");
-
-        jLabel19.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jLabel19.setText("d");
 
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel20.setText("d");
@@ -304,10 +292,10 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
                             .addComponent(lbMaHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, 144, Short.MAX_VALUE)
                             .addComponent(lbNgayTao, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(lbNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(42, 42, 42)
                         .addComponent(jLabel14)))
@@ -344,11 +332,11 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jLabel18))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(txtTenKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(6, 6, 6)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel19))
+                    .addComponent(txtSoDienThoai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -563,7 +551,7 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
                                 .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel7))
-                        .addGap(0, 125, Short.MAX_VALUE))
+                        .addGap(0, 74, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
@@ -601,15 +589,15 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
         int row = jTableGiohang.getSelectedRow();
 
-        GioHangViewModel gioHangViewModel = list.get(row);
+        GioHangViewModel gioHangViewModel = listGioHang.get(row);
         SanPham sanPham = sanPhamService.getOne(gioHangViewModel.getMa());
         int soLuongUpdate = sanPham.getSoLuongTon() + Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString());
         System.out.println(soLuongUpdate);
         sanPham.setSoLuongTon(soLuongUpdate);
         sanPhamService.update(sanPham);
         showSanPham(sanPhamService.getSanPhamBanHang());
-        list.remove(row);
-//        showGioHang(list);
+        listGioHang.remove(row);
+        showGioHang(listGioHang);
 
     }//GEN-LAST:event_btnXoaSanPhamActionPerformed
 
@@ -625,9 +613,9 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
         ghvm.setSoLuong(Integer.valueOf(soLuong));
         ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(jTableSanPham.getValueAt(row, 6).toString())));
         ghvm.setIdSanPham(idSanPham);
-//        ghvm.setIdHoaDon(idHoaDon);
-        list.put(idSanPham, ghvm);
-        showGioHang(list);
+        ghvm.setIdHoaDon(idHoaDon);
+        listGioHang.put(idSanPham, ghvm);
+        showGioHang(listGioHang);
 
 
     }//GEN-LAST:event_jTableSanPhamMouseClicked
@@ -682,24 +670,31 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
     private void btnTaoHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoHoaDonActionPerformed
+        if(!listGioHang.isEmpty()){
+           hoaDonChiTietServive.saveAllHoaDonChiTiet(listGioHang);
+           listGioHang.clear();
+       }
         HoaDon newHoaDon = new HoaDon();
         newHoaDon.setMa(new TaoChuoiNgauNhien().getMkRanMa("HD", 7));
-        newHoaDon.setNgayTao(new ConverDate().dateToLong(new Date().toString(), "dd/mm/yyyy"));
+        newHoaDon.setNgayTao(new ConverDate().dateToLong( LocalDate.now().toString(), "yyyy/mm/dd"));
         newHoaDon.setNhanVien(nhanVien);
         newHoaDon.setTinhTrang(0);
         hoaDonService.add(newHoaDon);
         hoaDon = newHoaDon;
         lbMaHoaDon.setText(hoaDon.getMa());
         lbNgayTao.setText(new ConverDate().longToDate(hoaDon.getNgayTao(), "dd/mm/yyyy"));
-//        lbNhanVien.setText(hoaDon.getNhanVien().getHoTen());
+        lbNhanVien.setText(hoaDon.getNhanVien().getHoTen());
     }//GEN-LAST:event_btnTaoHoaDonActionPerformed
 
     private void jTableGiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGiohangMouseClicked
-        // TODO add your handling code here:
+       
     }//GEN-LAST:event_jTableGiohangMouseClicked
 
     private void btnXuatHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnXuatHoaDonMouseClicked
-        // TODO add your handling code here:
+       if(!listGioHang.isEmpty()){
+           hoaDonChiTietServive.saveAllHoaDonChiTiet(listGioHang);
+           listGioHang.clear();
+       }
     }//GEN-LAST:event_btnXuatHoaDonMouseClicked
 
 
@@ -716,8 +711,6 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
@@ -743,6 +736,8 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
     private javax.swing.JLabel lbMaHoaDon;
     private javax.swing.JLabel lbNgayTao;
     private javax.swing.JLabel lbNhanVien;
+    private javax.swing.JTextField txtSoDienThoai;
+    private javax.swing.JTextField txtTenKhachHang;
     private javax.swing.JTextField txtTienKhachDua;
     private javax.swing.JTextField txtTimKiem;
     // End of variables declaration//GEN-END:variables

@@ -5,11 +5,8 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
-import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -157,4 +154,5 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     public static void main(String[] args) {
         System.out.println(new HoaDonRepositoryImpl().getHoaDonCho());
     }
+
 }
