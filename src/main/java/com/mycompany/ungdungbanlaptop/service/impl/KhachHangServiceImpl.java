@@ -56,8 +56,8 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public List<KhachHang> search(List<KhachHang> list, String tenKh) {
-        return khachHangRepository.sreach(tenKh);
+    public List<KhachHang> search(List<KhachHang> list, String soDienThoai) {
+        return khachHangRepository.sreach(soDienThoai);
     }
 
     @Override

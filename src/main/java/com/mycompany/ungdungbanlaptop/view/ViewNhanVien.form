@@ -279,6 +279,7 @@
         <Component class="javax.swing.JTextField" name="txtMaNhanVien">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
+            <Property name="text" type="java.lang.String" value="Ma&#x303; nh&#xe2;n vi&#xea;n t&#x1b0;&#x323; &#x111;&#xf4;&#x323;ng"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel15">

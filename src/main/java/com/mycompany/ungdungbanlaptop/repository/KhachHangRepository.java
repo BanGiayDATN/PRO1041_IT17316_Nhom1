@@ -27,7 +27,7 @@ public interface KhachHangRepository {
 
     KhachHang getByTen(String ten);
 
-    List<KhachHang> sreach(String tenKh);
+    List<KhachHang> sreach(String soDienThoai);
     
      List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
 }

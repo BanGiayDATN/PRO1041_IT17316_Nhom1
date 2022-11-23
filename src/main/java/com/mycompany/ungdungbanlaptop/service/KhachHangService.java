@@ -24,7 +24,7 @@ public interface KhachHangService {
 
     String delete(KhachHang khachHang);
 
-    List<KhachHang> search(List<KhachHang> list, String tenKh);
+    List<KhachHang> search(List<KhachHang> list, String soDienThoai);
     
     KhachHang getByTen(String ten);
     

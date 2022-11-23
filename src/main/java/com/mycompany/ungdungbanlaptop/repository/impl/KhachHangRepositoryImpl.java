@@ -108,12 +108,12 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     }
 
     @Override
-    public List<KhachHang> sreach(String tenKh) {
+    public List<KhachHang> sreach(String soDienThoai) {
         List<KhachHang> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT kh FROM KhachHang kh WHERE kh.hoTen like :hoTen";
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.sdt like :sdt";
             Query<KhachHang> query = session.createQuery(hql);
-            query.setParameter("hoTen", "%" + tenKh + "%");
+            query.setParameter("sdt", "%" + soDienThoai + "%");
             list = query.getResultList();
             return list;
         } catch (Exception e) {
