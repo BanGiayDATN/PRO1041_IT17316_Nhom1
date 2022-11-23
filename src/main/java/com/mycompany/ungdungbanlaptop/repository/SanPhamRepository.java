@@ -41,5 +41,7 @@ public interface SanPhamRepository {
     List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp);
 
     void updateSoLuongSanPham(Map<UUID, SanPham> list );
+    
+    SanPham getById(UUID id);
 
 }

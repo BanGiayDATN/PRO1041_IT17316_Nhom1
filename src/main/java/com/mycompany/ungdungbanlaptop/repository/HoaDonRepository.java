@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +24,10 @@ public interface HoaDonRepository {
     HoaDon delete(HoaDon hoaDon);
 
     HoaDon getOne(String maSp);
-    
+
     boolean setTrangThai(UUID id, HoaDon hoaDon);
+
+    List<HoaDonBanHangViewModel> getHoaDonBanHang();
+
+    List<HoaDonBanHangViewModel> getTrangThai(int trangThai);
 }
