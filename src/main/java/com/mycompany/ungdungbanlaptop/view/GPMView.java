@@ -267,6 +267,7 @@ public class GPMView extends javax.swing.JPanel {
         try {
             JOptionPane.showMessageDialog(this, service.addNew(gpm));
             loadTable(service.getAll());
+            ViewSanPham.addMau(gpm);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
 
@@ -277,12 +278,13 @@ public class GPMView extends javax.swing.JPanel {
         String ma = txtma.getText();
         String ten = txtGPM.getText();
         Mau gpm = service.getOne(ma);
-        System.out.println(gpm);
+        int row = tbGPM.getSelectedRow();
         gpm.setMa(ma);
         gpm.setTen(ten);
         int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", 0);
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(gpm));
+            ViewSanPham.editMau(row, gpm);
         } else if (check == JOptionPane.NO_OPTION) {
             txtMaGPM.setText("");
             txttenGPM.setText("");
