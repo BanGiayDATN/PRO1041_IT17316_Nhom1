@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.model.viewModel;
 
+import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,6 +17,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class HoaDonBanHangViewModel {
+    private UUID id;
     private String ma;
     private long ngayTao;
     private String hoTen;

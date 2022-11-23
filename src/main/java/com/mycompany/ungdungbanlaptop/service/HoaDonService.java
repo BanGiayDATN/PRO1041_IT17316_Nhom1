@@ -31,4 +31,6 @@ public interface HoaDonService {
     List<HoaDonBanHangViewModel> getHoaDonBanHang();
     
     List<HoaDonBanHangViewModel> getTrangThai(int trangThai);
+    
+    List<HoaDonBanHangViewModel> getHoaDonCho();
 }

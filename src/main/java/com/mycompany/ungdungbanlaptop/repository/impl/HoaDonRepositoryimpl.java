@@ -138,4 +138,23 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
+    
+    @Override
+    public List<HoaDonBanHangViewModel> getHoaDonCho(){
+        List<HoaDonBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
+                    + "FROM HoaDon hd "
+                    + " WHERE hd.tinhTrang = 0";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new HoaDonRepositoryImpl().getHoaDonCho());
+    }
 }

@@ -59,5 +59,10 @@ public class HoaDonServiceImpl implements HoaDonService{
     public List<HoaDonBanHangViewModel> getTrangThai(int trangThai) {
         return hoadonRepository.getTrangThai(trangThai);
     }
+
+    @Override
+    public List<HoaDonBanHangViewModel> getHoaDonCho() {
+        return hoadonRepository.getHoaDonCho();
+    }
     
 }
