@@ -206,7 +206,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             return list;
@@ -247,6 +247,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
+<<<<<<< HEAD
     public static void main(String[] args) {
         SanPhamSearchRequest request = new SanPhamSearchRequest();
         request.setManHinh("MH1797");
@@ -255,6 +256,10 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         list.forEach(a -> System.out.println(a));
     }
            
+=======
+
+
+>>>>>>> develop
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
        Transaction transaction = null;
