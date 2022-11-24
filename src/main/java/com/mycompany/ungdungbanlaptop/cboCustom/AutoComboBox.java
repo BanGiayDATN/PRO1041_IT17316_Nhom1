@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 public class AutoComboBox extends JComboBox<Object> {
 
-    String keyWord[] = {"item1", "item2", "item3"};
+    String keyWord[] = {"Mời bạn chọn"};
     Vector myVector = new Vector();
 
     public AutoComboBox() {
