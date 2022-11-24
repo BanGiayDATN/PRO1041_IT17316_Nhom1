@@ -467,19 +467,12 @@ public class View extends javax.swing.JFrame {
         jPanel6.setBackground(one);
         jPanel8.setBackground(one);
         jPanel12.setBackground(Color.black);
-<<<<<<< HEAD
-//        ViewBanHang viewnv= new ViewBanHang();
-//        DeskTop.add(viewnv);
-//        DeskTop.setLayout(new FlowLayout());
-//        this.pack();
-//        viewnv.setVisible(true);
-=======
+
         ViewBanHang viewnv= new ViewBanHang(nhanVien);
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
         this.pack();
         viewnv.setVisible(true);
->>>>>>> develop
     }//GEN-LAST:event_jPanel11MouseClicked
 
     /**
