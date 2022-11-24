@@ -24,6 +24,9 @@
         <module name="PRO1041_IT17346_Nhom1" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ungDungBanLapTop" target="17" />
+    </bytecodeTargetLevel>
   </component>
 >>>>>>> THEIRS
 </project>

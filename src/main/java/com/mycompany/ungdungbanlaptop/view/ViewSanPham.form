@@ -75,13 +75,17 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace pref="213" max="32767" attributes="0"/>
-                      <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace pref="41" max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="204" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -92,7 +96,7 @@
                       <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
                       <Component id="jPanel5" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="32767" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -117,13 +121,13 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel17" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <Component id="jLabel19" alignment="1" min="-2" max="-2" attributes="0"/>
                                   <Component id="jLabel16" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel18" alignment="1" min="-2" pref="76" max="-2" attributes="0"/>
+                              <Component id="jLabel15" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
@@ -131,48 +135,58 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="cbbNhaSanXuatSearch" min="-2" pref="140" max="-2" attributes="0"/>
-                                              <Component id="cbbManHinhSearch" min="-2" pref="140" max="-2" attributes="0"/>
-                                              <Component id="txtTenSanPhamSearch" min="-2" pref="140" max="-2" attributes="0"/>
-                                              <Component id="cbbCPUSearch" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
-                                              <Component id="txtTrongLuongSearch" alignment="0" min="-2" pref="140" max="-2" attributes="0"/>
+                                              <Group type="102" attributes="0">
+                                                  <Component id="cbb_nam" max="32767" attributes="0"/>
+                                                  <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" attributes="0">
+                                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                                      <Component id="txtTenSanPhamSearch" pref="140" max="32767" attributes="0"/>
+                                                      <Component id="txtTrongLuongSearch" alignment="0" pref="140" max="32767" attributes="0"/>
+                                                      <Component id="cbbManHinhSearch" alignment="0" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <EmptySpace max="32767" attributes="0"/>
+                                              </Group>
                                           </Group>
-                                          <EmptySpace pref="54" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel25" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel29" alignment="1" min="-2" max="-2" attributes="0"/>
+                                              <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="cbb_nam" max="32767" attributes="0"/>
-                                          <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
+                                          <Component id="cbbMauSacSearch" pref="140" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
+                                          <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" attributes="0">
+                                          <Component id="cbbCPUSearch" max="32767" attributes="0"/>
+                                          <EmptySpace min="-2" pref="127" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel21" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel25" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel29" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel24" alignment="1" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Component id="btn_search" min="-2" pref="112" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                              <Component id="cbbRamSearch" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="txtSoLuongTonSearch" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cbbGiaBanSearch" max="32767" attributes="0"/>
+                                              <Component id="cbbHeDieuHanhSearch" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="cbbChatLieuSearch" max="32767" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                                      </Group>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
-                                  <Component id="cbbMauSacSearch" min="-2" pref="140" max="-2" attributes="0"/>
-                                  <EmptySpace max="32767" attributes="0"/>
-                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="cbbRamSearch" alignment="0" pref="140" max="32767" attributes="0"/>
-                                      <Component id="txtSoLuongTonSearch" alignment="0" pref="140" max="32767" attributes="0"/>
-                                      <Component id="cbbGiaBanSearch" pref="140" max="32767" attributes="0"/>
-                                      <Component id="cbbHeDieuHanhSearch" alignment="0" pref="140" max="32767" attributes="0"/>
-                                      <Component id="cbbChatLieuSearch" pref="140" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="btn_search" min="-2" pref="112" max="-2" attributes="0"/>
-                                  <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                                  <Component id="cbbNhaSanXuatSearch" min="-2" pref="140" max="-2" attributes="0"/>
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -186,22 +200,21 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="3" attributes="0">
                                   <Component id="txtTenSanPhamSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                  <Component id="cbbRamSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Component id="cbbRamSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel25" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="cbbHeDieuHanhSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel25" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Component id="cbbHeDieuHanhSearch" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="jLabel29" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
-                                      <Component id="cbbChatLieuSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="jLabel29" min="-2" pref="19" max="-2" attributes="0"/>
+                                      <Component id="cbbChatLieuSearch" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" attributes="0">
@@ -210,15 +223,18 @@
                                       <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="cbb_nam" min="-2" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="cbb_nam" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
                           </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbbMauSacSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbMauSacSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
@@ -229,31 +245,46 @@
                                   </Group>
                               </Group>
                           </Group>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="cbbManHinhSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                              <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="txtSoLuongTonSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                          </Group>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" attributes="0">
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbbNhaSanXuatSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="txtSoLuongTonSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="3" attributes="0">
-                                      <Component id="cbbCPUSearch" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace pref="26" max="32767" attributes="0"/>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel19" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbManHinhSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="1" attributes="0">
-                                  <EmptySpace max="32767" attributes="0"/>
+                                  <EmptySpace pref="45" max="32767" attributes="0"/>
                                   <Component id="btn_search" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="3" attributes="0">
+                                      <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cbbNhaSanXuatSearch" alignment="3" min="-2" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel20" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                                      </Group>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="cbbCPUSearch" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
                               </Group>
                           </Group>
                       </Group>
@@ -267,30 +298,6 @@
                   </Properties>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTenSanPhamSearch">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbMauSacSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbManHinhSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTrongLuongSearch">
                 </Component>
@@ -319,51 +326,15 @@
                     <Property name="text" type="java.lang.String" value="Ma&#x300;n hi&#x300;nh:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbNhaSanXuatSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel20">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="CPU:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbCPUSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel21">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ram:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbHeDieuHanhSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel22">
                   <Properties>
@@ -387,30 +358,6 @@
                     <Property name="text" type="java.lang.String" value="Ch&#xe2;&#x301;t li&#xea;&#x323;u:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbChatLieuSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbRamSearch">
-                  <Properties>
-                    <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-                      <StringArray count="1">
-                        <StringItem index="0" value="M&#x1edd;i b&#x1ea1;n ch&#x1ecd;n"/>
-                      </StringArray>
-                    </Property>
-                  </Properties>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JComboBox" name="cbbGiaBanSearch">
                   <Properties>
                     <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
@@ -421,6 +368,7 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_search">
@@ -441,6 +389,42 @@
                   </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbMauSacSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbManHinhSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbNhaSanXuatSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbCPUSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbRamSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbHeDieuHanhSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbChatLieuSearch">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                   </AuxValues>
                 </Component>
               </SubComponents>
@@ -515,7 +499,7 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace pref="73" max="32767" attributes="0"/>
                       <Component id="jPanel4" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
@@ -567,70 +551,64 @@
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" attributes="0">
+                                      <Component id="txtTrongLuong" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                                          <Component id="txtTenSanPham" alignment="0" pref="140" max="32767" attributes="0"/>
+                                          <Component id="txtMaSanPham" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txtNamBaoHanh" alignment="0" max="32767" attributes="0"/>
+                                      </Group>
+                                      <Component id="cbbMauSac" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnMauSac" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="1" attributes="0">
+                                  <Component id="cbbRam" max="32767" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="btnRam" min="-2" pref="34" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                      <Component id="cbbCPU" pref="139" max="32767" attributes="0"/>
+                                      <Component id="cbbNhaSanXuat" max="32767" attributes="0"/>
+                                      <Component id="cbbManHinh" max="32767" attributes="0"/>
+                                  </Group>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbbManHinh" min="-2" pref="140" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnManHinh" min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                                          <Component id="txtTrongLuong" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="txtTenSanPham" alignment="0" pref="140" max="32767" attributes="0"/>
-                                              <Component id="txtMaSanPham" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="txtNamBaoHanh" alignment="0" max="32767" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Component id="btnManHinh" alignment="0" min="-2" pref="34" max="-2" attributes="0"/>
+                                              <Component id="btnHang" alignment="1" min="-2" pref="34" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbbCPU" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="102" alignment="1" attributes="0">
+                                          <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                                           <Component id="btnCPU" min="-2" pref="34" max="-2" attributes="0"/>
                                       </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbbNhaSanXuat" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnHang" min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace pref="10" max="32767" attributes="0"/>
-                                  <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="jLabel37" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel40" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel38" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel41" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel39" alignment="1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel36" alignment="1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" attributes="0">
-                                          <Component id="cbbMauSac" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnMauSac" min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="cbbRam" min="-2" pref="140" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="btnRam" min="-2" pref="34" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                              </Group>
+                          </Group>
+                          <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="1" attributes="0">
+                              <Component id="jLabel37" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel40" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel35" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel38" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel41" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel39" alignment="1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel36" alignment="1" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Group type="102" alignment="0" attributes="0">
                                   <Group type="103" groupAlignment="1" attributes="0">
-                                      <Component id="cbbHeDieuHanh" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="txtGiaNHap" alignment="0" pref="140" max="32767" attributes="0"/>
-                                          <Component id="txtGiaBan" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txtSoLuongTon" alignment="0" max="32767" attributes="0"/>
-                                      </Group>
-                                      <Component id="cbbChatLieu" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
-                                      <Component id="cbbImai" alignment="1" min="-2" pref="140" max="-2" attributes="0"/>
+                                      <Component id="txtGiaNHap" alignment="0" pref="140" max="32767" attributes="0"/>
+                                      <Component id="txtGiaBan" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="txtSoLuongTon" alignment="0" max="32767" attributes="0"/>
+                                      <Component id="cbbHeDieuHanh" max="32767" attributes="0"/>
+                                      <Component id="cbbChatLieu" max="32767" attributes="0"/>
+                                      <Component id="cbbImai" alignment="1" max="32767" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -638,7 +616,7 @@
                                       <Component id="btnChatLieu" min="-2" pref="34" max="-2" attributes="0"/>
                                       <Component id="btnImei" min="-2" pref="34" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace pref="160" max="32767" attributes="0"/>
+                                  <EmptySpace min="-2" pref="160" max="-2" attributes="0"/>
                                   <Component id="jPanel6" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                               </Group>
@@ -691,56 +669,58 @@
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="txtTrongLuong" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="cbbHeDieuHanh" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                       <Component id="jLabel38" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                                       <Component id="btnHeDieuHanh" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                      <Component id="cbbHeDieuHanh" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbChatLieu" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel40" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                                               <Component id="btnChatLieu" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbChatLieu" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbImai" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel41" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
                                               <Component id="btnImei" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbImai" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Component id="jScrollPane3" min="-2" pref="125" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbMauSac" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnMauSac" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="btnMauSac" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbMauSac" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbManHinh" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnManHinh" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbManHinh" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbNhaSanXuat" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnHang" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbNhaSanXuat" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          </Group>
+                                          <EmptySpace max="-2" attributes="0"/>
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="103" groupAlignment="3" attributes="0">
+                                                  <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="btnCPU" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Component id="cbbCPU" alignment="1" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                           <EmptySpace max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbCPU" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                              <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
-                                              <Component id="btnCPU" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Group type="103" groupAlignment="3" attributes="0">
-                                              <Component id="cbbRam" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
                                               <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                                               <Component id="btnRam" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                                              <Component id="cbbRam" alignment="3" min="-2" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -767,16 +747,6 @@
                 <Component class="javax.swing.JTextField" name="txtTenSanPham">
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtMaSanPham">
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbMauSac">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbManHinh">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtTrongLuong">
                 </Component>
@@ -805,30 +775,15 @@
                     <Property name="text" type="java.lang.String" value="Ma&#x300;n hi&#x300;nh:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbNhaSanXuat">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel33">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="CPU:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbCPU">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel34">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Ram:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbHeDieuHanh">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel35">
                   <Properties>
@@ -932,25 +887,10 @@
                     <Property name="text" type="java.lang.String" value="Ch&#xe2;&#x301;t li&#xea;&#x323;u:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JComboBox" name="cbbChatLieu">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JLabel" name="jLabel41">
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Imei:"/>
                   </Properties>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbImai">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
-                </Component>
-                <Component class="javax.swing.JComboBox" name="cbbRam">
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-                  </AuxValues>
                 </Component>
                 <Container class="javax.swing.JScrollPane" name="jScrollPane3">
                   <AuxValues>
@@ -964,66 +904,84 @@
                   </SubComponents>
                 </Container>
                 <Component class="javax.swing.JButton" name="btnManHinh">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnManHinhActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnMauSac">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
                   <Events>
                     <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnMauSacActionPerformed"/>
                   </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnHang">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHangActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnCPU">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnCPUActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnRam">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRamActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnHeDieuHanh">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnHeDieuHanhActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnChatLieu">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnChatLieuActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="btnImei">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/img/Add.png"/>
-                    </Property>
-                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnImeiActionPerformed"/>
+                  </Events>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbMauSac">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbManHinh">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbNhaSanXuat">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbCPU">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbRam">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbHeDieuHanh">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbChatLieu">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
+                </Component>
+                <Component class="com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox" name="cbbImai">
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>

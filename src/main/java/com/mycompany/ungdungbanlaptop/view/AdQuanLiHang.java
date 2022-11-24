@@ -222,6 +222,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
                 errorMa.setText("");
                 hangService.insert(hang);
                 listHang.add(hang);
+                ViewSanPham.addhang(hang);
             }
         }
         loadTable(listHang);
@@ -237,7 +238,7 @@ public class AdQuanLiHang extends javax.swing.JPanel {
             UUID id = UUID.fromString(txtId.getText());
                 hangService.update(id,hang);
                 listHang.set(index, hang);
-            
+            ViewSanPham.editHang(index, hang);
         }
         loadTable(listHang);
     }//GEN-LAST:event_btnSuaActionPerformed

@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.repository.ChucVuRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -25,7 +26,7 @@ public class ChucVuRepositoryImpl implements ChucVuRepository {
         try {
             transaction = session.beginTransaction();
             String query = "SELECT cv FROM ChucVu cv WHERE cv.ten = :name";
-            chucVu = (ChucVu) session.createQuery(query).setParameter("name", name ).uniqueResult();
+            chucVu = (ChucVu) session.createQuery(query).setParameter("name", name).uniqueResult();
             transaction.commit();
         } catch (Exception e) {
             System.out.println(System.out);
@@ -37,5 +38,4 @@ public class ChucVuRepositoryImpl implements ChucVuRepository {
         ChucVu chucVu = new ChucVuRepositoryImpl().getOneByeName("Nhân viên");
         System.out.println(chucVu);
     }
-
 }

@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.model.resquest;
 
-import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import java.math.BigDecimal;
 import lombok.AllArgsConstructor;
 import lombok.Data;

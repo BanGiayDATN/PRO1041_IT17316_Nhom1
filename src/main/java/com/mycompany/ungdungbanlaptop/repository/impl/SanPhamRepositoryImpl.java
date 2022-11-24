@@ -193,7 +193,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             query.setParameter("trongLuong", request.getTrongLuong());
             query.setParameter("soLuong", request.getSoLuong());
             query.setParameter("startsGiaBan", request.getStartsGiaBan());
-            query.setParameter("giaBan", request.getGiaBan());           
+            query.setParameter("giaBan", request.getGiaBan());
             list = query.list();
             transaction.commit();
         } catch (Exception e) {
@@ -215,9 +215,10 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return null;
     }
-     @Override
+
+    @Override
     public List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max) {
-        List<SanPhamBanHangViewModel> list ;
+        List<SanPhamBanHangViewModel> list;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.giaBan >= :min AND sp.giaBan <= :max";
             Query query = session.createQuery(hql);
@@ -231,14 +232,13 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-
     @Override
     public List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp) {
-         List<SanPhamBanHangViewModel> list = new ArrayList<>();
+        List<SanPhamBanHangViewModel> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.ten like :ten";
             Query query = session.createQuery(hql);
-            query.setParameter("ten","%"+ tenSp +"%");
+            query.setParameter("ten", "%" + tenSp + "%");
             list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -247,19 +247,25 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-
+    public static void main(String[] args) {
+        SanPhamSearchRequest request = new SanPhamSearchRequest();
+        request.setManHinh("MH1797");
+        request.setTrongLuong((float) 2.2);
+        List<SanPham> list = new SanPhamRepositoryImpl().searchFill(request);
+        list.forEach(a -> System.out.println(a));
+    }
 
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
-       Transaction transaction = null;
+        Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            for(Map.Entry<UUID, SanPham> entry : list.entrySet()){
+            for (Map.Entry<UUID, SanPham> entry : list.entrySet()) {
 //                if (entry.getValue().getStatus() != 0) {
-                    Query query = session.createQuery("UPDATE SanPham SET soLuongTon = :soLuong WHERE id = :id");
+                Query query = session.createQuery("UPDATE SanPham SET soLuongTon = :soLuong WHERE id = :id");
 //                            setParameter("soLuong", entry.getValue().getSoLuongTon()).
 //                            setParameter("id", entry.getValue().getIdChiTietSP());
-                    query.executeUpdate();
+                query.executeUpdate();
 //                }
             }
             transaction.commit();
@@ -268,4 +274,22 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             transaction.rollback();
         }
     }
+    @Override
+    public SanPham getById(UUID id) {
+        SanPham sanPham = new SanPham();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT sp FROM SanPham sp WHERE sp.idSanPham = :idSanPham";
+            Query<SanPham> query = session.createQuery(hql);
+            query.setParameter("idSanPham", id);
+            sanPham = query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return sanPham;
+    }
+
+ 
 }
