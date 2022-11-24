@@ -355,7 +355,6 @@ public class GenDB {
         sanPham.setMau(mauSac1);
         sanPham.setHeDieuHanh(dieuHanh);
         sanPham.setRam(ram);
-        sanPham.setKhuyenMai(khuyenMai);
         sanPham.setChatLieu(chatLieu);
         sanPham.setHang(hang);
         session.save(sanPham);
@@ -379,7 +378,6 @@ public class GenDB {
         sanPham1.setMau(mauSac2);
         sanPham1.setHeDieuHanh(dieuHanh);
         sanPham1.setRam(ram2);
-        sanPham1.setKhuyenMai(khuyenMai2);
         sanPham1.setChatLieu(chatLieu);
         sanPham1.setHang(hang);
         session.save(sanPham1);
@@ -402,7 +400,6 @@ public class GenDB {
         sanPham2.setMau(mauSac3);
         sanPham2.setHeDieuHanh(dieuHanh2);
         sanPham2.setRam(ram3);
-        sanPham2.setKhuyenMai(khuyenMai1);
         sanPham2.setChatLieu(chatLieu2);
         sanPham2.setHang(hang3);
         session.save(sanPham2);
@@ -425,7 +422,6 @@ public class GenDB {
         sanPham3.setMau(mauSac4);
         sanPham3.setHeDieuHanh(dieuHanh);
         sanPham3.setRam(ram);
-        sanPham3.setKhuyenMai(khuyenMai);
         sanPham3.setChatLieu(chatLieu);
         sanPham3.setHang(hang);
         session.save(sanPham3);
