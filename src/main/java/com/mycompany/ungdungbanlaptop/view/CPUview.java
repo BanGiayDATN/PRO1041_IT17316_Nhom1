@@ -27,15 +27,17 @@ public class CPUview extends javax.swing.JPanel {
     public CPUview() {
         initComponents();
         tbCPU.setModel(dtm);
-        String[] header = {"ID", "MA", "TEN CPU"};
+        String[] header = {"MA", "TEN CPU"};
         dtm.setColumnIdentifiers(header);
 
     }
 
     private void showData(ArrayList<CPUViewModel> list) {
         dtm.setRowCount(0);
+
         for (CPUViewModel x : list) {
             dtm.addRow(new Object[]{x.getId(), x.getMa(), x.getTen()});
+
         }
     }
 
@@ -205,8 +207,8 @@ public class CPUview extends javax.swing.JPanel {
             txtMa.setText("");
             txtTen.setText("");
         }
+
         showData((ArrayList<CPUViewModel>) ql.getALl());        // TODO add your handling code here:
-        
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed
