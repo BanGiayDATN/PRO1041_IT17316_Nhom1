@@ -21,12 +21,8 @@ public class ViewManChinh extends javax.swing.JFrame {
     private NhanVien nhanVien;
     
     public ViewManChinh(NhanVien nhanVien) {
-<<<<<<< HEAD
-       initComponents();
-=======
         initComponents();
         this.nhanVien = nhanVien;
->>>>>>> develop
         this.setLocationRelativeTo(null);
         if(nhanVien.getChucVu().getTen().equals("Nhân viên")){
             btnSanPham.setVisible(false);
