@@ -30,4 +30,6 @@ public interface KhachHangRepository {
     List<KhachHang> sreach(String soDienThoai);
     
      List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
+     
+    KhachHang getBySoDienThoai(String soDienThoai);
 }
