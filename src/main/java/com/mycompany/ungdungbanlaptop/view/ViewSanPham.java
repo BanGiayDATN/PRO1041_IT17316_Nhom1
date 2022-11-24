@@ -61,16 +61,16 @@ public class ViewSanPham extends javax.swing.JPanel {
     private RamService ramService = new RamServiceImpl();
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
 
-    private List<CPUViewModel> listCPU = cPUService.getALl();
-    private List<ChatLieu> listChatLieu = chatLieuSevice.getAll();
-    private List<Hang> listHang = hangService.getList();
-    private List<Mau> listMau = mauService.getAll();
-    private List<HeDieuHanh> listHeDieuHanh = dieuHanhService.getList();
-    private List<Imei> listImei = imeiService.getAll();
-    private List<ManHinh> listManHinh = manHinhService.getAll();
-    private List<Ram> listRam = ramService.getList();
     private int numBerTab;
+    private static List<String> listHeDieuHanh = new ArrayList<>();
+    private static List<String> listMau = new ArrayList<>();
+    private static List<String> listManHinh = new ArrayList<>();
+    private static List<String> listCPU = new ArrayList<>();
+    private static List<String> listChatLieu = new ArrayList<>();
+    private static List<String> listHang = new ArrayList<>();
+    private static List<String> listRam = new ArrayList<>();
 
+    ;
     /**
      * Creates new form ViewSanPham
      */
@@ -79,18 +79,129 @@ public class ViewSanPham extends javax.swing.JPanel {
         jTableSanPham.setModel(dtm);
         String[] a = {"STT", "Mã SP", "Tên Sp", "Trọng lượng", "Năm sản xuất", "Số lượng tồn", "Giá nhập", "Giá bán", "Mô tả"};
         dtm.setColumnIdentifiers(a);
-        comBoBoxMau();
-        comBoBoxChatLieu();
-        comBoBoxCPU();
+        loadDataCombobox();
+        comBoBoxMau(listMau);
+        comBoBoxChatLieu(listChatLieu);
+        comBoBoxCPU(listCPU);
         comBoBoxNam();
         comBoBoxGiaBan();
+<<<<<<< HEAD
         comBoBoxManHinh();
         comBoBoxHang();
         comBoBoxRam();
         comBoBoxHeDieuHanh();
         setComBox();
+=======
+        comBoBoxManHinh(listManHinh);
+        comBoBoxHang(listHang);
+        comBoBoxRam(listRam);
+        comBoBoxHeDieuHanh(listHeDieuHanh);
+>>>>>>> develop
         showData(sanPhamService.getAll());
 
+    }
+
+    private void loadDataCombobox() {
+        List<CPUViewModel> listCPU = cPUService.getALl();
+        List<ChatLieu> listChatLieu = chatLieuSevice.getAll();
+        List<Hang> listHang = hangService.getList();
+        List<Mau> listMau = mauService.getAll();
+        List<HeDieuHanh> listHeDieuHanh = dieuHanhService.getList();
+        List<Imei> listImei = imeiService.getAll();
+        List<ManHinh> listManHinh = manHinhService.getAll();
+        List<Ram> listRam = ramService.getList();
+        // khoi tao gia tri mac dinh
+        this.listHeDieuHanh.add("Mời bạn chọn");
+         this.listMau.add("Mời bạn chọn");
+         this.listManHinh.add("Mời bạn chọn");
+         this.listCPU.add("Mời bạn chọn");
+         this.listChatLieu.add("Mời bạn chọn");
+         this.listHang.add("Mời bạn chọn");
+         this.listRam.add("Mời bạn chọn");
+        listHeDieuHanh.forEach(a -> {
+            this.listHeDieuHanh.add(a.getMa());
+        });
+        listMau.forEach(a -> {
+            this.listMau.add(a.getTen());
+        });
+        listManHinh.forEach(a -> {
+            this.listManHinh.add(a.getMa());
+        });
+        listCPU.forEach(a -> {
+            this.listCPU.add(a.getTen());
+        });
+        listChatLieu.forEach(a -> {
+            this.listChatLieu.add(a.getTen());
+        });
+        listHang.forEach(a -> {
+            this.listHang.add(a.getTen());
+        });
+        listRam.forEach(a -> {
+            this.listRam.add(a.getTen());
+        });
+    }
+
+    public static void addHeDieuHanh(HeDieuHanh heDieuHanh) {
+        listHeDieuHanh.add(heDieuHanh.getMa());
+        comBoBoxHeDieuHanh(listHeDieuHanh);
+    }
+    public static void editHeDieuHanh(int index, HeDieuHanh heDieuHanh) {
+        listHeDieuHanh.set(index,heDieuHanh.getMa());
+        comBoBoxHeDieuHanh(listHeDieuHanh);
+    }
+    
+    public static void addMau(Mau mau) {
+        listMau.add(mau.getMa());
+        comBoBoxMau(listMau);
+    }
+    public static void editMau(int index, Mau mau) {
+        listMau.set(index, mau.getMa());
+        comBoBoxMau(listMau);
+    }
+    
+    public static void addManHinh(ManHinh manHinh) {
+        listManHinh.add(manHinh.getMa());
+        comBoBoxManHinh(listManHinh);
+    }
+    public static void editManHinh(int index, ManHinh manHinh) {
+        listManHinh.set(index, manHinh.getMa());
+        comBoBoxManHinh(listManHinh);
+    }
+    
+    public static void addCPU(CPU cpu) {
+        listCPU.add(cpu.getMa());
+        comBoBoxCPU(listCPU);
+    }
+    public static void editCPU(int index, CPU cpu) {
+        listCPU.set(index, cpu.getMa());
+        comBoBoxCPU(listCPU);
+    }
+    
+    public static void addChatLieu(ChatLieu chatLieu) {
+        listChatLieu.add(chatLieu.getMa());
+        comBoBoxChatLieu(listChatLieu);
+    }
+    public static void editChatLieu(int index, ChatLieu chatLieu) {
+        listChatLieu.set(index, chatLieu.getMa());
+        comBoBoxChatLieu(listChatLieu);
+    }
+    
+    public static void addhang(Hang hang) {
+        listHang.add(hang.getMa());
+        comBoBoxHang(listHang);
+    }
+    public static void editHang(int index, Hang hang) {
+        listHang.set(index, hang.getMa());
+        comBoBoxHang(listHang);
+    }
+    
+    public static void addRam(Ram ram) {
+        listRam.add(ram.getMa());
+        comBoBoxRam(listRam);
+    }
+    public static void editRam(int index, Ram ram) {
+        listRam.set(index, ram.getMa());
+        comBoBoxRam(listRam);
     }
 
     private void showData(List<SanPham> list) {
@@ -111,81 +222,95 @@ public class ViewSanPham extends javax.swing.JPanel {
         boxModel.setSelectedItem(0);
     }
 
-    private void comBoBoxMau() {
-        List<String> list = new ArrayList<>();
-        listMau.forEach(a -> {
-            list.add(a.getTen());
-        });
+    private static void comBoBoxMau(List<String> list) {
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+       DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
+       cbbMauSac.removeAllItems();
+       cbbMauSacSearch.removeAllItems();
         boxModel = (DefaultComboBoxModel) cbbMauSac.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbMauSacSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbMauSac.setSelectedIndex(0);
+       cbbMauSacSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxCPU() {
-        List<String> list = new ArrayList<>();
-        listCPU.forEach(a -> {
-            list.add(a.getTen());
-        });
+    private static void comBoBoxCPU(List<String> list) {
+        cbbCPU.removeAllItems();
+       cbbCPUSearch.removeAllItems();
+       DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+       DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbCPU.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbCPUSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbCPU.setSelectedIndex(0);
+       cbbCPUSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxChatLieu() {
-        List<String> list = new ArrayList<>();
-        listChatLieu.forEach(a -> {
-            list.add(a.getTen());
-        });
+    private static void comBoBoxChatLieu(List<String> list) {
+        cbbChatLieu.removeAllItems();
+       cbbChatLieuSearch.removeAllItems();
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+       DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbChatLieu.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbChatLieuSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbChatLieu.setSelectedIndex(0);
+       cbbChatLieuSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxHang() {
-        List<String> list = new ArrayList<>();
-        listHang.forEach(a -> {
-            list.add(a.getTen());
-        });
+    private static void comBoBoxHang(List<String> list) {
+        cbbNhaSanXuat.removeAllItems();
+       cbbNhaSanXuatSearch.removeAllItems();
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+       DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbNhaSanXuat.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbNhaSanXuatSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+         cbbNhaSanXuat.setSelectedIndex(0);
+       cbbNhaSanXuatSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxManHinh() {
-        List<String> list = new ArrayList<>();
-        listManHinh.forEach(a -> {
-            list.add(a.getMa());
-        });
+    private static void comBoBoxManHinh(List<String> list) {
+        cbbManHinh.removeAllItems();
+       cbbManHinhSearch.removeAllItems();
+       DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+       DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbManHinh.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbManHinhSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbManHinh.setSelectedIndex(0);
+       cbbManHinhSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxRam() {
-        List<String> list = new ArrayList<>();
-        listRam.forEach(a -> {
-            list.add(a.getTen());
-        });
+    private static void comBoBoxRam(List<String> list) {
+        cbbRam.removeAllItems();
+       cbbRamSearch.removeAllItems();        
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+        DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbRam.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbRamSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+        cbbRam.setSelectedIndex(0);
+       cbbRamSearch.setSelectedIndex(0);
     }
 
-    private void comBoBoxHeDieuHanh() {
-        List<String> list = new ArrayList<>();
-        listHeDieuHanh.forEach(a -> {
-            list.add(a.getMa());
-        });
+    private static void comBoBoxHeDieuHanh(List<String> list) {
+        cbbHeDieuHanh.removeAllItems();
+       cbbHeDieuHanhSearch.removeAllItems();        
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+        DefaultComboBoxModel boxModelSearch = new DefaultComboBoxModel();
         boxModel = (DefaultComboBoxModel) cbbHeDieuHanh.getModel();
         boxModelSearch = (DefaultComboBoxModel) cbbHeDieuHanhSearch.getModel();
         boxModel.addAll(list);
         boxModelSearch.addAll(list);
+         cbbHeDieuHanh.setSelectedIndex(0);
+       cbbHeDieuHanhSearch.setSelectedIndex(0);
     }
 
     private void setComBox() {
@@ -611,31 +736,53 @@ public class ViewSanPham extends javax.swing.JPanel {
 
         jScrollPane3.setViewportView(txtMoTa);
 
-        btnManHinh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
         btnManHinh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnManHinhActionPerformed(evt);
             }
         });
 
-        btnMauSac.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
         btnMauSac.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMauSacActionPerformed(evt);
             }
         });
 
-        btnHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnHang.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHangActionPerformed(evt);
+            }
+        });
 
-        btnCPU.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnCPU.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCPUActionPerformed(evt);
+            }
+        });
 
-        btnRam.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnRam.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRamActionPerformed(evt);
+            }
+        });
 
-        btnHeDieuHanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnHeDieuHanh.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnHeDieuHanhActionPerformed(evt);
+            }
+        });
 
-        btnChatLieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnChatLieu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnChatLieuActionPerformed(evt);
+            }
+        });
 
-        btnImei.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/Add.png"))); // NOI18N
+        btnImei.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImeiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -939,8 +1086,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btnMauSacActionPerformed
 
     private void btnManHinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnManHinhActionPerformed
-        // TODO add your handling code here:
-        new AdQuanLiManHinh().setVisible(true);
+        new ViewchucNang(new AdQuanLiManHinh()).setVisible(true);
     }//GEN-LAST:event_btnManHinhActionPerformed
 
     private void btn_searchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_searchActionPerformed
@@ -960,6 +1106,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         String tenHeDieuHanh = cbbHeDieuHanhSearch.getSelectedItem().toString();
         String tenChatLieu = cbbChatLieuSearch.getSelectedItem().toString();
         String soLuongString = txtSoLuongTon.getText().trim();
+<<<<<<< HEAD
         String namSXString = cbb_nam.getSelectedItem().toString();
         System.out.println(namSXString);
         String trongluongString = txtTrongLuongSearch.getText().trim();
@@ -990,6 +1137,32 @@ public class ViewSanPham extends javax.swing.JPanel {
             tenMau = null;
         }
         if (tenRam.equalsIgnoreCase(ktra.trim()) || tenRam.isBlank()) {
+=======
+        int namSX = (int) cbb_nam.getSelectedItem();
+        String trongluongString = txtTrongLuongSearch.getText().trim();
+        if (ten.equalsIgnoreCase(ktra.trim())) {
+            ten = null;
+        }
+        if (tenCPU.equalsIgnoreCase(ktra.trim())) {
+            tenCPU = null;
+        }
+        if (tenChatLieu.equalsIgnoreCase(ktra.trim())) {
+            tenChatLieu = null;
+        }
+        if (tenHang.equalsIgnoreCase(ktra.trim())) {
+            tenHang = null;
+        }
+        if (tenHeDieuHanh.equalsIgnoreCase(ktra.trim())) {
+            tenHeDieuHanh = null;
+        }
+        if (tenManHinh.equalsIgnoreCase(ktra.trim())) {
+            tenManHinh = null;
+        }
+        if (tenMau.equalsIgnoreCase(ktra.trim())) {
+            tenMau = null;
+        }
+        if (tenRam.equalsIgnoreCase(ktra.trim())) {
+>>>>>>> develop
             tenRam = null;
         }
         if (trongluongString.isEmpty()) {
@@ -1021,16 +1194,46 @@ public class ViewSanPham extends javax.swing.JPanel {
             startGiaBan = new BigDecimal(400000);
             endGiaBan = new BigDecimal(500000000);
         }
+<<<<<<< HEAD
         SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam, tenChatLieu, tenHang, nam, trongLuong, soLuong, startGiaBan, endGiaBan);
+=======
+        SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam, tenChatLieu, tenHang, namSX, trongLuong, soLuong, startGiaBan, endGiaBan);
+>>>>>>> develop
         List<SanPham> listSearch = sanPhamService.searchFill(request);
         showData(listSearch);
 
 
     }//GEN-LAST:event_btn_searchActionPerformed
 
+<<<<<<< HEAD
     private void cbbMauSacSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbbMauSacSearchActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cbbMauSacSearchActionPerformed
+=======
+    private void btnHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHangActionPerformed
+        new ViewchucNang(new AdQuanLiHang()).setVisible(true);
+    }//GEN-LAST:event_btnHangActionPerformed
+
+    private void btnCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCPUActionPerformed
+        new ViewchucNang(new CPUview()).setVisible(true);
+    }//GEN-LAST:event_btnCPUActionPerformed
+
+    private void btnRamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRamActionPerformed
+        new ViewchucNang(new AdQuanLiRam()).setVisible(true);
+    }//GEN-LAST:event_btnRamActionPerformed
+
+    private void btnHeDieuHanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHeDieuHanhActionPerformed
+        new ViewchucNang(new AdQuanLiVersionHeDieuHanh()).setVisible(true);
+    }//GEN-LAST:event_btnHeDieuHanhActionPerformed
+
+    private void btnChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnChatLieuActionPerformed
+        new ViewchucNang(new ChatLieuView()).setVisible(true);
+    }//GEN-LAST:event_btnChatLieuActionPerformed
+
+    private void btnImeiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImeiActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnImeiActionPerformed
+>>>>>>> develop
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -1048,6 +1251,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private javax.swing.JButton btnSua;
     private javax.swing.JButton btnThem;
     private javax.swing.JButton btn_search;
+<<<<<<< HEAD
     private javax.swing.JComboBox<String> cbbCPU;
     private com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbCPUSearch;
     private javax.swing.JComboBox<String> cbbChatLieu;
@@ -1065,6 +1269,25 @@ public class ViewSanPham extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbRam;
     private com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbRamSearch;
     private com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbb_nam;
+=======
+    private static javax.swing.JComboBox<String> cbbCPU;
+    private static javax.swing.JComboBox<String> cbbCPUSearch;
+    private static javax.swing.JComboBox<String> cbbChatLieu;
+    private static javax.swing.JComboBox<String> cbbChatLieuSearch;
+    private static javax.swing.JComboBox<String> cbbGiaBanSearch;
+    private static javax.swing.JComboBox<String> cbbHeDieuHanh;
+    private static javax.swing.JComboBox<String> cbbHeDieuHanhSearch;
+    private static javax.swing.JComboBox<String> cbbImai;
+    private static javax.swing.JComboBox<String> cbbManHinh;
+    private static javax.swing.JComboBox<String> cbbManHinhSearch;
+    private static javax.swing.JComboBox<String> cbbMauSac;
+    private static javax.swing.JComboBox<String> cbbMauSacSearch;
+    private static javax.swing.JComboBox<String> cbbNhaSanXuat;
+    private static javax.swing.JComboBox<String> cbbNhaSanXuatSearch;
+    private static javax.swing.JComboBox<String> cbbRam;
+    private static javax.swing.JComboBox<String> cbbRamSearch;
+    private static javax.swing.JComboBox<String> cbb_nam;
+>>>>>>> develop
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

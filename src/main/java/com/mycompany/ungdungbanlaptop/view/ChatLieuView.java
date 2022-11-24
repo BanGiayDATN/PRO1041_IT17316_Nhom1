@@ -165,6 +165,7 @@ public class ChatLieuView extends javax.swing.JPanel {
         try {
             JOptionPane.showMessageDialog(this, service.addNew(cl));
             loadTable(service.getAll());
+            ViewSanPham.addChatLieu(cl);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
 
@@ -175,12 +176,13 @@ public class ChatLieuView extends javax.swing.JPanel {
         String ma = txtma.getText();
         String ten = txtchatlieu.getText();
         ChatLieu chatLieu = service.getOne(ma);
-        System.out.println(chatLieu);
+        int row = tbchatlieu.getSelectedRow();
         chatLieu.setMa(ma);
         chatLieu.setTen(ten);
         int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", 0);
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(chatLieu));
+            ViewSanPham.editChatLieu(row, chatLieu);
         } else if (check == JOptionPane.NO_OPTION) {
             txtma.setText("");
             txtchatlieu.setText("");

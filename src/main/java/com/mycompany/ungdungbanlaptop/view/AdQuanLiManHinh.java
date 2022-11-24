@@ -287,7 +287,7 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         mh.setKichThuoc(cbbKichThuoc.getSelectedItem().toString());
         mh.setLoaiCamUng(cbbLoaiCamUng.getSelectedItem().toString());
         mh.setTanSo(cbbTanSo.getSelectedItem().toString());
-
+        ViewSanPham.addManHinh(mh);
         JOptionPane.showMessageDialog(this, manHinhService.add(mh));
         showData(manHinhService.getAll());
     }//GEN-LAST:event_btnThemActionPerformed
@@ -304,6 +304,7 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
         int row = jTableManHinh.getSelectedRow();
         mh.setIdManHinh(manHinhService.getOne(jTableManHinh.getValueAt(row, 0).toString()).getIdManHinh());
         JOptionPane.showMessageDialog(this, manHinhService.update(mh));
+        ViewSanPham.editManHinh(row, mh);
         showData(manHinhService.getAll());
     }//GEN-LAST:event_btnSuaActionPerformed
 

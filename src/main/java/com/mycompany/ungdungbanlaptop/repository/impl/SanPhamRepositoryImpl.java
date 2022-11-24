@@ -274,4 +274,22 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             transaction.rollback();
         }
     }
+    @Override
+    public SanPham getById(UUID id) {
+        SanPham sanPham = new SanPham();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT sp FROM SanPham sp WHERE sp.idSanPham = :idSanPham";
+            Query<SanPham> query = session.createQuery(hql);
+            query.setParameter("idSanPham", id);
+            sanPham = query.uniqueResult();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return sanPham;
+    }
+
+ 
 }

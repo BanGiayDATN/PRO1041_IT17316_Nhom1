@@ -5,7 +5,10 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
@@ -22,4 +25,5 @@ public interface HoaDonChiTietRepository {
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
 
+    boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 }
