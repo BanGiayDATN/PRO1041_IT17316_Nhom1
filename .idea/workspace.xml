@@ -4,6 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="" />
+=======
     <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="diem">
 <<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -114,6 +117,7 @@
       <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" afterDir="false" />
 >>>>>>> develop
     </list>
+>>>>>>> develop
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -142,11 +146,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/DuAn1/PRO1041_IT17346_Nhom1"
+=======
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;E:/PRO1041_DuAn1/PRO1041_IT17346_Nhom1&quot;
+>>>>>>> develop
   }
 }</component>
 <<<<<<< HEAD
@@ -178,9 +190,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="diem" />
-    <option name="LAST_COMMIT_MESSAGE" value="diem" />
   </component>
 </project>

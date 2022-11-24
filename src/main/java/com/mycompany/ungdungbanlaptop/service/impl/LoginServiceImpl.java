@@ -21,6 +21,7 @@ import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
+import javax.xml.bind.DatatypeConverter;
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 

@@ -56,7 +56,7 @@ public class NhanVien implements Serializable {
     @Column(name = "ho_ten", columnDefinition = "nvarchar(Max)")
     private String hoTen;
 
-    @Column(name = "gioi_tinh",  columnDefinition = "nvarchar(10)")
+    @Column(name = "gioi_tinh", length = 10)
     private String gioiTinh;
 
     @Column(name = "ngay_sinh")

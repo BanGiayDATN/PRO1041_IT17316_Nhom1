@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.view.viewlogin.login.ViewLogin;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -22,16 +21,21 @@ public class ViewManChinh extends javax.swing.JFrame {
     private NhanVien nhanVien;
     
     public ViewManChinh(NhanVien nhanVien) {
+<<<<<<< HEAD
+       initComponents();
+=======
         initComponents();
         this.nhanVien = nhanVien;
+>>>>>>> develop
         this.setLocationRelativeTo(null);
-        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+        if(nhanVien.getChucVu().getTen().equals("Nhân viên")){
             btnSanPham.setVisible(false);
             btnNhanVien.setVisible(false);
             btnThongKe.setVisible(false);
             menu.setVisible(false);
         }
-        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
+        menu.setIcon(new ImageIcon(new File("").getAbsolutePath()+"//src//main//resources//img//icon.png"));
+        
 
     }
 
@@ -61,7 +65,6 @@ public class ViewManChinh extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
-        btn_Thoat = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
         menu = new javax.swing.JMenu();
@@ -166,13 +169,6 @@ public class ViewManChinh extends javax.swing.JFrame {
             }
         });
 
-        btn_Thoat.setText("Thoát");
-        btn_Thoat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ThoatActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -180,16 +176,15 @@ public class ViewManChinh extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(btnSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
-                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
+                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                     .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_Thoat, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
+                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -213,9 +208,7 @@ public class ViewManChinh extends javax.swing.JFrame {
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 46, Short.MAX_VALUE)
-                .addComponent(btn_Thoat, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGap(0, 89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout ViewMenuLayout = new javax.swing.GroupLayout(ViewMenu);
@@ -372,7 +365,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_menuChatLieuActionPerformed
 
     private void MenuGPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuGPMActionPerformed
-        viewChucNang.removeAll();
+         viewChucNang.removeAll();
         GPMView form = new GPMView();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
@@ -407,7 +400,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
-        viewChucNang.removeAll();
+       viewChucNang.removeAll();
         ViewSanPham form = new ViewSanPham();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
@@ -424,7 +417,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
-        viewChucNang.removeAll();
+       viewChucNang.removeAll();
         ViewNhanVien form = new ViewNhanVien();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
@@ -444,12 +437,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThongKeActionPerformed
 
-    private void btn_ThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ThoatActionPerformed
-        // TODO add your handling code here:
-        new ViewLogin().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_btn_ThoatActionPerformed
-
+  
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -492,7 +480,6 @@ public class ViewManChinh extends javax.swing.JFrame {
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnThongKe;
-    private javax.swing.JButton btn_Thoat;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;

@@ -17,7 +17,6 @@ import com.mycompany.ungdungbanlaptop.repository.impl.NhanVienRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ChucVuService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
-;
 import java.util.List;
 
 import java.util.UUID;
@@ -30,8 +29,6 @@ import org.apache.commons.validator.routines.EmailValidator;
  *
  * @author vinhnv
  */
-
-
 public class NhanVienServiceImpl implements NhanVienService {
 
     private String regexSDT = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$";
