@@ -69,4 +69,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma ) {
         return khachHangRepository.getLichSuMuaHang(ma);
     }
+
+    @Override
+    public KhachHang getBySoDienThoai(String soDienThoai) {
+        return khachHangRepository.getBySoDienThoai(soDienThoai);
+    }
 }
