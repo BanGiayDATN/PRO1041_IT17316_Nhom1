@@ -9,7 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
-import com.mycompany.ungdungbanlaptop.entity.GPM;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
@@ -77,7 +77,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(KhuyenMai.class);
         conf.addAnnotatedClass(Imei.class);
         conf.addAnnotatedClass(ManHinh.class);
-        conf.addAnnotatedClass(GPM.class);
+        conf.addAnnotatedClass(Mau.class);
         conf.addAnnotatedClass(CPU.class);
         conf.addAnnotatedClass(Hang.class);
         conf.addAnnotatedClass(ChucVu.class);
