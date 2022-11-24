@@ -5,11 +5,8 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
-import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
@@ -138,4 +135,24 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
+    
+    @Override
+    public List<HoaDonBanHangViewModel> getHoaDonCho(){
+        List<HoaDonBanHangViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
+                    + "FROM HoaDon hd "
+                    + " WHERE hd.tinhTrang = 0";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new HoaDonRepositoryImpl().getHoaDonCho());
+    }
+
 }

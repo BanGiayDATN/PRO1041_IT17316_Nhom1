@@ -188,12 +188,13 @@ public class CPUview extends javax.swing.JPanel {
         String ten = txtTen.getText();
         CPU cpu = new CPU(ma, ten);
         JOptionPane.showMessageDialog(this, ql.add(cpu));
-
+        ViewSanPham.addCPU(cpu);
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
         String ma = txtMa.getText();
         String ten = txtTen.getText();
+        int row = tbCPU.getSelectedRow();
         CPU cpu = ql.getOne(ma);
         System.out.println(cpu);
         cpu.setMa(ma);
@@ -201,14 +202,13 @@ public class CPUview extends javax.swing.JPanel {
         int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", 0);
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, ql.update(cpu));
+            ViewSanPham.editCPU(row, cpu);
         } else if (check == JOptionPane.NO_OPTION) {
             txtMa.setText("");
             txtTen.setText("");
         }
 
         showData((ArrayList<CPUViewModel>) ql.getALl());        // TODO add your handling code here:
-
-
     }//GEN-LAST:event_btnSuaActionPerformed
 
     private void btnXemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXemActionPerformed

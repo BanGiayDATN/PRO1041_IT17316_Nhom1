@@ -221,12 +221,14 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
                     if (check == 0) {
                         heDieuHanhService.insert(heDieuHanh);
                         listHeDieuHanh.add(heDieuHanh);
+                         ViewSanPham.addHeDieuHanh(heDieuHanh);
                     }
                 }
             } catch (Exception e) {
             }
         }
         loadTable(listHeDieuHanh);
+   
     }//GEN-LAST:event_btnThemActionPerformed
 
     private void btnSuaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuaActionPerformed
@@ -243,6 +245,7 @@ public class AdQuanLiVersionHeDieuHanh extends javax.swing.JPanel {
         heDieuHanh.setHeDieuHanh(getEumHeDieuHanh());
         heDieuHanhService.update(id, heDieuHanh);
         listHeDieuHanh.set(index, heDieuHanh);
+        ViewSanPham.editHeDieuHanh(index, heDieuHanh);
         loadTable(listHeDieuHanh);
     }//GEN-LAST:event_btnSuaActionPerformed
 
