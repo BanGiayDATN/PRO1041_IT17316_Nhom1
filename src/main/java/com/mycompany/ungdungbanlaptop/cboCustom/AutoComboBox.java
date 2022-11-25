@@ -8,6 +8,7 @@ package com.mycompany.ungdungbanlaptop.cboCustom;
  *
  * @author thang
  */
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -54,6 +55,10 @@ public class AutoComboBox extends JComboBox<Object> {
 
             myVector.add(keyWord[a]);
         }
+    }
+
+    public void setKeyWord(List<String> list) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }
