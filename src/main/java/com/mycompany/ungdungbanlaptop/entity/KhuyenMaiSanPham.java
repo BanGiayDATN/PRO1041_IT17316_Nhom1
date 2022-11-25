@@ -4,13 +4,14 @@
  */
 package com.mycompany.ungdungbanlaptop.entity;
 
-import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiKhuyenMai;
-import java.math.BigDecimal;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -22,17 +23,18 @@ import org.hibernate.annotations.Parameter;
 
 /**
  *
- * @author vinhnv
+ * @author thang
  */
+
 @Entity
 @Data
 @Setter
 @Getter
-@Table(name="khuyen_mai")
+@Table(name="khuyen_mai_san_pham")
 @AllArgsConstructor
 @NoArgsConstructor
-public class KhuyenMai {
-
+public class KhuyenMaiSanPham {
+    
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
@@ -47,43 +49,12 @@ public class KhuyenMai {
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idKhuyenMai;
-
-    @Column(name = "ma")
-    private String ma;
+     
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_khuyen_mai")
+    private KhuyenMai khuyenMai; 
     
-    @Column(name = "ten", columnDefinition = "nvarchar(Max)")
-    private String  ten;
-
-    @Column(name = "ngay_bat_dau")
-    private long ngayBatDau;
-
-    @Column(name = "ngay_ket_thuc")
-    private long ngayKetThuc;
-
-    @Column(name = "trang_thai")
-    private int trangThai;
-
-    @Column(name = "so_luong")
-    private int soLuong;
-    
-    @Column(name = "phan_tram")
-    private int phanTram;
-    
-    @Column(name = "gia_tien_giam")
-    private BigDecimal giaTienGiam;
-    
-    @Column(name = "dieu_kien_giam_gia")
-    private BigDecimal dieuKienGiamGia;
-    
-    @Column(name = "loai_khuyen_mai")
-    private EnumLoaiKhuyenMai loaiKhuyenMai;
-    
-    @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
-    private String  moTa;
-
-    public KhuyenMai(String ma) {
-        this.ma = ma;
-    }
-    
-    
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_san_pham")
+    private SanPham sanPham;
 }

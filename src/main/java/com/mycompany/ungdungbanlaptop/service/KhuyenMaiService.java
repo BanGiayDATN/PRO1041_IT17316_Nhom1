@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service;
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import java.util.Date;
 import java.util.List;
@@ -31,5 +32,7 @@ public interface KhuyenMaiService {
     List<KhuyenMai> searchNgayBd(List<KhuyenMai> list, Long km);
 
     KhuyenMai getOne(String ma);
+    
+    List<KhuyenMaiRespone> listKhuyenMaiRespone();
 
 }
