@@ -10,11 +10,11 @@ import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
  *
  * @author thang
  */
-public class ViewUpdateKhuyenMai1 extends javax.swing.JFrame {
+public class ViewUpdateKhuyenMai extends javax.swing.JFrame {
 
    private KhuyenMai khuyenMai;
    
-    public ViewUpdateKhuyenMai1(KhuyenMai khuyenMai) {
+    public ViewUpdateKhuyenMai(KhuyenMai khuyenMai) {
         initComponents();
         this.khuyenMai = khuyenMai;
     }
@@ -51,7 +51,7 @@ public class ViewUpdateKhuyenMai1 extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtDieuKien = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -253,14 +253,18 @@ public class ViewUpdateKhuyenMai1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewUpdateKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>

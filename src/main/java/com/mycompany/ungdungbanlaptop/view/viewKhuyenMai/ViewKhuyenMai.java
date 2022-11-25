@@ -11,6 +11,7 @@ import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -191,6 +192,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblKhuyenMaiMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblKhuyenMai);
 
         txtSeachKhuyenMai.addCaretListener(new javax.swing.event.CaretListener() {
@@ -205,6 +211,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         });
 
         btnAddKhuyenMai.setText("khuyến mãi");
+        btnAddKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnAddKhuyenMaiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -266,6 +277,16 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     private void rdoTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoTatCaActionPerformed
          loadTable(getListSeach(list, null, false, false));
     }//GEN-LAST:event_rdoTatCaActionPerformed
+
+    private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
+       int index = tblKhuyenMai.getSelectedRow();
+       UUID idkhuyenMai = UUID.fromString(tblKhuyenMai.getModel().getValueAt(index, 0).toString());
+       new ViewChiTietKhuyenMai(idkhuyenMai).setVisible(true);
+    }//GEN-LAST:event_tblKhuyenMaiMouseClicked
+
+    private void btnAddKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKhuyenMaiActionPerformed
+        new ViewThemKhuyenMai().setVisible(true);
+    }//GEN-LAST:event_btnAddKhuyenMaiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -182,6 +182,9 @@
               </Table>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="tblKhuyenMaiMouseClicked"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
@@ -195,6 +198,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="khuy&#x1ebf;n m&#xe3;i"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnAddKhuyenMaiActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

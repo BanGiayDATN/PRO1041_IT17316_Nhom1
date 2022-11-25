@@ -45,7 +45,7 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
             transaction.commit();
             return true;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            System.out.println(e);
         }
         return false;
     }
@@ -98,10 +98,10 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
     @Override
     public KhuyenMai getOne(String ma) {
         Transaction transaction = null;
-        KhuyenMai km = new KhuyenMai();
+        KhuyenMai km = null;
         try {
-            String query = "SELECT new com.mycompany.ungdungbanlaptop.entity.KhuyenMai"
-                    + "(km.idKhuyenMai,km.ma,km.ngayBatDau,km.ngayKetThuc,km.trangThai,km.soLuong,km.phanTram) FROM KhuyenMai km WHERE km.ma like :ma";
+            String query = "FROM KhuyenMai km"
+                    + " WHERE km.ma like :ma";
             Query<KhuyenMai> hth = session.createQuery(query);
             hth.setParameter("ma", ma);
             km = hth.uniqueResult();
@@ -144,5 +144,7 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         }
         return list;
     }
+    
+   
 
 }

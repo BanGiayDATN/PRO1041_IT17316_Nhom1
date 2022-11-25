@@ -4,6 +4,10 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import java.util.UUID;
+import org.apache.commons.collections4.SetUtils;
+
 /**
  *
  * @author thang
@@ -13,7 +17,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     /**
      * Creates new form ViewChiTietKhuyenMai
      */
-    public ViewChiTietKhuyenMai() {
+    public ViewChiTietKhuyenMai(UUID idKhyenMai) {
         initComponents();
     }
 
@@ -59,6 +63,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         txtMoTa = new javax.swing.JTextArea();
         txtDieuKien = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblLichSu = new javax.swing.JTable();
@@ -199,6 +204,13 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
         jLabel19.setText("Điều kiện:");
 
+        jButton1.setText("Edit");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -251,6 +263,10 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
                                 .addComponent(txtTrangThai)))
                         .addGap(360, 360, 360)))
                 .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(26, 26, 26))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -287,7 +303,9 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
                     .addComponent(txtDieuKien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(77, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addComponent(jButton1)
+                .addGap(22, 22, 22))
         );
 
         jTabbedPane2.addTab("Thông tin", jPanel4);
@@ -412,6 +430,11 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtTenChuongTrinhActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        KhuyenMai khuyenMai = new KhuyenMai();
+        new ViewUpdateKhuyenMai(khuyenMai).setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -442,7 +465,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewChiTietKhuyenMai().setVisible(true);
+//                new ViewChiTietKhuyenMai().setVisible(true);
             }
         });
     }
@@ -450,6 +473,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnThemSanPham;
     private javax.swing.JButton btnXuatFile;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
