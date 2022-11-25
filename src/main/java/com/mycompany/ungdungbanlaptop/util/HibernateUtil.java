@@ -58,12 +58,12 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
-        properties.put(Environment.USER, ""); // nhớ thay tài khoản SQL
-        properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
+        properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=DUAN1;encrypt=true;trustServerCertificate=true");
+        properties.put(Environment.USER, "sa"); // nhớ thay tài khoản SQL
+        properties.put(Environment.PASS, "21072002"); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-        properties.put(Environment.HBM2DDL_AUTO, "cretae");
+//        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
