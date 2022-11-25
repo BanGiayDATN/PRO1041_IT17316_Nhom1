@@ -80,12 +80,12 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
     @Override
-    public HoaDon getOne(String maSp) {
+    public HoaDon getOne(String maHoaDon) {
 
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hd FROM HoaDon hd WHERE hd.ma like :ma";
             Query<HoaDon> query = session.createQuery(hql);
-            query.setParameter("ma", "%" + maSp + "%");
+            query.setParameter("ma", "%" + maHoaDon + "%");
             HoaDon hd = query.uniqueResult();
             return hd;
         } catch (Exception e) {
@@ -99,7 +99,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();
             hoaDon.setIdHoaDon(id);
-            hoaDon.setTinhTrang(1);
+          
             session.update(hoaDon);
             transaction.commit();
             return true;
@@ -137,5 +137,8 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
             e.printStackTrace(System.out);
         }
         return null;
+    }
+    public static void main(String[] args) {
+        System.out.println(new HoaDonRepositoryImpl().getOne("HD81118"));
     }
 }

@@ -19,7 +19,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class GioHangViewModel {
     private UUID idSanPham;
-    private UUID idHoaDon;
     private String ma;
     private String ten;
     private int soLuong;

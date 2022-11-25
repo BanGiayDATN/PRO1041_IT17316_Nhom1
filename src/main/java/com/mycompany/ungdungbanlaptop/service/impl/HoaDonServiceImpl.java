@@ -41,8 +41,8 @@ public class HoaDonServiceImpl implements HoaDonService{
     }
 
     @Override
-    public HoaDon getOne(String maSp) {
-        return  hoadonRepository.getOne(maSp);
+    public HoaDon getOne(String maHoaDon) {
+        return  hoadonRepository.getOne(maHoaDon);
     }
 
     @Override
