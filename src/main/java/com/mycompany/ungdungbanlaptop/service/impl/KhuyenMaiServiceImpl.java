@@ -11,13 +11,8 @@ import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhuyenMaiRepositoryImpl;
 
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
-import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import java.util.Date;
 import java.util.List;
-import java.util.UUID;
-import org.apache.commons.lang3.Validate;
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+
 
 /**
  *
@@ -92,7 +87,7 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     }
 
     @Override
-    public List<KhuyenMaiRespone> listKhuyenMaiRespone(String search) {
-        return  khuyenMaiRepository.listKhuyenMaiRespone(search);
+    public List<KhuyenMaiRespone> listKhuyenMaiRespone() {
+        return  khuyenMaiRepository.listKhuyenMaiRespone();
     }
 }

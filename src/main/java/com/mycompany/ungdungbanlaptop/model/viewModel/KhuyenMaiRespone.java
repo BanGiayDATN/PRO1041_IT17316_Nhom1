@@ -29,11 +29,11 @@ public class KhuyenMaiRespone {
     private EnumLoaiKhuyenMai loaiKhuyenMai;
     private int soLuong;
 
-    public String getNgayBatDau() {
+    public String getNgayBatDauString() {
         return new ConverDate().longToDate(ngaybatDau, "dd/MM/yyyy");
     }
 
-    public String getNgayKethuc() {
+    public String getNgayKethucString() {
         return new ConverDate().longToDate(ngayKethuc, "dd/MM/yyyy");
     }
 

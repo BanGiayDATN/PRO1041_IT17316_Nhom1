@@ -31,6 +31,6 @@ public interface KhuyenMaiRepository {
 
     KhuyenMai getOne(String ma);
     
-    List<KhuyenMaiRespone> listKhuyenMaiRespone(String search);
+    List<KhuyenMaiRespone> listKhuyenMaiRespone();
 
 }

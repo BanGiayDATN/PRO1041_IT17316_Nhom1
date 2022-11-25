@@ -7,7 +7,9 @@ package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,26 +21,81 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
 
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
     private List<KhuyenMaiRespone> list = new ArrayList<>();
-    
+
     public ViewKhuyenMai() {
         initComponents();
-        list = khuyenMaiService.listKhuyenMaiRespone(null);
-        lbSoLuong.setText(lbSoLuong.getText() + ": "  + list.size());
+        list = khuyenMaiService.listKhuyenMaiRespone();
+        lbSoLuong.setText(lbSoLuong.getText() + ": " + list.size());
         loadTable(list);
     }
 
-    private void loadTable(List<KhuyenMaiRespone> list){
+    private void loadTable(List<KhuyenMaiRespone> list) {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"id","Mã", "Tên","Ngày bắt đầu", "Ngày kết thúc", "Hình thức", "Số lượng"});
-        if(list != null){
-            System.out.println(list);
+        model.setColumnIdentifiers(new String[]{"id", "Mã", "Tên", "Ngày bắt đầu", "Ngày kết thúc", "Hình thức", "Số lượng"});
+        if (list != null) {
             list.stream().forEach(item -> {
-             model.addRow(new Object[]{item.getId(), item.getMa(),item.getTen(), item.getNgayBatDau(), item.getNgayKethuc(), item.getHinhThuc(), item.getSoLuong()});
+                model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), item.getNgayBatDauString(), item.getNgayKethucString(), item.getHinhThuc(), item.getSoLuong()});
             });
         }
         tblKhuyenMai.setModel(model);
         tblKhuyenMai.removeColumn(tblKhuyenMai.getColumnModel().getColumn(0));
     }
+
+    private List<KhuyenMaiRespone> getListSeach(List<KhuyenMaiRespone> list, String seach, boolean conHan, boolean hetHan) {
+        List<KhuyenMaiRespone> listKhuyenMai = new ArrayList<>();
+        String dateString = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+        long date = new ConverDate().dateToLong(dateString, "dd/MM/yyyy");
+        if (conHan) {
+            if (seach == null) {
+                list.stream().forEach(item -> {
+                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                        listKhuyenMai.add(item);
+                    }
+                });
+            } else {
+                list.stream().forEach(item -> {
+                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                        if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
+                            listKhuyenMai.add(item);
+                        }
+                    }
+                });
+            }
+        } else if (hetHan) {
+            if (seach == null) {
+                list.stream().forEach(item -> {
+                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    } else {
+                        listKhuyenMai.add(item);
+                    }
+                });
+            } else {
+                list.stream().forEach(item -> {
+                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    } else {
+                        if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
+                            listKhuyenMai.add(item);
+                        }
+                    }
+                });
+            }
+        }else{
+            if (seach == null) {
+                list.stream().forEach(item -> {
+                        listKhuyenMai.add(item);
+                });
+            } else {
+                list.stream().forEach(item -> {
+                        if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
+                            listKhuyenMai.add(item);
+                        }
+                });
+            }
+        }
+
+        return listKhuyenMai;
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -46,9 +103,9 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
+        rdoTatCa = new javax.swing.JRadioButton();
+        rdoConHieuLuc = new javax.swing.JRadioButton();
+        rdoHetHieuLuc = new javax.swing.JRadioButton();
         lbSoLuong = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblKhuyenMai = new javax.swing.JTable();
@@ -62,14 +119,29 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
 
         jLabel1.setText("Hiệu lực:");
 
-        buttonGroup1.add(jRadioButton1);
-        jRadioButton1.setText("Tất cả");
+        buttonGroup1.add(rdoTatCa);
+        rdoTatCa.setText("Tất cả");
+        rdoTatCa.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoTatCaActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton2);
-        jRadioButton2.setText("Còn hiệu lực");
+        buttonGroup1.add(rdoConHieuLuc);
+        rdoConHieuLuc.setText("Còn hiệu lực");
+        rdoConHieuLuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoConHieuLucActionPerformed(evt);
+            }
+        });
 
-        buttonGroup1.add(jRadioButton3);
-        jRadioButton3.setText("Hết hiệu lực ");
+        buttonGroup1.add(rdoHetHieuLuc);
+        rdoHetHieuLuc.setText("Hết hiệu lực ");
+        rdoHetHieuLuc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rdoHetHieuLucActionPerformed(evt);
+            }
+        });
 
         lbSoLuong.setText("số lượng khuyến mãi: ");
 
@@ -84,9 +156,9 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(6, 6, 6)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2)
-                            .addComponent(jRadioButton1)
-                            .addComponent(jRadioButton3))))
+                            .addComponent(rdoConHieuLuc)
+                            .addComponent(rdoTatCa)
+                            .addComponent(rdoHetHieuLuc))))
                 .addContainerGap(46, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
@@ -99,11 +171,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
                 .addGap(40, 40, 40)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton1)
+                .addComponent(rdoTatCa)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton2)
+                .addComponent(rdoConHieuLuc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jRadioButton3)
+                .addComponent(rdoHetHieuLuc)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lbSoLuong))
         );
@@ -173,9 +245,27 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     }//GEN-LAST:event_txtSeachKhuyenMaiMouseClicked
 
     private void txtSeachKhuyenMaiCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtSeachKhuyenMaiCaretUpdate
-       String search = txtSeachKhuyenMai.getText();
-        loadTable(khuyenMaiService.listKhuyenMaiRespone(search));
+        String search = txtSeachKhuyenMai.getText().toLowerCase().trim();
+        if(rdoConHieuLuc.isSelected()){
+            loadTable(getListSeach(list, search, true, false));
+        }else if(rdoHetHieuLuc.isSelected()){
+            loadTable(getListSeach(list, search, false, true));
+        }else{
+            loadTable(getListSeach(list, search, false, false));
+        }
     }//GEN-LAST:event_txtSeachKhuyenMaiCaretUpdate
+
+    private void rdoHetHieuLucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoHetHieuLucActionPerformed
+        loadTable(getListSeach(list, null, false, true));
+    }//GEN-LAST:event_rdoHetHieuLucActionPerformed
+
+    private void rdoConHieuLucActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoConHieuLucActionPerformed
+        loadTable(getListSeach(list, null, true, false));
+    }//GEN-LAST:event_rdoConHieuLucActionPerformed
+
+    private void rdoTatCaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rdoTatCaActionPerformed
+         loadTable(getListSeach(list, null, false, false));
+    }//GEN-LAST:event_rdoTatCaActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -183,11 +273,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lbSoLuong;
+    private javax.swing.JRadioButton rdoConHieuLuc;
+    private javax.swing.JRadioButton rdoHetHieuLuc;
+    private javax.swing.JRadioButton rdoTatCa;
     private javax.swing.JTable tblKhuyenMai;
     private javax.swing.JTextField txtSeachKhuyenMai;
     // End of variables declaration//GEN-END:variables

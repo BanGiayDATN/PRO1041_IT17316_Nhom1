@@ -129,22 +129,15 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
     }
 
     @Override
-    public List<KhuyenMaiRespone> listKhuyenMaiRespone(String search) {
+    public List<KhuyenMaiRespone> listKhuyenMaiRespone() {
         List<KhuyenMaiRespone> list = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone"
                     + "(km.idKhuyenMai,km.ma,km.ten,km.ngayBatDau,km.ngayKetThuc,km.loaiKhuyenMai,km.soLuong) "
-                    + "FROM KhuyenMai km "
-                    + "WHERE  (:search IS NULL \n"
-                    + "                            OR :search LIKE '' \n"
-                    + "                            OR km.ten LIKE CONCAT('%',:search,'%')) "
-                    + " OR"
-                    + " (:search IS NULL \n"
-                    + "                            OR :search LIKE '' \n"
-                    + "                            OR km.ma LIKE CONCAT('%',:search,'%'))";
+                    + "FROM KhuyenMai km ";
+                    
             Query query = session.createQuery(hql);
 
-            query.setParameter("search", search);
             list = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
