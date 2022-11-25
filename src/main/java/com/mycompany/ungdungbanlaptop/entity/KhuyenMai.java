@@ -52,7 +52,7 @@ public class KhuyenMai {
     private String ma;
     
     @Column(name = "ten", columnDefinition = "nvarchar(Max)")
-    private String  Ten;
+    private String  ten;
 
     @Column(name = "ngay_bat_dau")
     private long ngayBatDau;

@@ -80,22 +80,24 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="1" attributes="0">
-                      <Component id="jLabel3" alignment="1" min="-2" pref="125" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="jLabel1" min="-2" pref="116" max="-2" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jRadioButton3" alignment="0" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel1" min="-2" pref="116" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jRadioButton2" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRadioButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="jRadioButton3" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="46" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="lbSoLuong" max="32767" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -111,7 +113,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jRadioButton3" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
-                  <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lbSoLuong" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -146,7 +148,7 @@
             <Property name="text" type="java.lang.String" value="H&#x1ebf;t hi&#x1ec7;u l&#x1ef1;c "/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel3">
+        <Component class="javax.swing.JLabel" name="lbSoLuong">
           <Properties>
             <Property name="text" type="java.lang.String" value="s&#x1ed1; l&#x1b0;&#x1ee3;ng khuy&#x1ebf;n m&#xe3;i: "/>
           </Properties>
@@ -175,6 +177,10 @@
       </SubComponents>
     </Container>
     <Component class="javax.swing.JTextField" name="txtSeachKhuyenMai">
+      <Events>
+        <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtSeachKhuyenMaiCaretUpdate"/>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtSeachKhuyenMaiMouseClicked"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="btnAddKhuyenMai">
       <Properties>
