@@ -677,7 +677,6 @@ public class AddSanPham extends javax.swing.JFrame {
         sanPham.setTen(tenSP);
         sanPham.setTrongLuong(Float.valueOf(trongLuongString));
         sanPham.setMau(mauService.getByTen(mauSac));
-        sanPham.setImei(null);
         JOptionPane.showMessageDialog(this, sanPhamService.add(sanPham));
         ViewSanPham.addSanPham(sanPham);
         this.dispose();

@@ -700,7 +700,6 @@ public class UpdateSanPham extends javax.swing.JFrame {
         sp.setTen(tenSP);
         sp.setTrongLuong(Float.valueOf(trongLuongString));
         sp.setMau(mauService.getByTen(mauSac));
-        sp.setImei(null);
         JOptionPane.showMessageDialog(this, sanPhamService.update(sanPham));
         ViewSanPham.editSanPham(index,sanPham);
         this.dispose();

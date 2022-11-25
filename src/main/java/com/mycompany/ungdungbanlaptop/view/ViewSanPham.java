@@ -235,9 +235,9 @@ public class ViewSanPham extends javax.swing.JPanel {
     private void comBoBoxNam() {
         LocalDate localDate = LocalDate.now();
         int year = localDate.getYear();
-        List<Integer> list = new ArrayList<>();
+        List<String> list = new ArrayList<>();
         for (int i = 1950; i <= year; i++) {
-            list.add(i);
+            list.add(i + "");
         }
         boxModel = (DefaultComboBoxModel) cbb_namSearch.getModel();
         boxModel.addAll(list);
@@ -363,9 +363,6 @@ public class ViewSanPham extends javax.swing.JPanel {
         jPanel5 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableSanPham = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -564,12 +561,6 @@ public class ViewSanPham extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(jTableSanPham);
 
-        jButton1.setText("jButton1");
-
-        jButton2.setText("jButton2");
-
-        jLabel1.setText("jLabel1");
-
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -578,26 +569,13 @@ public class ViewSanPham extends javax.swing.JPanel {
                 .addGap(22, 22, 22)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(44, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(23, 23, 23)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton2)
-                .addGap(56, 56, 56))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap(54, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jLabel1))
-                .addGap(9, 9, 9))
+                .addGap(52, 52, 52))
         );
 
         javax.swing.GroupLayout TimKiemSanPhamLayout = new javax.swing.GroupLayout(TimKiemSanPham);
@@ -680,7 +658,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         String tenHeDieuHanh = cbbHeDieuHanhSearch.getSelectedItem().toString();
         String tenChatLieu = cbbChatLieuSearch.getSelectedItem().toString();
         String soLuongString = txtSoLuongTonSearch.getText().trim();
-        int namSX = (int) cbb_namSearch.getSelectedItem();
+        String namSXString = cbb_namSearch.getSelectedItem().toString().trim();
+        int nam = Integer.parseInt(namSXString);
         String trongluongString = txtTrongLuongSearch.getText().trim();
         if (ten.equalsIgnoreCase(ktra.trim())) {
             ten = null;
@@ -735,7 +714,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             startGiaBan = new BigDecimal(400000);
             endGiaBan = new BigDecimal(500000000);
         }
-        SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam, tenChatLieu, tenHang, namSX, trongLuong, soLuong, startGiaBan, endGiaBan);
+        SanPhamSearchRequest request = new SanPhamSearchRequest(ten, tenManHinh, tenCPU, tenMau, tenHeDieuHanh, tenRam, tenChatLieu, tenHang, nam, trongLuong, soLuong, startGiaBan, endGiaBan);
         List<SanPham> listSearch = sanPhamService.searchFill(request);
         showData(listSearch);
 
@@ -754,9 +733,6 @@ public class ViewSanPham extends javax.swing.JPanel {
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbNhaSanXuatSearch;
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbRamSearch;
     private static javax.swing.JComboBox<String> cbb_namSearch;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
