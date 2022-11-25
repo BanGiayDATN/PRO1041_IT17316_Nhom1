@@ -17,6 +17,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
@@ -63,7 +64,7 @@ public class HibernateUtil {
         properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-        properties.put(Environment.HBM2DDL_AUTO, "cretae");
+        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
@@ -84,6 +85,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(SanPham.class);
+        conf.addAnnotatedClass(KhuyenMaiSanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(DoiTRa.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
