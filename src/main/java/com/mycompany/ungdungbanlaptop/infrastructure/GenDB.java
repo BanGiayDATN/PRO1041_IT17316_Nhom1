@@ -200,7 +200,7 @@ public class GenDB {
         session.save(manHinh3);
 
         HeDieuHanh dieuHanh = new HeDieuHanh();
-        dieuHanh.setTen(" Windows XP");
+        dieuHanh.setTen("Windows XP");
         dieuHanh.setMa(new TaoChuoiNgauNhien().getMkRanMa("HDH", 3));
         dieuHanh.setHeDieuHanh(EnumHeDieuHanh.WINDOWS);
         session.save(dieuHanh);
