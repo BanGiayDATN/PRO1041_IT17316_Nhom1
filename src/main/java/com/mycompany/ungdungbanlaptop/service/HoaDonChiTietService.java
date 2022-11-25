@@ -2,24 +2,16 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.mycompany.ungdungbanlaptop.repository;
+package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
-import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Map;
-=======
->>>>>>> develop_diem
-import java.util.UUID;
 
 /**
  *
- * @author vinhnv
+ * @author Diệm DZ
  */
-
-public interface HoaDonChiTietRepository {
-
+public interface HoaDonChiTietService {
     List<HoaDonChiTiet> getAll();
 
     HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet);
@@ -27,7 +19,4 @@ public interface HoaDonChiTietRepository {
     HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet);
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
-    HoaDonChiTiet getOne(UUID id);
-
-    boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 }

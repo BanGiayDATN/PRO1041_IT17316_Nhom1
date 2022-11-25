@@ -24,7 +24,7 @@ public interface HoaDonService {
 
     HoaDon delete(HoaDon hoaDon);
 
-    HoaDon getOne(String maSp);
+    HoaDon getOne(String maHoaDon);
     
     boolean setTrangThai(UUID id, HoaDon hoaDon);
     

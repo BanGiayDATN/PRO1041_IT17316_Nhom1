@@ -26,8 +26,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     @Override
     public List<HoaDonChiTiet> getAll() {
+<<<<<<< HEAD
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham");
+=======
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM HoaDonChiTiet");
+>>>>>>> develop_diem
             List<HoaDonChiTiet> list = query.getResultList();
 
             return list;
@@ -78,11 +83,20 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return hoaDonChiTiet;
     }
-
-    public static void main(String[] args) {
-//        HoaDonChiTiet hdct = new HoaDonChiTiet(1, BigDecimal.valueOf(Double.valueOf(2000)), new HoaDon(UUID.fromString("c0a83801-847e-19b9-8184-7ea9be380000")));
-//        System.out.println(new HoaDonChiTietRepositoryImpl().add(hdct));
+    @Override
+    public HoaDonChiTiet getOne(UUID id) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.idHoaDonChiTiet = :idHoaDonChiTiet";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDonChiTiet", id );
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
+<<<<<<< HEAD
 
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
@@ -105,4 +119,11 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
         return false;
     }
+=======
+    public static void main(String[] args) {
+        System.out.println(new HoaDonChiTietRepositoryImpl().getOne(UUID.fromString("0138A8C0-AA84-2213-8184-AA5383750000")));
+    }
+
+    
+>>>>>>> develop_diem
 }
