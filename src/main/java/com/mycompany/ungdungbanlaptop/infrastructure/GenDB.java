@@ -21,6 +21,7 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiKhuyenMai;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
@@ -199,7 +200,7 @@ public class GenDB {
         session.save(manHinh3);
 
         HeDieuHanh dieuHanh = new HeDieuHanh();
-        dieuHanh.setTen(" Windows XP");
+        dieuHanh.setTen("Windows XP");
         dieuHanh.setMa(new TaoChuoiNgauNhien().getMkRanMa("HDH", 3));
         dieuHanh.setHeDieuHanh(EnumHeDieuHanh.WINDOWS);
         session.save(dieuHanh);
@@ -254,7 +255,9 @@ public class GenDB {
 
         KhuyenMai khuyenMai = new KhuyenMai();
         khuyenMai.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
+        khuyenMai.setTen("khuyến mãi tháng 1");
         khuyenMai.setSoLuong(10);
+        khuyenMai.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai.setTrangThai(0);
         khuyenMai.setNgayBatDau(new ConverDate().dateToLong("01/01/2022", "dd/MM/yyyy"));
         khuyenMai.setNgayKetThuc(new ConverDate().dateToLong("01/05/2022", "dd/MM/yyyy"));
@@ -263,16 +266,20 @@ public class GenDB {
 
         KhuyenMai khuyenMai1 = new KhuyenMai();
         khuyenMai1.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
+        khuyenMai1.setTen("Tháng đặc biệt");
         khuyenMai1.setSoLuong(10);
         khuyenMai1.setTrangThai(0);
-        khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/06/2022", "dd/MM/yyyy"));
-        khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/10/2022", "dd/MM/yyyy"));
+        khuyenMai1.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
+        khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/10/2022", "dd/MM/yyyy"));
+        khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/12/2022", "dd/MM/yyyy"));
         khuyenMai1.setPhanTram(20);
         session.save(khuyenMai1);
 
         KhuyenMai khuyenMai2 = new KhuyenMai();
         khuyenMai2.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai2.setSoLuong(10);
+        khuyenMai2.setTen("2 năm");
+        khuyenMai2.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai2.setTrangThai(0);
         khuyenMai2.setNgayBatDau(new ConverDate().dateToLong("01/04/2022", "dd/MM/yyyy"));
         khuyenMai2.setNgayKetThuc(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
@@ -342,8 +349,8 @@ public class GenDB {
         sanPham.setTen("Laptop Gigabyte Gaming G5");
         sanPham.setTrongLuong((float) 2.2);
         sanPham.setSoLuongTon(25);
-        sanPham.setGiaNhap(new BigDecimal(200000.0));
-        sanPham.setGiaBan(new BigDecimal(240000.0));
+        sanPham.setGiaNhap(new BigDecimal(20000000.0));
+        sanPham.setGiaBan(new BigDecimal(24000000.0));
         sanPham.setNamBH(2022);
         sanPham.setMoTa("Sở hữu những công nghệ mới nhất,"
                 + " màn hình chơi game chuyên nghiệp và "
@@ -355,7 +362,6 @@ public class GenDB {
         sanPham.setMau(mauSac1);
         sanPham.setHeDieuHanh(dieuHanh);
         sanPham.setRam(ram);
-        sanPham.setKhuyenMai(khuyenMai);
         sanPham.setChatLieu(chatLieu);
         sanPham.setHang(hang);
         session.save(sanPham);
@@ -365,8 +371,8 @@ public class GenDB {
         sanPham1.setTen("Laptop Asus TUF Gaming");
         sanPham1.setTrongLuong((float) 2.3);
         sanPham1.setSoLuongTon(25);
-        sanPham1.setGiaNhap(new BigDecimal(15500.0));
-        sanPham1.setGiaBan(new BigDecimal(184900.0));
+        sanPham1.setGiaNhap(new BigDecimal(1550000.0));
+        sanPham1.setGiaBan(new BigDecimal(18490000.0));
         sanPham1.setNamBH(2022);
         sanPham1.setMoTa("Asus TUF Gaming F15 FX506LHB-HN188W là "
                 + "chiếc laptop gaming giá rẻ với thiết kế tuyệt đẹp,"
@@ -379,7 +385,6 @@ public class GenDB {
         sanPham1.setMau(mauSac2);
         sanPham1.setHeDieuHanh(dieuHanh);
         sanPham1.setRam(ram2);
-        sanPham1.setKhuyenMai(khuyenMai2);
         sanPham1.setChatLieu(chatLieu);
         sanPham1.setHang(hang);
         session.save(sanPham1);
@@ -389,8 +394,8 @@ public class GenDB {
         sanPham2.setTen("Laptop Lenovo IdeaPad Gaming 3");
         sanPham2.setTrongLuong((float) 2.2);
         sanPham2.setSoLuongTon(25);
-        sanPham2.setGiaNhap(new BigDecimal(450000.0));
-        sanPham2.setGiaBan(new BigDecimal(599000.0));
+        sanPham2.setGiaNhap(new BigDecimal(45000000.0));
+        sanPham2.setGiaBan(new BigDecimal(59900000.0));
         sanPham2.setNamBH(2022);
         sanPham2.setMoTa("Lenovo IdeaPad Gaming 3 15IAH7 là "
                 + "đại diện tiêu biểu của một chiếc laptop chơi game"
@@ -402,7 +407,6 @@ public class GenDB {
         sanPham2.setMau(mauSac3);
         sanPham2.setHeDieuHanh(dieuHanh2);
         sanPham2.setRam(ram3);
-        sanPham2.setKhuyenMai(khuyenMai1);
         sanPham2.setChatLieu(chatLieu2);
         sanPham2.setHang(hang3);
         session.save(sanPham2);
@@ -412,8 +416,8 @@ public class GenDB {
         sanPham3.setTen("Laptop MSI Gaming Katana GF66");
         sanPham3.setTrongLuong((float) 2.25);
         sanPham3.setSoLuongTon(25);
-        sanPham3.setGiaNhap(new BigDecimal(200000.0));
-        sanPham3.setGiaBan(new BigDecimal(240000.0));
+        sanPham3.setGiaNhap(new BigDecimal(30000000.0));
+        sanPham3.setGiaBan(new BigDecimal(34000000.0));
         sanPham3.setNamBH(2022);
         sanPham3.setMoTa("Sở hữu những công nghệ mới nhất,"
                 + " màn hình chơi game chuyên nghiệp và "
@@ -425,7 +429,6 @@ public class GenDB {
         sanPham3.setMau(mauSac4);
         sanPham3.setHeDieuHanh(dieuHanh);
         sanPham3.setRam(ram);
-        sanPham3.setKhuyenMai(khuyenMai);
         sanPham3.setChatLieu(chatLieu);
         sanPham3.setHang(hang);
         session.save(sanPham3);
@@ -492,14 +495,14 @@ public class GenDB {
         hdct.setHoaDon(hd);
         hdct.setSoLuong(1);
         hdct.setImei(null);
-        hdct.setDonGia(new BigDecimal(240000.0));
+        hdct.setDonGia(new BigDecimal(24000000.0));
         session.save(hdct);
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
         hdct.setSoLuong(1);
         hdct.setImei(null);
-        hdct.setDonGia(new BigDecimal(184900.0));
+        hdct.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
       
         // db generator : gen bảng tự động

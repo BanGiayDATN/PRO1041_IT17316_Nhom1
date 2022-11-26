@@ -116,7 +116,5 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public SanPham getById(UUID id) {
         return sanPhamRepository.getById(id);
-        
     }
-
 }

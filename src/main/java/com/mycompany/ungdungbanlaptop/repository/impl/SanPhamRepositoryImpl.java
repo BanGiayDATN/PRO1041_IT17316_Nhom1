@@ -29,7 +29,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPham> getAll() {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM SanPham");
+            Query query = session.createQuery("FROM SanPham ");
             List<SanPham> list = query.getResultList();
 
             return list;
@@ -247,13 +247,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        SanPhamSearchRequest request = new SanPhamSearchRequest();
-        request.setManHinh("MH1797");
-        request.setTrongLuong((float) 2.2);
-        List<SanPham> list = new SanPhamRepositoryImpl().searchFill(request);
-        list.forEach(a -> System.out.println(a));
-    }
 
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
@@ -274,6 +267,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             transaction.rollback();
         }
     }
+
     @Override
     public SanPham getById(UUID id) {
         SanPham sanPham = new SanPham();
@@ -290,6 +284,14 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return sanPham;
     }
+<<<<<<< HEAD
   
+=======
+
+    public static void main(String[] args) {
+        System.out.println(new SanPhamRepositoryImpl().searchByTenBanHang("gig"));
+    }
+>>>>>>> develop
  
+
 }

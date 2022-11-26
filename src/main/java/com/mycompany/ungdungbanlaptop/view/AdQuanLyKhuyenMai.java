@@ -373,9 +373,9 @@ public class AdQuanLyKhuyenMai extends javax.swing.JPanel {
         }
         String conver = new ConverDate().convertDateToString(ngayBd, "dd/MM/yyyy");
         String conver1 = new ConverDate().convertDateToString(ngayKt, "dd/MM/yyyy");
-        KhuyenMai km = new KhuyenMai(ma, new ConverDate().dateToLong(conver, "dd/MM/yyyy"),
-                new ConverDate().dateToLong(conver1, "dd/MM/yyyy"), tt, Integer.valueOf(soLuong), Integer.valueOf(giamGia));
-        JOptionPane.showMessageDialog(this, ql.add(km));
+//        KhuyenMai km = new KhuyenMai(ma, new ConverDate().dateToLong(conver, "dd/MM/yyyy"),
+//                new ConverDate().dateToLong(conver1, "dd/MM/yyyy"), tt, Integer.valueOf(soLuong), Integer.valueOf(giamGia));
+//        JOptionPane.showMessageDialog(this, ql.add(km));
         showData(ql.getALl());
     }//GEN-LAST:event_btnThemActionPerformed
 

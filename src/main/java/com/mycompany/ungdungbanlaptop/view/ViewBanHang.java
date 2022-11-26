@@ -269,6 +269,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         btnChuaThanhToan.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnChuaThanhToan);
         btnChuaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        btnChuaThanhToan.setSelected(true);
         btnChuaThanhToan.setText("Chưa thanh toán");
         btnChuaThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -533,6 +534,12 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel18.setText("Tiền thừa:");
+
+        txtTienKhachDua.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtTienKhachDuaKeyReleased(evt);
+            }
+        });
 
         jLabel19.setFont(new java.awt.Font("Tahoma", 1, 10)); // NOI18N
         jLabel19.setText("Hình thức thanh toán:");
@@ -984,10 +991,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 GioHangViewModel ghvm = new GioHangViewModel();
                 ghvm.setMa(jTableSanPham.getModel().getValueAt(row, 2).toString());
                 ghvm.setTen(jTableSanPham.getModel().getValueAt(row, 3).toString());
-                for (int i = soLuong; i <= soLuong; i++) {
-                    ghvm.setSoLuong(i++);
-                }
-                
+                ghvm.setSoLuong(soLuong);
                 ghvm.setDonGia(BigDecimal.valueOf(Double.valueOf(jTableSanPham.getModel().getValueAt(row, 7).toString())));
                 ghvm.setIdSanPham(idSanPham);
 
@@ -1154,9 +1158,9 @@ public class ViewBanHang extends javax.swing.JPanel {
         hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
 
         // tinh tien
-        BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
-        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
-        txtTienThua.setText(String.valueOf(tienKhachDua.subtract(tongTien)));
+//        BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
+//        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
+//        txtTienThua.setText(String.valueOf(tienKhachDua.subtract(tongTien)));
         removeGioHang();
         clearHoaDon();
 
@@ -1269,6 +1273,13 @@ public class ViewBanHang extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_XoaAllActionPerformed
+
+    private void txtTienKhachDuaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTienKhachDuaKeyReleased
+        // TODO add your handling code here:
+       BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
+        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
+        txtTienThua.setText(String.valueOf(tienKhachDua.subtract(tongTien)));
+    }//GEN-LAST:event_txtTienKhachDuaKeyReleased
     private void removeGioHang() {
         for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
             SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());
