@@ -29,6 +29,9 @@ public class HoaDonBanHangViewModel {
         this.hoTen = hoTen;
         this.tinhTrang = tinhTrang;
     }
+<<<<<<< HEAD
     
     
+=======
+>>>>>>> develop
 }

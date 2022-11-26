@@ -14,13 +14,13 @@ import java.util.List;
  */
 public interface ChatLieuService {
 
-    public List<ChatLieu> getAll();
+    List<ChatLieu> getAll();
 
-    public String addNew(ChatLieu chatLieu);
+    String addNew(ChatLieu chatLieu);
 
-    public String update(ChatLieu ChatLieu);
+    String update(ChatLieu ChatLieu);
 
-    public ChatLieu getOne(String ma);
-    
-    public ChatLieu getByTen(String ten);
+    ChatLieu getOne(String ma);
+
+    ChatLieu getByTen(String ten);
 }
