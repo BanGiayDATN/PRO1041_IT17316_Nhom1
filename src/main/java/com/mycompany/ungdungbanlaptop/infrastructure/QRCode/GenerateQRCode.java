@@ -37,7 +37,7 @@ public class GenerateQRCode {
         //dữ liệu mà chúng tôi muốn lưu trữ trong mã QR 
         String str = "phong dzai";
         //đường dẫn nơi chúng tôi muốn lấy Mã QR
-        String path = "D:\\MOB1023_JavaSwing\\AssJava3\\phong.png";
+        String path = "D:\\FPT POLYTECHNIC\\HocKy4-Summer2022\\Block2\\1.png";
         //Mã hóa bộ ký tự được sử dụng 
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();

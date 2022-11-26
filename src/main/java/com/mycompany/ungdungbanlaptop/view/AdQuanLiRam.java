@@ -319,6 +319,7 @@ public class AdQuanLiRam extends javax.swing.JPanel {
                 if (check == 0) {
                     ramService.insert(ram);
                     listRam.add(ram);
+                    ViewSanPham.addRam(ram);
                 }
             }
         }
@@ -346,6 +347,7 @@ public class AdQuanLiRam extends javax.swing.JPanel {
             if (check == 0) {
                 JOptionPane.showMessageDialog(this, ramService.update(id, ram));
                 listRam.set(index, ram);
+                ViewSanPham.editRam(index, ram);
             }
         }
         loadTable(listRam);

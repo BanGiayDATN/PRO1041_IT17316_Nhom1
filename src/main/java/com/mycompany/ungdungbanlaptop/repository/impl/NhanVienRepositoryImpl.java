@@ -156,6 +156,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
     }
     
 
+
     @Override
     public List<NhanVien> getSearchByName(String hoTen) {
         List<NhanVien> list = new ArrayList<>();
@@ -171,6 +172,7 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
             e.printStackTrace(System.out);
         }
         return list;
+
     }
 
     @Override
@@ -188,10 +190,12 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         }
         return nv;
     }
+
     public static void main(String[] args) {
 
         NhanVien nhanVien = new NhanVienRepositoryImpl().getNhanVienByMa("NV215");
         System.out.println(nhanVien);
+
 
     }
 

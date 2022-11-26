@@ -7,10 +7,12 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -24,8 +26,10 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     @Override
     public List<HoaDonChiTiet> getAll() {
+
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM HoaDonChiTiet");
+
             List<HoaDonChiTiet> list = query.getResultList();
 
             return list;
@@ -38,7 +42,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(hoaDonChiTiet);
             transaction.commit();
@@ -52,7 +56,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.update(hoaDonChiTiet);
             transaction.commit();
@@ -66,7 +70,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.delete(hoaDonChiTiet);
             transaction.commit();
@@ -93,5 +97,27 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         System.out.println(new HoaDonChiTietRepositoryImpl().getOne(UUID.fromString("0138A8C0-AA84-2213-8184-AA5383750000")));
     }
 
-    
+
+    @Override
+    public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            list.values().forEach(item -> {
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setHoaDon(session.get(HoaDon.class, item.getIdHoaDon()));
+                hoaDonChiTiet.setSanPham(session.get(SanPham.class, item.getIdSanPham()));
+                hoaDonChiTiet.setDonGia(item.getDonGia());
+                hoaDonChiTiet.setSoLuong(item.getSoLuong());
+                session.save(hoaDonChiTiet);
+            });
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            transaction.rollback();
+        }
+
+        return false;
+    }
+
 }

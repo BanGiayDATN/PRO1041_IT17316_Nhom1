@@ -21,5 +21,4 @@ public class ChucVuServiceImpl implements ChucVuService {
     public ChucVu getOneByName(String name) {
         return chucVuRepository.getOneByeName(name);
     }
-
 }

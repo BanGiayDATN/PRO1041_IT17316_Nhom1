@@ -269,6 +269,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         btnChuaThanhToan.setBackground(new java.awt.Color(0, 0, 0));
         buttonGroup1.add(btnChuaThanhToan);
         btnChuaThanhToan.setForeground(new java.awt.Color(255, 255, 255));
+        btnChuaThanhToan.setSelected(true);
         btnChuaThanhToan.setText("Chưa thanh toán");
         btnChuaThanhToan.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

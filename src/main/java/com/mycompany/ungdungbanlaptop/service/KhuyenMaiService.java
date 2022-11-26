@@ -2,33 +2,33 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.mycompany.ungdungbanlaptop.repository;
+package com.mycompany.ungdungbanlaptop.service;
 
-
+import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-
 /**
  *
- * @author vinhnv
+ * @author HuynhPhung
  */
-public interface KhuyenMaiRepository {
+public interface KhuyenMaiService {
 
     List<KhuyenMai> getALl();
 
-    boolean add(KhuyenMai km);
+    String add(KhuyenMai km);
 
-    KhuyenMai update(KhuyenMai ma);
-    
-    KhuyenMai delete(KhuyenMai km);
+    String update(KhuyenMai ma);
 
-    List<KhuyenMai> search(String km);
+    String delete(KhuyenMai km);
 
-    List<KhuyenMai> searchNgayBd(Long km);
+    List<KhuyenMai> search(List<KhuyenMai> list, String km);
+
+    List<KhuyenMai> searchNgayBd(List<KhuyenMai> list, Long km);
 
     KhuyenMai getOne(String ma);
 

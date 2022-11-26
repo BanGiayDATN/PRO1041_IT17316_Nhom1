@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.service.MauService;
 import com.mycompany.ungdungbanlaptop.service.impl.MauServiceImpl;
+
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -32,11 +33,6 @@ public class GPMView extends javax.swing.JPanel {
         for (Mau x : list) {
             tbmodel.addRow(new Object[]{x.getMa(), x.getTen()});
         }
-    }
-
-    public void clearForm() {
-        txtMaGPM.setText(null);
-        txttenGPM.setText(null);
     }
 
     @SuppressWarnings("unchecked")
@@ -264,9 +260,11 @@ public class GPMView extends javax.swing.JPanel {
         Mau gpm = new Mau();
         gpm.setMa(txtMaGPM.getText());
         gpm.setTen(txttenGPM.getText());
+
         try {
             JOptionPane.showMessageDialog(this, service.addNew(gpm));
             loadTable(service.getAll());
+            ViewSanPham.addMau(gpm);
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Thêm thất bại");
 
@@ -277,15 +275,16 @@ public class GPMView extends javax.swing.JPanel {
         String ma = txtma.getText();
         String ten = txtGPM.getText();
         Mau gpm = service.getOne(ma);
-        System.out.println(gpm);
+        int row = tbGPM.getSelectedRow();
         gpm.setMa(ma);
         gpm.setTen(ten);
         int check = JOptionPane.showConfirmDialog(this, "Bạn có muốn sửa không?", "Update", 0);
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(gpm));
+            ViewSanPham.editMau(row, gpm);
         } else if (check == JOptionPane.NO_OPTION) {
-            txtMaGPM.setText("");
-            txttenGPM.setText("");
+            txtma.setText("");
+            txtGPM.setText("");
         }
         loadTable(service.getAll());
     }//GEN-LAST:event_btnsuaActionPerformed
@@ -300,6 +299,7 @@ public class GPMView extends javax.swing.JPanel {
         txtMaGPM.setText(mau.getMa());
         txttenGPM.setText(mau.getTen());
     }//GEN-LAST:event_tbGPMMouseClicked
+
 
     private void btnthem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnthem1ActionPerformed
         Mau mau = new Mau();
@@ -325,15 +325,14 @@ public class GPMView extends javax.swing.JPanel {
         if (check == JOptionPane.YES_OPTION) {
             JOptionPane.showMessageDialog(this, service.update(gpm));
         } else if (check == JOptionPane.NO_OPTION) {
-            txtMaGPM.setText("");
-            txttenGPM.setText("");
+            txtma.setText("");
+            txtGPM.setText("");
         }
         loadTable(service.getAll());
     }//GEN-LAST:event_btnsua1ActionPerformed
 
     private void btnxem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnxem1ActionPerformed
         loadTable(service.getAll());
-        clearForm();
     }//GEN-LAST:event_btnxem1ActionPerformed
 
     private void tbGPM1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbGPM1MouseClicked
