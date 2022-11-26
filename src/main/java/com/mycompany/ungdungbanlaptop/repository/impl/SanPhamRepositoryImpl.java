@@ -247,6 +247,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
+
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
         Transaction transaction = null;
@@ -283,5 +284,10 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return sanPham;
     }
-    
+
+    public static void main(String[] args) {
+        System.out.println(new SanPhamRepositoryImpl().searchByTenBanHang("gig"));
+    }
+ 
+
 }

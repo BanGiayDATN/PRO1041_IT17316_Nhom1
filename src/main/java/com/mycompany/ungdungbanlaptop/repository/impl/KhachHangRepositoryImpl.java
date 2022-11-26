@@ -108,12 +108,12 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     }
 
     @Override
-    public List<KhachHang> sreach(String tenKh) {
+    public List<KhachHang> sreach(String soDienThoai) {
         List<KhachHang> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT kh FROM KhachHang kh WHERE kh.hoTen like :hoTen";
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.sdt like :sdt";
             Query<KhachHang> query = session.createQuery(hql);
-            query.setParameter("hoTen", "%" + tenKh + "%");
+            query.setParameter("sdt", "%" + soDienThoai + "%");
             list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -138,6 +138,23 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
         }
         return list;
     }
+    
+
+    @Override
+    public KhachHang getBySoDienThoai(String soDienThoai) {
+        
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.sdt like :sdt";
+            Query<KhachHang> query = session.createQuery(hql);
+            query.setParameter("sdt", "%" + soDienThoai + "%");
+            KhachHang kh = query.uniqueResult();
+            return kh;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    
     public static void main(String[] args) {
         System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH709"));
     }
