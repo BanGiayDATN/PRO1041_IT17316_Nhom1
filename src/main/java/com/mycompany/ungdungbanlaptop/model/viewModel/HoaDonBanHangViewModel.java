@@ -22,4 +22,13 @@ public class HoaDonBanHangViewModel {
     private long ngayTao;
     private String hoTen;
     private int tinhTrang;
+
+    public HoaDonBanHangViewModel(String ma, long ngayTao, String hoTen, int tinhTrang) {
+        this.ma = ma;
+        this.ngayTao = ngayTao;
+        this.hoTen = hoTen;
+        this.tinhTrang = tinhTrang;
+    }
+    
+    
 }
