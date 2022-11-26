@@ -30,6 +30,7 @@ public class HoaDonBanHangViewModel {
         this.tinhTrang = tinhTrang;
     }
 
+
     
     public HoaDonBanHangViewModel(String ma, long ngayTao, int tinhTrang) {
         this.ma = ma;
@@ -44,4 +45,5 @@ public class HoaDonBanHangViewModel {
         };
     }
     
+
 }

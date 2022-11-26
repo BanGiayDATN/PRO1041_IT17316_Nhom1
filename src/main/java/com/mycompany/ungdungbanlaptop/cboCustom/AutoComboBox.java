@@ -8,6 +8,7 @@ package com.mycompany.ungdungbanlaptop.cboCustom;
  *
  * @author thang
  */
+import java.util.List;
 import java.util.Vector;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JComboBox;
@@ -15,7 +16,7 @@ import javax.swing.JTextField;
 
 public class AutoComboBox extends JComboBox<Object> {
 
-    String keyWord[] = {"Mời bạn chọn"};
+    List<String> list ;
     Vector myVector = new Vector();
 
     public AutoComboBox() {
@@ -35,25 +36,30 @@ public class AutoComboBox extends JComboBox<Object> {
      *
      * @param keyWord an String array
      */
-    public void setKeyWord(String[] keyWord) {
-        this.keyWord = keyWord;
+    public void setKeyWord(List<String> list) {
+        this.list = list;
         setMyVectorInitial();
     }
 
     private void setMyVector() {
         int a;
-        for (a = 0; a < keyWord.length; a++) {
-            myVector.add(keyWord[a]);
+        if(list != null){
+             for (a = 0; a < list.size(); a++) {
+            myVector.add(list.get(a));
+        }
         }
     }
 
     private void setMyVectorInitial() {
         myVector.clear();
         int a;
-        for (a = 0; a < keyWord.length; a++) {
-
-            myVector.add(keyWord[a]);
+         if(list != null){
+             for (a = 0; a < list.size(); a++) {
+            myVector.add(list.get(a));
         }
+         }
     }
+
+
 
 }

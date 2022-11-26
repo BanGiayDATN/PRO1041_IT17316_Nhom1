@@ -98,10 +98,6 @@ public class SanPham implements Serializable {
     private Ram ram;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_khuyen_mai")
-    private KhuyenMai khuyenMai;
-
-    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_chat_lieu")
     private ChatLieu chatLieu;
 
@@ -109,8 +105,5 @@ public class SanPham implements Serializable {
     @JoinColumn(name = "id_hang")
     private Hang hang;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "id_imei")
-    private Imei imei;
 
 }
