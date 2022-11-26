@@ -7,17 +7,13 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Map;
-=======
->>>>>>> develop_diem
 import java.util.UUID;
 
 /**
  *
  * @author vinhnv
  */
-
 public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTiet> getAll();
@@ -27,6 +23,7 @@ public interface HoaDonChiTietRepository {
     HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet);
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
+
     HoaDonChiTiet getOne(UUID id);
 
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);

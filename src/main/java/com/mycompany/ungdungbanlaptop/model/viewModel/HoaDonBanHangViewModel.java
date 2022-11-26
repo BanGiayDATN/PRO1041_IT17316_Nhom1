@@ -23,7 +23,13 @@ public class HoaDonBanHangViewModel {
     private String hoTen;
     private int tinhTrang;
 
-<<<<<<< HEAD
+
+    public HoaDonBanHangViewModel(String ma, long ngayTao, int tinhTrang) {
+        this.ma = ma;
+        this.ngayTao = ngayTao;
+        this.tinhTrang = tinhTrang;
+    }
+
     public HoaDonBanHangViewModel(String ma, long ngayTao, String hoTen, int tinhTrang) {
         this.ma = ma;
         this.ngayTao = ngayTao;
@@ -31,12 +37,7 @@ public class HoaDonBanHangViewModel {
         this.tinhTrang = tinhTrang;
     }
     
-=======
-    public HoaDonBanHangViewModel(String ma, long ngayTao, int tinhTrang) {
-        this.ma = ma;
-        this.ngayTao = ngayTao;
-        this.tinhTrang = tinhTrang;
-    }
+    
     public String trangThai(){
         return switch (tinhTrang) {
             case 0 -> "Đã thanh toán";
@@ -44,6 +45,5 @@ public class HoaDonBanHangViewModel {
             default -> "Đã hủy";
         };
     }
->>>>>>> develop_diem
-    
+
 }

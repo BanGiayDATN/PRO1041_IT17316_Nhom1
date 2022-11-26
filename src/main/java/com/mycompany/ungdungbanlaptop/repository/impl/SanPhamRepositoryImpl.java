@@ -290,8 +290,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return sanPham;
     }
-    public static void main(String[] args) {
-        System.out.println(new SanPhamRepositoryImpl().searchByTenBanHang("gig"));
-    }
+  
  
 }

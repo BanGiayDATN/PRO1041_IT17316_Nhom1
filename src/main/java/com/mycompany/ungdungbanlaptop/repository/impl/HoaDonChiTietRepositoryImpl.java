@@ -26,13 +26,9 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     @Override
     public List<HoaDonChiTiet> getAll() {
-<<<<<<< HEAD
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM SanPham");
-=======
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM HoaDonChiTiet");
->>>>>>> develop_diem
+
             List<HoaDonChiTiet> list = query.getResultList();
 
             return list;
@@ -96,7 +92,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
     }
-<<<<<<< HEAD
+
 
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
@@ -119,11 +115,5 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
         return false;
     }
-=======
-    public static void main(String[] args) {
-        System.out.println(new HoaDonChiTietRepositoryImpl().getOne(UUID.fromString("0138A8C0-AA84-2213-8184-AA5383750000")));
-    }
 
-    
->>>>>>> develop_diem
 }

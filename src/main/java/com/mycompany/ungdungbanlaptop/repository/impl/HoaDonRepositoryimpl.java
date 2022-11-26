@@ -135,7 +135,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
-<<<<<<< HEAD
     
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonCho(){
@@ -156,9 +155,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         System.out.println(new HoaDonRepositoryImpl().getHoaDonCho());
     }
 
-=======
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepositoryImpl().getOne("HD81118"));
-    }
->>>>>>> develop_diem
+
+    
+
 }

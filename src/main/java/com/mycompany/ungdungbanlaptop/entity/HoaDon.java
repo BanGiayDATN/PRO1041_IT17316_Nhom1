@@ -30,7 +30,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="hoa_don")
+@Table(name = "hoa_don")
 @AllArgsConstructor
 @NoArgsConstructor
 public class HoaDon implements Serializable {
@@ -80,9 +80,9 @@ public class HoaDon implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_nhan_vien")
     private NhanVien nhanVien;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
-    
+
 }
