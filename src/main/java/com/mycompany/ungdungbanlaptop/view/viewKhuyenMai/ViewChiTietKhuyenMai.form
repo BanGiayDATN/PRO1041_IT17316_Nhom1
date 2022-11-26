@@ -597,6 +597,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m s&#x1ea3;n Ph&#x1ea9;m "/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemSanPhamActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
