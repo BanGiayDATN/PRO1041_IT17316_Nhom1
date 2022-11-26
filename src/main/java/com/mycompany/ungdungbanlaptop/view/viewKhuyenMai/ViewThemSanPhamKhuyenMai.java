@@ -12,7 +12,7 @@ package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
 
     /** Creates new form ViewThemSanPhamKhuyenMai */
-    public ViewThemSanPhamKhuyenMai(String idKhuyenMai) {
+    public ViewThemSanPhamKhuyenMai() {
         initComponents();
     }
 

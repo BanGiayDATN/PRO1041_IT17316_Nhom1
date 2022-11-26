@@ -368,6 +368,11 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tblLichSu1);
 
         btnThemSanPham.setText("Thêm sản Phẩm ");
+        btnThemSanPham.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemSanPhamActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -434,6 +439,10 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         KhuyenMai khuyenMai = new KhuyenMai();
         new ViewUpdateKhuyenMai(khuyenMai).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
+        new ViewThemSanPhamKhuyenMai().setVisible(true);
+    }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     /**
      * @param args the command line arguments
