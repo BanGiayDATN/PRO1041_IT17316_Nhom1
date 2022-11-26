@@ -280,8 +280,8 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
        int index = tblKhuyenMai.getSelectedRow();
-       UUID idkhuyenMai = UUID.fromString(tblKhuyenMai.getModel().getValueAt(index, 0).toString());
-       new ViewChiTietKhuyenMai(idkhuyenMai).setVisible(true);
+       String ma = tblKhuyenMai.getModel().getValueAt(index, 1).toString();
+       new ViewChiTietKhuyenMai(ma).setVisible(true);
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
     private void btnAddKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKhuyenMaiActionPerformed

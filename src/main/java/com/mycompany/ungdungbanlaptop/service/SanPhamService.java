@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -43,4 +44,7 @@ public interface SanPhamService {
     void updateSoLuongSanPham(Map<UUID, SanPham> list);
 
     SanPham getById(UUID id);
+    
+    List<SanPhamCustomRespone> getListSanPham();
+    
 }
