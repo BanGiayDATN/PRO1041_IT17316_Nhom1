@@ -7,13 +7,13 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import java.util.List;
-<<<<<<< HEAD
-import java.util.Map;
-=======
 
 import java.util.Map;
 
->>>>>>> develop
+
+import java.util.Map;
+
+
 import java.util.UUID;
 
 /**

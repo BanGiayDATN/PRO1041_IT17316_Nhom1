@@ -23,19 +23,7 @@ public class HoaDonBanHangViewModel {
     private String hoTen;
     private int tinhTrang;
 
-<<<<<<< HEAD
 
-=======
-    public HoaDonBanHangViewModel(String ma, long ngayTao, String hoTen, int tinhTrang) {
-        this.ma = ma;
-        this.ngayTao = ngayTao;
-        this.hoTen = hoTen;
-        this.tinhTrang = tinhTrang;
-    }
-
-
-    
->>>>>>> develop
     public HoaDonBanHangViewModel(String ma, long ngayTao, int tinhTrang) {
         this.ma = ma;
         this.ngayTao = ngayTao;
@@ -57,9 +45,5 @@ public class HoaDonBanHangViewModel {
             default -> "Đã hủy";
         };
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> develop
 
 }

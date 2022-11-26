@@ -26,10 +26,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     @Override
     public List<HoaDonChiTiet> getAll() {
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM HoaDonChiTiet");
 
@@ -96,12 +93,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
     }
-<<<<<<< HEAD
-=======
-    public static void main(String[] args) {
-        System.out.println(new HoaDonChiTietRepositoryImpl().getOne(UUID.fromString("0138A8C0-AA84-2213-8184-AA5383750000")));
-    }
->>>>>>> develop
 
 
     @Override

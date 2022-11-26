@@ -135,14 +135,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
-<<<<<<< HEAD
-=======
-
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepositoryImpl().getOne("HD81118"));
-    }
-
->>>>>>> develop
     
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonCho(){
@@ -158,16 +150,5 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return list;
     }
-    
-<<<<<<< HEAD
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepositoryImpl().getHoaDonCho());
-    }
 
-
-    
-
-=======
-  
->>>>>>> develop
 }
