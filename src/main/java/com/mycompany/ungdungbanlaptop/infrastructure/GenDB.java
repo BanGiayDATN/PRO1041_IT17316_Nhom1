@@ -364,6 +364,7 @@ public class GenDB {
         sanPham.setRam(ram);
         sanPham.setChatLieu(chatLieu);
         sanPham.setHang(hang);
+        sanPham.setTrangThai(0);
         session.save(sanPham);
 
         SanPham sanPham1 = new SanPham();
@@ -387,6 +388,7 @@ public class GenDB {
         sanPham1.setRam(ram2);
         sanPham1.setChatLieu(chatLieu);
         sanPham1.setHang(hang);
+        sanPham1.setTrangThai(0);
         session.save(sanPham1);
 
         SanPham sanPham2 = new SanPham();
@@ -409,6 +411,7 @@ public class GenDB {
         sanPham2.setRam(ram3);
         sanPham2.setChatLieu(chatLieu2);
         sanPham2.setHang(hang3);
+        sanPham2.setTrangThai(0);
         session.save(sanPham2);
 
         SanPham sanPham3 = new SanPham();
@@ -431,6 +434,7 @@ public class GenDB {
         sanPham3.setRam(ram);
         sanPham3.setChatLieu(chatLieu);
         sanPham3.setHang(hang);
+        sanPham3.setTrangThai(0);
         session.save(sanPham3);
 
         BaoHanh baoHanh = new BaoHanh();

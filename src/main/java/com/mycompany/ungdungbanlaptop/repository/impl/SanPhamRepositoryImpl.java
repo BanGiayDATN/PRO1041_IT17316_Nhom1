@@ -31,7 +31,19 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham ");
             List<SanPham> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 
+    @Override
+    public List<SanPham> getAllByTrangThai(int trangThai) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM SanPham sp WHERE sp.trangThai = :trangThai ");
+            query.setParameter("trangThai", trangThai);
+            List<SanPham> list = query.getResultList();
             return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -179,7 +191,8 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
                             OR  :soLuong  = 0 ) 
                         AND( 
                              sp.giaBan BETWEEN :startsGiaBan AND :giaBan                       
-                             OR  :giaBan  IS NULL ) 
+                             OR  :giaBan  IS NULL )
+                        AND (sp.trangThai = :trangThai  )
                         """);
             query.setParameter("ten", request.getTen());
             query.setParameter("tenManHinh", request.getManHinh());
@@ -194,6 +207,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             query.setParameter("soLuong", request.getSoLuong());
             query.setParameter("startsGiaBan", request.getStartsGiaBan());
             query.setParameter("giaBan", request.getGiaBan());
+            query.setParameter("trangThai", request.getTrangThai());
             list = query.list();
             transaction.commit();
         } catch (Exception e) {
@@ -247,7 +261,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
         Transaction transaction = null;
@@ -288,6 +301,5 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public static void main(String[] args) {
         System.out.println(new SanPhamRepositoryImpl().searchByTenBanHang("gig"));
     }
- 
 
 }

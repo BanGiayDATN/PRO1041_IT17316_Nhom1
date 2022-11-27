@@ -20,9 +20,9 @@ public interface SanPhamService {
 
     List<SanPham> getAll();
 
-    String add(SanPham sanPham);
+    Boolean add(SanPham sanPham);
 
-    String update(SanPham sanPham);
+    Boolean update(SanPham sanPham);
 
     String delete(SanPham sanPham);
 
@@ -43,4 +43,8 @@ public interface SanPhamService {
     void updateSoLuongSanPham(Map<UUID, SanPham> list);
 
     SanPham getById(UUID id);
+
+    SanPham updateTrangThai(SanPham sanPham, int trangThai);
+
+    List<SanPham> getAllByTrangThai(int trangThai);
 }

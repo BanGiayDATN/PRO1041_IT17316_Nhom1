@@ -35,4 +35,5 @@ public class SanPhamSearchRequest {
     private int soLuong;
     private BigDecimal startsGiaBan;
     private BigDecimal giaBan;
+    private int trangThai;
 }
