@@ -48,7 +48,7 @@ public class KhuyenMaiSanPham {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idKhuyenMai;
+    private UUID id;
      
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khuyen_mai")

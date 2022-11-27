@@ -14,11 +14,11 @@ import org.apache.commons.collections4.SetUtils;
  */
 public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewChiTietKhuyenMai
-     */
-    public ViewChiTietKhuyenMai(UUID idKhyenMai) {
+    private String ma;
+    
+    public ViewChiTietKhuyenMai(String  ma) {
         initComponents();
+        this.ma = ma;
     }
 
     /**
@@ -441,7 +441,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
-        new ViewThemSanPhamKhuyenMai().setVisible(true);
+        new ViewThemSanPhamKhuyenMai(ma).setVisible(true);
     }//GEN-LAST:event_btnThemSanPhamActionPerformed
 
     /**
