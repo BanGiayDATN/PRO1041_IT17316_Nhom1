@@ -44,14 +44,11 @@ public interface SanPhamService {
     void updateSoLuongSanPham(Map<UUID, SanPham> list);
 
     SanPham getById(UUID id);
-<<<<<<< HEAD
 
     SanPham updateTrangThai(SanPham sanPham, int trangThai);
 
     List<SanPham> getAllByTrangThai(int trangThai);
-=======
-    
+
     List<SanPhamCustomRespone> getListSanPham();
-    
->>>>>>> develop
+
 }

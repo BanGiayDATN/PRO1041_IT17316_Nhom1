@@ -314,9 +314,5 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return list;
     }
-<<<<<<< HEAD
-=======
-    
->>>>>>> develop
 
 }

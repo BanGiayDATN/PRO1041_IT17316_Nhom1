@@ -119,7 +119,6 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-<<<<<<< HEAD
     public SanPham updateTrangThai(SanPham sanPham , int trangThai) {
         sanPham.setTrangThai(trangThai);
         return sanPhamRepository.update(sanPham);
@@ -130,9 +129,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.getAllByTrangThai(trangThai);
     }
 
-=======
     public List<SanPhamCustomRespone> getListSanPham() {
         return sanPhamRepository.getListSanPham();
     }
->>>>>>> develop
 }
