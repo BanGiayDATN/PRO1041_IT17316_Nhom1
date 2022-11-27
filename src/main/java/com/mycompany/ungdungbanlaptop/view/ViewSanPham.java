@@ -749,19 +749,19 @@ public class ViewSanPham extends javax.swing.JPanel {
             endGiaBan = null;
         } else if (indexGiaBan == 1) {
             startGiaBan = new BigDecimal(0);
-            endGiaBan = new BigDecimal(100000);
+            endGiaBan = new BigDecimal(10000000);
         } else if (indexGiaBan == 2) {
-            startGiaBan = new BigDecimal(100000);
-            endGiaBan = new BigDecimal(200000);
+            startGiaBan = new BigDecimal(10000000);
+            endGiaBan = new BigDecimal(20000000);
         } else if (indexGiaBan == 3) {
-            startGiaBan = new BigDecimal(200000);
-            endGiaBan = new BigDecimal(300000);
+            startGiaBan = new BigDecimal(20000000);
+            endGiaBan = new BigDecimal(30000000);
         } else if (indexGiaBan == 4) {
-            startGiaBan = new BigDecimal(300000);
-            endGiaBan = new BigDecimal(400000);
+            startGiaBan = new BigDecimal(30000000);
+            endGiaBan = new BigDecimal(40000000);
         } else {
-            startGiaBan = new BigDecimal(400000);
-            endGiaBan = new BigDecimal(500000000);
+            startGiaBan = new BigDecimal(40000000);
+            endGiaBan = new BigDecimal(900000000);
         }
         int trangThai = 0;
         if (rd_ban.isSelected()) {
