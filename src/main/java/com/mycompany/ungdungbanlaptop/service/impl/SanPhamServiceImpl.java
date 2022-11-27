@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
@@ -118,6 +119,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
+<<<<<<< HEAD
     public SanPham updateTrangThai(SanPham sanPham , int trangThai) {
         sanPham.setTrangThai(trangThai);
         return sanPhamRepository.update(sanPham);
@@ -128,4 +130,9 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.getAllByTrangThai(trangThai);
     }
 
+=======
+    public List<SanPhamCustomRespone> getListSanPham() {
+        return sanPhamRepository.getListSanPham();
+    }
+>>>>>>> develop
 }

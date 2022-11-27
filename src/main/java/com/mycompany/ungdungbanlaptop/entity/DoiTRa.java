@@ -4,6 +4,8 @@
  */
 package com.mycompany.ungdungbanlaptop.entity;
 
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHinhThucDoiTra;
+import java.math.BigDecimal;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -55,6 +57,24 @@ public class DoiTRa {
     
     @Column(name = "mo_ta",columnDefinition="nvarchar(Max)")
     private String moTa;
+    
+    @Column(name = "hinh_thuc",columnDefinition="nvarchar(Max)")
+    private EnumHinhThucDoiTra hinhThucDoiTra;
+    
+    @Column(name = "tien_thu")
+    private BigDecimal tienThu;
+    
+    @Column(name = "tien_tra")
+    private BigDecimal tienTra;
+    
+    @Column(name = "ly_do",columnDefinition="nvarchar(Max)")
+    private String liDo;
+    
+    @Column(name = "ly_do")
+    private int tinhTrang;
+    
+    @Column(name = "trang_thai")
+    private int trangThai;
     
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khach_hang")
