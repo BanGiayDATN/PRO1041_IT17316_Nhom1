@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
@@ -116,5 +117,10 @@ public class SanPhamServiceImpl implements SanPhamService {
     @Override
     public SanPham getById(UUID id) {
         return sanPhamRepository.getById(id);
+    }
+
+    @Override
+    public List<SanPhamCustomRespone> getListSanPham() {
+        return sanPhamRepository.getListSanPham();
     }
 }

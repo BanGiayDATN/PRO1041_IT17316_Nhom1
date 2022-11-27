@@ -15,6 +15,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
@@ -349,8 +350,8 @@ public class GenDB {
         sanPham.setTen("Laptop Gigabyte Gaming G5");
         sanPham.setTrongLuong((float) 2.2);
         sanPham.setSoLuongTon(25);
-        sanPham.setGiaNhap(new BigDecimal(200000.0));
-        sanPham.setGiaBan(new BigDecimal(240000.0));
+        sanPham.setGiaNhap(new BigDecimal(20000000.0));
+        sanPham.setGiaBan(new BigDecimal(24000000.0));
         sanPham.setNamBH(2022);
         sanPham.setMoTa("Sở hữu những công nghệ mới nhất,"
                 + " màn hình chơi game chuyên nghiệp và "
@@ -371,8 +372,8 @@ public class GenDB {
         sanPham1.setTen("Laptop Asus TUF Gaming");
         sanPham1.setTrongLuong((float) 2.3);
         sanPham1.setSoLuongTon(25);
-        sanPham1.setGiaNhap(new BigDecimal(15500.0));
-        sanPham1.setGiaBan(new BigDecimal(184900.0));
+        sanPham1.setGiaNhap(new BigDecimal(1550000.0));
+        sanPham1.setGiaBan(new BigDecimal(18490000.0));
         sanPham1.setNamBH(2022);
         sanPham1.setMoTa("Asus TUF Gaming F15 FX506LHB-HN188W là "
                 + "chiếc laptop gaming giá rẻ với thiết kế tuyệt đẹp,"
@@ -394,8 +395,8 @@ public class GenDB {
         sanPham2.setTen("Laptop Lenovo IdeaPad Gaming 3");
         sanPham2.setTrongLuong((float) 2.2);
         sanPham2.setSoLuongTon(25);
-        sanPham2.setGiaNhap(new BigDecimal(450000.0));
-        sanPham2.setGiaBan(new BigDecimal(599000.0));
+        sanPham2.setGiaNhap(new BigDecimal(45000000.0));
+        sanPham2.setGiaBan(new BigDecimal(59900000.0));
         sanPham2.setNamBH(2022);
         sanPham2.setMoTa("Lenovo IdeaPad Gaming 3 15IAH7 là "
                 + "đại diện tiêu biểu của một chiếc laptop chơi game"
@@ -416,8 +417,8 @@ public class GenDB {
         sanPham3.setTen("Laptop MSI Gaming Katana GF66");
         sanPham3.setTrongLuong((float) 2.25);
         sanPham3.setSoLuongTon(25);
-        sanPham3.setGiaNhap(new BigDecimal(200000.0));
-        sanPham3.setGiaBan(new BigDecimal(240000.0));
+        sanPham3.setGiaNhap(new BigDecimal(30000000.0));
+        sanPham3.setGiaBan(new BigDecimal(34000000.0));
         sanPham3.setNamBH(2022);
         sanPham3.setMoTa("Sở hữu những công nghệ mới nhất,"
                 + " màn hình chơi game chuyên nghiệp và "
@@ -433,6 +434,16 @@ public class GenDB {
         sanPham3.setHang(hang);
         session.save(sanPham3);
 
+        KhuyenMaiSanPham khuyenMaiSanPham = new KhuyenMaiSanPham();
+        khuyenMaiSanPham.setKhuyenMai(khuyenMai);
+        khuyenMaiSanPham.setSanPham(sanPham);
+        session.save(khuyenMaiSanPham);
+        
+        KhuyenMaiSanPham khuyenMaiSanPham1 = new KhuyenMaiSanPham();
+        khuyenMaiSanPham1.setKhuyenMai(khuyenMai);
+        khuyenMaiSanPham1.setSanPham(sanPham2);
+        session.save(khuyenMaiSanPham1);
+        
         BaoHanh baoHanh = new BaoHanh();
         baoHanh.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));
@@ -495,14 +506,14 @@ public class GenDB {
         hdct.setHoaDon(hd);
         hdct.setSoLuong(1);
         hdct.setImei(null);
-        hdct.setDonGia(new BigDecimal(240000.0));
+        hdct.setDonGia(new BigDecimal(24000000.0));
         session.save(hdct);
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
         hdct.setSoLuong(1);
         hdct.setImei(null);
-        hdct.setDonGia(new BigDecimal(184900.0));
+        hdct.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
       
         // db generator : gen bảng tự động

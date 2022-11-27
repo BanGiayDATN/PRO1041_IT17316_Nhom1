@@ -30,5 +30,17 @@ public class SanPhamBanHangViewModel {
     private int soLuongTon;
     private BigDecimal giaBan;
     private String moTa;
+
+    public SanPhamBanHangViewModel(String ma, String ten, int namBH, float trongLuong, int soLuongTon, BigDecimal giaBan, String moTa) {
+        this.ma = ma;
+        this.ten = ten;
+        this.namBH = namBH;
+        this.trongLuong = trongLuong;
+        this.soLuongTon = soLuongTon;
+        this.giaBan = giaBan;
+        this.moTa = moTa;
+    }
+    
+    
    
 }

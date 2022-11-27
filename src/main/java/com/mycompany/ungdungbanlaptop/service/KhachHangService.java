@@ -24,10 +24,12 @@ public interface KhachHangService {
 
     String delete(KhachHang khachHang);
 
-    List<KhachHang> search(List<KhachHang> list, String tenKh);
-    
+    List<KhachHang> search(List<KhachHang> list, String soDienThoai);
+
     KhachHang getByTen(String ten);
-    
-      List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
+
+    List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
+
+    KhachHang getBySoDienThoai(String soDienThoai);
 
 }

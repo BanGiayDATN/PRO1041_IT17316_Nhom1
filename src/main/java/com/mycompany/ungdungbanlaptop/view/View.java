@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 
+
 import java.awt.Color;
 import java.awt.FlowLayout;
 
@@ -16,6 +17,7 @@ import java.awt.FlowLayout;
 public class View extends javax.swing.JFrame {
 
     private Color one = new Color(255, 204, 153);
+
     private NhanVien nhanVien;
 
     /**
@@ -62,6 +64,7 @@ public class View extends javax.swing.JFrame {
         jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1293, 720));
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
 

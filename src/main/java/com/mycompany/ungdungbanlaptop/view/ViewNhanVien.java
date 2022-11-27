@@ -133,6 +133,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         txtHoTen.setHorizontalAlignment(javax.swing.JTextField.CENTER);
 
         txtMaNhanVien.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMaNhanVien.setText("Mã nhân viên tự động");
 
         jLabel15.setText("Giới tính:");
 

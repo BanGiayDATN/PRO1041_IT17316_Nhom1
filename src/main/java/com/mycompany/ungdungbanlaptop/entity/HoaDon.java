@@ -84,4 +84,5 @@ public class HoaDon implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
+    
 }

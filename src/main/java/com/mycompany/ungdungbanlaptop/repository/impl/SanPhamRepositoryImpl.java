@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
@@ -247,6 +248,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
+
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
         Transaction transaction = null;
@@ -283,5 +285,22 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return sanPham;
     }
+
     
+
+    @Override
+    public List<SanPhamCustomRespone> getListSanPham() {
+        List<SanPhamCustomRespone> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten) FROM SanPham sp ";
+            Query query = session.createQuery(hql);
+            list = query.getResultList();
+            
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+
 }
