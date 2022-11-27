@@ -21,6 +21,8 @@ public interface SanPhamRepository {
 
     List<SanPham> getAll();
 
+    List<SanPham> getAllByTrangThai(int trangThai);
+
     SanPham add(SanPham sanPham);
 
     SanPham update(SanPham sanPham);
@@ -41,8 +43,8 @@ public interface SanPhamRepository {
 
     List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp);
 
-    void updateSoLuongSanPham(Map<UUID, SanPham> list );
-    
+    void updateSoLuongSanPham(Map<UUID, SanPham> list);
+
     SanPham getById(UUID id);
     
     List<SanPhamCustomRespone> getListSanPham();
