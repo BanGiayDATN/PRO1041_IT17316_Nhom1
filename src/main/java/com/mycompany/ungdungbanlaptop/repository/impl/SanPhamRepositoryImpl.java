@@ -305,7 +305,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public List<SanPhamCustomRespone> getListSanPham() {
         List<SanPhamCustomRespone> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten) FROM SanPham sp ";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten, sp.soLuongTon, sp.hang.ten, sp.heDieuHanh.ten, sp.ram.dungLuong) FROM SanPham sp ";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             
