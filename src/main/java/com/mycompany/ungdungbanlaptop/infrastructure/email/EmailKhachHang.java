@@ -62,7 +62,7 @@ public class EmailKhachHang {
 
     public static void main(String[] args) throws MessagingException {
         String filePath = "D:\\DuAn1\\word\\HD986.doc";
-        new ok().guiEmailDinhKiem("anhvinh12a888@gmail.com", filePath);
+        new EmailKhachHang().guiEmailDinhKiem("anhvinh12a888@gmail.com", filePath);
     }
    
 }
