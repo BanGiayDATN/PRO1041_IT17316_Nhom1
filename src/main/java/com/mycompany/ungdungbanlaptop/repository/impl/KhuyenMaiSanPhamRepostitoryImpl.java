@@ -24,7 +24,10 @@ public class KhuyenMaiSanPhamRepostitoryImpl implements KhuyenMaiSanPhamReposito
         List<SanPhamCustomRespone> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = """
-                         SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(kmsp.sanPham.id, kmsp.sanPham.ma,kmsp.sanPham.ten)
+                         SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone
+                         (kmsp.sanPham.id, kmsp.sanPham.ma,kmsp.sanPham.ten, kmsp.sanPham.soLuongTon, 
+                         kmsp.sanPham.hang.ten, kmsp.sanPham.heDieuHanh.ten, 
+                         kmsp.sanPham.ram.dungLuong  )
                          FROM KhuyenMaiSanPham kmsp
                          WHERE kmsp.khuyenMai.ma = :ma
                          """;

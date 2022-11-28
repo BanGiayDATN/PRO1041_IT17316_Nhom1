@@ -20,7 +20,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  */
 public class ExportExcel {
 
-    private static void writeToExcell(JTable table, File path)  {
+    public static void writeToExcell(JTable table, String tenFile)  {
+        String home = System.getProperty("user.home");
+        File path = new File(home + "/Downloads/"+tenFile);
         try {
             Workbook wb = new XSSFWorkbook(); //Excell workbook
         Sheet sheet = wb.createSheet(); //WorkSheet
@@ -47,18 +49,4 @@ public class ExportExcel {
    
     }
 
-    public static void main(String[] args) {
-        JTable table = new JTable();
-        DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"id","mã"});
-        for (int i = 0; i < 10; i++) {
-            model.addRow(new Object[]{i, 12});
-        }
-        table.setModel(model);
-        table.removeColumn(table.getColumnModel().getColumn(0));
-        String home = System.getProperty("user.home");
-        File file = new File(home + "/Downloads/hello.xlsx");
-      
-        writeToExcell(table, file);
-    }
 }

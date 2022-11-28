@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import java.util.List;
 
 /**
@@ -19,4 +20,6 @@ public interface HoaDonChiTietService {
     HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet);
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
+    
+     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 }

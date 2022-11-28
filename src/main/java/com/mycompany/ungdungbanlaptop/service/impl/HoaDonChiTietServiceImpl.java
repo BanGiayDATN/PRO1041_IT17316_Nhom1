@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
@@ -32,6 +33,11 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     @Override
     public HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet) {
          return hoaDonChiTietRepository.delete(hoaDonChiTiet);
+    }
+
+    @Override
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
+        return hoaDonChiTietRepository.getListHoaDonApDungKhuyenMai(ngayBatDau, ngạyetThuc);
     }
     
 }

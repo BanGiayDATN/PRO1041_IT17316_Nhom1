@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
@@ -23,7 +24,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
     public List<HoaDon> getAll() {
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM HoaDon");
             List<HoaDon> list = query.getResultList();
 
@@ -37,7 +38,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     @Override
     public HoaDon add(HoaDon hoaDon) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(hoaDon);
             transaction.commit();
@@ -51,7 +52,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     @Override
     public HoaDon update(HoaDon hoaDon) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.update(hoaDon);
             transaction.commit();
@@ -65,7 +66,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     @Override
     public HoaDon delete(HoaDon hoaDon) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.delete(hoaDon);
             transaction.commit();
@@ -79,7 +80,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     @Override
     public HoaDon getOne(String maHoaDon) {
 
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hd FROM HoaDon hd WHERE hd.ma like :ma";
             Query<HoaDon> query = session.createQuery(hql);
             query.setParameter("ma", "%" + maHoaDon + "%");
@@ -96,7 +97,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();
             hoaDon.setIdHoaDon(id);
-          
+
             session.update(hoaDon);
             transaction.commit();
             return true;
@@ -107,9 +108,9 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonBanHang() {
-          List<HoaDonBanHangViewModel> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien";
+        List<HoaDonBanHangViewModel> list = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien";
             Query query = session.createQuery(hql);
             list = query.getResultList();
 
@@ -122,9 +123,9 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
     public List<HoaDonBanHangViewModel> getTrangThai(int trangThai) {
-            List<HoaDonBanHangViewModel> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien WHERE hd.tinhTrang = :tinhTrang";
+        List<HoaDonBanHangViewModel> list = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien WHERE hd.tinhTrang = :tinhTrang";
             Query query = session.createQuery(hql);
             query.setParameter("tinhTrang", trangThai);
             list = query.getResultList();
@@ -136,16 +137,12 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new HoaDonRepositoryImpl().getOne("HD81118"));
-    }
 
-    
     @Override
-    public List<HoaDonBanHangViewModel> getHoaDonCho(){
+    public List<HoaDonBanHangViewModel> getHoaDonCho() {
         List<HoaDonBanHangViewModel> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
                     + "FROM HoaDon hd "
                     + " WHERE hd.tinhTrang = 0";
             Query query = session.createQuery(hql);
@@ -155,6 +152,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return list;
     }
-    
-  
+
+
 }
