@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
@@ -11,7 +10,10 @@ import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiSanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 import javax.swing.DefaultListModel;
 
 /**
@@ -22,42 +24,46 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
 
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
-    private List<SanPhamCustomRespone> SanPhams ;
-    private List<SanPhamCustomRespone> listSanPhamKhuyenMai ;
-    
+    private List< SanPhamCustomRespone> SanPhams = new ArrayList<>();
+    private Map<UUID, SanPhamCustomRespone> listSanPhamKhuyenMai = new HashMap<>();
+
     public ViewThemSanPhamKhuyenMai(String ma) {
         initComponents();
         SanPhams = sanPhamService.getListSanPham();
+        khuyenMaiSanPhamService.findSanPhamById(ma).stream().forEach(item -> {
+            listSanPhamKhuyenMai.put(item.getId(), item);
+        });
         loadListSanPham(SanPhams);
-        loadListSanPhamKhuyenMai(khuyenMaiSanPhamService.findSanPhamById(ma));
-        
+        loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
+
     }
 
-    private void loadListSanPham(List<SanPhamCustomRespone> list){
+    private void loadListSanPham( List< SanPhamCustomRespone> list) {
         DefaultListModel model = new DefaultListModel();
-        for(SanPhamCustomRespone sanPhamCustomRespone : list){
+        for (SanPhamCustomRespone sanPhamCustomRespone : list) {
             model.addElement(sanPhamCustomRespone.getTenSanPham());
         }
         listSanPham.setModel(model);
     }
-    
-    private void loadListSanPhamKhuyenMai(List<SanPhamCustomRespone> list){
+
+    private void loadListSanPhamKhuyenMai(Map<UUID, SanPhamCustomRespone> list) {
         DefaultListModel model = new DefaultListModel();
-        for(SanPhamCustomRespone sanPhamCustomRespone : list){
+        for (SanPhamCustomRespone sanPhamCustomRespone : list.values()) {
             model.addElement(sanPhamCustomRespone.getTenSanPham());
         }
         jList1.setModel(model);
     }
-    
-    private List<SanPhamCustomRespone> findByMaAndTen(String text){
-        List<SanPhamCustomRespone> list = new ArrayList<>();
-        SanPhams.stream().forEach(item ->{
-            if(item.getMa().toLowerCase().contains(text) || item.getTen().toLowerCase().contains(text)){
-                list.add(item);
+
+    private List< SanPhamCustomRespone> findByMaAndTen(String text) {
+        List< SanPhamCustomRespone> list = new ArrayList<>();
+        SanPhams.stream().forEach(item -> {
+            if (item.getMa().toLowerCase().contains(text) || item.getTen().toLowerCase().contains(text)) {
+                list.add( item);
             }
         });
         return list;
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -101,12 +107,32 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
         jButton1.setText("Save");
 
         jButton2.setText("<");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("<<");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText(">");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton5.setText(">>");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -187,6 +213,80 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
     private void txtseachCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtseachCaretUpdate
         loadListSanPham(findByMaAndTen(txtseach.getText().toLowerCase().trim()));
     }//GEN-LAST:event_txtseachCaretUpdate
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+        if (listSanPham.getSelectedIndex() == -1) {
+            return;
+        } else {
+            int value = listSanPham.getSelectedIndex();
+            listSanPhamKhuyenMai.put(SanPhams.get(value).getId(), SanPhams.get(value));
+            SanPhams.remove(SanPhams.get(value));
+        }
+        loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        if (jList1.getSelectedIndex() == -1) {
+            return;
+        } else {
+            int value = jList1.getSelectedIndex();
+            UUID id = null;
+            List keys = new ArrayList(listSanPhamKhuyenMai.keySet());
+            id = UUID.fromString(keys.get(value).toString());
+            // do stuff here
+            List values = new ArrayList(listSanPhamKhuyenMai.values());
+            SanPhamCustomRespone sanPham = (SanPhamCustomRespone) values.get(value);
+            SanPhams.add(sanPham);
+            listSanPhamKhuyenMai.remove(id);
+        }
+        loadListSanPham(SanPhams);
+        loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        if (jList1.getSelectedIndex() == -1) {
+            return;
+        } else {
+            List<String> values = jList1.getSelectedValuesList();
+             List< SanPhamCustomRespone> sanPhams = new ArrayList(listSanPhamKhuyenMai.values());
+             for(SanPhamCustomRespone sanPhamCustomRespone : sanPhams){
+                 values.stream().forEach(item ->{
+                 if(sanPhamCustomRespone.getTenSanPham().equals(item)){
+                     SanPhams.add(sanPhamCustomRespone);
+                     listSanPhamKhuyenMai.remove(sanPhamCustomRespone.getId());
+                 }
+                 });
+                 
+             } 
+        }
+        loadListSanPham(SanPhams);
+        loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+         if (listSanPham.getSelectedIndex() == -1) {
+            return;
+        } else {
+             System.out.println("helllo");
+            List<String> values = listSanPham.getSelectedValuesList();
+            List<SanPhamCustomRespone> list = new ArrayList<>();
+             SanPhams.stream().forEach(sanPham ->{
+             values.stream().forEach(item ->{
+                    
+                 if(sanPham.getTenSanPham().equals(item)){
+                     listSanPhamKhuyenMai.put(sanPham.getId(),sanPham);
+                     list.add(sanPham);
+                 }
+                 });
+             });
+             for(SanPhamCustomRespone sp : list){
+                 SanPhams.remove(sp);
+             }
+        }
+        loadListSanPham(SanPhams);
+        loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
