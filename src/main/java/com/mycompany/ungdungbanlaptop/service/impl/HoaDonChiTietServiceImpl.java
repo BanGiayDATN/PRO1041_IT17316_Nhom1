@@ -3,17 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
+
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 /**
  *
  * @author Diệm DZ
  */
 public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
+
     private HoaDonChiTietRepository hoaDonChiTietRepository = new HoaDonChiTietRepositoryImpl();
+
     @Override
     public List<HoaDonChiTiet> getAll() {
         return hoaDonChiTietRepository.getAll();
@@ -31,7 +38,17 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
 
     @Override
     public HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet) {
-         return hoaDonChiTietRepository.delete(hoaDonChiTiet);
+        return hoaDonChiTietRepository.delete(hoaDonChiTiet);
     }
     
+    @Override
+    public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
+       return hoaDonChiTietRepository.saveAllHoaDonChiTiet(list);
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getWord(UUID idHoaDon) {
+        return hoaDonChiTietRepository.getWord(idHoaDon);
+    }
+
 }

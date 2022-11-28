@@ -11,10 +11,10 @@ import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
-import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietServive;
-import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiveImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
+import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
@@ -38,7 +38,7 @@ public class ViewBanHangNhanVien extends javax.swing.JPanel {
 
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
-    private HoaDonChiTietServive hoaDonChiTietServive = new HoaDonChiTietServiveImpl();
+    private HoaDonChiTietService hoaDonChiTietServive = new HoaDonChiTietServiceImpl();
     private Map<UUID, GioHangViewModel> listGioHang = new HashMap<>();
     private List<HoaDonBanHangViewModel> listHoaDonCho = new ArrayList<>();
     private HoaDon hoaDon;

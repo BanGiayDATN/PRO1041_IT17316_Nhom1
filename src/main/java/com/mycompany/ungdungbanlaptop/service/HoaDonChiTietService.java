@@ -5,13 +5,17 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  *
  * @author Diệm DZ
  */
 public interface HoaDonChiTietService {
+
     List<HoaDonChiTiet> getAll();
 
     HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet);
@@ -19,4 +23,8 @@ public interface HoaDonChiTietService {
     HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet);
 
     HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet);
+
+    boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
+
+    List<HoaDonChiTiet> getWord(UUID idHoaDon);
 }

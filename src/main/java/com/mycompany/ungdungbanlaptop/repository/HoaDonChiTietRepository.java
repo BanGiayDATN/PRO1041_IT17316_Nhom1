@@ -29,4 +29,6 @@ public interface HoaDonChiTietRepository {
     HoaDonChiTiet getOne(UUID id);
 
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
+    
+    List<HoaDonChiTiet> getWord(UUID idHoaDon);
 }
