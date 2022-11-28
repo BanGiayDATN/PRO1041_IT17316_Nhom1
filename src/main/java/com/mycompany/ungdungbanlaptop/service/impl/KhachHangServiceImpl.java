@@ -4,20 +4,27 @@
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
 
+import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.model.resquest.KhachHangRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhachHangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
+import static com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl.matKhauMD5;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
 import java.util.UUID;
+import org.apache.commons.validator.routines.EmailValidator;
 
 /**
  *
  * @author Diệm DZ
  */
 public class KhachHangServiceImpl implements KhachHangService {
-
+      private String regexSDT = "^(0|\\+84)(\\s|\\.)?((3[2-9])|(5[689])|(7[06-9])|(8[1-689])|(9[0-46-9]))(\\d)(\\s|\\.)?(\\d{3})(\\s|\\.)?(\\d{3})$";
     private KhachHangRepository khachHangRepository = new KhachHangRepositoryImpl();
 
     @Override
@@ -26,13 +33,51 @@ public class KhachHangServiceImpl implements KhachHangService {
     }
 
     @Override
-    public String add(KhachHang khachHang) {
-        KhachHang add = khachHangRepository.add(khachHang);
-        if (add != null) {
-            return "Thêm thành công";
-        } else {
-            return "Thêm thất bại";
+    public int add(KhachHangRequest khachHang) {
+         String ma = "KH" + new TaoChuoiNgauNhien().getMkRanDum(5);
+        String hoTen = khachHang.getHoTen().trim();
+        String gioiTinh = khachHang.getGioiTinh().trim();
+        String dateStr = khachHang.getNgaySinh();
+        String sdt = khachHang.getSdt().trim();
+        String email = khachHang.getEmail().trim();
+        String diaChi = khachHang.getDiaChi().trim();
+        
+        if (ma.isBlank() || hoTen.isBlank() || dateStr == null || sdt.isBlank() || email.isBlank()
+              || diaChi.isBlank() || gioiTinh.isBlank()) {
+            return 1;
+
         }
+        if (!EmailValidator.getInstance().isValid(email)) {
+            return 2;
+        }
+        if (!sdt.matches(regexSDT)) {
+            return 3;
+        }
+        KhachHang checkTontai = khachHangRepository.getByEmail(email);
+        if (checkTontai != null) {
+            return 4;
+        }
+       
+        KhachHang  kh = new KhachHang();
+        kh.setEmail(khachHang.getEmail());
+        kh.setMa(ma);
+        kh.setDiaChi(khachHang.getDiaChi());
+        kh.setGioiTinh(khachHang.getGioiTinh());
+        kh.setNgaySinh(new ConverDate().dateToLong(dateStr, "yyyy/MM/dd"));
+        kh.setSdt(khachHang.getSdt());
+        kh.setHoTen(khachHang.getHoTen());
+        kh.setTrangThai(khachHang.getTrangThai());
+         KhachHang add = khachHangRepository.add(kh);
+        if (add != null) {
+            return 5;
+        } else {
+            return 6;
+        }
+        
+        
+       
+        
+       
     }
 
     @Override
@@ -73,5 +118,10 @@ public class KhachHangServiceImpl implements KhachHangService {
     @Override
     public KhachHang getBySoDienThoai(String soDienThoai) {
         return khachHangRepository.getBySoDienThoai(soDienThoai);
+    }
+
+    @Override
+    public List<KhachHang> searchByHoTen(List<KhachHang> list, String hoTen) {
+        return khachHangRepository.searchByHoTen(hoTen);
     }
 }

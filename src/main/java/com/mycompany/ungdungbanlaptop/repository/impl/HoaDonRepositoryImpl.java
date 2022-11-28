@@ -109,7 +109,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     public List<HoaDonBanHangViewModel> getHoaDonBanHang() {
           List<HoaDonBanHangViewModel> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien";
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien WHERE hd.tinhTrang = 1";
             Query query = session.createQuery(hql);
             list = query.getResultList();
 
@@ -137,7 +137,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
     public static void main(String[] args) {
-        System.out.println(new HoaDonRepositoryImpl().getOne("HD81118"));
+        System.out.println(new HoaDonRepositoryImpl().getHoaDonBanHang());
     }
 
     
@@ -154,6 +154,20 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
             e.printStackTrace(System.out);
         }
         return list;
+    }
+
+    @Override
+    public HoaDon getById(UUID id) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hd FROM HoaDon hd WHERE hd.idHoaDon = :idHoaDon";
+            Query<HoaDon> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", id );
+            HoaDon hd = query.uniqueResult();
+            return hd;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
     
   

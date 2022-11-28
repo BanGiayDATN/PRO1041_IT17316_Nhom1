@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
+import com.mycompany.ungdungbanlaptop.model.resquest.KhachHangRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 
 import java.util.List;
@@ -18,7 +19,7 @@ public interface KhachHangService {
 
     List<KhachHang> getAll();
 
-    String add(KhachHang khachHang);
+    int add(KhachHangRequest khachHang);
 
     String update(KhachHang khachHang);
 
@@ -31,5 +32,7 @@ public interface KhachHangService {
     List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
 
     KhachHang getBySoDienThoai(String soDienThoai);
+    
+      List<KhachHang> searchByHoTen(List<KhachHang> list, String hoTen);
 
 }
