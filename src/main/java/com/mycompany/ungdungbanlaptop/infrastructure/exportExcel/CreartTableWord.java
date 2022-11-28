@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.infrastructure.exportExcel;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.GenerateQRCode;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import java.io.FileInputStream;
@@ -20,9 +21,7 @@ import org.apache.poi.xwpf.usermodel.XWPFParagraph;
 import org.apache.poi.xwpf.usermodel.XWPFRun;
 import org.apache.poi.xwpf.usermodel.XWPFTable;
 import org.apache.poi.xwpf.usermodel.XWPFTableRow;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblLayoutType;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.CTTblWidth;
-import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblLayoutType;
 import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 
 /**
@@ -32,10 +31,14 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 public class CreartTableWord {
 
     public static void main(String[] args) throws Exception {
-        String imgFile = "D:\\DuAn1\\word\\1.jpg";
+        SanPham sp = new SanPhamRepositoryImpl().getOne("SP120");
+        System.out.println(sp.getIdSanPham());
+        String ok = String.valueOf(sp.getIdSanPham());
+        String path = "D:\\DuAn1\\PRO1041_IT17346_Nhom1\\target\\classes\\img\\" + new TaoChuoiNgauNhien().getMkRanDum(3) + ".png";
+        new GenerateQRCode().CreateQRCode(ok, path);
         String maHD = new TaoChuoiNgauNhien().getMaSanPham("HD", 3);
         List<SanPham> list = new SanPhamRepositoryImpl().getAll();
-        word(maHD, imgFile, list);
+        word(maHD, path, list);
     }
 
     public static boolean word(String maHoaDon, String maQRHoaDonChiTiet, List<SanPham> list) {
@@ -67,10 +70,10 @@ public class CreartTableWord {
             row1.addNewTableCell().setText("Đơn giá");
             row1.addNewTableCell().setText("Tổng tiền");
 
-            for (int i = 0; i < list.size(); i++) {                 
+            for (int i = 0; i < list.size(); i++) {
                 XWPFTableRow row = table.createRow();
                 row.setHeight(50);
-                row.getCell(0).setText(String.valueOf(i+1));
+                row.getCell(0).setText(String.valueOf(i + 1));
                 row.getCell(1).setText(list.get(i).getTen());
                 row.getCell(2).setText(list.get(i).getChatLieu().getTen());
                 row.getCell(3).setText(list.get(i).getRam().getTen());

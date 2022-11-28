@@ -1144,7 +1144,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
             hoaDonChiTiet.setSanPham(sanPhamService.getOne(x.getValue().getMa()));
             hoaDonChiTietService.add(hoaDonChiTiet);
-
         }
         ////// update hoadon
         hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
@@ -1156,7 +1155,9 @@ public class ViewBanHang extends javax.swing.JPanel {
         hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
         hoaDon.setSdt(txtSDTHoaDon.getText());
         hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-
+        for (GioHangViewModel model : list) {
+            System.out.println(model);
+        }
         // tinh tien
 //        BigDecimal tienKhachDua = new BigDecimal(txtTienKhachDua.getText());
 //        BigDecimal tongTien = new BigDecimal(txtTongTien.getText());
