@@ -97,7 +97,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Transaction transaction = session.beginTransaction();
             hoaDon.setIdHoaDon(id);
-
             session.update(hoaDon);
             transaction.commit();
             return true;
@@ -153,5 +152,19 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return list;
     }
 
+    @Override
+    public HoaDon getById(UUID id) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hd FROM HoaDon hd WHERE hd.idHoaDon = :idHoaDon";
+            Query<HoaDon> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", id );
+            HoaDon hd = query.uniqueResult();
+            return hd;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 
+  
 }

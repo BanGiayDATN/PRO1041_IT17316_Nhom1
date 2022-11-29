@@ -33,6 +33,8 @@ public interface HoaDonRepository {
     List<HoaDonBanHangViewModel> getTrangThai(int trangThai);
     
     List<HoaDonBanHangViewModel> getHoaDonCho();
-    
-   
+
+    HoaDon getById(UUID id);
+
+
 }

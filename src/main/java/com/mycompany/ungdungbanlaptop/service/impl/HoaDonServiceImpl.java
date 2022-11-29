@@ -37,7 +37,7 @@ public class HoaDonServiceImpl implements HoaDonService{
 
     @Override
     public HoaDon delete(HoaDon hoaDon) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return hoadonRepository.delete(hoaDon);
     }
 
     @Override
@@ -63,6 +63,11 @@ public class HoaDonServiceImpl implements HoaDonService{
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonCho() {
         return hoadonRepository.getHoaDonCho();
+    }
+
+    @Override
+    public HoaDon getById(UUID id) {
+        return hoadonRepository.getById(id);
     }
     
 }
