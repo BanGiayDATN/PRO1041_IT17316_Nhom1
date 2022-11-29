@@ -136,12 +136,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
-<<<<<<< HEAD:src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonRepositoryimpl.java
-    
-=======
 
-
->>>>>>> develop:src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonRepositoryImpl.java
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonCho() {
         List<HoaDonBanHangViewModel> list = new ArrayList<>();
@@ -157,8 +152,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return list;
     }
 
-<<<<<<< HEAD:src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonRepositoryimpl.java
-=======
+
     @Override
     public HoaDon getById(UUID id) {
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -174,5 +168,5 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
   
->>>>>>> develop:src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonRepositoryImpl.java
+
 }

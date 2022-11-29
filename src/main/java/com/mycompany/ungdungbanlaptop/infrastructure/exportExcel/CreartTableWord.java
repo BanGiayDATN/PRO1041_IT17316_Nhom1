@@ -35,7 +35,7 @@ import org.openxmlformats.schemas.wordprocessingml.x2006.main.STTblWidth;
 public class CreartTableWord {
 
     public static void main(String[] args) throws Exception {
-        SanPham sp = new SanPhamRepositoryImpl().getOne("SP120");
+        SanPham sp = new SanPhamRepositoryImpl().getOne("SP308");
         System.out.println(sp.getIdSanPham());
         String ok = String.valueOf(sp.getIdSanPham());
         String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
@@ -109,7 +109,7 @@ public class CreartTableWord {
             r.addBreak();
 
             // add png image
-            String path = new File("").getAbsolutePath()+"//src//main//resources//img//"+maQRHoaDonChiTiet+".png";
+            String path = new File("").getAbsolutePath()+"D:\\FPT POLYTECHNIC\\HocKy4-Summer2022\\Block2\\PRO1041_IT17346_Nhom1\\src\\main\\resources\\img"+maQRHoaDonChiTiet+".png";
             try (FileInputStream is = new FileInputStream(path)) {
                 r.addPicture(is,
                         Document.PICTURE_TYPE_PNG, // png file
