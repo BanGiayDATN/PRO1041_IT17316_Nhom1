@@ -903,7 +903,10 @@ public class ViewBanHang extends javax.swing.JPanel {
             new EmailKhachHang().guiEmailDinhKiem(emailKhach,maQRHoaDonChiTiet);
             
             // tinh tien
-            removeGioHang();
+            OptionPane.showMessageDialog(this, "Thanh toán thành công!");
+        showHoaDon(hoaDonService.getHoaDonBanHang());
+        listGioHang.entrySet().clear();
+        showGioHang(listGioHang);
             clearHoaDon();
         } catch (WriterException ex) {
             Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
@@ -912,6 +915,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         } catch (MessagingException ex) {
             Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
         }
+<<<<<<< HEAD
 <<<<<<< HEAD
         ////// update hoadon
         hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
@@ -931,6 +935,9 @@ public class ViewBanHang extends javax.swing.JPanel {
         clearHoaDon();
 =======
 >>>>>>> develop
+=======
+
+>>>>>>> 419f014fb43ac78a480b1c2dc2bca5497883147d
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
     private void btnHuyDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyDonMouseClicked
