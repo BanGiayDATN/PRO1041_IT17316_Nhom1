@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
@@ -30,37 +31,35 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public String add(SanPham sanPham) {
-//        String ma = sanPhamRepository.getOne(sanPham.getMa()).getMa();
-//        if(ma != null){
-//            return "Mã đã tồn tại";
-//        }
-        if (sanPham.getMa().isEmpty()) {
-            return "Vui lòng nhập mã";
-        }
+    public Boolean add(SanPham sanPham) {
         if (sanPham.getMoTa().isEmpty()) {
-            return "Vui lòng nhập mô tả";
+            return false;
         }
         if (sanPham.getTen().isEmpty()) {
-            return "Vui lòng nhập tên";
+            return false;
         }
-
+        if (sanPham.getHeDieuHanh() == null || sanPham.getChatLieu() == null || sanPham.getCpu() == null || sanPham.getHang() == null
+                || sanPham.getManHinh() == null || sanPham.getMau() == null || sanPham.getRam() == null) {
+            return false;
+        }
         SanPham add = sanPhamRepository.add(sanPham);
-        if (add != null) {
-            return "Thêm thành công";
-        } else {
-            return "Thêm thất bại";
-        }
+        return true;
     }
 
     @Override
-    public String update(SanPham sanPham) {
-        SanPham update = sanPhamRepository.update(sanPham);
-        if (update != null) {
-            return "Sửa thành công";
-        } else {
-            return "Sửa thất bại";
+    public Boolean update(SanPham sanPham) {
+        if (sanPham.getMoTa().isEmpty()) {
+            return false;
         }
+        if (sanPham.getTen().isEmpty()) {
+            return false;
+        }
+        if (sanPham.getHeDieuHanh() == null || sanPham.getChatLieu() == null || sanPham.getCpu() == null || sanPham.getHang() == null
+                || sanPham.getManHinh() == null || sanPham.getMau() == null || sanPham.getRam() == null) {
+            return false;
+        }
+        SanPham add = sanPhamRepository.update(sanPham);
+        return true;
     }
 
     @Override
@@ -120,6 +119,16 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
+    public SanPham updateTrangThai(SanPham sanPham , int trangThai) {
+        sanPham.setTrangThai(trangThai);
+        return sanPhamRepository.update(sanPham);
+    }
+
+    @Override
+    public List<SanPham> getAllByTrangThai(int trangThai) {
+        return sanPhamRepository.getAllByTrangThai(trangThai);
+    }
+
     public List<SanPhamCustomRespone> getListSanPham() {
         return sanPhamRepository.getListSanPham();
     }

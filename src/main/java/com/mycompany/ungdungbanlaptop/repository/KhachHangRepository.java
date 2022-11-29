@@ -32,4 +32,8 @@ public interface KhachHangRepository {
      List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
      
     KhachHang getBySoDienThoai(String soDienThoai);
+    
+     List<KhachHang> searchByHoTen(String hoTen);
+    
+    KhachHang getByEmail(String email);
 }

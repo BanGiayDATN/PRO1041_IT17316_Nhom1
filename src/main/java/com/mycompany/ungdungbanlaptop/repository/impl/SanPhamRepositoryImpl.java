@@ -32,7 +32,19 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham ");
             List<SanPham> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 
+    @Override
+    public List<SanPham> getAllByTrangThai(int trangThai) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("FROM SanPham sp WHERE sp.trangThai = :trangThai ");
+            query.setParameter("trangThai", trangThai);
+            List<SanPham> list = query.getResultList();
             return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -180,7 +192,8 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
                             OR  :soLuong  = 0 ) 
                         AND( 
                              sp.giaBan BETWEEN :startsGiaBan AND :giaBan                       
-                             OR  :giaBan  IS NULL ) 
+                             OR  :giaBan  IS NULL )
+                        AND (sp.trangThai = :trangThai  )
                         """);
             query.setParameter("ten", request.getTen());
             query.setParameter("tenManHinh", request.getManHinh());
@@ -195,6 +208,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             query.setParameter("soLuong", request.getSoLuong());
             query.setParameter("startsGiaBan", request.getStartsGiaBan());
             query.setParameter("giaBan", request.getGiaBan());
+            query.setParameter("trangThai", request.getTrangThai());
             list = query.list();
             transaction.commit();
         } catch (Exception e) {
@@ -248,7 +262,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return null;
     }
 
-
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
         Transaction transaction = null;
@@ -292,7 +305,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public List<SanPhamCustomRespone> getListSanPham() {
         List<SanPhamCustomRespone> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten) FROM SanPham sp ";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten, sp.soLuongTon, sp.hang.ten, sp.heDieuHanh.ten, sp.ram.dungLuong) FROM SanPham sp ";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             
@@ -301,6 +314,5 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return list;
     }
-    
 
 }

@@ -118,7 +118,7 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
             return list;
         } catch (Exception e) {
         }
-        return list;
+        return null;
     }
      @Override
     public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma) {
@@ -144,9 +144,9 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     public KhachHang getBySoDienThoai(String soDienThoai) {
         
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT kh FROM KhachHang kh WHERE kh.sdt like :sdt";
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.sdt = :sdt";
             Query<KhachHang> query = session.createQuery(hql);
-            query.setParameter("sdt", "%" + soDienThoai + "%");
+            query.setParameter("sdt", soDienThoai );
             KhachHang kh = query.uniqueResult();
             return kh;
         } catch (Exception e) {
@@ -157,5 +157,35 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     
     public static void main(String[] args) {
         System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH709"));
+    }
+
+    @Override
+    public KhachHang getByEmail(String email) {
+          try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.email = :email ";
+            Query<KhachHang> query = session.createQuery(hql);
+            query.setParameter("email",  email);
+            KhachHang kh = query.uniqueResult();
+            return kh;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+           
+        }
+        return null;
+    }
+
+    @Override
+    public List<KhachHang>  searchByHoTen(String hoTen) {
+          List<KhachHang> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT kh FROM KhachHang kh WHERE kh.hoTen like :hoTen";
+            Query<KhachHang> query = session.createQuery(hql);
+            query.setParameter("hoTen", "%" + hoTen + "%");
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+             e.printStackTrace(System.out);
+        }
+        return null;
     }
 }

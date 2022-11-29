@@ -70,7 +70,7 @@ public class DoiTRa {
     @Column(name = "ly_do",columnDefinition="nvarchar(Max)")
     private String liDo;
     
-    @Column(name = "ly_do")
+    @Column(name = "tinh_trang")
     private int tinhTrang;
     
     @Column(name = "trang_thai")

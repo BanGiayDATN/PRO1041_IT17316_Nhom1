@@ -23,7 +23,6 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-
 /**
  *
  * @author vinhnv
@@ -32,7 +31,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="san_pham")
+@Table(name = "san_pham")
 @AllArgsConstructor
 @NoArgsConstructor
 public class SanPham implements Serializable {
@@ -57,8 +56,8 @@ public class SanPham implements Serializable {
 
     @Column(name = "ma", length = 50)
     private String ma;
-    
-    @Column(name = "ten_san_pham",columnDefinition = "nvarchar(Max)")
+
+    @Column(name = "ten_san_pham", columnDefinition = "nvarchar(Max)")
     private String ten;
 
     @Column(name = "trong_luong")
@@ -76,6 +75,9 @@ public class SanPham implements Serializable {
     @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
     private String moTa;
 
+    @Column(name = "trang_thai",  columnDefinition = "int default 0")
+    private int trangThai;
+    
     //Map cac bang
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_man_hinh")
@@ -104,6 +106,5 @@ public class SanPham implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_hang")
     private Hang hang;
-
 
 }
