@@ -441,11 +441,13 @@ public class GenDB {
         KhuyenMaiSanPham khuyenMaiSanPham = new KhuyenMaiSanPham();
         khuyenMaiSanPham.setKhuyenMai(khuyenMai);
         khuyenMaiSanPham.setSanPham(sanPham);
+        khuyenMaiSanPham.setMa(khuyenMai.getMa());
         session.save(khuyenMaiSanPham);
         
         KhuyenMaiSanPham khuyenMaiSanPham1 = new KhuyenMaiSanPham();
         khuyenMaiSanPham1.setKhuyenMai(khuyenMai);
         khuyenMaiSanPham1.setSanPham(sanPham2);
+        khuyenMaiSanPham1.setMa(khuyenMai.getMa());
         session.save(khuyenMaiSanPham1);
         
         BaoHanh baoHanh = new BaoHanh();

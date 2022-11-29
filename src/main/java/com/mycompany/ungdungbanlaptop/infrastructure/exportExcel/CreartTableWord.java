@@ -10,6 +10,7 @@ import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.GenerateQRCode;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.math.BigDecimal;
@@ -103,7 +104,7 @@ public class CreartTableWord {
             r.addBreak();
 
             // add png image
-            String path = "D:\\DuAn1\\PRO1041_IT17346_Nhom1\\target\\classes\\img\\" + maQRHoaDonChiTiet + ".png";
+            String path = new File("").getAbsolutePath()+"//src//main//resources//img//"+maQRHoaDonChiTiet+".png";
             try (FileInputStream is = new FileInputStream(path)) {
                 r.addPicture(is,
                         Document.PICTURE_TYPE_PNG, // png file
@@ -112,8 +113,9 @@ public class CreartTableWord {
                         Units.toEMU(100));
 
             }
+            String home = System.getProperty("user.home");
             // xuất hóa đơn            
-            try (FileOutputStream out = new FileOutputStream("D:\\DuAn1\\PRO1041_IT17346_Nhom1\\target\\classes\\word\\" + maHoaDon + ".doc")) {
+            try (FileOutputStream out = new FileOutputStream(new File(home + "/Downloads/"+ maHoaDon + ".doc"))) {
                 doc.write(out);
             }
         } catch (Exception e) {
