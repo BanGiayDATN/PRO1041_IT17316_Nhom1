@@ -109,7 +109,8 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     public List<HoaDonBanHangViewModel> getHoaDonBanHang() {
         List<HoaDonBanHangViewModel> list = new ArrayList<>();
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.id,hd.ma,hd.ngayTao,nv.hoTen,hd.tinhTrang) from HoaDon hd join NhanVien nv ON nv.idNhanVien = hd.nhanVien.idNhanVien"
+                    + " WHERE hd.tinhTrang = 0";
             Query query = session.createQuery(hql);
             list = query.getResultList();
 

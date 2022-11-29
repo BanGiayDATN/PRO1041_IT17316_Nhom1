@@ -16,7 +16,6 @@ import com.google.zxing.WriterException;
 import com.google.zxing.client.j2se.MatrixToImageWriter;
 import com.google.zxing.common.BitMatrix;
 import com.google.zxing.qrcode.decoder.ErrorCorrectionLevel;
-import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 
 /**
  *
@@ -47,7 +46,7 @@ public class GenerateQRCode {
     }
 
     public void CreateQRCode(String idHoaDon , String maQRHoaDonChiTiet) throws WriterException, IOException {
-        String path = "D:\\DuAn1\\PRO1041_IT17346_Nhom1\\target\\classes\\img\\" + maQRHoaDonChiTiet + ".png";
+        String path = new File("").getAbsolutePath()+"//src//main//resources//img//"+maQRHoaDonChiTiet+".png";
         String charset = "UTF-8";
         Map<EncodeHintType, ErrorCorrectionLevel> hashMap = new HashMap<EncodeHintType, ErrorCorrectionLevel>();
         hashMap.put(EncodeHintType.ERROR_CORRECTION, ErrorCorrectionLevel.L);

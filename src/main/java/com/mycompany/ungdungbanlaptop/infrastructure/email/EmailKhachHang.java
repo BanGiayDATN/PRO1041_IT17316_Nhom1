@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.infrastructure.email;
 
+import java.io.File;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
@@ -49,7 +50,8 @@ public class EmailKhachHang {
         // phan 2 chua tap tin txt
         MimeBodyPart messageBodyPart2 = new MimeBodyPart();
         // Duong dan den file cua ban
-        String filePath = "D:\\DuAn1\\PRO1041_IT17346_Nhom1\\target\\classes\\word\\" + tenFile + ".doc";
+        String home = System.getProperty("user.home");
+        String filePath = new File(home + "/Downloads/"+ tenFile + ".doc") + " ";
         DataSource source1 = new FileDataSource(filePath);
         messageBodyPart2.setDataHandler(new DataHandler(source1));
         messageBodyPart2.setFileName(filePath);
