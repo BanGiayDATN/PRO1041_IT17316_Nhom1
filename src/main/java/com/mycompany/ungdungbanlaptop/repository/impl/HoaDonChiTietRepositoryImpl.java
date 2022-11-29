@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
@@ -96,9 +97,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new HoaDonChiTietRepositoryImpl().getOne(UUID.fromString("0138A8C0-AA84-2213-8184-AA5383750000")));
-    }
 
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
@@ -122,6 +120,21 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return false;
     }
 
+     @Override
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
+        List<HoaDonChiTietKhuyenMai> list = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = " SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai( hd.hoaDon.ma, hd.sanPham.ten, hd.sanPham.hang.ten, hd.sanPham.ram.dungLuong , hd.sanPham.heDieuHanh.ten, hd.hoaDon.khachHang.hoTen, hd.hoaDon.khachHang.gioiTinh, hd.soLuong ) "
+                    + " FROM  HoaDonChiTiet hd "
+                    + " WHERE hd.hoaDon.ngayThanhToan BETWEEN :ngayBatDau AND :ngayKetThu";
+            Query query = session.createQuery(hql).setParameter("ngayBatDau",Long.valueOf("1659286800000")).setParameter("ngayKetThu",Long.valueOf("9659286800000"));
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
     @Override
     public List<HoaDonChiTiet> getWord(UUID idHoaDon) {
         List<HoaDonChiTiet> list = new ArrayList<>();
@@ -130,7 +143,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             transaction = session.beginTransaction();
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
-            query.setParameter("idHoaDon", idHoaDon);           
+            query.setParameter("idHoaDon", idHoaDon);
             list = query.getResultList();
             transaction.commit();
         } catch (Exception e) {
