@@ -9,6 +9,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -36,19 +37,9 @@ import org.hibernate.annotations.Parameter;
 public class KhuyenMaiSanPham {
     
     @Id
-    @GeneratedValue(generator = "UUID")
-    @GenericGenerator(
-            name = "UUID",
-            strategy = "org.hibernate.id.UUIDGenerator",
-            parameters = {
-                @Parameter(
-                        name = "uuid_gen_strategy_class",
-                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-                )
-            }
-    )
+    @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idKhuyenMai;
+    private UUID id;
      
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khuyen_mai")
@@ -57,4 +48,7 @@ public class KhuyenMaiSanPham {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_san_pham")
     private SanPham sanPham;
+    
+    @Column(name = "ma")
+    private String ma;
 }

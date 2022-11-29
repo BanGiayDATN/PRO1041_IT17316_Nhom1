@@ -15,6 +15,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
@@ -364,6 +365,7 @@ public class GenDB {
         sanPham.setRam(ram);
         sanPham.setChatLieu(chatLieu);
         sanPham.setHang(hang);
+        sanPham.setTrangThai(0);
         session.save(sanPham);
 
         SanPham sanPham1 = new SanPham();
@@ -387,6 +389,7 @@ public class GenDB {
         sanPham1.setRam(ram2);
         sanPham1.setChatLieu(chatLieu);
         sanPham1.setHang(hang);
+        sanPham1.setTrangThai(0);
         session.save(sanPham1);
 
         SanPham sanPham2 = new SanPham();
@@ -409,6 +412,7 @@ public class GenDB {
         sanPham2.setRam(ram3);
         sanPham2.setChatLieu(chatLieu2);
         sanPham2.setHang(hang3);
+        sanPham2.setTrangThai(0);
         session.save(sanPham2);
 
         SanPham sanPham3 = new SanPham();
@@ -431,8 +435,21 @@ public class GenDB {
         sanPham3.setRam(ram);
         sanPham3.setChatLieu(chatLieu);
         sanPham3.setHang(hang);
+        sanPham3.setTrangThai(0);
         session.save(sanPham3);
 
+        KhuyenMaiSanPham khuyenMaiSanPham = new KhuyenMaiSanPham();
+        khuyenMaiSanPham.setKhuyenMai(khuyenMai);
+        khuyenMaiSanPham.setSanPham(sanPham);
+        khuyenMaiSanPham.setMa(khuyenMai.getMa());
+        session.save(khuyenMaiSanPham);
+        
+        KhuyenMaiSanPham khuyenMaiSanPham1 = new KhuyenMaiSanPham();
+        khuyenMaiSanPham1.setKhuyenMai(khuyenMai);
+        khuyenMaiSanPham1.setSanPham(sanPham2);
+        khuyenMaiSanPham1.setMa(khuyenMai.getMa());
+        session.save(khuyenMaiSanPham1);
+        
         BaoHanh baoHanh = new BaoHanh();
         baoHanh.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));

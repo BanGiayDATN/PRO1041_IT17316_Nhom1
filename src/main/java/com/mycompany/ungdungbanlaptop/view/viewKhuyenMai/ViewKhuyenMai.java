@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
@@ -21,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class ViewKhuyenMai extends javax.swing.JPanel {
 
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
-    private List<KhuyenMaiRespone> list = new ArrayList<>();
+    private static List<KhuyenMaiRespone> list = new ArrayList<>();
 
     public ViewKhuyenMai() {
         initComponents();
@@ -30,7 +31,19 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         loadTable(list);
     }
 
-    private void loadTable(List<KhuyenMaiRespone> list) {
+    public static void addKhuyenMai(KhuyenMai khuyenMai){
+        KhuyenMaiRespone khuyenMaiRespone = new KhuyenMaiRespone();
+        khuyenMaiRespone.setId(khuyenMai.getIdKhuyenMai());
+        khuyenMaiRespone.setMa(khuyenMai.getMa());
+        khuyenMaiRespone.setTen(khuyenMai.getTen());
+        khuyenMaiRespone.setNgaybatDau(khuyenMai.getNgayBatDau());
+        khuyenMaiRespone.setNgayKethuc(khuyenMai.getNgayKetThuc());
+        khuyenMaiRespone.setLoaiKhuyenMai(khuyenMai.getLoaiKhuyenMai());
+        khuyenMaiRespone.setSoLuong(khuyenMai.getSoLuong());
+        list.add(khuyenMaiRespone);
+        loadTable(list);
+    }
+    private static void loadTable(List<KhuyenMaiRespone> list) {
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"id", "Mã", "Tên", "Ngày bắt đầu", "Ngày kết thúc", "Hình thức", "Số lượng"});
         if (list != null) {
@@ -280,8 +293,8 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
 
     private void tblKhuyenMaiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseClicked
        int index = tblKhuyenMai.getSelectedRow();
-       UUID idkhuyenMai = UUID.fromString(tblKhuyenMai.getModel().getValueAt(index, 0).toString());
-       new ViewChiTietKhuyenMai(idkhuyenMai).setVisible(true);
+       String ma = tblKhuyenMai.getModel().getValueAt(index, 1).toString();
+       new ViewChiTietKhuyenMai(ma).setVisible(true);
     }//GEN-LAST:event_tblKhuyenMaiMouseClicked
 
     private void btnAddKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKhuyenMaiActionPerformed
@@ -299,7 +312,7 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     private javax.swing.JRadioButton rdoConHieuLuc;
     private javax.swing.JRadioButton rdoHetHieuLuc;
     private javax.swing.JRadioButton rdoTatCa;
-    private javax.swing.JTable tblKhuyenMai;
+    private static javax.swing.JTable tblKhuyenMai;
     private javax.swing.JTextField txtSeachKhuyenMai;
     // End of variables declaration//GEN-END:variables
 }

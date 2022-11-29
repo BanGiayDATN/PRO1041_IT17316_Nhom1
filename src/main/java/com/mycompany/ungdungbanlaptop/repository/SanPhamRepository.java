@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,8 @@ import java.util.UUID;
 public interface SanPhamRepository {
 
     List<SanPham> getAll();
+
+    List<SanPham> getAllByTrangThai(int trangThai);
 
     SanPham add(SanPham sanPham);
 
@@ -40,8 +43,10 @@ public interface SanPhamRepository {
 
     List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp);
 
-    void updateSoLuongSanPham(Map<UUID, SanPham> list );
-    
+    void updateSoLuongSanPham(Map<UUID, SanPham> list);
+
     SanPham getById(UUID id);
+    
+    List<SanPhamCustomRespone> getListSanPham();
 
 }
