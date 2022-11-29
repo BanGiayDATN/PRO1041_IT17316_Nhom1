@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.model.viewModel;
 
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -14,19 +13,16 @@ import lombok.NoArgsConstructor;
  * @author thang
  */
 @Data
-@NoArgsConstructor
 @AllArgsConstructor
-public class SanPhamCustomRespone {
+@NoArgsConstructor
+public class HoaDonChiTietKhuyenMai {
     
-    private UUID id;
-    private String ma;
-    private String ten;
-    private int soLuong;
-    private String hang;
+    private String maHoaDon;
+    private String tenSanPham;
+    private String tenHang;
+    private int dungLuong;
     private String tenHeDieuHanh;
-    private int dungLuongRam;
-    
-    public String getTenSanPham(){
-        return ma + "-"+ ten;
-    }
+    private String tenKhachhang;
+    private String gioiTinh;
+    private int soLuong;
 }

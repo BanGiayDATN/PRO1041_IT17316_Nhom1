@@ -259,9 +259,9 @@
                       <Component id="jButton9" min="-2" pref="30" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButton10" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace pref="13" max="32767" attributes="0"/>
+                      <EmptySpace pref="42" max="32767" attributes="0"/>
                       <Component id="btnKhuyenMai" min="-2" pref="30" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="17" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
@@ -317,7 +317,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="btnKhuyenMai">
               <Properties>
-                <Property name="text" type="java.lang.String" value="&#x110;&#x1ed5;i Tr&#x1ea3;"/>
+                <Property name="text" type="java.lang.String" value="Khuy&#x1ebf;n m&#xe3;i"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnKhuyenMaiActionPerformed"/>

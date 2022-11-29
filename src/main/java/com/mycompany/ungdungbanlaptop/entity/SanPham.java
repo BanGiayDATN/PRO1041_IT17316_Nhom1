@@ -75,7 +75,7 @@ public class SanPham implements Serializable {
     @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
     private String moTa;
 
-    @Column(name = "trang_thai")
+    @Column(name = "trang_thai",  columnDefinition = "int default 0")
     private int trangThai;
     
     //Map cac bang
