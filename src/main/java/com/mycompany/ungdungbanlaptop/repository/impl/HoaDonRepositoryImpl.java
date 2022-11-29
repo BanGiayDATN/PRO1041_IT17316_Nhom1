@@ -80,10 +80,10 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     @Override
     public HoaDon getOne(String maHoaDon) {
 
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT hd FROM HoaDon hd WHERE hd.ma like :ma";
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hd FROM HoaDon hd WHERE hd.ma = :ma";
             Query<HoaDon> query = session.createQuery(hql);
-            query.setParameter("ma", "%" + maHoaDon + "%");
+            query.setParameter("ma",  maHoaDon );
             HoaDon hd = query.uniqueResult();
             return hd;
         } catch (Exception e) {

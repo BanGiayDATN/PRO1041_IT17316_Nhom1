@@ -4,12 +4,16 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
+import com.google.zxing.WriterException;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.GenerateQRCode;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.email.EmailKhachHang;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.CreartTableWord;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
@@ -22,6 +26,7 @@ import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
@@ -31,6 +36,9 @@ import java.util.List;
 import java.util.Map;
 
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.mail.MessagingException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -51,6 +59,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private Map<UUID, GioHangViewModel> listGioHang = new HashMap<>();
     private List<GioHangViewModel> list = new ArrayList<>();
     private List<String> listSoDienThoai = new ArrayList<>();
+    private List<HoaDonChiTiet> listHDCT = new ArrayList<>();
     private NhanVien nhanVien;
     private HoaDon hoaDon;
     private KhachHang khachHang;
@@ -895,30 +904,49 @@ public class ViewBanHang extends javax.swing.JPanel {
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-        // TODO add your handling code here:
-        for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
-            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-            hoaDonChiTiet.setSoLuong(x.getValue().getSoLuong());
-            hoaDonChiTiet.setDonGia(x.getValue().getDonGia());
-            hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
-            hoaDonChiTiet.setSanPham(sanPhamService.getOne(x.getValue().getMa()));
-            hoaDonChiTietService.add(hoaDonChiTiet);
-
+        try {
+            // TODO add your handling code here:
+            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setSoLuong(x.getValue().getSoLuong());
+                hoaDonChiTiet.setDonGia(x.getValue().getDonGia());
+                hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
+                hoaDonChiTiet.setSanPham(sanPhamService.getOne(x.getValue().getMa()));
+                hoaDonChiTietService.add(hoaDonChiTiet);
+            }
+            ////// update hoadon
+            hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
+            hoaDon.setTinhTrang(0);
+            hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
+            hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
+            String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+            hoaDon.setNgayThanhToan(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
+            hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
+            hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
+            hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
+            
+            // in hoa don
+            UUID idHoaDon = hoaDon.getIdHoaDon();
+            String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
+            List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
+            new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
+            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+            
+            // gưi email cho khách hàng
+            String emailKhach =  hoaDon.getKhachHang().getEmail();
+            System.out.println(emailKhach);
+            new EmailKhachHang().guiEmailDinhKiem(emailKhach,maQRHoaDonChiTiet);
+            
+            // tinh tien
+            removeGioHang();
+            clearHoaDon();
+        } catch (WriterException ex) {
+            Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (MessagingException ex) {
+            Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
         }
-        ////// update hoadon
-        hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
-        hoaDon.setTinhTrang(0);
-        hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
-        hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
-        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-        hoaDon.setNgayThanhToan(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
-        hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
-        hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
-        hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-
-        // tinh tien
-        removeGioHang();
-        clearHoaDon();
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
     private void btnHuyDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyDonMouseClicked

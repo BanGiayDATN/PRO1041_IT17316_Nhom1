@@ -44,7 +44,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(hoaDonChiTiet);
             transaction.commit();
@@ -58,7 +58,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet update(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.update(hoaDonChiTiet);
             transaction.commit();
@@ -72,7 +72,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public HoaDonChiTiet delete(HoaDonChiTiet hoaDonChiTiet) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.delete(hoaDonChiTiet);
             transaction.commit();
@@ -82,12 +82,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return hoaDonChiTiet;
     }
+
     @Override
     public HoaDonChiTiet getOne(UUID id) {
-         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.idHoaDonChiTiet = :idHoaDonChiTiet";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
-            query.setParameter("idHoaDonChiTiet", id );
+            query.setParameter("idHoaDonChiTiet", id);
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
         } catch (Exception e) {
@@ -100,7 +101,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
         Transaction transaction = null;
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             list.values().forEach(item -> {
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
@@ -118,7 +119,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
         return false;
     }
-    
+
      @Override
     public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
         List<HoaDonChiTietKhuyenMai> list = new ArrayList<>();
@@ -134,8 +135,20 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
-    public static void main(String[] args) {
-        HoaDonChiTietRepositoryImpl hd = new HoaDonChiTietRepositoryImpl();
-        System.out.println(hd.getListHoaDonApDungKhuyenMai(Long.valueOf("1659286800000"), Long.valueOf("9659286800000")));
+    @Override
+    public List<HoaDonChiTiet> getWord(UUID idHoaDon) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHoaDon);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
     }
 }
