@@ -318,7 +318,7 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
       
-        khuyenMaiSanPhamService.deleteKhuyenMaiById(khuyenMai.getIdKhuyenMai());
+        khuyenMaiSanPhamService.deleteKhuyenMaiById(khuyenMai.getMa());
        khuyenMaiSanPhamService.saveAllKhuyenMai(khuyenMai, listSanPhamKhuyenMai);
        List<SanPhamCustomRespone> list = new ArrayList<>();
        listSanPhamKhuyenMai.values().stream().forEach(item ->{

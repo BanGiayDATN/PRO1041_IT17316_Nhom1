@@ -30,8 +30,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
     private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
-    
-    
+
     public ViewChiTietKhuyenMai(String ma) {
         initComponents();
         this.ma = ma;
@@ -513,7 +512,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTenChuongTrinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenChuongTrinhActionPerformed
-     
+
     }//GEN-LAST:event_txtTenChuongTrinhActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed

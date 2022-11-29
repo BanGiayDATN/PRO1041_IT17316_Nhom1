@@ -18,7 +18,7 @@ public interface KhuyenMaiSanPhamService {
     
     List<SanPhamCustomRespone> findSanPhamById(String  ma);
     
-    boolean deleteKhuyenMaiById(UUID id);
+    boolean deleteKhuyenMaiById(String ma);
     
     boolean saveAllKhuyenMai(KhuyenMai khuyenMai,Map<UUID, SanPhamCustomRespone> list);
 }

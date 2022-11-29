@@ -48,14 +48,14 @@ public class KhuyenMaiSanPhamRepostitoryImpl implements KhuyenMaiSanPhamReposito
     
     
     @Override
-    public boolean deleteKhuyenMaiById(UUID id) {
+    public boolean deleteKhuyenMaiById(String ma) {
         try (Session session = HibernateUtil.getFACTORY().openSession()){
             Transaction transaction = session.beginTransaction();
             String sql = """
                          DELETE FROM KhuyenMaiSanPham kmsp
-                         Where kmsp.khuyenMai.idKhuyenMai like :id
+                         Where kmsp.ma like :ma
                          """;
-            Query query = session.createQuery(sql).setParameter("id", id);
+            Query query = session.createQuery(sql).setParameter("ma", ma);
             query.executeUpdate();
             transaction.commit();
             return true;
@@ -73,6 +73,7 @@ public class KhuyenMaiSanPhamRepostitoryImpl implements KhuyenMaiSanPhamReposito
                 KhuyenMaiSanPham khuyenMaiSanPham = new KhuyenMaiSanPham();
                 khuyenMaiSanPham.setKhuyenMai(khuyenMai);
                 khuyenMaiSanPham.setSanPham(SanPhamRepository.getOne(sanPham.getMa()));
+                khuyenMaiSanPham.setMa(khuyenMai.getMa());
                 session.save(khuyenMaiSanPham);
             }
             transaction.commit();

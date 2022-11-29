@@ -27,8 +27,8 @@ public class KhuyenMaiSanPhamServiceImpl implements KhuyenMaiSanPhamService{
     }
 
     @Override
-    public boolean deleteKhuyenMaiById(UUID id) {
-        return KhuyenMaiSanPhamRepository.deleteKhuyenMaiById(id);
+    public boolean deleteKhuyenMaiById(String ma) {
+        return KhuyenMaiSanPhamRepository.deleteKhuyenMaiById(ma);
     }
 
     @Override

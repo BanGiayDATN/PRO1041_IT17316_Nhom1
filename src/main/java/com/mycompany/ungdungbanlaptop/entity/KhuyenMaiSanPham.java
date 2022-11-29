@@ -48,4 +48,7 @@ public class KhuyenMaiSanPham {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_san_pham")
     private SanPham sanPham;
+    
+    @Column(name = "ma")
+    private String ma;
 }
