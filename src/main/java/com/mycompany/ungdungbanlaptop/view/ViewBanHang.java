@@ -118,7 +118,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         dtm2.setRowCount(0);
         for (GioHangViewModel x : list.values()) {
-                   dtm2.addRow(new Object[]{x.getIdSanPham(), jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia()});
+            dtm2.addRow(new Object[]{x.getIdSanPham(), jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia()});
         }
         jTableGiohang.removeColumn(jTableGiohang.getColumnModel().getColumn(0));
 
@@ -852,7 +852,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private void btnTaoHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoHoaDonMouseClicked
         // TODO add your handling code here:
         HoaDon newHoaDon = new HoaDon();
-        newHoaDon.setTinhTrang(1);
+        newHoaDon.setTinhTrang(0);
         newHoaDon.setMa(new TaoChuoiNgauNhien().getMaHoaDon("HD", 3));
         String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
         System.out.println(date);
@@ -881,7 +881,7 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
             ////// update hoadon
             hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
-            hoaDon.setTinhTrang(0);
+            hoaDon.setTinhTrang(1);
             hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
             hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
             String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
@@ -889,24 +889,24 @@ public class ViewBanHang extends javax.swing.JPanel {
             hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
             hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
             hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-            
+
             // in hoa don
             UUID idHoaDon = hoaDon.getIdHoaDon();
             String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
             List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
             new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
-            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
-            
+            new CreartTableWord().word(date, hoaDon.getTenNguoiNhan(), maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+
             // gưi email cho khách hàng
-            String emailKhach =  hoaDon.getKhachHang().getEmail();
+            String emailKhach = hoaDon.getKhachHang().getEmail();
             System.out.println(emailKhach);
-            new EmailKhachHang().guiEmailDinhKiem(emailKhach,maQRHoaDonChiTiet);
-            
+            new EmailKhachHang().guiEmailDinhKiem(emailKhach, maQRHoaDonChiTiet);
+
             // tinh tien
-            OptionPane.showMessageDialog(this, "Thanh toán thành công!");
-        showHoaDon(hoaDonService.getHoaDonBanHang());
-        listGioHang.entrySet().clear();
-        showGioHang(listGioHang);
+            JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
+            showHoaDon(hoaDonService.getHoaDonBanHang());
+            listGioHang.entrySet().clear();
+            showGioHang(listGioHang);
             clearHoaDon();
         } catch (WriterException ex) {
             Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
@@ -915,29 +915,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         } catch (MessagingException ex) {
             Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
         }
-<<<<<<< HEAD
-<<<<<<< HEAD
-        ////// update hoadon
-        hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
-        hoaDon.setTinhTrang(0);
-        hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
-        hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
-        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-        hoaDon.setNgayThanhToan(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
-        hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
-        hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
-        hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-        JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-        // tinh tien
-        showHoaDon(hoaDonService.getHoaDonBanHang());
-        listGioHang.entrySet().clear();
-        showGioHang(listGioHang);
-        clearHoaDon();
-=======
->>>>>>> develop
-=======
 
->>>>>>> 419f014fb43ac78a480b1c2dc2bca5497883147d
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
     private void btnHuyDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyDonMouseClicked
