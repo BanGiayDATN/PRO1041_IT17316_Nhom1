@@ -926,10 +926,11 @@ public class ViewBanHang extends javax.swing.JPanel {
         hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
         hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
         hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-
+        JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
         // tinh tien
         showHoaDon(hoaDonService.getHoaDonBanHang());
-        removeGioHang();
+        listGioHang.entrySet().clear();
+        showGioHang(listGioHang);
         clearHoaDon();
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
