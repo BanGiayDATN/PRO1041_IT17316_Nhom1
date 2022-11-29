@@ -28,9 +28,10 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
     private String ma;
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
-     private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
-     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
-             
+    private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
+    private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
+    
+    
     public ViewChiTietKhuyenMai(String ma) {
         initComponents();
         this.ma = ma;
@@ -42,8 +43,8 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         loadDonHangBan(list);
     }
 
-    public void loadDataMenu(KhuyenMai khuyenMai){
-        
+    public void loadDataMenu(KhuyenMai khuyenMai) {
+
         lbMaChiTiet.setText(khuyenMai.getMa());
         lbNgayBatDauChiTiet.setText(new ConverDate().longToDate(khuyenMai.getNgayBatDau(), "dd/MM/yyyy"));
         lbNgayKetThucChiTiet.setText(new ConverDate().longToDate(khuyenMai.getNgayKetThuc(), "dd/MM/yyyy"));
@@ -52,24 +53,25 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         long ngayHienTaiLong = new ConverDate().dateToLong(ngayHienTai, "dd/MM/yyyy");
         if (khuyenMai.getNgayBatDau() <= ngayHienTaiLong && khuyenMai.getNgayKetThuc() >= ngayHienTaiLong) {
             lbTrangThaiChiTiet.setText("Hoạt động");
-        }else{
+        } else {
             lbTrangThaiChiTiet.setText("Hết hạn");
         }
     }
-    public void loadDataThongTin(KhuyenMai khuyenMai){
+
+    public void loadDataThongTin(KhuyenMai khuyenMai) {
         txtMa.setText(khuyenMai.getMa());
         txtTenChuongTrinh.setText(khuyenMai.getTen());
         txtHinhThuc.setText(khuyenMai.getLoaiKhuyenMai() == EnumLoaiKhuyenMai.PHAN_TRAM ? "Phần Trăm" : " Tiền mặt");
-        if(khuyenMai.getLoaiKhuyenMai() == EnumLoaiKhuyenMai.PHAN_TRAM){
+        if (khuyenMai.getLoaiKhuyenMai() == EnumLoaiKhuyenMai.PHAN_TRAM) {
             txtGiamGia.setText(String.valueOf(khuyenMai.getPhanTram()));
-        }else{
-        txtGiamGia.setText(String.valueOf(khuyenMai.getGiaTienGiam()));
+        } else {
+            txtGiamGia.setText(String.valueOf(khuyenMai.getGiaTienGiam()));
         }
         String ngayHienTai = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
         long ngayHienTaiLong = new ConverDate().dateToLong(ngayHienTai, "dd/MM/yyyy");
         if (khuyenMai.getNgayBatDau() <= ngayHienTaiLong && khuyenMai.getNgayKetThuc() >= ngayHienTaiLong) {
             txtTrangThai.setText("Hoạt động");
-        }else{
+        } else {
             txtTrangThai.setText("Hết hạn");
         }
         txtDieuKien.setText(String.valueOf(khuyenMai.getDieuKienGiamGia()));
@@ -77,28 +79,29 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         lbNgayBatDau.setText(new ConverDate().longToDate(khuyenMai.getNgayBatDau(), "dd/MM/yyyy"));
         lbNgayKetThuc.setText(new ConverDate().longToDate(khuyenMai.getNgayKetThuc(), "dd/MM/yyyy"));
     }
-    
-    private void loadDanhSachSanPham(List<SanPhamCustomRespone> list){
+
+    public static void loadDanhSachSanPham(List<SanPhamCustomRespone> list) {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã","Tên" ,"Số lượng","Hãng","Hệ điều hành","Dung lượng"});
-        if(list != null){
-            for(SanPhamCustomRespone sp : list){
+        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Số lượng", "Hãng", "Hệ điều hành", "Dung lượng"});
+        if (list != null) {
+            for (SanPhamCustomRespone sp : list) {
                 model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getSoLuong(), sp.getHang(), sp.getHang(), sp.getTenHeDieuHanh(), sp.getDungLuongRam()});
             }
         }
         tblDanhSachSanPham.setModel(model);
     }
-    
-    private void loadDonHangBan(List<HoaDonChiTietKhuyenMai> list){
+
+    private void loadDonHangBan(List<HoaDonChiTietKhuyenMai> list) {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã HD","Tên SP" ,"Số lương","Tên Hãng","Hệ điều hành","Dung lượng", "Tên Khách", "Giới Tính"});
-        if(list != null){
-            for(HoaDonChiTietKhuyenMai hd : list){
-                model.addRow(new Object[]{hd.getMaHoaDon(), hd.getTenSanPham(),hd.getSoLuong(), hd.getTenHang(), hd.getTenHeDieuHanh(), hd.getDungLuong(),hd.getTenKhachhang(), hd.getGioiTinh() });
+        model.setColumnIdentifiers(new String[]{"Mã HD", "Tên SP", "Số lương", "Tên Hãng", "Hệ điều hành", "Dung lượng", "Tên Khách", "Giới Tính"});
+        if (list != null) {
+            for (HoaDonChiTietKhuyenMai hd : list) {
+                model.addRow(new Object[]{hd.getMaHoaDon(), hd.getTenSanPham(), hd.getSoLuong(), hd.getTenHang(), hd.getTenHeDieuHanh(), hd.getDungLuong(), hd.getTenKhachhang(), hd.getGioiTinh()});
             }
         }
         tblDơnHangBao.setModel(model);
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -510,7 +513,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtTenChuongTrinhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTenChuongTrinhActionPerformed
-        // TODO add your handling code here:
+     
     }//GEN-LAST:event_txtTenChuongTrinhActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -595,7 +598,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     private javax.swing.JLabel lbNgayKetThucChiTiet;
     private javax.swing.JLabel lbSoLuongChiTiet;
     private javax.swing.JLabel lbTrangThaiChiTiet;
-    private javax.swing.JTable tblDanhSachSanPham;
+    private static javax.swing.JTable tblDanhSachSanPham;
     private javax.swing.JTable tblDơnHangBao;
     private javax.swing.JTextField txtDieuKien;
     private javax.swing.JTextField txtGiamGia;

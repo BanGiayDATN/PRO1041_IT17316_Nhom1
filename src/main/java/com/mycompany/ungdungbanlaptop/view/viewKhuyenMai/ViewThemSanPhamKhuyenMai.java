@@ -4,10 +4,13 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiSanPhamService;
+import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiSanPhamServiceImpl;
+import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,12 +26,18 @@ import javax.swing.DefaultListModel;
 public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
 
     private SanPhamService sanPhamService = new SanPhamServiceImpl();
+    private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
     private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
     private List< SanPhamCustomRespone> SanPhams = new ArrayList<>();
     private Map<UUID, SanPhamCustomRespone> listSanPhamKhuyenMai = new HashMap<>();
+    private KhuyenMai khuyenMai;
+    private String ma;
 
     public ViewThemSanPhamKhuyenMai(String ma) {
         initComponents();
+        this.ma = ma;
+        KhuyenMai khuyenMai = khuyenMaiService.getOne(ma);
+         this.khuyenMai = khuyenMai;
         SanPhams = sanPhamService.getListSanPham();
         khuyenMaiSanPhamService.findSanPhamById(ma).stream().forEach(item -> {
             listSanPhamKhuyenMai.put(item.getId(), item);
@@ -105,6 +114,11 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
         });
 
         jButton1.setText("Save");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("<");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -219,9 +233,17 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
         if (listSanPham.getSelectedIndex() == -1) {
             return;
         } else {
-            int value = listSanPham.getSelectedIndex();
-            listSanPhamKhuyenMai.put(SanPhams.get(value).getId(), SanPhams.get(value));
-            SanPhams.remove(SanPhams.get(value));
+            String value = listSanPham.getSelectedValue();
+            SanPhams.stream().forEach(item ->{
+            if(item.getTenSanPham().equals(value)){
+                     listSanPhamKhuyenMai.put(item.getId(), item);
+//                     SanPhams.remove(item);
+                   
+                }
+           
+            
+        });
+            
         }
         loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
     }//GEN-LAST:event_jButton4ActionPerformed
@@ -230,13 +252,20 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
         if (jList1.getSelectedIndex() == -1) {
             return;
         } else {
-            int value = jList1.getSelectedIndex();
+            String value = jList1.getSelectedValue();
             UUID id = null;
+            SanPhamCustomRespone sanPham = null;
             List keys = new ArrayList(listSanPhamKhuyenMai.keySet());
-            id = UUID.fromString(keys.get(value).toString());
+            for(SanPhamCustomRespone sanPhamCustomRespone : listSanPhamKhuyenMai.values()){
+                if(sanPhamCustomRespone.getTenSanPham().equals(value)){
+                    id = sanPhamCustomRespone.getId();
+                    sanPham = sanPhamCustomRespone;
+                }
+            };
+            
             // do stuff here
             List values = new ArrayList(listSanPhamKhuyenMai.values());
-            SanPhamCustomRespone sanPham = (SanPhamCustomRespone) values.get(value);
+            
             SanPhams.add(sanPham);
             listSanPhamKhuyenMai.remove(id);
         }
@@ -268,7 +297,6 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
          if (listSanPham.getSelectedIndex() == -1) {
             return;
         } else {
-             System.out.println("helllo");
             List<String> values = listSanPham.getSelectedValuesList();
             List<SanPhamCustomRespone> list = new ArrayList<>();
              SanPhams.stream().forEach(sanPham ->{
@@ -287,6 +315,17 @@ public class ViewThemSanPhamKhuyenMai extends javax.swing.JFrame {
         loadListSanPham(SanPhams);
         loadListSanPhamKhuyenMai(listSanPhamKhuyenMai);
     }//GEN-LAST:event_jButton5ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+      
+        khuyenMaiSanPhamService.deleteKhuyenMaiById(khuyenMai.getIdKhuyenMai());
+       khuyenMaiSanPhamService.saveAllKhuyenMai(khuyenMai, listSanPhamKhuyenMai);
+       List<SanPhamCustomRespone> list = new ArrayList<>();
+       listSanPhamKhuyenMai.values().stream().forEach(item ->{
+           list.add(item);
+       });
+       ViewChiTietKhuyenMai.loadDanhSachSanPham(list);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

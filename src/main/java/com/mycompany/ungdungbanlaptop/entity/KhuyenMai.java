@@ -60,7 +60,7 @@ public class KhuyenMai {
     @Column(name = "ngay_ket_thuc")
     private long ngayKetThuc;
 
-    @Column(name = "trang_thai")
+    @Column(name = "trang_thai",  columnDefinition = "int default 0")
     private int trangThai;
 
     @Column(name = "so_luong")

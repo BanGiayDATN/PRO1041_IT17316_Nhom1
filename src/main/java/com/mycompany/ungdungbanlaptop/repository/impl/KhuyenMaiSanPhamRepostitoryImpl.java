@@ -4,13 +4,18 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiSanPhamRepository;
+import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 /**
@@ -19,6 +24,8 @@ import org.hibernate.query.Query;
  */
 public class KhuyenMaiSanPhamRepostitoryImpl implements KhuyenMaiSanPhamRepository{
 
+    private SanPhamRepository SanPhamRepository = new SanPhamRepositoryImpl();
+    
     @Override
     public List<SanPhamCustomRespone> findSanPhamById(String ma) {
         List<SanPhamCustomRespone> list = new ArrayList<>();
@@ -39,9 +46,41 @@ public class KhuyenMaiSanPhamRepostitoryImpl implements KhuyenMaiSanPhamReposito
         return list;
     }
     
-    public static void main(String[] args) {
-        KhuyenMaiSanPhamRepostitoryImpl km = new KhuyenMaiSanPhamRepostitoryImpl();
-        System.out.println(km.findSanPhamById("KM202"));
+    
+    @Override
+    public boolean deleteKhuyenMaiById(UUID id) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            Transaction transaction = session.beginTransaction();
+            String sql = """
+                         DELETE FROM KhuyenMaiSanPham kmsp
+                         Where kmsp.khuyenMai.idKhuyenMai like :id
+                         """;
+            Query query = session.createQuery(sql).setParameter("id", id);
+            query.executeUpdate();
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
+    }
+
+    @Override
+    public boolean saveAllKhuyenMai(KhuyenMai khuyenMai,Map<UUID, SanPhamCustomRespone> list) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            Transaction transaction = session.beginTransaction();
+            for(SanPhamCustomRespone sanPham : list.values()){
+                KhuyenMaiSanPham khuyenMaiSanPham = new KhuyenMaiSanPham();
+                khuyenMaiSanPham.setKhuyenMai(khuyenMai);
+                khuyenMaiSanPham.setSanPham(SanPhamRepository.getOne(sanPham.getMa()));
+                session.save(khuyenMaiSanPham);
+            }
+            transaction.commit();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return false;
     }
     
 }

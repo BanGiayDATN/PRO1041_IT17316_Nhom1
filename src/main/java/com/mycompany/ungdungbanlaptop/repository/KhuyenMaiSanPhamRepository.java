@@ -4,8 +4,10 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 /**
@@ -15,4 +17,8 @@ import java.util.UUID;
 public interface KhuyenMaiSanPhamRepository {
     
     List<SanPhamCustomRespone> findSanPhamById(String id);
+    
+    boolean deleteKhuyenMaiById(UUID id);
+    
+    boolean saveAllKhuyenMai(KhuyenMai khuyenMai,Map<UUID, SanPhamCustomRespone> list);
 }
