@@ -213,4 +213,9 @@ public class NhanVienServiceImpl implements NhanVienService {
         return nhanVienRepository.getNhanVienByMa(ma);
     }
 
+    @Override
+    public List<String> getAllMaNhanVien() {
+        return nhanVienRepository.getAllMaNhanVien();
+    }
+
 }

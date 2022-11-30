@@ -6,12 +6,14 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -23,9 +25,29 @@ import org.hibernate.query.Query;
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
-    public List<HoaDon> getAll() {
+    public List<HoaDon> getAll(SeachHoaDon seachHoaDon) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM HoaDon");
+            Query query = session.createQuery("""
+                                              FROM HoaDon hd
+                                              WHERE (:ma IS NULL
+                                                    OR :ma LIKE ''
+                                                    OR hd.ma LIKE CONCAT('%',:ma,'%'))
+                                              AND   (:ngayTao = 0L
+                                                    OR hd.ngayTao = :ngayTao)
+                                              AND   (:maNhanVien IS NULL
+                                                    OR :maNhanVien LIKE ''
+                                                     OR hd.nhanVien.ma = :maNhanVien)
+                                              AND    (:tenNhanVien IS NULL
+                                                      OR :tenNhanVien LIKE ''
+                                                      OR hd.nhanVien.hoTen = :tenNhanVien)
+                                              AND    (:tenKhachHang IS NULL
+                                                       OR :tenKhachHang LIKE ''
+                                                       OR hd.khachHang.hoTen = :tenKhachHang)
+                                              """).setParameter("ma", seachHoaDon.getMa())
+                                                   .setParameter("ngayTao", seachHoaDon.getNgayTao())
+                                                    .setParameter("maNhanVien", seachHoaDon.getMaNhanVien())
+                                                    .setParameter("tenNhanVien", seachHoaDon.getTenNhanVien())
+                                                    .setParameter("tenKhachHang",seachHoaDon.getTenKhachHang()); 
             List<HoaDon> list = query.getResultList();
 
             return list;
