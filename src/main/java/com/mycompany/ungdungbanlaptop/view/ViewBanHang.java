@@ -14,6 +14,7 @@ import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.GenerateQRCode;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.email.EmailKhachHang;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.CreartTableWord;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.GeneratePdf;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
@@ -930,8 +931,10 @@ public class ViewBanHang extends javax.swing.JPanel {
             String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
             List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
             new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
-            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
-            
+            // word
+//            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+            // pdf
+            new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
             // gưi email cho khách hàng
             String emailKhach =  hoaDon.getKhachHang().getEmail();
             System.out.println(emailKhach);

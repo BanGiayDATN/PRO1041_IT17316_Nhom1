@@ -7,8 +7,11 @@ package com.mycompany.ungdungbanlaptop.entity;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,7 +29,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="imei")
+@Table(name = "imei")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Imei {
@@ -49,9 +52,15 @@ public class Imei {
     @Column(name = "ma")
     private String ma;
 
+    @Column(name = "trang_thai")
+    private int trangThai;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id_hoa_don_chi_tiet")
+    private HoaDonChiTiet hoaDonChiTiet;
+
     public Imei(UUID idImei) {
         this.idImei = idImei;
     }
-    
-    
+
 }
