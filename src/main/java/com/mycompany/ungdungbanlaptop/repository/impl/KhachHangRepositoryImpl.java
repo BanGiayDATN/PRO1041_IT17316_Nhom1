@@ -208,6 +208,6 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     }
     
      public static void main(String[] args) {
-        System.out.println(new KhachHangRepositoryImpl().soLuotMua("KH196"));
+        System.out.println(new KhachHangRepositoryImpl().getBySoDienThoai("0971833489"));
     }
 }
