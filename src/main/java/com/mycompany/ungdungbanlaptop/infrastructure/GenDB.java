@@ -327,7 +327,7 @@ public class GenDB {
         khachHang.setMa("KH001");
         khachHang.setHoTen("Hà Phương Na");
         khachHang.setNgaySinh(new ConverDate().dateToLong("2000/01/21", "yyyy/MM/dd"));
-        khachHang.setSdt("0962784188");
+        khachHang.setSdt("0989999999");
         khachHang.setDiaChi("Hà Nội");
         khachHang.setGioiTinh("Nữ");
         khachHang.setTrangThai(0);
@@ -511,14 +511,12 @@ public class GenDB {
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         hdct.setHoaDon(hd);
         hdct.setSoLuong(1);
-        hdct.setImei(null);
         hdct.setDonGia(new BigDecimal(24000000.0));
         session.save(hdct);
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
         hdct.setSoLuong(1);
-        hdct.setImei(null);
         hdct.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
       
