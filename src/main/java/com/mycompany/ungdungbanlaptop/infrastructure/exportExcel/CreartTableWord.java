@@ -58,18 +58,13 @@ public class CreartTableWord {
             r1.setItalic(true);
             r1.setFontSize(22);
             r1.setFontFamily("New Roman");
-            r1.setText("POST - Chuyên Laptop");
-            r1.setText(ngayThanhToan);
-            r1.setText(nguoiNhan);
+            r1.setText("POST - Chuyên Laptop");          
             XWPFRun r2 = p1.createRun();
-            r2.setBold(true);
-            r2.setItalic(true);
             r2.setFontSize(16);
             r2.setFontFamily("New Roman");
             r2.setText(ngayThanhToan);
+            
             XWPFRun r3 = p1.createRun();
-            r3.setBold(true);
-            r3.setItalic(true);
             r3.setFontSize(16);
             r3.setFontFamily("New Roman");
             r3.setText(nguoiNhan);
