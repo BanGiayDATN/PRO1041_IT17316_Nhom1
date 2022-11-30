@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import java.util.List;
 import java.util.UUID;
 
@@ -17,7 +18,7 @@ import java.util.UUID;
  */
 public interface HoaDonRepository {
 
-    List<HoaDon> getAll(SeachHoaDon seachHoaDon);
+    List<HoaDonRespone> getAll(SeachHoaDon seachHoaDon);
 
     HoaDon add(HoaDon hoaDon);
 

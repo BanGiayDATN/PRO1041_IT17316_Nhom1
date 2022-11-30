@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
@@ -40,13 +41,13 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
         cboMa.setModel(model);
         cboMa.setSelectedIndex(0);
     }
-    private void loadTable(List<HoaDon> hoaDons){
+    private void loadTable(List<HoaDonRespone> hoaDons){
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã","Ngày Tạo","Mã Nhân Viên","Tên Nhân viên","Tên khách hàng"});
+        model.setColumnIdentifiers(new String[]{"Mã","Ngày Tạo","Mã Nhân Viên","Tên Nhân viên","Tên khách hàng", "Số Lượng", "Tổng"});
         if(hoaDons != null){
-            for(HoaDon hoaDon : hoaDons){
+            for(HoaDonRespone hoaDon : hoaDons){
                 String ngayTao = new ConverDate().longToDate(hoaDon.getNgayTao(), "dd/MM/yyyy");
-                model.addRow(new Object[]{hoaDon.getMa(),ngayTao, hoaDon.getNhanVien().getMa(), hoaDon.getNhanVien().getHoTen(), hoaDon.getKhachHang().getHoTen()});
+                model.addRow(new Object[]{hoaDon.getMa(),ngayTao, hoaDon.getMaNhanVien(), hoaDon.getTenNhanVien(), hoaDon.getTenKhachHang(), hoaDon.getSoLuong(), hoaDon.getTong()});
             }
         }
         tblHoaDon.setModel(model);

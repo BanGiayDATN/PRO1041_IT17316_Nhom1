@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
@@ -25,10 +26,12 @@ import org.hibernate.query.Query;
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
-    public List<HoaDon> getAll(SeachHoaDon seachHoaDon) {
+    public List<HoaDonRespone> getAll(SeachHoaDon seachHoaDon) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("""
+            Query query = session.createQuery(""" 
+                                              SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone(hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen, SUM(hdct.soLuong), SUM(hdct.donGia))
                                               FROM HoaDon hd
+                                              JOIN HoaDonChiTiet hdct ON hdct.hoaDon.id = hd.id
                                               WHERE (:ma IS NULL
                                                     OR :ma LIKE ''
                                                     OR hd.ma LIKE CONCAT('%',:ma,'%'))
@@ -43,12 +46,13 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
                                               AND    (:tenKhachHang IS NULL
                                                        OR :tenKhachHang LIKE ''
                                                        OR hd.khachHang.hoTen = :tenKhachHang)
+                                              GROUP BY hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen
                                               """).setParameter("ma", seachHoaDon.getMa())
                                                    .setParameter("ngayTao", seachHoaDon.getNgayTao())
                                                     .setParameter("maNhanVien", seachHoaDon.getMaNhanVien())
                                                     .setParameter("tenNhanVien", seachHoaDon.getTenNhanVien())
                                                     .setParameter("tenKhachHang",seachHoaDon.getTenKhachHang()); 
-            List<HoaDon> list = query.getResultList();
+            List<HoaDonRespone> list = query.getResultList();
 
             return list;
         } catch (Exception e) {
@@ -57,6 +61,10 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
+    public static void main(String[] args) {
+        HoaDonRepositoryImpl hd = new HoaDonRepositoryImpl();
+        System.out.println(hd.getAll(new SeachHoaDon()));
+    }
     @Override
     public HoaDon add(HoaDon hoaDon) {
         Transaction transaction = null;
