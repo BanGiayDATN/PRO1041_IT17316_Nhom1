@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-import com.itextpdf.io.util.NumberUtil;
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
