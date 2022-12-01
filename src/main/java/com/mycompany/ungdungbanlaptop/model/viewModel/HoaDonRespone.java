@@ -22,6 +22,16 @@ public class HoaDonRespone {
     private String maNhanVien;
     private String tenNhanVien;
     private String tenKhachHang;
+    private int tinhTrang;
     private long soLuong;
     private BigDecimal tong;
+    
+    public String getTrangThai(){
+        if(tinhTrang == 0){
+            return "Hóa đơn chờ";
+        }else{
+            return "Đã thanh toán";
+        }
+    }
+    
 }

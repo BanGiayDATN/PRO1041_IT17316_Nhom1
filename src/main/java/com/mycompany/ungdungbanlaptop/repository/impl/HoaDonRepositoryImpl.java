@@ -29,7 +29,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     public List<HoaDonRespone> getAll(SeachHoaDon seachHoaDon) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(""" 
-                                              SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone(hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen, SUM(hdct.soLuong), SUM(hdct.donGia))
+                                              SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone(hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang, SUM(hdct.soLuong), SUM(hdct.donGia))
                                               FROM HoaDon hd
                                               JOIN HoaDonChiTiet hdct ON hdct.hoaDon.id = hd.id
                                               WHERE (:ma IS NULL
@@ -46,7 +46,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
                                               AND    (:tenKhachHang IS NULL
                                                        OR :tenKhachHang LIKE ''
                                                        OR hd.khachHang.hoTen = :tenKhachHang)
-                                              GROUP BY hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen
+                                              GROUP BY hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang
                                               """).setParameter("ma", seachHoaDon.getMa())
                                                    .setParameter("ngayTao", seachHoaDon.getNgayTao())
                                                     .setParameter("maNhanVien", seachHoaDon.getMaNhanVien())
