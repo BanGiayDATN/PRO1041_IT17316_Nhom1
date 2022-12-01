@@ -191,6 +191,11 @@
             <artifactId>swingbits</artifactId>
             <version>1.2.2</version>
         </dependency>
+<dependency>
+    <groupId>net.coderazzi</groupId>
+    <artifactId>tablefilter-swing</artifactId>
+    <version>5.5.4</version>
+</dependency>
 
     </dependencies>
 </project>
