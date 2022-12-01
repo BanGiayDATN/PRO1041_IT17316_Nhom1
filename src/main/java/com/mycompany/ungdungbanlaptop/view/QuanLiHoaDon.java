@@ -14,7 +14,9 @@ import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
  *
@@ -30,6 +32,11 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
         initComponents();
         loadTable(hoaDonService.getAll(new SeachHoaDon()));
         loadcbo(nhanVienService.getAllMaNhanVien());
+       tblHoaDon = TableRowFilterSupport
+                  .forTable(tblHoaDon)
+                  .searchable(true)
+                  .apply();
+       
     }
 
     private void loadcbo(List<String> list){
@@ -141,7 +148,7 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(39, Short.MAX_VALUE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 689, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -173,7 +180,7 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
                                 .addGap(39, 39, 39)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 635, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(15, 15, 15))
         );
