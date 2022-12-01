@@ -124,4 +124,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     public List<KhachHang> searchByHoTen(List<KhachHang> list, String hoTen) {
         return khachHangRepository.searchByHoTen(hoTen);
     }
+
+    @Override
+    public Long soLuotMua(String maKH) {
+        return khachHangRepository.soLuotMua(maKH);
+    }
 }

@@ -6,12 +6,15 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -23,10 +26,33 @@ import org.hibernate.query.Query;
 public class HoaDonRepositoryImpl implements HoaDonRepository {
 
     @Override
-    public List<HoaDon> getAll() {
+    public List<HoaDonRespone> getAll(SeachHoaDon seachHoaDon) {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM HoaDon");
-            List<HoaDon> list = query.getResultList();
+            Query query = session.createQuery(""" 
+                                              SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone(hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang, SUM(hdct.soLuong), SUM(hdct.donGia))
+                                              FROM HoaDon hd
+                                              JOIN HoaDonChiTiet hdct ON hdct.hoaDon.id = hd.id
+                                              WHERE (:ma IS NULL
+                                                    OR :ma LIKE ''
+                                                    OR hd.ma LIKE CONCAT('%',:ma,'%'))
+                                              AND   (:ngayTao = 0L
+                                                    OR hd.ngayTao = :ngayTao)
+                                              AND   (:maNhanVien IS NULL
+                                                    OR :maNhanVien LIKE ''
+                                                     OR hd.nhanVien.ma = :maNhanVien)
+                                              AND    (:tenNhanVien IS NULL
+                                                      OR :tenNhanVien LIKE ''
+                                                      OR hd.nhanVien.hoTen = :tenNhanVien)
+                                              AND    (:tenKhachHang IS NULL
+                                                       OR :tenKhachHang LIKE ''
+                                                       OR hd.khachHang.hoTen = :tenKhachHang)
+                                              GROUP BY hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang
+                                              """).setParameter("ma", seachHoaDon.getMa())
+                                                   .setParameter("ngayTao", seachHoaDon.getNgayTao())
+                                                    .setParameter("maNhanVien", seachHoaDon.getMaNhanVien())
+                                                    .setParameter("tenNhanVien", seachHoaDon.getTenNhanVien())
+                                                    .setParameter("tenKhachHang",seachHoaDon.getTenKhachHang()); 
+            List<HoaDonRespone> list = query.getResultList();
 
             return list;
         } catch (Exception e) {
@@ -35,6 +61,10 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
+    public static void main(String[] args) {
+        HoaDonRepositoryImpl hd = new HoaDonRepositoryImpl();
+        System.out.println(hd.getAll(new SeachHoaDon()));
+    }
     @Override
     public HoaDon add(HoaDon hoaDon) {
         Transaction transaction = null;
@@ -143,7 +173,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
                     + "FROM HoaDon hd "
-                    + " WHERE hd.tinhTrang = 1";
+                    + " WHERE hd.tinhTrang = 0";
             Query query = session.createQuery(hql);
             list = query.getResultList();
         } catch (Exception e) {
