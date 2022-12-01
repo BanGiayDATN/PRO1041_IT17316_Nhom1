@@ -26,8 +26,9 @@ public class EmailKhachHang {
     private final static String password = "enjkxtscsburacui";
     private final String subject = "POSt - Laptop";
     private String body = " Kính chào quý khách ";
+    private final static String home = System.getProperty("user.home");
 
-    public  void guiEmailDinhKiem(String toEmail, String tenFile) throws AddressException, MessagingException {
+    public void guiEmailDinhKiem(String toEmail, String tenFile) throws AddressException, MessagingException {
         Properties prop = new Properties();
         prop.put("mail.smtp.auth", true);
         prop.put("mail.smtp.starttls.enable", "true");
@@ -50,8 +51,7 @@ public class EmailKhachHang {
         // phan 2 chua tap tin txt
         MimeBodyPart messageBodyPart2 = new MimeBodyPart();
         // Duong dan den file cua ban
-        String home = System.getProperty("user.home");
-        String filePath = new File(home + "/Downloads/"+ tenFile + ".doc") + " ";
+        String filePath = new File(home + "/Downloads/" + tenFile) + ".pdf";
         DataSource source1 = new FileDataSource(filePath);
         messageBodyPart2.setDataHandler(new DataHandler(source1));
         messageBodyPart2.setFileName(filePath);
@@ -68,5 +68,4 @@ public class EmailKhachHang {
         new EmailKhachHang().guiEmailDinhKiem("anhvinh12a888@gmail.com", filePath);
     }
 
-   
 }

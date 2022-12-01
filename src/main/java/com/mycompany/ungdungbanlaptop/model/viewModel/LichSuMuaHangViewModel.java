@@ -21,20 +21,24 @@ public class LichSuMuaHangViewModel {
 
     private String idKhachHang;
     private String ma;
+    private String ten;
     private int soLuong;
     private BigDecimal donGia;
     private long ngayTao;
     private long ngayThanhToan;
     private int tinhTrang;
 
-    public LichSuMuaHangViewModel(String ma, int soLuong, BigDecimal donGia, long ngayTao, long ngayThanhToan, int tinhTrang) {
+    public LichSuMuaHangViewModel(String ma, String ten, int soLuong, BigDecimal donGia, long ngayTao, long ngayThanhToan, int tinhTrang) {
         this.ma = ma;
+        this.ten = ten;
         this.soLuong = soLuong;
         this.donGia = donGia;
         this.ngayTao = ngayTao;
         this.ngayThanhToan = ngayThanhToan;
         this.tinhTrang = tinhTrang;
     }
+
+   
 
   
     

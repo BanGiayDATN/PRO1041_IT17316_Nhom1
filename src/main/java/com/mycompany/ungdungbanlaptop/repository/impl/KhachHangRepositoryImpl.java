@@ -125,11 +125,13 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma) {
         List<LichSuMuaHangViewModel> list = new ArrayList<>();
         try  (Session session = HibernateUtil.getFACTORY().openSession()){
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel(hd.ma,hdct.soLuong,hdct.donGia,hd.ngayTao,hd.ngayThanhToan,hd.tinhTrang) FROM HoaDonChiTiet hdct "
-                    + "inner join HoaDon hd "
-                    + "ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel(hd.ma,sp.ten,hdct.soLuong,hdct.donGia,hd.ngayTao,hd.ngayThanhToan,hd.tinhTrang) FROM HoaDonChiTiet hdct "
+                    + " inner join HoaDon hd "
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
                     + " inner join KhachHang kh"
                     + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " inner join SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
                     + " WHERE kh.ma like :ma";
             Query<LichSuMuaHangViewModel> query = session.createQuery(hql);
             query.setParameter("ma","%"+ ma+"%");
@@ -208,6 +210,6 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     }
     
      public static void main(String[] args) {
-        System.out.println(new KhachHangRepositoryImpl().getBySoDienThoai("0971833489"));
+        System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH98719"));
     }
 }

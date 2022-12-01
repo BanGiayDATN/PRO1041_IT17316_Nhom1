@@ -35,7 +35,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
         showData(khachHangService.getAll());
         
          jTableLichSuMuahang.setModel(dtm1);
-        String [] b = {"Mã Hóa Đơn","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán" };
+        String [] b = {"Mã Hóa Đơn","Tên SP","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán" };
         dtm1.setColumnIdentifiers(b);
         
        cbbTimKiem();
@@ -58,7 +58,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
     private void showLichSuMua(List<LichSuMuaHangViewModel>list){
         dtm1.setRowCount(0);
         for (LichSuMuaHangViewModel x : list) {            
-            dtm1.addRow(new Object[]{x.getMa(),x.getSoLuong(),x.getDonGia(),new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
+            dtm1.addRow(new Object[]{x.getMa(),x.getTen(),x.getSoLuong(),x.getDonGia(),new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
         }
     }
     

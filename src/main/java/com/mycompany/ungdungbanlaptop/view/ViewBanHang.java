@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.view;
 import com.google.zxing.WriterException;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
@@ -14,9 +15,12 @@ import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.GenerateQRCode;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.email.EmailKhachHang;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.CreartTableWord;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.GeneratePdf;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
+import com.mycompany.ungdungbanlaptop.repository.impl.ImeiRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
@@ -56,6 +60,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
+    private ImeiRepository imeiRepository = new ImeiRepositoryImpl();
     private Map<UUID, GioHangViewModel> listGioHang = new HashMap<>();
     private List<GioHangViewModel> list = new ArrayList<>();
     private List<String> listSoDienThoai = new ArrayList<>();
@@ -63,6 +68,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private NhanVien nhanVien;
     private HoaDon hoaDon;
     private KhachHang khachHang;
+    private HoaDonChiTiet hoaDonChiTiet;
 
     /**
      * Creates new form ViewBanHang
@@ -872,6 +878,7 @@ public class ViewBanHang extends javax.swing.JPanel {
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
         try {
             // TODO add your handling code here:
+            int sum = 0;
             for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setSoLuong(x.getValue().getSoLuong());
@@ -879,6 +886,15 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
                 hoaDonChiTiet.setSanPham(sanPhamService.getOne(x.getValue().getMa()));
                 hoaDonChiTietService.add(hoaDonChiTiet);
+
+                int soLuong = x.getValue().getSoLuong();
+                for (int i = 1; i < soLuong + 1; ++i) {
+                    Imei imei = new Imei();
+                    imei.setMa(new TaoChuoiNgauNhien().getiMei(16));
+                    imei.setTrangThai(0);
+                    imei.setHoaDonChiTiet(hoaDonChiTiet);
+                    imeiRepository.add(imei);
+                }
             }
             ////// update hoadon
             hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
@@ -896,7 +912,11 @@ public class ViewBanHang extends javax.swing.JPanel {
             String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
             List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
             new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
-            new CreartTableWord().word(date, hoaDon.getTenNguoiNhan(), maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+
+            // word
+//            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+            // pdf
+            new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
 
             // gưi email cho khách hàng
             String emailKhach = hoaDon.getKhachHang().getEmail();
@@ -917,8 +937,17 @@ public class ViewBanHang extends javax.swing.JPanel {
             Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
+    private int tongSoLuong() {
+        int tong = 0;
+        for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
+            tong += x.getValue().getSoLuong();
+
+        }
+        return tong;
+    }
     private void btnHuyDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyDonMouseClicked
         // TODO add your handling code here:
         int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
