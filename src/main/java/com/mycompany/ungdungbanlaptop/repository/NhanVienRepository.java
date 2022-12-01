@@ -35,5 +35,7 @@ public interface NhanVienRepository {
     List<NhanVien> searchByEmail(String email);
 
     NhanVien getNhanVienByMa(String ma);
+    
+    List<String> getAllMaNhanVien();
 
 }

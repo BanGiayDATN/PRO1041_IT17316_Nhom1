@@ -199,6 +199,20 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
 
     }
 
+    @Override
+    public List<String> getAllMaNhanVien() {
+       List<String> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()){
+            Query query = session.createQuery("SELECT ma FROM NhanVien");
+            list = query.getResultList();
+            return list;
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
    
     
 }
