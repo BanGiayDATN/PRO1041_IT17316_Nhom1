@@ -174,7 +174,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel(hd.idHoaDon,hd.ma,hd.ngayTao,hd.khachHang.hoTen,hd.tinhTrang) "
                     + "FROM HoaDon hd "
-                    + " WHERE hd.tinhTrang = 1";
+                    + " WHERE hd.tinhTrang = 0";
             Query query = session.createQuery(hql);
             list = query.getResultList();
         } catch (Exception e) {
