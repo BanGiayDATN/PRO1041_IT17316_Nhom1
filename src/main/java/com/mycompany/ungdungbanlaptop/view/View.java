@@ -455,14 +455,8 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(one);
         jPanel6.setBackground(one);
         jPanel8.setBackground(one);
-        jPanel12.setBackground(one);
-<<<<<<< HEAD
-
-        AdQuanLiManHinh viewnv = new AdQuanLiManHinh();
-=======
-        
+        jPanel12.setBackground(one);      
         ViewThongKe viewnv= new ViewThongKe();
->>>>>>> develop_huynh2107
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
         this.pack();
