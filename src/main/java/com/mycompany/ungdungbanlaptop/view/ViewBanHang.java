@@ -46,6 +46,8 @@ import javax.mail.MessagingException;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -81,7 +83,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         cbbHinhThucThanhToan();
         cbbPhanLoai();
-
+        TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
     }
 
     private void cbbHinhThucThanhToan() {

@@ -37,4 +37,5 @@ public interface NhanVienService {
 
     NhanVien getNhanVienByMa(String ma);
 
+    List<String> getAllMaNhanVien();
 }

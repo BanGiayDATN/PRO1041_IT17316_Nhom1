@@ -5,7 +5,9 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
+import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
@@ -26,8 +28,8 @@ public class HoaDonServiceImpl implements HoaDonService{
     }
 
     @Override
-    public List<HoaDon> getAll() {
-        return hoadonRepository.getAll();
+    public List<HoaDonRespone> getAll(SeachHoaDon seachHoaDon) {
+        return hoadonRepository.getAll(seachHoaDon);
     }
 
     @Override
