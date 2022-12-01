@@ -32,7 +32,9 @@ public interface KhachHangService {
     List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma);
 
     KhachHang getBySoDienThoai(String soDienThoai);
-    
-      List<KhachHang> searchByHoTen(List<KhachHang> list, String hoTen);
+
+    List<KhachHang> searchByHoTen(List<KhachHang> list, String hoTen);
+
+    Long soLuotMua(String maKH);
 
 }

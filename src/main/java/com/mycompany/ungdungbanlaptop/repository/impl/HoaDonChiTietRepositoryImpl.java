@@ -30,7 +30,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     public List<HoaDonChiTiet> getAll() {
 
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM HoaDonChiTiet");
+            Query query = session.createQuery(" FROM HoaDonChiTiet");
 
             List<HoaDonChiTiet> list = query.getResultList();
 
