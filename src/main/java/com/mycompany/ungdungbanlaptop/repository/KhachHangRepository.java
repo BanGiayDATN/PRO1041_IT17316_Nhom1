@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
+import java.util.Iterator;
 import java.util.List;
 import java.util.UUID;
 
@@ -36,4 +37,6 @@ public interface KhachHangRepository {
      List<KhachHang> searchByHoTen(String hoTen);
     
     KhachHang getByEmail(String email);
+    
+    Long soLuotMua(String maKH);
 }

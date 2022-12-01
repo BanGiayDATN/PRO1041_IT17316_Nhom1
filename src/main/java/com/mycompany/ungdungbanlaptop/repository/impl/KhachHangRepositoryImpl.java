@@ -10,8 +10,9 @@ import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
 import java.util.ArrayList;
+import  java.util.Iterator;
 import java.util.List;
-import java.util.UUID;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -124,11 +125,13 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
     public List<LichSuMuaHangViewModel> getLichSuMuaHang(String ma) {
         List<LichSuMuaHangViewModel> list = new ArrayList<>();
         try  (Session session = HibernateUtil.getFACTORY().openSession()){
-            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel(hd.ma,hdct.soLuong,hdct.donGia,hd.ngayTao,hd.ngayThanhToan,hd.tinhTrang) FROM HoaDonChiTiet hdct "
-                    + "inner join HoaDon hd "
-                    + "ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+            String hql ="SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel(hd.ma,sp.ten,hdct.soLuong,hdct.donGia,hd.ngayTao,hd.ngayThanhToan,hd.tinhTrang) FROM HoaDonChiTiet hdct "
+                    + " inner join HoaDon hd "
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
                     + " inner join KhachHang kh"
                     + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " inner join SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
                     + " WHERE kh.ma like :ma";
             Query<LichSuMuaHangViewModel> query = session.createQuery(hql);
             query.setParameter("ma","%"+ ma+"%");
@@ -155,9 +158,7 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
         return null;
     }
     
-    public static void main(String[] args) {
-        System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH709"));
-    }
+   
 
     @Override
     public KhachHang getByEmail(String email) {
@@ -187,5 +188,28 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
              e.printStackTrace(System.out);
         }
         return null;
+    }
+
+    @Override
+    public Long soLuotMua(String maKH) {
+       Long count;
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(hd.ma) FROM KhachHang kh "
+                    + " inner join HoaDon hd"
+                    + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " where kh.ma =:ma";
+            Query query = session.createQuery(hql);
+            query.setString("ma", maKH);
+            count =  (Long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+           
+        }
+        return null;
+    }
+    
+     public static void main(String[] args) {
+        System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH98719"));
     }
 }

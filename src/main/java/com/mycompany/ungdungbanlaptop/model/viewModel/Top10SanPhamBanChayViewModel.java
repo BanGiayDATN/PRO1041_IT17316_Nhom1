@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.model.viewModel;
 
 import java.math.BigDecimal;
-import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,21 +16,10 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class GioHangViewModel {
+public class Top10SanPhamBanChayViewModel {
 
-    private UUID idHoaDon;
-    private UUID idSanPham;
-    private String ma;
     private String ten;
-    private int soLuong;
+    private long soLuong;
     private BigDecimal donGia;
-
-    public GioHangViewModel(UUID idSanPham, String ma, String ten, int soLuong, BigDecimal donGia) {
-        this.idSanPham = idSanPham;
-        this.ma = ma;
-        this.ten = ten;
-        this.soLuong = soLuong;
-        this.donGia = donGia;
-    }
 
 }
