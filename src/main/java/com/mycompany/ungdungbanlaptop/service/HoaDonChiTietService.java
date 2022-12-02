@@ -30,4 +30,8 @@ public interface HoaDonChiTietService {
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
      List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
+     
+     List<GioHangViewModel> getGioHang(UUID idHoaDon);
+     
+         HoaDonChiTiet getById(UUID idHDCT);
 }

@@ -61,10 +61,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        HoaDonRepositoryImpl hd = new HoaDonRepositoryImpl();
-        System.out.println(hd.getAll(new SeachHoaDon()));
-    }
+   
     @Override
     public HoaDon add(HoaDon hoaDon) {
         Transaction transaction = null;
@@ -196,6 +193,10 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
+     public static void main(String[] args) {
+    
+        System.out.println(new HoaDonRepositoryImpl().getHoaDonBanHang());
+    }
+}
 
   
-}

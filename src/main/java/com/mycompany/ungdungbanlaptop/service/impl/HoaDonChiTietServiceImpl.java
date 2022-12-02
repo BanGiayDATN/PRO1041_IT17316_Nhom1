@@ -57,4 +57,14 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getWord(idHoaDon);
     }
 
+    @Override
+    public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
+        return hoaDonChiTietRepository.getGioHang(idHoaDon);
+    }
+
+    @Override
+    public HoaDonChiTiet getById(UUID idHDCT) {
+        return hoaDonChiTietRepository.getById(idHDCT);
+    }
+
 }

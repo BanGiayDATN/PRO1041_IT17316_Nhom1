@@ -25,7 +25,12 @@ public class ImeiServiceImpl implements ImeiService {
 
     @Override
     public String add(Imei imei) {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        Imei add = imeiRepository.add(imei);
+        if(add != null){
+            return "Thêm thành công";
+        }else{
+            return "Thêm thất bại";
+        }
     }
 
     @Override

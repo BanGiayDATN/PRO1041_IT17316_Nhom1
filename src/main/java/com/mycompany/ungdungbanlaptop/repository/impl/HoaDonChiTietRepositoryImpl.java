@@ -151,4 +151,44 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
+
+    @Override
+    public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
+        List<GioHangViewModel> list = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel(hdct.idHoaDonChiTiet,sp.idSanPham,sp.ma,sp.ten,hdct.soLuong,hdct.donGia) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.idHoaDon = :idHoaDon";
+            Query<GioHangViewModel> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHoaDon);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
+    }
+
+    @Override
+    public HoaDonChiTiet getById(UUID idHDCT) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.idHoaDonChiTiet = :idHoaDonChiTiet";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDonChiTiet", idHDCT);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 }
