@@ -36,12 +36,7 @@ public class HoaDonBanHangViewModel {
         this.hoTen = hoTen;
         this.tinhTrang = tinhTrang;
     }
-<<<<<<< HEAD
 
-
-
-=======
->>>>>>> develop_huynh2107
     
     
     public String trangThai(){
