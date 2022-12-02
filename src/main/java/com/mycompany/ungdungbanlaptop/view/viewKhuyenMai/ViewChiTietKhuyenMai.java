@@ -4,21 +4,27 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiKhuyenMai;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.ExportExcel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
+import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiSanPhamService;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
+import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiSanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -30,6 +36,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
     private KhuyenMaiSanPhamService khuyenMaiSanPhamService = new KhuyenMaiSanPhamServiceImpl();
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
+    private HoaDonService hoaDonService = new HoaDonServiceImpl();
 
     public ViewChiTietKhuyenMai(String ma) {
         initComponents();
@@ -38,8 +45,10 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         List<HoaDonChiTietKhuyenMai> list = hoaDonChiTietService.getListHoaDonApDungKhuyenMai(khuyenMai.getNgayBatDau(), khuyenMai.getNgayKetThuc());
         loadDataMenu(khuyenMai);
         loadDataThongTin(khuyenMai);
-        loadDanhSachSanPham(khuyenMaiSanPhamService.findSanPhamById(ma));
+        loadDanhSachSanPham(hoaDonService.findAllByMaKhuyenMai(ma));
         loadDonHangBan(list);
+        TableFilterHeader filterHeader1 = new TableFilterHeader(tblDanhSachHoaDon, AutoChoices.ENABLED);
+        TableFilterHeader filterHeader2 = new TableFilterHeader(tblDơnHangBao, AutoChoices.ENABLED);
     }
 
     public void loadDataMenu(KhuyenMai khuyenMai) {
@@ -79,15 +88,16 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         lbNgayKetThuc.setText(new ConverDate().longToDate(khuyenMai.getNgayKetThuc(), "dd/MM/yyyy"));
     }
 
-    public static void loadDanhSachSanPham(List<SanPhamCustomRespone> list) {
+    public static void loadDanhSachSanPham(List<HoaDonKhuyenMai> list) {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã", "Tên", "Số lượng", "Hãng", "Hệ điều hành", "Dung lượng"});
+        model.setColumnIdentifiers(new String[]{"Mã", "ngày", "ma nhân viên", "Tên nhân viên", "Tên khách hàng", "Số lượng", "Tổng"});
         if (list != null) {
-            for (SanPhamCustomRespone sp : list) {
-                model.addRow(new Object[]{sp.getMa(), sp.getTen(), sp.getSoLuong(), sp.getHang(), sp.getHang(), sp.getTenHeDieuHanh(), sp.getDungLuongRam()});
+            for (HoaDonKhuyenMai hdkm : list) {
+                String ngay = new ConverDate().longToDate(hdkm.getNgayTao(), "dd/MM/yyyy");
+                model.addRow(new Object[]{hdkm.getMa(), hdkm.getNgayTao(), hdkm.getMaNhanVien(), hdkm.getTenNhanVien(), hdkm.getTenKhachHang(),hdkm.getSoLuong(), hdkm.getTongTien()});
             }
         }
-        tblDanhSachSanPham.setModel(model);
+        tblDanhSachHoaDon.setModel(model);
     }
 
     private void loadDonHangBan(List<HoaDonChiTietKhuyenMai> list) {
@@ -145,8 +155,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         btnXuatFile = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        tblDanhSachSanPham = new javax.swing.JTable();
-        btnThemSanPham = new javax.swing.JButton();
+        tblDanhSachHoaDon = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -434,7 +443,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        tblDanhSachSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        tblDanhSachHoaDon.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -445,14 +454,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(tblDanhSachSanPham);
-
-        btnThemSanPham.setText("Thêm sản Phẩm ");
-        btnThemSanPham.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemSanPhamActionPerformed(evt);
-            }
-        });
+        jScrollPane3.setViewportView(tblDanhSachHoaDon);
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -460,11 +462,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnThemSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -472,12 +470,10 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(14, 14, 14)
                 .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
-                .addComponent(btnThemSanPham)
-                .addContainerGap())
+                .addContainerGap(39, Short.MAX_VALUE))
         );
 
-        jTabbedPane2.addTab("Danh Sách Sản Phẩm ", jPanel3);
+        jTabbedPane2.addTab("Lịch Sử hóa đơn", jPanel3);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -520,10 +516,6 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
         new ViewUpdateKhuyenMai(khuyenMai).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnThemSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemSanPhamActionPerformed
-        new ViewThemSanPhamKhuyenMai(ma).setVisible(true);
-    }//GEN-LAST:event_btnThemSanPhamActionPerformed
-
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
         new ChooseFileExcel(tblDơnHangBao).setVisible(true);
     }//GEN-LAST:event_btnXuatFileActionPerformed
@@ -564,7 +556,6 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnThemSanPham;
     private javax.swing.JButton btnXuatFile;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
@@ -597,7 +588,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     private javax.swing.JLabel lbNgayKetThucChiTiet;
     private javax.swing.JLabel lbSoLuongChiTiet;
     private javax.swing.JLabel lbTrangThaiChiTiet;
-    private static javax.swing.JTable tblDanhSachSanPham;
+    private static javax.swing.JTable tblDanhSachHoaDon;
     private javax.swing.JTable tblDơnHangBao;
     private javax.swing.JTextField txtDieuKien;
     private javax.swing.JTextField txtGiamGia;
