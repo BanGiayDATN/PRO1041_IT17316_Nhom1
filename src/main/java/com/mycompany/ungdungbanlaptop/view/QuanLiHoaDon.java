@@ -5,12 +5,15 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
+import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
+import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -26,60 +29,65 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
 
     private HoaDonService hoaDonService = new HoaDonServiceImpl();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
-    
-    
+    private SanPhamService sanPhamService = new SanPhamServiceImpl();
+    private List<HoaDonRespone> list;
+
     public QuanLiHoaDon() {
         initComponents();
-        loadTable(hoaDonService.getAll(new SeachHoaDon()));
+        list = hoaDonService.getAll(new SeachHoaDon());
+
+        loadTable(list);
         loadcbo(nhanVienService.getAllMaNhanVien());
-       tblHoaDon = TableRowFilterSupport
-                  .forTable(tblHoaDon)
-                  .searchable(true)
-                  .apply();
-       
+        tblHoaDon = TableRowFilterSupport
+                .forTable(tblHoaDon)
+                .searchable(true)
+                .apply();
+
     }
 
-    private void loadcbo(List<String> list){
+    private void loadcbo(List<String> list) {
         DefaultComboBoxModel model = new DefaultComboBoxModel();
         model.addElement("mã nhân viên");
-        for(String ma : list){
+        for (String ma : list) {
             model.addElement(ma);
         }
         cboMa.setModel(model);
         cboMa.setSelectedIndex(0);
     }
-    private void loadTable(List<HoaDonRespone> hoaDons){
+
+    private void loadTable(List<HoaDonRespone> hoaDons) {
         DefaultTableModel model = new DefaultTableModel();
-        model.setColumnIdentifiers(new String[]{"Mã","Ngày Tạo","Mã Nhân Viên","Tên Nhân viên","Tên khách hàng","Tình trạng", "Số Lượng", "Tổng"});
-        if(hoaDons != null){
-            for(HoaDonRespone hoaDon : hoaDons){
+        model.setColumnIdentifiers(new String[]{"Mã", "Ngày Tạo", "Mã Nhân Viên", "Tên Nhân viên", "Tên khách hàng", "Tình trạng", "Số Lượng", "Tổng"});
+        if (hoaDons != null) {
+            for (HoaDonRespone hoaDon : hoaDons) {
                 String ngayTao = new ConverDate().longToDate(hoaDon.getNgayTao(), "dd/MM/yyyy");
-                model.addRow(new Object[]{hoaDon.getMa(),ngayTao, hoaDon.getMaNhanVien(), hoaDon.getTenNhanVien(), hoaDon.getTenKhachHang(),hoaDon.getTrangThai(), hoaDon.getSoLuong(), hoaDon.getTong()});
+                model.addRow(new Object[]{hoaDon.getMa(), ngayTao, hoaDon.getMaNhanVien(), hoaDon.getTenNhanVien(), hoaDon.getTenKhachHang(), hoaDon.getTrangThai(), hoaDon.getSoLuong(), hoaDon.getTong()});
             }
         }
         tblHoaDon.setModel(model);
     }
-    
-    private SeachHoaDon getSeachHoaDon(){
+
+    private SeachHoaDon getSeachHoaDon() {
         SeachHoaDon seachHoaDon = new SeachHoaDon();
         seachHoaDon.setMa(txtMa.getText());
-        if(cboMa.getSelectedIndex() == 0){
+        if (cboMa.getSelectedIndex() == 0) {
             seachHoaDon.setMaNhanVien(null);
-        }else{
-             seachHoaDon.setMaNhanVien(cboMa.getSelectedItem().toString());
+        } else {
+            seachHoaDon.setMaNhanVien(cboMa.getSelectedItem().toString());
         }
         seachHoaDon.setTenKhachHang(txtTenKhach.getText());
         seachHoaDon.setTenNhanVien(txtTenNhanVien.getText());
-        if(txtNgayTao.getDate() != null){
+        if (txtNgayTao.getDate() != null) {
             String ngaybatdau = new ConverDate().convertDateToString(txtNgayTao.getDate(), "dd/MM/yyyy");
             long converNgayBatDau = new ConverDate().dateToLong(ngaybatdau, "dd/MM/yyyy");
             seachHoaDon.setNgayTao(converNgayBatDau);
-        }else{
+        } else {
             seachHoaDon.setNgayTao(0L);
         }
         return seachHoaDon;
-        
+
     }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -112,6 +120,11 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tblHoaDon);
 
         jLabel1.setText("Mã hóa đơn");
@@ -180,7 +193,7 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
                                 .addGap(39, 39, 39)))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 635, Short.MAX_VALUE)
+                .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(15, 15, 15))
         );
@@ -221,6 +234,15 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new ChooseFileExcel(hoaDonService.getAll(getSeachHoaDon())).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
+
+        int row = tblHoaDon.getSelectedRow();
+        HoaDonRespone repon= list.get(row);
+//        System.out.println(ma);
+       new viewThongTinHoaDon(repon).setVisible(true);
+
+    }//GEN-LAST:event_tblHoaDonMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
