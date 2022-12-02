@@ -97,7 +97,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return null;
     }
 
-
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
         Transaction transaction = null;
@@ -120,14 +119,14 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return false;
     }
 
-     @Override
-    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
+    @Override
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc) {
         List<HoaDonChiTietKhuyenMai> list = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = " SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai( hd.hoaDon.ma, hd.sanPham.ten, hd.sanPham.hang.ten, hd.sanPham.ram.dungLuong , hd.sanPham.heDieuHanh.ten, hd.hoaDon.khachHang.hoTen, hd.hoaDon.khachHang.gioiTinh, hd.soLuong ) "
                     + " FROM  HoaDonChiTiet hd "
                     + " WHERE hd.hoaDon.ngayThanhToan BETWEEN :ngayBatDau AND :ngayKetThu";
-            Query query = session.createQuery(hql).setParameter("ngayBatDau",Long.valueOf("1659286800000")).setParameter("ngayKetThu",Long.valueOf("9659286800000"));
+            Query query = session.createQuery(hql).setParameter("ngayBatDau", Long.valueOf("1659286800000")).setParameter("ngayKetThu", Long.valueOf("9659286800000"));
             list = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -155,6 +154,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         List<GioHangViewModel> list = new ArrayList<>();
+
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -178,9 +178,11 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 //        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
     }
 
+   
+
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
-         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.idHoaDonChiTiet = :idHoaDonChiTiet";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDonChiTiet", idHDCT);

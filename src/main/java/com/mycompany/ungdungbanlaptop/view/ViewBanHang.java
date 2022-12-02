@@ -400,6 +400,11 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
         ));
         jTableGiohang.setComponentPopupMenu(jPopupMenu1);
+        jTableGiohang.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableGiohangMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableGiohang);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -793,48 +798,50 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
         // TODO add your handling code here:
-//        if (txtMaHoaDon.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Hãy tạo hóa đơn");
-//        } else {
-//            int row = jTableSanPham.getSelectedRow();
-//            int soLuong = soLuongMua(row);
-//            if (soLuong != 0) {
-//
-//
-//                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-//                hoaDonChiTiet.setSoLuong(soLuong);
-//                BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
-//                hoaDonChiTiet.setDonGia(donGia);
-//                hoaDonChiTiet.setSanPham(sanPhamService.getOne(jTableSanPham.getModel().getValueAt(row, 2).toString()));
-//                hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
-//                hoaDonChiTietService.add(hoaDonChiTiet);
-//                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
-//            }
-//
-//            SanPhamBanHangViewModel model = sanPhamService.getSanPhamBanHang().get(row);
-//            System.out.println(model);
-//            SanPham sanPham = sanPhamService.getById(model.getId());
-//            int soLuongUpdate = sanPham.getSoLuongTon() - soLuong;
-//            sanPham.setSoLuongTon(soLuongUpdate);
-//            sanPhamService.update(sanPham);
-//
-//            showSanPham(sanPhamService.getSanPhamBanHang());
-//
-//            BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-//            txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
-//            System.out.println(tongTien());
-//
-//        }
+        if (txtMaHoaDon.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Hãy tạo hóa đơn");
+        } else {
+            int row = jTableSanPham.getSelectedRow();
+            int soLuong = soLuongMua(row);
+            if (soLuong != 0) {
+
+
+                HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+                hoaDonChiTiet.setSoLuong(soLuong);
+                BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
+                hoaDonChiTiet.setDonGia(donGia);
+                hoaDonChiTiet.setSanPham(sanPhamService.getOne(jTableSanPham.getModel().getValueAt(row, 2).toString()));
+                hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
+                hoaDonChiTietService.add(hoaDonChiTiet);
+                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
+            }
+
+            SanPhamBanHangViewModel model = sanPhamService.getSanPhamBanHang().get(row);
+            System.out.println(model);
+            SanPham sanPham = sanPhamService.getById(model.getId());
+            int soLuongUpdate = sanPham.getSoLuongTon() - soLuong;
+            sanPham.setSoLuongTon(soLuongUpdate);
+            sanPhamService.update(sanPham);
+
+            showSanPham(sanPhamService.getSanPhamBanHang());
+
+            BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
+            txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
+            System.out.println(tongTien());
+
+        }
     }//GEN-LAST:event_jTableSanPhamMouseClicked
-//    private BigDecimal tongTien() {
-//        List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-//        BigDecimal tong = new BigDecimal(BigInteger.ZERO);
-//        for (GioHangViewModel x : list) {
-//            BigDecimal soLuong = new BigDecimal(x.getSoLuong());
-//            tong = tong.add(soLuong.multiply(x.getDonGia()));
-//        }
-//        return tong;
-//    }
+
+    private BigDecimal tongTien() {
+        List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+        BigDecimal tong = new BigDecimal(BigInteger.ZERO);
+        for (GioHangViewModel x : list) {
+            BigDecimal soLuong = new BigDecimal(x.getSoLuong());
+            tong = tong.add(soLuong.multiply(x.getDonGia()));
+        }
+        return tong;
+    }
+
 
     private int soLuongMua(int index) {
 
@@ -890,93 +897,96 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void btnTaoHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTaoHoaDonMouseClicked
         // TODO add your handling code here:
-//        HoaDon newHoaDon = new HoaDon();
-//        newHoaDon.setTinhTrang(0);
-//        newHoaDon.setMa(new TaoChuoiNgauNhien().getMaHoaDon("HD", 3));
-//        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-//        System.out.println(date);
-//        newHoaDon.setNgayTao(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
-//        newHoaDon.setNhanVien(nhanVien); //nhanVienService.getNhanVienByMa("NV690")
-//        hoaDonService.add(newHoaDon);
-//
-//        hoaDon = newHoaDon;
-//        txtMaHoaDon.setText(hoaDon.getMa());
-//        txtNgaytao.setText(new ConverDate().longToDate(hoaDon.getNgayTao(), "dd/MM/yyyy"));
-//        txtTenNhanvien.setText(hoaDon.getNhanVien().getHoTen());
-//
-//        showHoaDon(hoaDonService.getHoaDonBanHang());
 
+        HoaDon newHoaDon = new HoaDon();
+        newHoaDon.setTinhTrang(0);
+        newHoaDon.setMa(new TaoChuoiNgauNhien().getMaHoaDon("HD", 3));
+        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+        System.out.println(date);
+        newHoaDon.setNgayTao(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
+        newHoaDon.setNhanVien(nhanVien); //nhanVienService.getNhanVienByMa("NV690")
+        hoaDonService.add(newHoaDon);
+
+        hoaDon = newHoaDon;
+        txtMaHoaDon.setText(hoaDon.getMa());
+        txtNgaytao.setText(new ConverDate().longToDate(hoaDon.getNgayTao(), "dd/MM/yyyy"));
+        txtTenNhanvien.setText(hoaDon.getNhanVien().getHoTen());
+
+        showHoaDon(hoaDonService.getHoaDonBanHang());
+
+
+      
 
 
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
     
-//        if (txtTimKiemSoDienThoai.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Số điện thoại trống");
-//        } else if (txtDiaChiHoaDon.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Địa chỉ trống");
-//        } else if (txtTienKhachDua.getText().isEmpty()) {
-//            JOptionPane.showMessageDialog(this, "Tiền khách đưa trống");
-//        } else {
-//
-//            try {
-//                // TODO add your handling code here:
-//           
-//                      
-//                      
-////            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
-////                // add imei
-////                int soLuong = x.getValue().getSoLuong();
-////                for (int i = 1; i < soLuong + 1; ++i) {
-////                    Imei imei = new Imei();
-////                    imei.setMa(new TaoChuoiNgauNhien().getiMei(16));
-////                    imei.setTrangThai(0);
-////                    imei.setHoaDonChiTiet(hoaDonChiTiet);
-////                    imeiRepository.add(imei);
-////                }
-////            }
-//                ////// update hoadon
-//                hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
-//                hoaDon.setTinhTrang(1);
-//                hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
-//                hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
-//                String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-//                hoaDon.setNgayThanhToan(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
-//                hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
-//                hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
-//                hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-//
-//                // in hoa don
-//                UUID idHoaDon = hoaDon.getIdHoaDon();
-//                String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
-//                List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
-//                new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
-//
-//                // word
-////            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
-//                // pdf
-//                new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
-//
-//                // gưi email cho khách hàng
-//                String emailKhach = hoaDon.getKhachHang().getEmail();
-//                System.out.println(emailKhach);
-//                new EmailKhachHang().guiEmailDinhKiem(emailKhach, maQRHoaDonChiTiet);
-//
-//                // tinh tien
-//                JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
-//                showHoaDon(hoaDonService.getHoaDonBanHang());
-//                listGioHang.entrySet().clear();
-//                showGioHang(listGioHang);
-//                clearHoaDon();
-//            } catch (WriterException ex) {
-//                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (IOException ex) {
-//                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
-//            } catch (MessagingException ex) {
-//                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+        if (txtTimKiemSoDienThoai.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Số điện thoại trống");
+        } else if (txtDiaChiHoaDon.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Địa chỉ trống");
+        } else if (txtTienKhachDua.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Tiền khách đưa trống");
+        } else {
+
+            try {
+                // TODO add your handling code here:
+           
+                      
+                      
+//            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
+//                // add imei
+//                int soLuong = x.getValue().getSoLuong();
+//                for (int i = 1; i < soLuong + 1; ++i) {
+//                    Imei imei = new Imei();
+//                    imei.setMa(new TaoChuoiNgauNhien().getiMei(16));
+//                    imei.setTrangThai(0);
+//                    imei.setHoaDonChiTiet(hoaDonChiTiet);
+//                    imeiRepository.add(imei);
+//                }
 //            }
-//        }
+                ////// update hoadon
+                hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
+                hoaDon.setTinhTrang(1);
+                hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
+                hoaDon.setKhachHang(khachHangService.getBySoDienThoai(txtTimKiemSoDienThoai.getText()));
+                String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+                hoaDon.setNgayThanhToan(new ConverDate().dateToLong(date, "dd/MM/yyyy"));
+                hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
+                hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
+                hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
+
+                // in hoa don
+                UUID idHoaDon = hoaDon.getIdHoaDon();
+                String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
+                List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
+                new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
+
+                // word
+//            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
+                // pdf
+                new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
+
+                // gưi email cho khách hàng
+                String emailKhach = hoaDon.getKhachHang().getEmail();
+                System.out.println(emailKhach);
+                new EmailKhachHang().guiEmailDinhKiem(emailKhach, maQRHoaDonChiTiet);
+
+                // tinh tien
+                JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
+                showHoaDon(hoaDonService.getHoaDonBanHang());
+                listGioHang.entrySet().clear();
+                showGioHang(listGioHang);
+                clearHoaDon();
+            } catch (WriterException ex) {
+                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (IOException ex) {
+                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (MessagingException ex) {
+                Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
 
     }//GEN-LAST:event_btnThanhToanMouseClicked
 
@@ -990,22 +1000,22 @@ public class ViewBanHang extends javax.swing.JPanel {
     }
     private void btnHuyDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyDonMouseClicked
         // TODO add your handling code here:
-//        int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
-//        if (chon == JOptionPane.YES_OPTION) {
-//            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-//              List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-//       
-//        for (GioHangViewModel x : list) {
-//          hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
-//          hoaDonChiTietService.delete(hoaDonChiTiet);
-//        }
-//            HoaDon hd = new HoaDon();
-//            hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-//            hoaDonService.delete(hd);
-//            showHoaDon(hoaDonService.getHoaDonBanHang());
-//            dtm2.setRowCount(0);
-//            clearHoaDon();
-//        }
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
+        if (chon == JOptionPane.YES_OPTION) {
+            HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
+              List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+       
+        for (GioHangViewModel x : list) {
+          hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
+          hoaDonChiTietService.delete(hoaDonChiTiet);
+        }
+            HoaDon hd = new HoaDon();
+            hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+            hoaDonService.delete(hd);
+            showHoaDon(hoaDonService.getHoaDonBanHang());
+            dtm2.setRowCount(0);
+            clearHoaDon();
+        }
     }//GEN-LAST:event_btnHuyDonMouseClicked
     private void clearHoaDon() {
         txtMaHoaDon.setText("");
@@ -1020,6 +1030,8 @@ public class ViewBanHang extends javax.swing.JPanel {
         txtTienKhachDua.setText("");
         txtTienThua.setText("");
     }
+
+
     private void btnTimKiemMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTimKiemMouseClicked
         // TODO add your handling code here:
         String soDienThoai = txtTimKiemSoDienThoai.getText();
@@ -1038,16 +1050,32 @@ public class ViewBanHang extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnTimKiemMouseClicked
+    private void showGHCT(List<GioHangViewModel> listGioHangCT) {
+        jTableGiohang.setModel(dtm2);
+        dtm2.setColumnIdentifiers(new String[]{"idHDCT", "idSP", "STT", "Mã sản phẩm", "Tên sản phẩm", "Số lượng", "Đơn giá"});
+        dtm2.setRowCount(0);
+        for (GioHangViewModel x : listGioHangCT) {
+            dtm2.addRow(new Object[]{x.getIdHoaDonChiTiet(), x.getIdSanPham(), jTableGiohang.getRowCount() + 1, x.getMa(),
+                x.getTen(), x.getSoLuong(), x.getDonGia()});
+        }
+        jTableGiohang.removeColumn(jTableGiohang.getColumnModel().getColumn(1));
+        jTableGiohang.removeColumn(jTableGiohang.getColumnModel().getColumn(0));
 
+    }
     private void jTableHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableHoaDonMouseClicked
+
         // TODO add your handling code here:
-//        int row = jTableHoaDon.getSelectedRow();
-//        showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(jTableHoaDon.getValueAt(row, 1).toString()).getIdHoaDon()));
-//        txtMaHoaDon.setText(jTableHoaDon.getValueAt(row, 1).toString());
-//        txtNgaytao.setText(jTableHoaDon.getValueAt(row, 2).toString());
-//        txtTenNhanvien.setText(jTableHoaDon.getValueAt(row, 3).toString());
-//        BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-//        txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
+        int row = jTableHoaDon.getSelectedRow();
+        showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(jTableHoaDon.getValueAt(row, 1).toString()).getIdHoaDon()));
+        txtMaHoaDon.setText(jTableHoaDon.getValueAt(row, 1).toString());
+        txtNgaytao.setText(jTableHoaDon.getValueAt(row, 2).toString());
+        txtTenNhanvien.setText(jTableHoaDon.getValueAt(row, 3).toString());
+        BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
+        txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
+
+
+        // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
+     
 
     }//GEN-LAST:event_jTableHoaDonMouseClicked
 
@@ -1060,69 +1088,73 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void miXoaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miXoaActionPerformed
         // TODO add your handling code here:
-//        int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Xóa", JOptionPane.YES_NO_OPTION);
-//        if (chon == JOptionPane.YES_OPTION) {
-//            int row = jTableGiohang.getSelectedRow();
-//            UUID id = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 1).toString());
-//
-//            SanPham sanPham = sanPhamService.getById(id);
-//            int soLuongUpdate = sanPham.getSoLuongTon() + Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString());
-//            System.out.println(soLuongUpdate);
-//            sanPham.setSoLuongTon(soLuongUpdate);
-//            sanPhamService.update(sanPham);
-//            showSanPham(sanPhamService.getSanPhamBanHang());
-//
-//            HoaDonChiTiet hdct = new HoaDonChiTiet();
-//            hdct.setIdHoaDonChiTiet(UUID.fromString(jTableGiohang.getModel().getValueAt(row, 0).toString()));
-//            hoaDonChiTietService.delete(hdct);
-//            showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
-//
-//        }
-//        BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-//        txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
+        int chon = JOptionPane.showConfirmDialog(this, "Bạn chắc chắn muốn xóa?", "Xóa", JOptionPane.YES_NO_OPTION);
+        if (chon == JOptionPane.YES_OPTION) {
+            int row = jTableGiohang.getSelectedRow();
+            UUID id = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 1).toString());
+
+            SanPham sanPham = sanPhamService.getById(id);
+            int soLuongUpdate = sanPham.getSoLuongTon() + Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString());
+            System.out.println(soLuongUpdate);
+            sanPham.setSoLuongTon(soLuongUpdate);
+            sanPhamService.update(sanPham);
+            showSanPham(sanPhamService.getSanPhamBanHang());
+
+            HoaDonChiTiet hdct = new HoaDonChiTiet();
+            hdct.setIdHoaDonChiTiet(UUID.fromString(jTableGiohang.getModel().getValueAt(row, 0).toString()));
+            hoaDonChiTietService.delete(hdct);
+            showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
+
+        }
+        BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
+        txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
 
 
     }//GEN-LAST:event_miXoaActionPerformed
 
     private void miUpdateSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_miUpdateSoLuongActionPerformed
         // TODO add your handling code here:
-//        int row = jTableGiohang.getSelectedRow();
-//        UUID id = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 1).toString());
-//        UUID idHDCT = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 0).toString());
-//        int numBer = soLuongMua(row);
-//        if (numBer != 0) {
-//            if (numBer > Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString())) {
-//                HoaDonChiTiet hdct = hoaDonChiTietService.getById(idHDCT);
-//                hdct.setSoLuong(numBer);
-//                hoaDonChiTietService.update(hdct);
-//
-//                SanPham sanPham = sanPhamService.getById(id);
-//                int soLuongUpdate = sanPham.getSoLuongTon() - (numBer - Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString()));
-//                System.out.println(soLuongUpdate);
-//                sanPham.setSoLuongTon(soLuongUpdate);
-//                sanPhamService.update(sanPham);
-//                showSanPham(sanPhamService.getSanPhamBanHang());
-//
-//                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
-//
-//            } else {
-//                HoaDonChiTiet hdct = hoaDonChiTietService.getById(idHDCT);
-//                hdct.setSoLuong(numBer);
-//                hoaDonChiTietService.update(hdct);
-//
-//                SanPham sanPham = sanPhamService.getById(id);
-//                int soLuongUpdate = sanPham.getSoLuongTon() + (Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString()) - numBer);
-//                System.out.println(soLuongUpdate);
-//                sanPham.setSoLuongTon(soLuongUpdate);
-//                sanPhamService.update(sanPham);
-//                showSanPham(sanPhamService.getSanPhamBanHang());
-//
-//                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
-//            }
-//            BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-//            txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
-//        }
+        int row = jTableGiohang.getSelectedRow();
+        UUID id = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 1).toString());
+        UUID idHDCT = UUID.fromString(jTableGiohang.getModel().getValueAt(row, 0).toString());
+        int numBer = soLuongMua(row);
+        if (numBer != 0) {
+            if (numBer > Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString())) {
+                HoaDonChiTiet hdct = hoaDonChiTietService.getById(idHDCT);
+                hdct.setSoLuong(numBer);
+                hoaDonChiTietService.update(hdct);
+
+                SanPham sanPham = sanPhamService.getById(id);
+                int soLuongUpdate = sanPham.getSoLuongTon() - (numBer - Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString()));
+                System.out.println(soLuongUpdate);
+                sanPham.setSoLuongTon(soLuongUpdate);
+                sanPhamService.update(sanPham);
+                showSanPham(sanPhamService.getSanPhamBanHang());
+
+                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
+
+            } else {
+                HoaDonChiTiet hdct = hoaDonChiTietService.getById(idHDCT);
+                hdct.setSoLuong(numBer);
+                hoaDonChiTietService.update(hdct);
+
+                SanPham sanPham = sanPhamService.getById(id);
+                int soLuongUpdate = sanPham.getSoLuongTon() + (Integer.valueOf(jTableGiohang.getValueAt(row, 3).toString()) - numBer);
+                System.out.println(soLuongUpdate);
+                sanPham.setSoLuongTon(soLuongUpdate);
+                sanPhamService.update(sanPham);
+                showSanPham(sanPhamService.getSanPhamBanHang());
+
+                showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
+            }
+            BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
+            txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
+        }
     }//GEN-LAST:event_miUpdateSoLuongActionPerformed
+
+    private void jTableGiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGiohangMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTableGiohangMouseClicked
     private void removeGioHang() {
         for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
             SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());

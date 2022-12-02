@@ -36,7 +36,7 @@ public class CPUview extends javax.swing.JPanel {
         dtm.setRowCount(0);
 
         for (CPUViewModel x : list) {
-            dtm.addRow(new Object[]{x.getId(), x.getMa(), x.getTen()});
+            dtm.addRow(new Object[]{ x.getMa(), x.getTen()});
 
         }
     }
