@@ -512,8 +512,8 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }//GEN-LAST:event_txtTenChuongTrinhActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        KhuyenMai khuyenMai = new KhuyenMai();
-        new ViewUpdateKhuyenMai(khuyenMai).setVisible(true);
+
+        new ViewSuaKhuyenMai(khuyenMaiService.getOne(ma)).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
