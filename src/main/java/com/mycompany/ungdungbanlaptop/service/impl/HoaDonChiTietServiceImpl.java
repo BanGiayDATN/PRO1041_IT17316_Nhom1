@@ -43,18 +43,28 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
-    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
-        return hoaDonChiTietRepository.getListHoaDonApDungKhuyenMai(ngayBatDau, ngạyetThuc);
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc) {
+        return hoaDonChiTietRepository.getListHoaDonApDungKhuyenMai(ngayBatDau, ngayketThuc);
     }
 
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
-       return hoaDonChiTietRepository.saveAllHoaDonChiTiet(list);
+        return hoaDonChiTietRepository.saveAllHoaDonChiTiet(list);
     }
 
     @Override
     public List<HoaDonChiTiet> getWord(UUID idHoaDon) {
         return hoaDonChiTietRepository.getWord(idHoaDon);
+    }
+
+    @Override
+    public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
+        return hoaDonChiTietRepository.getGioHang(idHoaDon);
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSanPham) {
+        return hoaDonChiTietRepository.getByIdSanPham(idSanPham);
     }
 
 }

@@ -97,7 +97,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return null;
     }
 
-
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
         Transaction transaction = null;
@@ -120,14 +119,14 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return false;
     }
 
-     @Override
-    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
+    @Override
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc) {
         List<HoaDonChiTietKhuyenMai> list = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = " SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai( hd.hoaDon.ma, hd.sanPham.ten, hd.sanPham.hang.ten, hd.sanPham.ram.dungLuong , hd.sanPham.heDieuHanh.ten, hd.hoaDon.khachHang.hoTen, hd.hoaDon.khachHang.gioiTinh, hd.soLuong ) "
                     + " FROM  HoaDonChiTiet hd "
                     + " WHERE hd.hoaDon.ngayThanhToan BETWEEN :ngayBatDau AND :ngayKetThu";
-            Query query = session.createQuery(hql).setParameter("ngayBatDau",Long.valueOf("1659286800000")).setParameter("ngayKetThu",Long.valueOf("9659286800000"));
+            Query query = session.createQuery(hql).setParameter("ngayBatDau", Long.valueOf("1659286800000")).setParameter("ngayKetThu", Long.valueOf("9659286800000"));
             list = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -150,5 +149,41 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             e.printStackTrace(System.out);
         }
         return list;
+    }
+
+    @Override
+    public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
+        List<GioHangViewModel> list = new ArrayList<>();
+        Transaction tran = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            tran = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel(hdct.idHoaDonChiTiet,sp.idSanPham,sp.ma,sp.ten,hdct.soLuong,hdct.donGia)"
+                    + "FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.idHoaDon = :idHoaDon";
+            Query<GioHangViewModel> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHoaDon);
+            list = query.getResultList();
+            tran.commit();
+        } catch (Exception e) {
+        }
+        return list;
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSanPham) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.sanPham.idSanPham = :idSanPham";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idSanPham", idSanPham);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }

@@ -11,6 +11,8 @@ import java.util.List;
 
 import java.util.Map;
 
+import java.util.Map;
+
 import java.util.UUID;
 
 /**
@@ -33,5 +35,9 @@ public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
-     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
+    List<GioHangViewModel> getGioHang(UUID idHoaDon);
+
+    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
+
+    HoaDonChiTiet getByIdSanPham(UUID idSanPham);
 }

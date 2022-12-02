@@ -18,6 +18,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class GioHangViewModel {
+    private UUID idHoaDonChiTiet;
     private UUID idHoaDon;
     private UUID idSanPham;
     private String ma;
@@ -25,13 +26,13 @@ public class GioHangViewModel {
     private int soLuong;
     private BigDecimal donGia;
 
-    public GioHangViewModel(UUID idSanPham, String ma, String ten, int soLuong, BigDecimal donGia) {
+    public GioHangViewModel(UUID idHoaDonChiTiet, UUID idSanPham, String ma, String ten, int soLuong, BigDecimal donGia) {
+        this.idHoaDonChiTiet = idHoaDonChiTiet;
         this.idSanPham = idSanPham;
         this.ma = ma;
         this.ten = ten;
         this.soLuong = soLuong;
         this.donGia = donGia;
     }
-    
-    
+
 }

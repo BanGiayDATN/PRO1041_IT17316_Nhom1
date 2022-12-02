@@ -167,7 +167,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
-
     @Override
     public List<HoaDonBanHangViewModel> getHoaDonCho() {
         List<HoaDonBanHangViewModel> list = new ArrayList<>();
@@ -182,6 +181,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return list;
     }
+
 
     @Override
     public HoaDon getById(UUID id) {
@@ -198,4 +198,5 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
   
+
 }

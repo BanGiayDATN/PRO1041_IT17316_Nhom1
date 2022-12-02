@@ -17,7 +17,6 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
-import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
@@ -59,15 +58,12 @@ public class HibernateUtil {
         Properties properties = new Properties();
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
-        properties.put(Environment.USER, ""); // nhớ thay tài khoản SQL
-        properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
-
-
+        properties.put(Environment.USER, "QLNTuser"); // nhớ thay tài khoản SQL
+        properties.put(Environment.PASS, "123456"); // nhớ thay mật khẩu SQL
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
-        properties.put(Environment.HBM2DDL_AUTO, "create");
+//        properties.put(Environment.HBM2DDL_AUTO, "create");
         return properties;
     }
 
@@ -88,7 +84,6 @@ public class HibernateUtil {
         conf.addAnnotatedClass(NhanVien.class);
         conf.addAnnotatedClass(KhachHang.class);
         conf.addAnnotatedClass(SanPham.class);
-        conf.addAnnotatedClass(KhuyenMaiSanPham.class);
         conf.addAnnotatedClass(HoaDon.class);
         conf.addAnnotatedClass(DoiTRa.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
