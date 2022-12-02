@@ -48,5 +48,7 @@ public interface SanPhamRepository {
     SanPham getById(UUID id);
     
     List<SanPhamCustomRespone> getListSanPham();
+    
+    boolean saveAllSanPham(Map<String, SanPham> list);
 
 }
