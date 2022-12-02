@@ -32,21 +32,21 @@ public class SanPhamExportExcel {
 
     public static final String home = System.getProperty("user.home");
     public static final int COLUMN_INDEX_STT = 0;
-    public static final int COLUMN_INDEX_TEN_CPU = 1;
-    public static final int COLUMN_INDEX_TEN_CHAT_LIEU = 2;
-    public static final int COLUMN_INDEX_TEN_HANG = 3;
-    public static final int COLUMN_INDEX_TEN_HE_DIEU_HANG = 4;
-    public static final int COLUMN_INDEX_TEN_RAM = 5;
-    public static final int COLUMN_INDEX_DO_PHAN_GIAI = 6;
-    public static final int COLUMN_INDEX_KICH_THUOC = 7;
-    public static final int COLUMN_INDEX_MAU = 8;
-    public static final int COLUMN_INDEX_MA = 9;
-    public static final int COLUMN_INDEX_TEN = 10;
-    public static final int COLUMN_INDEX_NAMSX = 11;
-    public static final int COLUMN_INDEX_TRONGLUONG = 12;
-    public static final int COLUMN_INDEX_SOLUONG = 13;
-    public static final int COLUMN_INDEX_GIANHAP = 14;
-    public static final int COLUMN_INDEX_GIABAN = 15;
+    public static final int COLUMN_INDEX_TEN_CPU = 8;
+    public static final int COLUMN_INDEX_TEN_CHAT_LIEU = 9;
+    public static final int COLUMN_INDEX_TEN_HANG = 10;
+    public static final int COLUMN_INDEX_TEN_HE_DIEU_HANG = 11;
+    public static final int COLUMN_INDEX_TEN_RAM = 12;
+    public static final int COLUMN_INDEX_DO_PHAN_GIAI = 13;
+    public static final int COLUMN_INDEX_KICH_THUOC = 14;
+    public static final int COLUMN_INDEX_MAU = 15;
+    public static final int COLUMN_INDEX_MA = 1;
+    public static final int COLUMN_INDEX_TEN = 2;
+    public static final int COLUMN_INDEX_NAMSX = 3;
+    public static final int COLUMN_INDEX_TRONGLUONG = 4;
+    public static final int COLUMN_INDEX_SOLUONG = 5;
+    public static final int COLUMN_INDEX_GIANHAP = 6;
+    public static final int COLUMN_INDEX_GIABAN = 7;
     private static CellStyle cellStyleFormatNumber = null;
 
     // Write header with format
