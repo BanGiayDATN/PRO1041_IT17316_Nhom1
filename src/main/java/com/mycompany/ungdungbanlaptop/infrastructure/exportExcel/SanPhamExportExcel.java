@@ -18,7 +18,6 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.FillPatternType;
 import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.IndexedColors;
-import org.apache.poi.ss.usermodel.RichTextString;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.xssf.streaming.SXSSFCell;
 import org.apache.poi.xssf.streaming.SXSSFRow;
@@ -30,16 +29,24 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
  * @author vinhnv
  */
 public class SanPhamExportExcel {
-    
+
     public static final String home = System.getProperty("user.home");
     public static final int COLUMN_INDEX_STT = 0;
-    public static final int COLUMN_INDEX_MA = 1;
-    public static final int COLUMN_INDEX_TEN = 2;
-    public static final int COLUMN_INDEX_NAMSX = 3;
-    public static final int COLUMN_INDEX_TRONGLUONG = 4;
-    public static final int COLUMN_INDEX_SOLUONG = 5;
-    public static final int COLUMN_INDEX_GIANHAP = 6;
-    public static final int COLUMN_INDEX_GIABAN = 7;
+    public static final int COLUMN_INDEX_TEN_CPU = 1;
+    public static final int COLUMN_INDEX_TEN_CHAT_LIEU = 2;
+    public static final int COLUMN_INDEX_TEN_HANG = 3;
+    public static final int COLUMN_INDEX_TEN_HE_DIEU_HANG = 4;
+    public static final int COLUMN_INDEX_TEN_RAM = 5;
+    public static final int COLUMN_INDEX_DO_PHAN_GIAI = 6;
+    public static final int COLUMN_INDEX_KICH_THUOC = 7;
+    public static final int COLUMN_INDEX_MAU = 8;
+    public static final int COLUMN_INDEX_MA = 9;
+    public static final int COLUMN_INDEX_TEN = 10;
+    public static final int COLUMN_INDEX_NAMSX = 11;
+    public static final int COLUMN_INDEX_TRONGLUONG = 12;
+    public static final int COLUMN_INDEX_SOLUONG = 13;
+    public static final int COLUMN_INDEX_GIANHAP = 14;
+    public static final int COLUMN_INDEX_GIABAN = 15;
     private static CellStyle cellStyleFormatNumber = null;
 
     // Write header with format
@@ -54,31 +61,63 @@ public class SanPhamExportExcel {
         SXSSFCell cell = row.createCell(COLUMN_INDEX_STT);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("STT");
-        
+
+        cell = row.createCell(COLUMN_INDEX_TEN_CPU);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Tên CPU");
+
+        cell = row.createCell(COLUMN_INDEX_TEN_CHAT_LIEU);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Chất liệu");
+
+        cell = row.createCell(COLUMN_INDEX_TEN_HANG);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Hãng");
+
+        cell = row.createCell(COLUMN_INDEX_TEN_HE_DIEU_HANG);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Hệ điều hành");
+
+        cell = row.createCell(COLUMN_INDEX_TEN_RAM);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Ram");
+
+        cell = row.createCell(COLUMN_INDEX_DO_PHAN_GIAI);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Độ phân giải");
+
+        cell = row.createCell(COLUMN_INDEX_KICH_THUOC);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Kích thước ");
+
+        cell = row.createCell(COLUMN_INDEX_MAU);
+        cell.setCellStyle(cellStyle);
+        cell.setCellValue("Màu");
+
         cell = row.createCell(COLUMN_INDEX_MA);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Mã sản phẩm");
-        
+
         cell = row.createCell(COLUMN_INDEX_TEN);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Tên sản phẩm");
-        
+
         cell = row.createCell(COLUMN_INDEX_NAMSX);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Năm sản xuất");
-        
+
         cell = row.createCell(COLUMN_INDEX_TRONGLUONG);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Trọng lượng");
-        
+
         cell = row.createCell(COLUMN_INDEX_SOLUONG);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Số lượng");
-        
+
         cell = row.createCell(COLUMN_INDEX_GIANHAP);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Đơn giá nhập");
-        
+
         cell = row.createCell(COLUMN_INDEX_GIABAN);
         cell.setCellStyle(cellStyle);
         cell.setCellValue("Đơn giá bán");
@@ -115,7 +154,7 @@ public class SanPhamExportExcel {
             workbook.write(os);
         }
     }
-    
+
     public static void writeExcel(List<SanPham> list, String excelFilePath, String loaiFile) throws IOException {
         SXSSFWorkbook workbook = new SXSSFWorkbook();
         SXSSFSheet sheet = workbook.createSheet("Sheet"); // Create sheet with sheet name
@@ -136,42 +175,66 @@ public class SanPhamExportExcel {
             }
             SXSSFCell cell = row.createCell(COLUMN_INDEX_STT);
             cell.setCellValue(rowIndex);
-            
+
+            cell = row.createCell(COLUMN_INDEX_TEN_CPU);
+            cell.setCellValue(sanPham.getCpu().getTen());
+
+            cell = row.createCell(COLUMN_INDEX_TEN_CHAT_LIEU);
+            cell.setCellValue(sanPham.getChatLieu().getTen());
+
+            cell = row.createCell(COLUMN_INDEX_TEN_HANG);
+            cell.setCellValue(sanPham.getHang().getTen());
+
+            cell = row.createCell(COLUMN_INDEX_TEN_HE_DIEU_HANG);
+            cell.setCellValue(sanPham.getHeDieuHanh().getTen());
+
+            cell = row.createCell(COLUMN_INDEX_TEN_RAM);
+            cell.setCellValue(sanPham.getRam().getTen());
+
+            cell = row.createCell(COLUMN_INDEX_DO_PHAN_GIAI);
+            cell.setCellValue(sanPham.getManHinh().getDoPhanGiaMan());
+
+            cell = row.createCell(COLUMN_INDEX_KICH_THUOC);
+            cell.setCellValue(sanPham.getManHinh().getKichThuoc());
+
+            cell = row.createCell(COLUMN_INDEX_MAU);
+            cell.setCellValue(sanPham.getMau().getTen());
+
             cell = row.createCell(COLUMN_INDEX_MA);
             cell.setCellValue(sanPham.getMa());
-            
+
             cell = row.createCell(COLUMN_INDEX_TEN);
             cell.setCellValue(sanPham.getTen());
-            
+
             cell = row.createCell(COLUMN_INDEX_NAMSX);
             cell.setCellValue(sanPham.getNamBH());
-            
+
             cell = row.createCell(COLUMN_INDEX_TRONGLUONG);
             cell.setCellValue(sanPham.getTrongLuong());
             cell.setCellStyle(cellStyleFormatNumber);
-            
+
             cell = row.createCell(COLUMN_INDEX_SOLUONG);
             cell.setCellValue(sanPham.getSoLuongTon());
-            
+
             cell = row.createCell(COLUMN_INDEX_GIANHAP);
             cell.setCellValue(Double.valueOf(sanPham.getGiaNhap().toString()));
             cell.setCellStyle(cellStyleFormatNumber);
-            
+
             cell = row.createCell(COLUMN_INDEX_GIABAN);
             cell.setCellValue(Double.valueOf(sanPham.getGiaBan().toString()));
             cell.setCellStyle(cellStyleFormatNumber);
-            
+
             rowIndex++;
         }
         // Auto resize column witdth
-        int numberOfColumn = 5; // sheet.getRow(0).getPhysicalNumberOfCells();
+        int numberOfColumn = 16; // sheet.getRow(0).getPhysicalNumberOfCells();
         autosizeColumn(sheet, numberOfColumn);
-        
+
         String path = new File(home + "/Downloads/" + excelFilePath) + loaiFile;
         createOutputFile(workbook, path);
         System.out.println("Done!!!");
     }
-    
+
     public static void main(String[] args) throws IOException {
         List<SanPham> list = new SanPhamRepositoryImpl().getAll();
         String sanphamExport = new TaoChuoiNgauNhien().getMaHoaDon("san_pham", 3);
