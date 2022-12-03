@@ -5,9 +5,11 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.repository.BaoHanhRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
@@ -59,5 +61,21 @@ public class BaoHanhRepositoryImpl implements BaoHanhRepository {
         }
         return null;
     }
+
+//    @Override
+//    public List<BaoHanh> sreach(String soDienThoai) {
+//        List<BaoHanh> list = new ArrayList<>();
+//        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+//            String hql = "SELECT bh FROM BaoHanh kh WHERE bh.sdt like :sdt";
+//            Query<BaoHanh> query = session.createQuery(hql);
+//            query.setParameter("sdt", "%" + soDienThoai + "%");
+//            list = query.getResultList();
+//            return list;
+//        } catch (Exception e) {
+//        }
+//        return null;
+//    }
+   
+    
 
 }

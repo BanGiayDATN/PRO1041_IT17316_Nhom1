@@ -4,6 +4,8 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDon;
+
 /**
  *
  * @author thang
@@ -13,7 +15,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
     /**
      * Creates new form ViewDoiTraTheoHoaDon
      */
-    public ViewDoiTraTheoHoaDon() {
+    public ViewDoiTraTheoHoaDon(HoaDon hoaDon) {
         initComponents();
     }
 
