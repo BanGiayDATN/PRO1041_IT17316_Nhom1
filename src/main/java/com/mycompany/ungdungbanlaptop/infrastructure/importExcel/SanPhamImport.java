@@ -8,7 +8,9 @@ import com.github.pjfanning.xlsx.StreamingReader;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -44,12 +46,12 @@ public class SanPhamImport {
                 continue;
             }
             SanPhamRequest sanPhamRequest = new SanPhamRequest();
-            sanPhamRequest.setMa(String.valueOf(row.getCell(0)).trim());
-            sanPhamRequest.setTen(String.valueOf(row.getCell(1)).trim());
-            sanPhamRequest.setGiaBan(String.valueOf(row.getCell(2)).trim());
-            sanPhamRequest.setTrongLuong(String.valueOf(row.getCell(3)).trim());
-            sanPhamRequest.setSoLuongTon(String.valueOf(row.getCell(4)).trim());
-            sanPhamRequest.setNamBH(String.valueOf(row.getCell(5)).trim());
+            sanPhamRequest.setMa(String.valueOf(row.getCell(0).getStringCellValue()).trim());
+            sanPhamRequest.setTen(String.valueOf(row.getCell(1).getStringCellValue()).trim());
+            sanPhamRequest.setGiaBan(String.valueOf(row.getCell(2).getStringCellValue()).trim());
+            sanPhamRequest.setTrongLuong(String.valueOf(row.getCell(3).getStringCellValue()).trim());
+            sanPhamRequest.setSoLuongTon(String.valueOf(row.getCell(4).getStringCellValue()).trim());
+            sanPhamRequest.setNamBH(String.valueOf(row.getCell(5).getStringCellValue()).trim());
             listSP.add(sanPhamRequest);
         }
         return listSP;
@@ -73,5 +75,10 @@ public class SanPhamImport {
             System.out.println(e);
             return "";
         }
+    }
+    
+    public static void main(String[] args) throws FileNotFoundException, IOException {
+        SanPhamImport sp = new SanPhamImport();
+        System.out.println(sp.importData(new File ("C:\\Users\\thang\\Downloads\\12.xlsx")).get(0).getMa());;
     }
 }
