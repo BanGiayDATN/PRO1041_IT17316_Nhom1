@@ -29,19 +29,34 @@ public interface HoaDonChiTietService {
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
+    
+     List<GioHangViewModel> getGioHang(UUID idHoaDon);
+     
+         HoaDonChiTiet getById(UUID idHDCT);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHDCTSP(String ma);
 
     List<HoaDonChiTiet> getAllByMa(String ma);
 
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> develop
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
 
+<<<<<<< HEAD
     HoaDonChiTiet getByIdSanPham(UUID idSanPham);
+>>>>>>> develop
+=======
+   
+
 >>>>>>> develop
 }

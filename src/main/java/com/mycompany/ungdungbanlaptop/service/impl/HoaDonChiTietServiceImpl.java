@@ -60,6 +60,9 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
 
     @Override
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
     public List<HoaDonChiTietSanPham> getListHDCTSP(String ma) {
         return hoaDonChiTietRepository.getListHoaDonSanPham(ma);
     }
@@ -70,15 +73,28 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
    
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> develop
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         return hoaDonChiTietRepository.getGioHang(idHoaDon);
     }
 
     @Override
+<<<<<<< HEAD
     public HoaDonChiTiet getByIdSanPham(UUID idSanPham) {
         return hoaDonChiTietRepository.getByIdSanPham(idSanPham);
     }
 
+>>>>>>> develop
+=======
+
+    public HoaDonChiTiet getById(UUID idHDCT) {
+        return hoaDonChiTietRepository.getById(idHDCT);
+
+    }
+
+   
 >>>>>>> develop
 }

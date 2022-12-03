@@ -172,6 +172,9 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
   
 
     @Override
@@ -182,16 +185,28 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             List<HoaDonChiTiet> list = query.getResultList();
             
             return list;
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> develop
 
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         List<GioHangViewModel> list = new ArrayList<>();
+<<<<<<< HEAD
         Transaction tran = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             tran = session.beginTransaction();
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel(hdct.idHoaDonChiTiet,sp.idSanPham,sp.ma,sp.ten,hdct.soLuong,hdct.donGia)"
                     + "FROM HoaDonChiTiet hdct"
+=======
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel(hdct.idHoaDonChiTiet,sp.idSanPham,sp.ma,sp.ten,hdct.soLuong,hdct.donGia) FROM HoaDonChiTiet hdct"
+>>>>>>> develop
                     + " INNER JOIN SanPham sp"
                     + " ON sp.idSanPham = hdct.sanPham.idSanPham"
                     + " INNER JOIN HoaDon hd"
@@ -200,6 +215,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query<GioHangViewModel> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHoaDon);
             list = query.getResultList();
+<<<<<<< HEAD
             tran.commit();
         } catch (Exception e) {
         }
@@ -215,11 +231,36 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
 >>>>>>> develop
+=======
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
+    }
+
+   
+
+    @Override
+    public HoaDonChiTiet getById(UUID idHDCT) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.idHoaDonChiTiet = :idHoaDonChiTiet";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDonChiTiet", idHDCT);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+
+>>>>>>> develop
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
+<<<<<<< HEAD
 <<<<<<< HEAD
      public static void main(String[] args) {
         System.out.println(new HoaDonChiTietRepositoryImpl().getAllByMa("HD65877"));
@@ -227,5 +268,8 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
    
 =======
+>>>>>>> develop
+=======
+
 >>>>>>> develop
 }
