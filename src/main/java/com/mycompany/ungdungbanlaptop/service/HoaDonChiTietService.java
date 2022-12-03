@@ -36,4 +36,9 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTiet> getAllByMa(String ma);
 
+    List<GioHangViewModel> getGioHang(UUID idHoaDon);
+
+    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
+
+    HoaDonChiTiet getByIdSanPham(UUID idSanPham);
 }

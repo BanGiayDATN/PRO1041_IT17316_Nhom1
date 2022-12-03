@@ -10,13 +10,13 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import java.awt.Color;
 import java.awt.FlowLayout;
 
-
 /**
  *
  * @author Diệm DZ
  */
 public class View extends javax.swing.JFrame {
-    private Color one = new Color(255,204,153);
+
+    private Color one = new Color(255, 204, 153);
 
     private NhanVien nhanVien;
 
@@ -25,7 +25,7 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-        
+
     }
 
     /**
@@ -426,7 +426,7 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(one);
         jPanel6.setBackground(Color.black);
         jPanel12.setBackground(one);
-        ViewKhachHang viewkh= new ViewKhachHang();
+        ViewKhachHang viewkh = new ViewKhachHang();
         DeskTop.add(viewkh);
         DeskTop.setLayout(new FlowLayout());
         this.pack();
@@ -441,7 +441,7 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(one);
         jPanel6.setBackground(one);
         jPanel12.setBackground(one);
-        ViewNhanVien viewnv= new ViewNhanVien();
+        ViewNhanVien viewnv = new ViewNhanVien();
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
         this.pack();
@@ -455,8 +455,7 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(one);
         jPanel6.setBackground(one);
         jPanel8.setBackground(one);
-        jPanel12.setBackground(one);
-        
+        jPanel12.setBackground(one);      
         ViewThongKe viewnv= new ViewThongKe();
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
@@ -472,8 +471,7 @@ public class View extends javax.swing.JFrame {
         jPanel6.setBackground(one);
         jPanel8.setBackground(one);
         jPanel12.setBackground(Color.black);
-
-        ViewBanHang viewnv= new ViewBanHang(nhanVien);
+        ViewBanHang viewnv = new ViewBanHang(nhanVien);
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
         this.pack();

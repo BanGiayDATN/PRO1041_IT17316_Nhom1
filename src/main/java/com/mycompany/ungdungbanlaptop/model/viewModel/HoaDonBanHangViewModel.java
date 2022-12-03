@@ -36,6 +36,7 @@ public class HoaDonBanHangViewModel {
         this.hoTen = hoTen;
         this.tinhTrang = tinhTrang;
     }
+
     
     
     public String trangThai(){
@@ -45,5 +46,6 @@ public class HoaDonBanHangViewModel {
             default -> "Đã hủy";
         };
     }
+
 
 }
