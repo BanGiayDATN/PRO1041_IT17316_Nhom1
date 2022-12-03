@@ -4,13 +4,11 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewKhuyenMai;
 
-import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiKhuyenMai;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.ExportExcel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
-import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiSanPhamService;
@@ -515,7 +513,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
-        new ViewSuaKhuyenMai(khuyenMaiService.getOne(ma)).setVisible(true);
+        new ViewUpdateKhuyenMai(khuyenMaiService.getOne(ma)).setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
