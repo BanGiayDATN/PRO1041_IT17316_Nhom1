@@ -386,6 +386,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         jTableSanPham = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
         btn_export = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
 
         jMenuItem1.setText("Update SanPham");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -625,6 +626,13 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         });
 
+        btnImport.setText("Import Excel");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -635,7 +643,9 @@ public class ViewSanPham extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(btn_export))
+                        .addComponent(btn_export)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
@@ -645,7 +655,9 @@ public class ViewSanPham extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jToggleButton1)
-                    .addComponent(btn_export))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_export)
+                        .addComponent(btnImport)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
@@ -837,10 +849,24 @@ public class ViewSanPham extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_exportActionPerformed
 
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+            JOptionPane.showMessageDialog(this, sanPhamService.SanPhamImport(new File(filename)));
+        } catch (Exception ex) {
+            Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Import thất bại ");
+        }
+    }//GEN-LAST:event_btnImportActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem KhongBan;
     private javax.swing.JPanel TimKiemSanPham;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btn_export;
     private javax.swing.JButton btn_search;
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbCPUSearch;

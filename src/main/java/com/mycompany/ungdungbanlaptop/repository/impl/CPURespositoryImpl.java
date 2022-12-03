@@ -75,7 +75,6 @@ public class CPURespositoryImpl implements CPURespository {
         try (Session session = HibernateUtil.getFACTORY().openSession();) {
             transaction = session.beginTransaction();
             session.save(cpu);
-
             transaction.commit();
             return true;
         } catch (Exception e) {
