@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
@@ -61,7 +62,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
-   
     @Override
     public HoaDon add(HoaDon hoaDon) {
         Transaction transaction = null;
@@ -199,6 +199,25 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 }
 
+    @Override
+    public  List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma){
+       try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai("
+                    + "hd.ma, hd.ngayThanhToan, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen"
+                    + " , Sum(hdct.soLuong), Sum(hdct.donGia)) "
+                    + " FROM HoaDon hd "
+                    + "Join HoaDonChiTiet hdct on hd.id = hdct.hoaDon.id "
+                    + "WHERE hd.khuyenMai.ma = :ma "
+                    + "GROUP BY hd.ma, hd.ngayThanhToan, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen";
+            Query query = session.createQuery(hql);
+            query.setParameter("ma", ma );
+            return query.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return null; 
+    }
+    
   
 
 

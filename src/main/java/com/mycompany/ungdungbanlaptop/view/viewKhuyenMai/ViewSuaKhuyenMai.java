@@ -17,14 +17,27 @@ import javax.swing.JTextField;
  *
  * @author thang
  */
-public class ViewThemKhuyenMai extends javax.swing.JFrame {
+public class ViewSuaKhuyenMai extends javax.swing.JFrame {
 
     private KhuyenMaiService khuyenMaiService = new KhuyenMaiServiceImpl();
+    private KhuyenMai khuyenMai;
 
-    public ViewThemKhuyenMai() {
+    public ViewSuaKhuyenMai(KhuyenMai khuyenMai) {
         initComponents();
+        this.khuyenMai = khuyenMai;
+        loadData();
     }
 
+    private void loadData(){
+
+        txtMa.setText(khuyenMai.getMa());
+        txtTen.setText(khuyenMai.getTen());
+        txtSoLuong.setText(String.valueOf(khuyenMai.getSoLuong()));
+        txtMoTa.setText(khuyenMai.getMoTa());
+        cboHinhThuc.setSelectedIndex(khuyenMai.getLoaiKhuyenMai() == EnumLoaiKhuyenMai.PHAN_TRAM ? 0 :1);
+        txtDieuKien.setText(String.valueOf(khuyenMai.getDieuKienGiamGia()));
+        txtGiamGia.setText(String.valueOf(khuyenMai.getGiaTienGiam()));
+    }
     private EnumLoaiKhuyenMai getHinhThuc() {
         int hinhThuc = cboHinhThuc.getSelectedIndex();
         switch (hinhThuc) {
@@ -369,14 +382,11 @@ public class ViewThemKhuyenMai extends javax.swing.JFrame {
     private void btnSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSaveActionPerformed
         if (check()) {
             KhuyenMai khuyenMai = KhuyenMaiRequest();
-            if (khuyenMaiService.getOne(khuyenMai.getMa()) != null) {
-                JOptionPane.showMessageDialog(this, " mã đã tồn tại");
-                return;
-            }
-            khuyenMaiService.add(khuyenMai);
-            JOptionPane.showMessageDialog(this, "Thêm thành công");
-            ViewKhuyenMai.addKhuyenMai(khuyenMai);
+            khuyenMai.setIdKhuyenMai(this.khuyenMai.getIdKhuyenMai());
+            khuyenMaiService.update(khuyenMai);
+            JOptionPane.showMessageDialog(this, "sửa thành công");
             this.dispose();
+            
         }
     }//GEN-LAST:event_btnSaveActionPerformed
 
@@ -529,21 +539,23 @@ public class ViewThemKhuyenMai extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ViewThemKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSuaKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ViewThemKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSuaKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ViewThemKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSuaKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ViewThemKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ViewSuaKhuyenMai.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewThemKhuyenMai().setVisible(true);
+//                new ViewSuaKhuyenMai().setVisible(true);
             }
         });
     }

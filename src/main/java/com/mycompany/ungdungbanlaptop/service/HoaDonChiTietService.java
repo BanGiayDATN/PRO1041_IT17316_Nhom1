@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -28,14 +29,18 @@ public interface HoaDonChiTietService {
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
-
-
     
-     
      List<GioHangViewModel> getGioHang(UUID idHoaDon);
      
          HoaDonChiTiet getById(UUID idHDCT);
 
+    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
+
+    List<HoaDonChiTietSanPham> getListHDCTSP(String ma);
+
+    List<HoaDonChiTiet> getAllByMa(String ma);
+
+    List<GioHangViewModel> getGioHang(UUID idHoaDon);
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
 
