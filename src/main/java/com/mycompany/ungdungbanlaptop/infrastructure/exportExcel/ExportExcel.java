@@ -7,7 +7,6 @@ package com.mycompany.ungdungbanlaptop.infrastructure.exportExcel;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;

@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
-import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;

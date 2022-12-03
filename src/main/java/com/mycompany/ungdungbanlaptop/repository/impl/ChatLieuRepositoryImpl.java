@@ -7,8 +7,6 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.repository.ChatLieuRepository;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;

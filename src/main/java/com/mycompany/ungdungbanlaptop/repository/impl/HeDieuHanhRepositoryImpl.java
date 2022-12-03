@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.repository.HeDieuHanhRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;

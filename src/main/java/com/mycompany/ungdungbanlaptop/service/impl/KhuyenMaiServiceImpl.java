@@ -6,7 +6,6 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
-import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhuyenMaiRepositoryImpl;
 

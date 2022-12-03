@@ -6,9 +6,6 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-
-import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
-
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 
@@ -18,9 +15,6 @@ import com.mycompany.ungdungbanlaptop.service.ChucVuService;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
-
-import java.util.UUID;
-
 import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.validator.routines.EmailValidator;
 

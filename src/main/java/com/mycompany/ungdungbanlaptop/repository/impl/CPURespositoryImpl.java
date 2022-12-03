@@ -5,12 +5,9 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
-import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.repository.CPURespository;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Transaction;
 import org.hibernate.Session;
