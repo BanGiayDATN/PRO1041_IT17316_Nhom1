@@ -10,10 +10,16 @@ import java.io.IOException;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.DataValidation;
+import org.apache.poi.ss.usermodel.DataValidationConstraint;
+import org.apache.poi.ss.usermodel.DataValidationHelper;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.CellRangeAddressList;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
 import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFDataValidationHelper;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 
 /**
  *
@@ -23,8 +29,8 @@ public class MauExportSanPham {
 
     public static void exportData(String tenFile) {
         try ( SXSSFWorkbook workbook = new SXSSFWorkbook()) {
-        SXSSFSheet sheet = workbook.createSheet("Sheet");
-        sheet.trackAllColumnsForAutoSizing();
+            SXSSFSheet sheet = workbook.createSheet("Example");
+            sheet.trackAllColumnsForAutoSizing();
             CellStyle cellStyle = workbook.createCellStyle();
             //set border to table
             cellStyle.setBorderTop(BorderStyle.MEDIUM);
@@ -95,8 +101,32 @@ public class MauExportSanPham {
             cell15.setCellValue("Tên hãng");
             cell15.setCellStyle(cellStyle);
 
+            Row row1 = sheet.createRow(1);
+
             int numberOfColumn = 15; // sheet.getRow(0).getPhysicalNumberOfCells();
             autosizeColumn(sheet, numberOfColumn);
+
+            DataValidation dataValidation = null;
+            DataValidationConstraint constraint = null;
+            DataValidationHelper validationHelper = null;
+
+            validationHelper = sheet.getDataValidationHelper();
+            CellRangeAddressList addressList = new CellRangeAddressList(1, 1, 11, 11);
+            constraint = validationHelper.createExplicitListConstraint(new String[]{"Windows", "Macos", "Linux", "Khác"});
+            dataValidation = validationHelper.createValidation(constraint, addressList);
+            dataValidation.setSuppressDropDownArrow(true);
+            sheet.addValidationData(dataValidation);
+
+            DataValidation dataValidation1 = null;
+            DataValidationConstraint constraint1 = null;
+            DataValidationHelper validationHelper1 = null;
+
+            validationHelper1 = sheet.getDataValidationHelper();
+            CellRangeAddressList addressList1 = new CellRangeAddressList(1, 1, 13, 13);
+            constraint1 = validationHelper1.createExplicitListConstraint(new String[]{"SDRAM", "DDR1", "DDR2", "DDR3", "DDR4", "DDR5"});
+            dataValidation1 = validationHelper1.createValidation(constraint1, addressList1);
+            dataValidation1.setSuppressDropDownArrow(true);
+            sheet.addValidationData(dataValidation1);
 
             File path = new File(tenFile);
             FileOutputStream outputStream = new FileOutputStream(path);
@@ -111,6 +141,9 @@ public class MauExportSanPham {
             sheet.autoSizeColumn(columnIndex);
         }
     }
-    
-   
+
+    public static void main(String[] args) {
+        MauExportSanPham.exportData("C:\\Users\\thang\\Downloads\\hello.xlsx");
+    }
+
 }

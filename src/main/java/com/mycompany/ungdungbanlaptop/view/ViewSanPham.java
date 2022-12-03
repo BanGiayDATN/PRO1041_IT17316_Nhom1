@@ -15,6 +15,7 @@ import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.MauExportSanPham;
 import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
@@ -387,6 +388,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         jToggleButton1 = new javax.swing.JToggleButton();
         btn_export = new javax.swing.JButton();
         btnImport = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenuItem1.setText("Update SanPham");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -633,6 +635,13 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Export Mẫu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -645,7 +654,9 @@ public class ViewSanPham extends javax.swing.JPanel {
                         .addGap(27, 27, 27)
                         .addComponent(btn_export)
                         .addGap(18, 18, 18)
-                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
@@ -657,7 +668,8 @@ public class ViewSanPham extends javax.swing.JPanel {
                     .addComponent(jToggleButton1)
                     .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_export)
-                        .addComponent(btnImport)))
+                        .addComponent(btnImport)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
@@ -862,6 +874,19 @@ public class ViewSanPham extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnImportActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+           MauExportSanPham.exportData(filename + ".xlsx");
+        } catch (Exception ex) {
+            Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Import thất bại ");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem KhongBan;
@@ -879,6 +904,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbRamSearch;
     private static javax.swing.JComboBox<String> cbb_namSearch;
     private javax.swing.JMenuItem conBan;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
