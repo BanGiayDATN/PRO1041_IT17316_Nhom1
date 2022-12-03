@@ -1003,15 +1003,16 @@ public class ViewBanHang extends javax.swing.JPanel {
         int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-              List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+            List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
        
         for (GioHangViewModel x : list) {
           hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
           hoaDonChiTietService.delete(hoaDonChiTiet);
         }
-            HoaDon hd = new HoaDon();
-            hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-            hoaDonService.delete(hd);
+            int row  = jTableHoaDon.getSelectedRow();
+            HoaDonBanHangViewModel viewModel = hoaDonService.getHoaDonBanHang().get(row);
+            HoaDon hoaDon = hoaDonService.getById(viewModel.getId());
+            hoaDonService.delete(hoaDon);
             showHoaDon(hoaDonService.getHoaDonBanHang());
             dtm2.setRowCount(0);
             clearHoaDon();
