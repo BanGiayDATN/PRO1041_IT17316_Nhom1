@@ -181,7 +181,8 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             List<HoaDonChiTiet> list = query.getResultList();
             
             return list;
-
+         }
+    }
 
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
@@ -206,9 +207,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
     
-    public static void main(String[] args) {
-//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
-    }
+
 
    
 
@@ -227,4 +226,8 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return null;
     }
 
-}
+  
+
+    
+
+         }

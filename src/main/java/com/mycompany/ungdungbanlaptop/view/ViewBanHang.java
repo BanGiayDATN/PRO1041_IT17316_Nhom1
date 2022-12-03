@@ -32,6 +32,7 @@ import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -111,14 +112,27 @@ public class ViewBanHang extends javax.swing.JPanel {
     }
 
     private void showSanPham(List<SanPhamBanHangViewModel> list) {
-        jTableSanPham.setModel(dtm3);
+
         String[] sp = {"id", "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
         dtm3.setColumnIdentifiers(sp);
-        dtm3.setRowCount(0);
+//        dtm3.setRowCount(0);
         for (SanPhamBanHangViewModel x : list) {
-            dtm3.addRow(new Object[]{x.getId(), jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
+            dtm3.addRow(new Object[]{x.getId(), jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(),
+                x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
         }
+        jTableSanPham.setModel(dtm3);
         jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
+//        DefaultTableModel model = new DefaultTableModel();
+//
+//        String[] sp = {"id", "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
+//        model.setColumnIdentifiers(sp);
+//        dtm3.setRowCount(0);
+//        for (SanPhamBanHangViewModel x : list) {
+//            model.addRow(new Object[]{x.getId(), jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
+//        }
+//        jTableSanPham.setModel(model);
+//        jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
+
     }
 
     private void showGioHang(Map<UUID, GioHangViewModel> list) {
@@ -329,6 +343,14 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusLost(evt);
+            }
+        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -805,7 +827,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             int soLuong = soLuongMua(row);
             if (soLuong != 0) {
 
-
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setSoLuong(soLuong);
                 BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
@@ -841,7 +862,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         }
         return tong;
     }
-
 
     private int soLuongMua(int index) {
 
@@ -915,13 +935,10 @@ public class ViewBanHang extends javax.swing.JPanel {
         showHoaDon(hoaDonService.getHoaDonBanHang());
 
 
-      
-
-
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-    
+
         if (txtTimKiemSoDienThoai.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Số điện thoại trống");
         } else if (txtDiaChiHoaDon.getText().isEmpty()) {
@@ -932,9 +949,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
             try {
                 // TODO add your handling code here:
-           
-                      
-                      
+
 //            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
 //                // add imei
 //                int soLuong = x.getValue().getSoLuong();
@@ -1003,12 +1018,12 @@ public class ViewBanHang extends javax.swing.JPanel {
         int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-              List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-       
-        for (GioHangViewModel x : list) {
-          hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
-          hoaDonChiTietService.delete(hoaDonChiTiet);
-        }
+            List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+
+            for (GioHangViewModel x : list) {
+                hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
+                hoaDonChiTietService.delete(hoaDonChiTiet);
+            }
             HoaDon hd = new HoaDon();
             hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
             hoaDonService.delete(hd);
@@ -1073,9 +1088,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
         txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
 
-
         // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
-     
 
     }//GEN-LAST:event_jTableHoaDonMouseClicked
 
@@ -1155,6 +1168,20 @@ public class ViewBanHang extends javax.swing.JPanel {
     private void jTableGiohangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableGiohangMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jTableGiohangMouseClicked
+
+    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
+        if (txtTimKiem.getText().equals("Nhập thông tin tìm kiếm...")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusGained
+
+    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
+        if (txtTimKiem.getText().equals(null)) {
+            txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusLost
     private void removeGioHang() {
         for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
             SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());

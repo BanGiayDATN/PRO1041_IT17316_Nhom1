@@ -197,7 +197,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     
         System.out.println(new HoaDonRepositoryImpl().getHoaDonBanHang());
     }
-}
+
 
     @Override
     public  List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma){
@@ -217,6 +217,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null; 
     }
+}
     
   
 

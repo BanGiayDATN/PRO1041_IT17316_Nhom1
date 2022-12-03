@@ -38,7 +38,6 @@ public interface HoaDonChiTietRepository {
 
      List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
      
-    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma);
 
