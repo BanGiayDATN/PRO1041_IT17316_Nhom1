@@ -44,13 +44,13 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
-    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc) {
-        return hoaDonChiTietRepository.getListHoaDonApDungKhuyenMai(ngayBatDau, ngạyetThuc);
+    public List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc) {
+        return hoaDonChiTietRepository.getListHoaDonApDungKhuyenMai(ngayBatDau, ngayketThuc);
     }
 
     @Override
     public boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list) {
-       return hoaDonChiTietRepository.saveAllHoaDonChiTiet(list);
+        return hoaDonChiTietRepository.saveAllHoaDonChiTiet(list);
     }
 
     @Override
@@ -59,6 +59,7 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
+<<<<<<< HEAD
     public List<HoaDonChiTietSanPham> getListHDCTSP(String ma) {
         return hoaDonChiTietRepository.getListHoaDonSanPham(ma);
     }
@@ -69,4 +70,15 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
    
+=======
+    public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
+        return hoaDonChiTietRepository.getGioHang(idHoaDon);
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSanPham) {
+        return hoaDonChiTietRepository.getByIdSanPham(idSanPham);
+    }
+
+>>>>>>> develop
 }

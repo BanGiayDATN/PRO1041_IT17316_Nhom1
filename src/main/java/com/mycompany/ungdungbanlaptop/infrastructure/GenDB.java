@@ -478,6 +478,7 @@ public class GenDB {
         hd.setTenNguoiNhan("Lương Bằng Huy");
         hd.setDiaChhi("Hà Nội");
         hd.setSdt("0087654321");
+        hd.setKhuyenMai(khuyenMai);
         session.save(hd);
 
         HoaDon hd1 = new HoaDon();
