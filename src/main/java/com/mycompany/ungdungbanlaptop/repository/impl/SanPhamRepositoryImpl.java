@@ -299,12 +299,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return sanPham;
     }
 
-<<<<<<< HEAD
-
-    
-
-=======
->>>>>>> develop_thang
     @Override
     public List<SanPhamCustomRespone> getListSanPham() {
         List<SanPhamCustomRespone> list = new ArrayList<>();
@@ -319,8 +313,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return list;
     }
 
-<<<<<<< HEAD
-=======
+
     @Override
     public boolean saveAllSanPham(Map<String, SanPham> list) {
         Transaction transaction = null;
@@ -334,6 +327,5 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         }
         return true;
     }
->>>>>>> develop_thang
 
 }
