@@ -63,42 +63,42 @@ public class GenDB {
         Transaction trans = session.beginTransaction();
 
         Imei imei = new Imei();
-        imei.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        imei.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
         session.save(imei);
-        
+
         Imei imei1 = new Imei();
-        imei1.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        imei1.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
         session.save(imei1);
-        
+
         Imei imei2 = new Imei();
-        imei2.setMa(new TaoChuoiNgauNhien().getMkRanMa("",3));
+        imei2.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
         session.save(imei2);
-        
+
         Mau mauSac1 = new Mau();
-        mauSac1.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac1.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac1.setTen("Red");
         session.save(mauSac1);
 
         Mau mauSac2 = new Mau();
-        mauSac2.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac2.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac2.setTen("Yellow");
         session.save(mauSac2);
 
         Mau mauSac3 = new Mau();
-        mauSac3.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac3.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac3.setTen("Blue");
         session.save(mauSac3);
 
         Mau mauSac4 = new Mau();
-        mauSac4.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac4.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac4.setTen("Black");
         session.save(mauSac4);
 
         Mau mauSac5 = new Mau();
-        mauSac5.setMa(new TaoChuoiNgauNhien().getMkRanMa("#",3));
+        mauSac5.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac5.setTen("White");
         session.save(mauSac5);
-        
+
         Ram ram = new Ram();
         ram.setMa(new TaoChuoiNgauNhien().getMkRanMa("Ram", 4));
         ram.setTen("Static RAM");
@@ -302,7 +302,7 @@ public class GenDB {
         nhanVien.setMa("Adim");
         nhanVien.setSdt("0987654321");
         nhanVien.setTrangThai(0);
-        nhanVien.setPassword( new LoginServiceImpl().matKhauMD5("12345678"));
+        nhanVien.setPassword(new LoginServiceImpl().matKhauMD5("12345678"));
         nhanVien.setChucVu(chucVu1);
         nhanVien.setNgaySinh(new ConverDate().dateToLong("2000/06/01", "yyyy/MM/dd"));
         nhanVien.setGioiTinh("Nam");
@@ -443,13 +443,13 @@ public class GenDB {
         khuyenMaiSanPham.setSanPham(sanPham);
         khuyenMaiSanPham.setMa(khuyenMai.getMa());
         session.save(khuyenMaiSanPham);
-        
+
         KhuyenMaiSanPham khuyenMaiSanPham1 = new KhuyenMaiSanPham();
         khuyenMaiSanPham1.setKhuyenMai(khuyenMai);
         khuyenMaiSanPham1.setSanPham(sanPham2);
         khuyenMaiSanPham1.setMa(khuyenMai.getMa());
         session.save(khuyenMaiSanPham1);
-        
+
         BaoHanh baoHanh = new BaoHanh();
         baoHanh.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));
@@ -457,7 +457,7 @@ public class GenDB {
         baoHanh.setKhachHang(khachHang);
         baoHanh.setNhanVien(nhanVien1);
         session.save(baoHanh);
-        
+
         BaoHanh baoHanh1 = new BaoHanh();
         baoHanh1.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh1.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));
@@ -512,15 +512,17 @@ public class GenDB {
         HoaDonChiTiet hdct = new HoaDonChiTiet();
         hdct.setHoaDon(hd);
         hdct.setSoLuong(1);
+        hdct.setSanPham(sanPham);
         hdct.setDonGia(new BigDecimal(24000000.0));
         session.save(hdct);
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
-        hdct.setSoLuong(1);
-        hdct.setDonGia(new BigDecimal(18490000.0));
+        hdct1.setSoLuong(1);
+        hdct1.setSanPham(sanPham1);
+        hdct1.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
-      
+
         // db generator : gen bảng tự động
         trans.commit();
     }

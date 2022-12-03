@@ -29,21 +29,15 @@ public interface HoaDonChiTietService {
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
-    
-     List<GioHangViewModel> getGioHang(UUID idHoaDon);
-     
-         HoaDonChiTiet getById(UUID idHDCT);
+
+    List<GioHangViewModel> getGioHang(UUID idHoaDon);
+
+    HoaDonChiTiet getById(UUID idHDCT);
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHDCTSP(String ma);
 
     List<HoaDonChiTiet> getAllByMa(String ma);
-
-    List<GioHangViewModel> getGioHang(UUID idHoaDon);
-
-    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
-
-   
 
 }
