@@ -35,6 +35,7 @@ import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ManHinhServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.RamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.awt.Cursor;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -46,6 +47,8 @@ import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -102,6 +105,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         comBoBoxRam(listRam);
         comBoBoxHeDieuHanh(listHeDieuHanh);
         showData(listSanPham);
+        TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
+        filterHeader.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
     }
 
@@ -603,6 +608,11 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         ));
         jTableSanPham.setComponentPopupMenu(jPopupMenu1);
+        jTableSanPham.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTableSanPhamMouseMoved(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableSanPham);
 
         jToggleButton1.setText("Thêm");
@@ -615,6 +625,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         });
 
+        btn_export.setBackground(new java.awt.Color(255, 255, 255));
         btn_export.setText("ExportExcel");
         btn_export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -819,16 +830,21 @@ public class ViewSanPham extends javax.swing.JPanel {
 
     private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
         // TODO add your handling code here:
-        String sanphamExport = new TaoChuoiNgauNhien().getMaHoaDon("Danh_san_pham", 9);
         String loaiFile = ".xlsx";
         try {
-            writeExcel(sanPhamService.getAll(), sanphamExport, loaiFile);
+            writeExcel(sanPhamService.getAll(), loaiFile);
             JOptionPane.showMessageDialog(this, "Export thành công ");
         } catch (IOException ex) {
             Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
             JOptionPane.showMessageDialog(this, "Export thất bại ");
         }
     }//GEN-LAST:event_btn_exportActionPerformed
+
+    private void jTableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseMoved
+        // TODO add your handling code here:
+        jTableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        
+    }//GEN-LAST:event_jTableSanPhamMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

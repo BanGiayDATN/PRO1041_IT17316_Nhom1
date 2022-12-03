@@ -57,6 +57,7 @@ import net.coderazzi.filters.gui.TableFilterHeader;
  */
 public class ViewBanHang extends javax.swing.JPanel {
 
+
     private DefaultTableModel dtm1 = new DefaultTableModel();
     private DefaultTableModel dtm2 = new DefaultTableModel();
     private DefaultTableModel dtm3 = new DefaultTableModel();
@@ -111,13 +112,15 @@ public class ViewBanHang extends javax.swing.JPanel {
     }
 
     private void showSanPham(List<SanPhamBanHangViewModel> list) {
-        jTableSanPham.setModel(dtm3);
+        DefaultTableModel model = new DefaultTableModel();
         String[] sp = {"id", "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
-        dtm3.setColumnIdentifiers(sp);
-        dtm3.setRowCount(0);
+        model.setColumnIdentifiers(sp);
+        int row = 0;
         for (SanPhamBanHangViewModel x : list) {
-            dtm3.addRow(new Object[]{x.getId(), jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
+            row += 1;
+            model.addRow(new Object[]{x.getId(), row, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
         }
+        jTableSanPham.setModel(model);
         jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
     }
 
@@ -805,7 +808,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             int soLuong = soLuongMua(row);
             if (soLuong != 0) {
 
-
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setSoLuong(soLuong);
                 BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
@@ -841,7 +843,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         }
         return tong;
     }
-
 
     private int soLuongMua(int index) {
 
@@ -915,13 +916,10 @@ public class ViewBanHang extends javax.swing.JPanel {
         showHoaDon(hoaDonService.getHoaDonBanHang());
 
 
-      
-
-
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-    
+
         if (txtTimKiemSoDienThoai.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Số điện thoại trống");
         } else if (txtDiaChiHoaDon.getText().isEmpty()) {
@@ -932,9 +930,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
             try {
                 // TODO add your handling code here:
-           
-                      
-                      
+
 //            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
 //                // add imei
 //                int soLuong = x.getValue().getSoLuong();
@@ -957,15 +953,12 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
 
+                
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
                 List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
                 new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
-
-                // word
-//            new CreartTableWord().word(date,hoaDon.getTenNguoiNhan(),maQRHoaDonChiTiet, maQRHoaDonChiTiet, list);
-                // pdf
                 new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
 
                 // gưi email cho khách hàng
@@ -1004,12 +997,12 @@ public class ViewBanHang extends javax.swing.JPanel {
         if (chon == JOptionPane.YES_OPTION) {
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
             List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-       
-        for (GioHangViewModel x : list) {
-          hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
-          hoaDonChiTietService.delete(hoaDonChiTiet);
-        }
-            int row  = jTableHoaDon.getSelectedRow();
+
+            for (GioHangViewModel x : list) {
+                hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
+                hoaDonChiTietService.delete(hoaDonChiTiet);
+            }
+            int row = jTableHoaDon.getSelectedRow();
             HoaDonBanHangViewModel viewModel = hoaDonService.getHoaDonBanHang().get(row);
             HoaDon hoaDon = hoaDonService.getById(viewModel.getId());
             hoaDonService.delete(hoaDon);
@@ -1074,9 +1067,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
         txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
 
-
         // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
-     
 
     }//GEN-LAST:event_jTableHoaDonMouseClicked
 
