@@ -29,6 +29,10 @@ public interface HoaDonChiTietService {
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
+    
+     List<GioHangViewModel> getGioHang(UUID idHoaDon);
+     
+         HoaDonChiTiet getById(UUID idHDCT);
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
@@ -40,5 +44,6 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
 
-    HoaDonChiTiet getByIdSanPham(UUID idSanPham);
+   
+
 }

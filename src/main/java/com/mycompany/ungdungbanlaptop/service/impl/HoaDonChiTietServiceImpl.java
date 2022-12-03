@@ -74,8 +74,11 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
-    public HoaDonChiTiet getByIdSanPham(UUID idSanPham) {
-        return hoaDonChiTietRepository.getByIdSanPham(idSanPham);
+
+    public HoaDonChiTiet getById(UUID idHDCT) {
+        return hoaDonChiTietRepository.getById(idHDCT);
+
     }
 
+   
 }

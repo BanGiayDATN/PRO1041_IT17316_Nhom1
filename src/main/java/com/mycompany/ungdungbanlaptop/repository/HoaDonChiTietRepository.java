@@ -36,6 +36,8 @@ public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
+     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
+     
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma);
@@ -43,8 +45,9 @@ public interface HoaDonChiTietRepository {
     List<HoaDonChiTiet> getAllByMa(String ma);
 
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
+    
+    HoaDonChiTiet getById(UUID idHDCT);
 
-    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
+ 
 
-    HoaDonChiTiet getByIdSanPham(UUID idSanPham);
 }
