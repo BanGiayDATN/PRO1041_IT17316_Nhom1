@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonChiTietRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
@@ -58,6 +59,16 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
+    public List<HoaDonChiTietSanPham> getListHDCTSP(String ma) {
+        return hoaDonChiTietRepository.getListHoaDonSanPham(ma);
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getAllByMa(String ma) {
+        return hoaDonChiTietRepository.getAllByMa(ma);
+    }
+
+   
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         return hoaDonChiTietRepository.getGioHang(idHoaDon);
     }

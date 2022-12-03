@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import java.util.List;
 
 import java.util.Map;
@@ -34,6 +35,12 @@ public interface HoaDonChiTietRepository {
     boolean saveAllHoaDonChiTiet(Map<UUID, GioHangViewModel> list);
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
+
+    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
+
+    List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma);
+
+    List<HoaDonChiTiet> getAllByMa(String ma);
 
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
 

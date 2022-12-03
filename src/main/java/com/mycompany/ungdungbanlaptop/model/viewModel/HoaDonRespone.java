@@ -26,6 +26,7 @@ public class HoaDonRespone {
     private long soLuong;
     private BigDecimal tong;
     
+
     public String getTrangThai(){
         if(tinhTrang == 1){
             return "Hóa đơn chờ";
