@@ -38,12 +38,10 @@ public class viewThongTinHoaDon extends javax.swing.JFrame {
 
 //        HoaDon hd = hoaDonServce.getOne(ma);
         List<HoaDonChiTiet> list = hoaDonChiTietService.getAllByMa(ma);
-        if (list == null) {
-            JOptionPane.showMessageDialog(this, "Sản phẩm không tồn tại");
-        } else {
+
             loadDonHangBan(list);
             System.out.println(list);
-        }
+
 
     }
 
@@ -56,7 +54,7 @@ public class viewThongTinHoaDon extends javax.swing.JFrame {
         tbHoaDon = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Thông tin hóa đơn chi tiết");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Thông tin"));

@@ -36,32 +36,15 @@ public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
-     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
-     
->>>>>>> develop
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma);
 
     List<HoaDonChiTiet> getAllByMa(String ma);
 
-<<<<<<< HEAD
-=======
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
-
-    List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
 
     HoaDonChiTiet getByIdSanPham(UUID idSanPham);
->>>>>>> develop
-=======
-    List<GioHangViewModel> getGioHang(UUID idHoaDon);
-    
+
     HoaDonChiTiet getById(UUID idHDCT);
-
- 
-
->>>>>>> develop
 }

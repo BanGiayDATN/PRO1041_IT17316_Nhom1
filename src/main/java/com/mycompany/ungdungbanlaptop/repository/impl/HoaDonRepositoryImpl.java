@@ -197,11 +197,10 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     
         System.out.println(new HoaDonRepositoryImpl().getHoaDonBanHang());
     }
-}
 
     @Override
-    public  List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma){
-       try (Session session = HibernateUtil.getFACTORY().openSession()) {
+    public List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai("
                     + "hd.ma, hd.ngayThanhToan, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen"
                     + " , Sum(hdct.soLuong), Sum(hdct.donGia)) "
@@ -217,9 +216,9 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null; 
     }
-    
-  
+}
 
+  
 
 
 

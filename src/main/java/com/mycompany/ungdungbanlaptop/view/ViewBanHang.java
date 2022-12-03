@@ -50,6 +50,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.coderazzi.filters.gui.AutoChoices;
 import net.coderazzi.filters.gui.TableFilterHeader;
+import java.net.URL;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -111,13 +113,17 @@ public class ViewBanHang extends javax.swing.JPanel {
     }
 
     private void showSanPham(List<SanPhamBanHangViewModel> list) {
-        jTableSanPham.setModel(dtm3);
+        DefaultTableModel model = new DefaultTableModel();
+
         String[] sp = {"id", "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng", "Giá bán", "Mô tả"};
-        dtm3.setColumnIdentifiers(sp);
-        dtm3.setRowCount(0);
+        model.setColumnIdentifiers(sp);
+//        dtm3.setRowCount(0);
+        int row = 0;
         for (SanPhamBanHangViewModel x : list) {
-            dtm3.addRow(new Object[]{x.getId(), jTableSanPham.getRowCount() + 1, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
+            row+=1;
+            model.addRow(new Object[]{x.getId(), row, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
         }
+        jTableSanPham.setModel(model);
         jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
     }
 
@@ -136,14 +142,14 @@ public class ViewBanHang extends javax.swing.JPanel {
     }
 
     private void showGioHangHDCT(List<GioHangViewModel> list) {
-
-        jTableGiohang.setModel(dtm2);
+        DefaultTableModel dtm1 = new DefaultTableModel();
+        jTableGiohang.setModel(dtm1);
         String[] gh = {"idHDCT", "idSP", "STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá"};
-        dtm2.setColumnIdentifiers(gh);
+        dtm1.setColumnIdentifiers(gh);
 
-        dtm2.setRowCount(0);
+        dtm1.setRowCount(0);
         for (GioHangViewModel x : list) {
-            dtm2.addRow(new Object[]{x.getIdHoaDonChiTiet(), x.getIdSanPham(), jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia()});
+            dtm1.addRow(new Object[]{x.getIdHoaDonChiTiet(), x.getIdSanPham(), jTableGiohang.getRowCount() + 1, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia()});
         }
 
         jTableGiohang.removeColumn(jTableGiohang.getColumnModel().getColumn(1));
@@ -534,7 +540,8 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         jScrollPane5.setViewportView(txtDiaChiHoaDon);
 
-        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
+        btnTimKiem.setBackground(new java.awt.Color(51, 204, 0));
+        btnTimKiem.setText("Tìm");
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTimKiemMouseClicked(evt);
@@ -805,7 +812,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             int soLuong = soLuongMua(row);
             if (soLuong != 0) {
 
-
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setSoLuong(soLuong);
                 BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
@@ -841,7 +847,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         }
         return tong;
     }
-
 
     private int soLuongMua(int index) {
 
@@ -915,13 +920,10 @@ public class ViewBanHang extends javax.swing.JPanel {
         showHoaDon(hoaDonService.getHoaDonBanHang());
 
 
-      
-
-
     }//GEN-LAST:event_btnTaoHoaDonMouseClicked
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
-    
+
         if (txtTimKiemSoDienThoai.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Số điện thoại trống");
         } else if (txtDiaChiHoaDon.getText().isEmpty()) {
@@ -932,9 +934,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
             try {
                 // TODO add your handling code here:
-           
-                      
-                      
+
 //            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
 //                // add imei
 //                int soLuong = x.getValue().getSoLuong();
@@ -1003,12 +1003,12 @@ public class ViewBanHang extends javax.swing.JPanel {
         int chon = JOptionPane.showConfirmDialog(this, "Bạn Chắc chắn muốn hủy?", "Hủy hóa đơn", JOptionPane.YES_NO_OPTION);
         if (chon == JOptionPane.YES_OPTION) {
             HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
-              List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-       
-        for (GioHangViewModel x : list) {
-          hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
-          hoaDonChiTietService.delete(hoaDonChiTiet);
-        }
+            List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+
+            for (GioHangViewModel x : list) {
+                hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
+                hoaDonChiTietService.delete(hoaDonChiTiet);
+            }
             HoaDon hd = new HoaDon();
             hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
             hoaDonService.delete(hd);
@@ -1073,9 +1073,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
         txtTongTien.setText(String.valueOf(tongTien().add(phiShip)));
 
-
         // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
-     
 
     }//GEN-LAST:event_jTableHoaDonMouseClicked
 
