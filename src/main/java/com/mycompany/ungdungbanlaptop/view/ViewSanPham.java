@@ -14,6 +14,7 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
@@ -35,6 +36,7 @@ import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ManHinhServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.RamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,6 +46,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -822,7 +825,11 @@ public class ViewSanPham extends javax.swing.JPanel {
         String sanphamExport = new TaoChuoiNgauNhien().getMaHoaDon("Danh_san_pham", 9);
         String loaiFile = ".xlsx";
         try {
-            writeExcel(sanPhamService.getAll(), sanphamExport, loaiFile);
+            JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+            writeExcel(sanPhamService.getAll(), filename, loaiFile);
             JOptionPane.showMessageDialog(this, "Export thành công ");
         } catch (IOException ex) {
             Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);

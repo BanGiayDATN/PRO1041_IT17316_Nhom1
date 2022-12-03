@@ -21,8 +21,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExportExcel {
 
     public static void writeToExcell(JTable table, String tenFile)  {
-        String home = System.getProperty("user.home");
-        File path = new File(home + "/Downloads/"+tenFile);
+
+        File path = new File(tenFile);
         try {
             Workbook wb = new XSSFWorkbook(); //Excell workbook
         Sheet sheet = wb.createSheet(); //WorkSheet

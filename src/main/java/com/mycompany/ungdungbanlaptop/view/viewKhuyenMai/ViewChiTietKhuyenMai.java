@@ -20,8 +20,10 @@ import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiSanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.io.File;
 import java.util.Date;
 import java.util.List;
+import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import net.coderazzi.filters.gui.AutoChoices;
 import net.coderazzi.filters.gui.TableFilterHeader;
@@ -517,7 +519,11 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btnXuatFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnXuatFileActionPerformed
-        new ChooseFileExcel(tblDơnHangBao).setVisible(true);
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+         ExportExcel.writeToExcell(tblDơnHangBao,filename+".xlsx");
     }//GEN-LAST:event_btnXuatFileActionPerformed
 
     /**

@@ -230,7 +230,7 @@ public class SanPhamExportExcel {
         int numberOfColumn = 16; // sheet.getRow(0).getPhysicalNumberOfCells();
         autosizeColumn(sheet, numberOfColumn);
 
-        String path = new File(home + "/Downloads/" + excelFilePath) + loaiFile;
+        String path = new File(excelFilePath) + loaiFile;
         createOutputFile(workbook, path);
         System.out.println("Done!!!");
     }

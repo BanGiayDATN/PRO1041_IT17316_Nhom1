@@ -117,8 +117,8 @@ public class HoaDonExport {
                 empTrangThaiCell.setCellValue(String.valueOf(hoaDon.getTong()));
             }
             //write output to response
-            String home = System.getProperty("user.home");
-            File path = new File(home + "/Downloads/" + tenFile);
+ 
+            File path = new File(tenFile);
             FileOutputStream outputStream = new FileOutputStream(path);
             workbook.write(outputStream);
         } catch (IOException e) {
