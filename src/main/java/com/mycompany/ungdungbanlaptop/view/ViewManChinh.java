@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
 import java.awt.FlowLayout;
 import java.io.File;
@@ -453,6 +454,12 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
+         viewChucNang.removeAll();
+        BaoHanh1 form = new BaoHanh1();
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
