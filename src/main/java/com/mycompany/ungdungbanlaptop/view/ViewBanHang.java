@@ -968,21 +968,21 @@ public class ViewBanHang extends javax.swing.JPanel {
         } else if (txtTienKhachDua.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tiền khách đưa trống");
         } else {
-//            String convertNgayString = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-//            long ngayHienTai = new ConverDate().dateToLong(convertNgayString, "dd/MM/yyyy");
-//            BigDecimal dieuKien;
-//            if (txtTongTien.getText().isEmpty()) {
-//                dieuKien = new BigDecimal("0");
-//            } else {
-//                dieuKien = new BigDecimal(txtTongTien.getText());
-//            }
-//            List<KhuyenMai> listKhuyenMai = khuyenMaiService.findAllKhuyenMaiByDieuKien(ngayHienTai, dieuKien);
-//            for (KhuyenMai item : listKhuyenMai) {
-//                if (item.getMa().equalsIgnoreCase(cbbKhuyenMaiSanPham.getSelectedItem().toString())) {
-//                    item.setSoLuong(item.getSoLuong() - 1);
-//                    khuyenMaiService.update(item);
-//                }
-//            }
+            String convertNgayString = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+            long ngayHienTai = new ConverDate().dateToLong(convertNgayString, "dd/MM/yyyy");
+            BigDecimal dieuKien;
+            if (txtTongTien.getText().isEmpty()) {
+                dieuKien = new BigDecimal("0");
+            } else {
+                dieuKien = new BigDecimal(txtTongTien.getText());
+            }
+            List<KhuyenMai> listKhuyenMai = khuyenMaiService.findAllKhuyenMaiByDieuKien(ngayHienTai, dieuKien);
+            for (KhuyenMai item : listKhuyenMai) {
+                if (item.getMa().equalsIgnoreCase(cbbKhuyenMaiSanPham.getSelectedItem().toString())) {
+                    item.setSoLuong(item.getSoLuong() - 1);
+                    khuyenMaiService.update(item);
+                }
+            }
             try {
 
                 hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
