@@ -339,7 +339,7 @@
               <Font name="Segoe UI" size="16" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="2" name="D:\DuAn1\PRO1041_IT17346_Nhom1\src\main\resources\Hinh\Accept.png"/>
+              <Image iconType="3" name="/Brick house.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Trang Ch&#x1ee7;"/>
           </Properties>

@@ -159,7 +159,7 @@ public class ViewManChinh extends javax.swing.JFrame {
 
         jButton2.setBackground(new java.awt.Color(0, 204, 204));
         jButton2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon("D:\\DuAn1\\PRO1041_IT17346_Nhom1\\src\\main\\resources\\Hinh\\Accept.png")); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Brick house.png"))); // NOI18N
         jButton2.setText("Trang Chủ");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
