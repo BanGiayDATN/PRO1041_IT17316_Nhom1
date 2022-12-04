@@ -9,11 +9,14 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -29,6 +32,7 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         list = khuyenMaiService.listKhuyenMaiRespone();
         lbSoLuong.setText(lbSoLuong.getText() + ": " + list.size());
         loadTable(list);
+        TableFilterHeader filterHeader = new TableFilterHeader(tblKhuyenMai, AutoChoices.ENABLED);
     }
 
     public static void addKhuyenMai(KhuyenMai khuyenMai){
@@ -205,6 +209,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhuyenMai.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                tblKhuyenMaiMouseMoved(evt);
+            }
+        });
         tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhuyenMaiMouseClicked(evt);
@@ -300,6 +309,10 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     private void btnAddKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKhuyenMaiActionPerformed
         new ViewThemKhuyenMai().setVisible(true);
     }//GEN-LAST:event_btnAddKhuyenMaiActionPerformed
+
+    private void tblKhuyenMaiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseMoved
+        tblKhuyenMai.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_tblKhuyenMaiMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

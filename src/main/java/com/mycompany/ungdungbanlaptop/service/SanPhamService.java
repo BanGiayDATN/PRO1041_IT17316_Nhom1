@@ -5,9 +5,11 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -51,4 +53,7 @@ public interface SanPhamService {
 
     List<SanPhamCustomRespone> getListSanPham();
 
+    List<SanPhamRequest> checkValidFile(List<SanPhamRequest> list);
+    
+    String SanPhamImport(File file);
 }

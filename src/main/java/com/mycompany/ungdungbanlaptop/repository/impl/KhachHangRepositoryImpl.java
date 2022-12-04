@@ -10,7 +10,6 @@ import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
 import java.util.ArrayList;
-import  java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;

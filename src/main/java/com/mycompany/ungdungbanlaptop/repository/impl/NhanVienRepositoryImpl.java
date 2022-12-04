@@ -6,12 +6,9 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.repository.NhanVienRepository;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

@@ -4,12 +4,10 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.repository.HangRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;
-import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
