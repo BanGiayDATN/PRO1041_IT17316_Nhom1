@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.CPU;
-import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import java.util.List;
 

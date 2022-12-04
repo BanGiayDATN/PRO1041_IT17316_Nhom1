@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
@@ -17,11 +18,18 @@ import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Color;
+import java.awt.Cursor;
 import java.math.BigDecimal;
+import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.io.filefilter.FileFileFilter;
 import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
@@ -141,6 +149,11 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblHoaDon.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                tblHoaDonMouseMoved(evt);
+            }
+        });
         tblHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblHoaDonMouseClicked(evt);
@@ -289,7 +302,12 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSeachActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ChooseFileExcel(hoaDonService.getAll(getSeachHoaDon())).setVisible(true);
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        HoaDonExport.exportData(list, filename + ".xlsx");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
@@ -301,12 +319,23 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
         List<HoaDonChiTiet> list = hoaDonChiTietService.getAllByMa(ma);
         loadDonHangBan(list);
 
-
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void tbHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tbHoaDonMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tbHoaDonMouseClicked
+
+    private void tblHoaDonMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseMoved
+        tblHoaDon.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        int row = tblHoaDon.rowAtPoint(evt.getPoint());
+        if (row > -1) {
+            // easiest way:
+            tblHoaDon.clearSelection();
+            tblHoaDon.setRowSelectionInterval(row, row);
+        } else {
+            tblHoaDon.setSelectionBackground(Color.blue);
+        }
+    }//GEN-LAST:event_tblHoaDonMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

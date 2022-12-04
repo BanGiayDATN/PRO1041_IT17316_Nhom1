@@ -4,13 +4,25 @@
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
 
+import com.mycompany.ungdungbanlaptop.entity.CPU;
+import com.mycompany.ungdungbanlaptop.entity.Hang;
+import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
+import com.mycompany.ungdungbanlaptop.entity.ManHinh;
+import com.mycompany.ungdungbanlaptop.entity.Mau;
+import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.SanPhamImport;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
+import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
+import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.MessageErrorImport;
+import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.SanPhamImport;
+import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResquest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
@@ -139,65 +151,123 @@ public class SanPhamServiceImpl implements SanPhamService {
     public List<SanPhamCustomRespone> getListSanPham() {
         return sanPhamRepository.getListSanPham();
     }
-
+    
+    @Override
     public List<SanPhamRequest> checkValidFile(List<SanPhamRequest> list) {
-        Map<String, SanPham> mapSanPham = new HashMap<>();
+        Map<String, ChiTietSanPhamImportResquest> mapSanPham = new HashMap<>();
         if (list == null) {
             return null;
         }
         for (SanPhamRequest sp : list) {
+            ChiTietSanPhamImportResquest ctsp = new ChiTietSanPhamImportResquest();
             SanPham sanPham = new SanPham();
             sanPham.setMa(sp.getMa());
             sanPham.setTen(sp.getTen());
-//            sanPham.setGiaBan(BigDecimal.valueOf(Double.valueOf(sp.getGiaBan())));
-//            sanPham.setNamBH(Integer.valueOf(sp.getNamBH()));
-//            sanPham.setSoLuongTon(Integer.valueOf(sp.getSoLuongTon()));
-//            sanPham.setTrongLuong(Float.parseFloat(sp.getTrongLuong()));
-            mapSanPham.put(sanPham.getMa(), sanPham);
+            sanPham.setGiaBan(BigDecimal.valueOf(Double.valueOf(sp.getGiaBan())));
+            sanPham.setNamBH(Integer.valueOf(sp.getNamBH()));
+            sanPham.setSoLuongTon(Integer.valueOf(sp.getSoLuongTon()));
+            sanPham.setTrongLuong(Float.parseFloat(sp.getTrongLuong()));
+            ctsp.setSanPham(sanPham);
+            
+            ManHinh manHinh = new ManHinh();
+            manHinh.setMa(new TaoChuoiNgauNhien().getMkRanMa("MH",10));
+            manHinh.setDoPhanGiaMan(sp.getDoPhanGiaMan());
+            manHinh.setKichThuoc(sp.getKichThuoc());
+            ctsp.setManHinh(manHinh);
+            
+            CPU cpu = new CPU();
+            cpu.setMa(new TaoChuoiNgauNhien().getMkRanMa("CPU",10));
+            cpu.setTen(sp.getTenCPU());
+            ctsp.setCpu(cpu);
+            
+            Mau mau = new Mau();
+            mau.setMa(new TaoChuoiNgauNhien().getMkRanMa("Mau",10));
+            mau.setTen(sp.getTenMau());
+            ctsp.setMauSac(mau);
+            
+            HeDieuHanh heDieuHanh = new HeDieuHanh();
+            heDieuHanh.setMa(new TaoChuoiNgauNhien().getMkRanMa("HDH",10));
+            heDieuHanh.setHeDieuHanh(getEumHeDieuHanh(sp.getHeDieuHanh()));
+            heDieuHanh.setTen(sp.getTenHeDieuHanh());
+            ctsp.setHeDieuHanh(heDieuHanh);
+            
+            Ram ram = new Ram();
+            ram.setMa(new TaoChuoiNgauNhien().getMkRanMa("RAM",10));
+            ram.setDungLuong(Integer.parseInt(sp.getDungLuong()));
+            ram.setEnumLoaiRam(getLoaiRam(sp.getEnumLoaiRam()));
+            ctsp.setRam(ram);
+            
+            Hang hang = new Hang();
+            hang.setMa(new TaoChuoiNgauNhien().getMkRanMa("Hang",10));
+            hang.setTen(sp.getTenHang());
+            ctsp.setHang(hang);
+            
+            mapSanPham.put(sanPham.getMa(), ctsp);
         }
-//        sanPhamRepository.saveAllSanPham(mapSanPham);
+        sanPhamRepository.saveAllSanPham(mapSanPham);
         System.out.println(mapSanPham.values());
         return list;
     }
 
+   public EnumHeDieuHanh getEumHeDieuHanh(String tenHeDieuHanh) {
+        if (tenHeDieuHanh.equalsIgnoreCase("Windows")) {
+            return EnumHeDieuHanh.WINDOWS;
+        } else if (tenHeDieuHanh.equalsIgnoreCase("Macos")) {
+            return EnumHeDieuHanh.MACOS;
+        } else if (tenHeDieuHanh.equalsIgnoreCase("Linux")) {
+            return EnumHeDieuHanh.LINUX;
+        }
+        return EnumHeDieuHanh.KHAC;
+    }
+    
+    private EnumLoaiRam getLoaiRam(String loaiRam) {
+       
+        if (loaiRam.equals("SDRAM")) {
+            return EnumLoaiRam.SDRAM;
+        } else if (loaiRam.equals("DDR1")) {
+            return EnumLoaiRam.DDR1;
+        } else if (loaiRam.equals("DDR2")) {
+            return EnumLoaiRam.DDR2;
+        } else if (loaiRam.equals("DDR3")) {
+            return EnumLoaiRam.DDR3;
+        } else if (loaiRam.equals("DDR4")) {
+            return EnumLoaiRam.DDR4;
+        }
+        return EnumLoaiRam.DDR5;
+    }
+    
+    @Override
     public String SanPhamImport(File file) {
         List<SanPhamRequest> listSanPham = new ArrayList<>();
-        String message = "";
+
         try {
-            boolean check = true;
+            MessageErrorImport messageErrorImport = new MessageErrorImport();
             SanPhamImport sanPhamImport = new SanPhamImport();
             List<SanPhamRequest> listSP = sanPhamImport.importData(file);
             Map<String, String> map = new HashMap<>();
-
+            messageErrorImport.setCheck(true);
+            
             listSP.stream().forEach(sp -> {
-                System.out.println("hello");
                 if (sp.getMa().isEmpty() || sp.getTen().isEmpty() || sp.getGiaBan().isEmpty() || sp.getSoLuongTon().isEmpty() || sp.getNamBH().isEmpty()) {
-//                    check = false;
-//                    message = "Không được để trống";
+                    messageErrorImport.setCheck(false);
+                    messageErrorImport.setMessage("vui long khong de trong ");
+
                     return;
                 }
 
                 if (sp.getTen().trim().length() < 8) {
-//                    check = false;
-//                    message ="Tên sản phẩm lớn hơn 8";
                     return;
                 }
 
-                if (sp.getGiaBan().matches("\\d+")) {
-//                    check = false;
-//                    message =" ";
+                if (!sp.getGiaBan().matches("\\d+")) {
                     return;
                 }
 
-                if (sp.getSoLuongTon().matches("\\d+")) {
-//                    check = false;
-//                    message = " ";
+                if (!sp.getSoLuongTon().matches("\\d+")) {
                     return;
                 }
 
-                if (sp.getNamBH().matches("\\d+")) {
-//                    check = false;
-//                    message =" ";
+                if (!sp.getNamBH().matches("\\d+")) {
                     return;
                 }
 
@@ -208,9 +278,18 @@ public class SanPhamServiceImpl implements SanPhamService {
                 sanPhamRequest.setTrongLuong(sp.getTrongLuong());
                 sanPhamRequest.setSoLuongTon(sp.getSoLuongTon());
                 sanPhamRequest.setNamBH(sp.getNamBH());
+                sanPhamRequest.setDoPhanGiaMan(sp.getDoPhanGiaMan());
+                sanPhamRequest.setKichThuoc(sp.getKichThuoc());
+                sanPhamRequest.setTenCPU(sp.getTenCPU());
+                sanPhamRequest.setTenMau(sp.getTenMau());
+                sanPhamRequest.setTenHeDieuHanh(sp.getTenHeDieuHanh());
+                sanPhamRequest.setHeDieuHanh(sp.getHeDieuHanh());
+                sanPhamRequest.setDungLuong(sp.getDungLuong());
+                sanPhamRequest.setEnumLoaiRam(sp.getEnumLoaiRam());
+                sanPhamRequest.setTenHang(sp.getTenHang());
                 listSanPham.add(sanPhamRequest);
             });
-            if (check == true) {
+            if (messageErrorImport.isCheck()) {
                 checkValidFile(listSanPham);
             }
         } catch (Exception e) {
@@ -220,8 +299,25 @@ public class SanPhamServiceImpl implements SanPhamService {
         return "thành công";
     }
 
-    public static void main(String[] args) {
-        SanPhamServiceImpl sanPhamServiceImpl = new SanPhamServiceImpl();
-        System.out.println(sanPhamServiceImpl.SanPhamImport(new File("C:\\Users\\thang\\Downloads\\12.xlsx")));
+    @Override
+    public long countSanPham(long begin, long end) {
+        return sanPhamRepository.countSanPham(begin, end);
     }
+
+    @Override
+    public long soSanPhamTheoNgay(long toDay) {
+        return sanPhamRepository.soSanPhamTheoNgay(toDay);
+    }
+
+    @Override
+    public long soSanPham() {
+        return sanPhamRepository.soSanPham();
+    }
+
+    @Override
+    public List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay() {
+        return sanPhamRepository.top10SanPhamBanChay();
+    }
+
+
 }

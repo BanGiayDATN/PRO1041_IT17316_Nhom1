@@ -9,16 +9,15 @@ import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.List;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.streaming.SXSSFSheet;
+import org.apache.poi.xssf.streaming.SXSSFWorkbook;
+
 
 /**
  *
@@ -27,8 +26,9 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class HoaDonExport {
 
     public static void exportData(List<HoaDonRespone> listHoaDon, String tenFile) {
-        try ( Workbook workbook = new XSSFWorkbook()) {
-            Sheet sheet = workbook.createSheet("Nhóm DATN");
+        try ( SXSSFWorkbook workbook = new SXSSFWorkbook()) {
+            SXSSFSheet sheet = workbook.createSheet("Sheet");
+            sheet.trackAllColumnsForAutoSizing();
             CellStyle cellStyle = workbook.createCellStyle();
             //set border to table
             cellStyle.setBorderTop(BorderStyle.MEDIUM);
@@ -117,12 +117,21 @@ public class HoaDonExport {
                 empTrangThaiCell.setCellValue(String.valueOf(hoaDon.getTong()));
             }
             //write output to response
-            String home = System.getProperty("user.home");
-            File path = new File(home + "/Downloads/" + tenFile);
+ 
+            int numberOfColumn = 9; // sheet.getRow(0).getPhysicalNumberOfCells();
+            autosizeColumn(sheet, numberOfColumn);
+            
+            File path = new File(tenFile);
             FileOutputStream outputStream = new FileOutputStream(path);
             workbook.write(outputStream);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+    
+    private static void autosizeColumn(SXSSFSheet sheet, int lastColumn) {
+        for (int columnIndex = 0; columnIndex < lastColumn; columnIndex++) {
+            sheet.autoSizeColumn(columnIndex);
         }
     }
 }

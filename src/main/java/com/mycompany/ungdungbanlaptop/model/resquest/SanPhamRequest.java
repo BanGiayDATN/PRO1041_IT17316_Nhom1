@@ -21,25 +21,20 @@ import org.bridj.ann.Alignment;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SanPhamRequest {
-    
     private String ma;
     private String ten;
     private String giaBan;
     private String trongLuong;
     private String soLuongTon;
     private String namBH;
-    private String maManHinh;
     private String doPhanGiaMan;
-     private String kichThuoc;
-     private String maCPU;
-     private String tenCPU;  
-     private String maMau;
-     private String tenMau;
-     private String maHeDieuHanh;
-     private String tenHeDieuHanh;
-     private String maRam;
-     private int dungLuong;
-     private EnumLoaiRam enumLoaiRam;
-     private String tenHang;
-     
+    private String kichThuoc;
+    private String tenCPU;
+    private String tenMau;
+    private String tenHeDieuHanh;
+    private String heDieuHanh;
+    private String dungLuong;
+    private String enumLoaiRam;
+    private String tenHang;
+
 }

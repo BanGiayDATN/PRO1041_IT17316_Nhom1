@@ -5,9 +5,11 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResquest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
@@ -220,8 +222,10 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel"
+                    + "(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa)"
+                    + " FROM SanPham sp  WHERE sp.trangThai = 0 ";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             return list;
@@ -313,19 +317,106 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return list;
     }
 
-
     @Override
-    public boolean saveAllSanPham(Map<String, SanPham> list) {
+    public boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list) {
         Transaction transaction = null;
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
-            list.values().stream().forEach(sanPham -> {session.save(sanPham);});
+            list.values().stream().forEach(item -> {
+                session.save(item.getCpu());
+                session.save(item.getHang());
+                session.save(item.getHeDieuHanh());
+                session.save(item.getManHinh());
+                session.save(item.getMauSac());
+                session.save(item.getRam());
+                item.getSanPham().setCpu(item.getCpu());
+                item.getSanPham().setHang(item.getHang());
+                item.getSanPham().setHeDieuHanh(item.getHeDieuHanh());
+                item.getSanPham().setManHinh(item.getManHinh());
+                item.getSanPham().setMau(item.getMauSac());
+                item.getSanPham().setRam(item.getRam());
+                session.save(item.getSanPham());
+            });
             transaction.commit();
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return true;
     }
 
+    @Override
+    public long countSanPham(long begin, long end) {
+        long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
+                    + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
+                    + " where hd.ngayTao BETWEEN :begin AND :end ";
+            Query query = session.createQuery(hql);
+            query.setParameter("begin", begin);
+            query.setParameter("end", end);
+            count = (long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
+    
+  
+
+    @Override
+    public long soSanPhamTheoNgay(long toDay) {
+         long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
+                    + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
+                    + " where hd.ngayThanhToan =:toDay";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
+            count = (long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
+
+    @Override
+    public long soSanPham() {
+       long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct ";
+
+            Query query = session.createQuery(hql);
+            count = (long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
+     public static void main(String[] args) {
+        long begin = 1659286800000l;
+        long end = 1662310800000l;
+        long soLuong = new SanPhamRepositoryImpl().countSanPham(begin, end);
+        System.out.println(new SanPhamRepositoryImpl().soSanPhamTheoNgay(1662310800000l));
+    }
+
+    @Override
+    public List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay() {
+         List<Top10SanPhamBanChayViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT  new com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel( sp.ten,SUM(hdct.soLuong),hdct.donGia)  FROM SanPham sp"
+                    + " INNER JOIN HoaDonChiTiet hdct "
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " GROUP BY sp.ten,hdct.donGia"
+                    + " ORDER BY SUM(hdct.soLuong) DESC";
+            Query<Top10SanPhamBanChayViewModel> query = session.createQuery(hql);
+            list = query.setMaxResults(10).getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 }

@@ -28,7 +28,7 @@ public class HoaDonRespone {
     
 
     public String getTrangThai(){
-        if(tinhTrang == 0){
+        if(tinhTrang == 1){
             return "Hóa đơn chờ";
         }else{
             return "Đã thanh toán";

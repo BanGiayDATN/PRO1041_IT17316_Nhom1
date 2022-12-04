@@ -77,5 +77,20 @@ public class HoaDonServiceImpl implements HoaDonService{
     public List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma) {
         return hoadonRepository.findAllByMaKhuyenMai(ma);
     }
+
+    @Override
+    public long countKhachHang(long batDau, long ketThuc) {
+        return hoadonRepository.countKhachHang(batDau, ketThuc);
+    }
+
+    @Override
+    public long soKhachHangTheoNgay(long toDay) {
+        return hoadonRepository.soKhachHangTheoNgay(toDay);
+    }
+
+    @Override
+    public long tongSoKhachHang() {
+        return hoadonRepository.tongSoKhachHang();
+    }
     
 }

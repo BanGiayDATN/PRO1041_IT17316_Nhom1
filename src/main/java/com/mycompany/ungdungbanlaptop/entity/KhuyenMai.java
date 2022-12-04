@@ -66,6 +66,9 @@ public class KhuyenMai {
     @Column(name = "so_luong")
     private int soLuong;
     
+    @Column(name = "hinh_thuc")
+    private boolean hinhThuc;
+    
     @Column(name = "phan_tram")
     private int phanTram;
     

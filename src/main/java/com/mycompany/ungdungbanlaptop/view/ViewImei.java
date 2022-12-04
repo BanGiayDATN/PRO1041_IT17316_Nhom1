@@ -6,9 +6,15 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
+import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import com.mycompany.ungdungbanlaptop.service.ImeiService;
+import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
+import com.mycompany.ungdungbanlaptop.view.viewlogin.swing.Button;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
+import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -17,27 +23,22 @@ import javax.swing.table.DefaultTableModel;
  * @author Diệm DZ
  */
 public class ViewImei extends javax.swing.JFrame {
+
+    private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
     private ImeiService imeiService = new ImeiServiceImpl();
     private DefaultTableModel dtm = new DefaultTableModel();
     private HoaDonChiTiet hdct;
+
     /**
      * Creates new form ViewImei
      */
     public ViewImei(HoaDonChiTiet hoaDonChiTiet) {
         initComponents();
         this.hdct = hoaDonChiTiet;
-      
+        jLabel4.setText(String.valueOf(hdct.getSoLuong()));
     }
-    private void showData(List<Imei> list){
-        jTableImei.setModel(dtm);
-        String a[] ={"Mã","Trạng thái"};
-        dtm.setColumnIdentifiers(a);
-        
-         dtm.setRowCount(0);
-        for (Imei x : list) {
-            dtm.addRow(new Object[]{x.getMa(),x.getTrangThai() == 0 ? "Đã dùng" :"Chưa dùng"});
-        }
-    }
+
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -51,10 +52,11 @@ public class ViewImei extends javax.swing.JFrame {
         txtMaImei = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         btnAdd = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTableImei = new javax.swing.JTable();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnLamMoi = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jLabel1.setText("Mã Imei");
 
@@ -67,18 +69,16 @@ public class ViewImei extends javax.swing.JFrame {
             }
         });
 
-        jTableImei.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        jLabel3.setText("Số imei phải thêm:");
+
+        jLabel4.setText("jLabel4");
+
+        btnLamMoi.setText("Làm mới");
+        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLamMoiActionPerformed(evt);
             }
-        ));
-        jScrollPane1.setViewportView(jTableImei);
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -87,36 +87,42 @@ public class ViewImei extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(26, 26, 26)
-                        .addComponent(jLabel2))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(46, 46, 46)
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(btnAdd))))
+                        .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 354, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(59, 59, 59)
+                        .addComponent(btnAdd)
+                        .addGap(36, 36, 36)
+                        .addComponent(btnLamMoi)))
+                .addContainerGap(47, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
-                .addGap(40, 40, 40)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel2)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)))
+                .addGap(26, 26, 26)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(49, 49, 49)
-                .addComponent(btnAdd)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(50, Short.MAX_VALUE))
+                .addGap(39, 39, 39)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnAdd)
+                    .addComponent(btnLamMoi))
+                .addContainerGap(67, Short.MAX_VALUE))
         );
 
         pack();
@@ -124,16 +130,21 @@ public class ViewImei extends javax.swing.JFrame {
 
     private void btnAddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddActionPerformed
         // TODO add your handling code here:
-        Imei imei = new Imei();
-        imei.setMa(txtMaImei.getText());
-        imei.setTrangThai(1);
-       
-        imei.setHoaDonChiTiet(hdct);
-        
-        
-        JOptionPane.showMessageDialog(this, imeiService.add(imei));
-          showData(imeiService.getAll());
+     
+             Imei imei = new Imei();
+            imei.setMa(txtMaImei.getText());
+            imei.setTrangThai(1);
+            imei.setHoaDonChiTiet(hdct);
+
+            JOptionPane.showMessageDialog(this, imeiService.add(imei));
+            
+            jLabel4.setText(String.valueOf(Integer.valueOf(jLabel4.getText())-1));
     }//GEN-LAST:event_btnAddActionPerformed
+
+    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
+        // TODO add your handling code here:
+        txtMaImei.setText("");
+    }//GEN-LAST:event_btnLamMoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -172,10 +183,11 @@ public class ViewImei extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
+    private javax.swing.JButton btnLamMoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableImei;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField txtMaImei;
     // End of variables declaration//GEN-END:variables
 }

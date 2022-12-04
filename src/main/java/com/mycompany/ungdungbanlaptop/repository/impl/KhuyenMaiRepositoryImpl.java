@@ -14,6 +14,9 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
@@ -135,7 +138,7 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone"
                     + "(km.idKhuyenMai,km.ma,km.ten,km.ngayBatDau,km.ngayKetThuc,km.loaiKhuyenMai,km.soLuong) "
                     + "FROM KhuyenMai km ";
-                    
+
             Query query = session.createQuery(hql);
 
             list = query.getResultList();
@@ -144,7 +147,27 @@ public class KhuyenMaiRepositoryImpl implements KhuyenMaiRepository {
         }
         return list;
     }
+
+    @Override
+    public List<KhuyenMai> findAllKhuyenMaiByDieuKien(long ngayHienTai, BigDecimal dieuKien) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession();) {
+            //String ma, long ngayBatDau, long ngayKetThuc, int trangThai, int soLuong, int phanTram
+            Query query = session.createQuery(" FROM KhuyenMai km "
+                    + " WHERE (:ngayHienTai BETWEEN km.ngayBatDau AND km.ngayKetThuc "
+                    + "        AND :giaTien >= km.dieuKienGiamGia ) "
+                    + " OR (km.soLuong  > 0 AND km.trangThai = 1 AND :giaTien >= km.dieuKienGiamGia)").setParameter("ngayHienTai", ngayHienTai).setParameter("giaTien", dieuKien);
+            List<KhuyenMai> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+        }
+        return null;
+    }
     
-   
+    public static void main(String[] args) {
+        KhuyenMaiRepositoryImpl km = new KhuyenMaiRepositoryImpl();
+        String h = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+        long a = new ConverDate().dateToLong(h, "dd/MM/yyyy");
+        System.out.println(km.findAllKhuyenMaiByDieuKien(a , new BigDecimal("121212121")));
+    }
 
 }

@@ -14,6 +14,8 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.MauExportSanPham;
 import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
@@ -35,6 +37,8 @@ import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ManHinhServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.RamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.awt.Cursor;
+import java.io.File;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -44,8 +48,11 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -102,6 +109,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         comBoBoxRam(listRam);
         comBoBoxHeDieuHanh(listHeDieuHanh);
         showData(listSanPham);
+        TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
+        filterHeader.setCursor(new Cursor(Cursor.HAND_CURSOR));
 
     }
 
@@ -383,6 +392,8 @@ public class ViewSanPham extends javax.swing.JPanel {
         jTableSanPham = new javax.swing.JTable();
         jToggleButton1 = new javax.swing.JToggleButton();
         btn_export = new javax.swing.JButton();
+        btnImport = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         jMenuItem1.setText("Update SanPham");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -603,6 +614,11 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         ));
         jTableSanPham.setComponentPopupMenu(jPopupMenu1);
+        jTableSanPham.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTableSanPhamMouseMoved(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTableSanPham);
 
         jToggleButton1.setText("Thêm");
@@ -615,10 +631,25 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         });
 
+        btn_export.setBackground(new java.awt.Color(255, 255, 255));
         btn_export.setText("ExportExcel");
         btn_export.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_exportActionPerformed(evt);
+            }
+        });
+
+        btnImport.setText("Import Excel");
+        btnImport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnImportActionPerformed(evt);
+            }
+        });
+
+        jButton1.setText("Export Mẫu");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
             }
         });
 
@@ -632,7 +663,11 @@ public class ViewSanPham extends javax.swing.JPanel {
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27)
-                        .addComponent(btn_export))
+                        .addComponent(btn_export)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnImport, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButton1))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 864, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(94, Short.MAX_VALUE))
         );
@@ -642,7 +677,10 @@ public class ViewSanPham extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jToggleButton1)
-                    .addComponent(btn_export))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(btn_export)
+                        .addComponent(btnImport)
+                        .addComponent(jButton1)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(47, 47, 47))
@@ -819,10 +857,9 @@ public class ViewSanPham extends javax.swing.JPanel {
 
     private void btn_exportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exportActionPerformed
         // TODO add your handling code here:
-        String sanphamExport = new TaoChuoiNgauNhien().getMaHoaDon("Danh_san_pham", 9);
         String loaiFile = ".xlsx";
         try {
-            writeExcel(sanPhamService.getAll(), sanphamExport, loaiFile);
+            writeExcel(sanPhamService.getAll(), loaiFile);
             JOptionPane.showMessageDialog(this, "Export thành công ");
         } catch (IOException ex) {
             Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
@@ -830,10 +867,43 @@ public class ViewSanPham extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btn_exportActionPerformed
 
+    private void jTableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseMoved
+        // TODO add your handling code here:
+        jTableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
+
+    }//GEN-LAST:event_jTableSanPhamMouseMoved
+
+    private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f = chooser.getSelectedFile();
+            String filename = f.getAbsolutePath();
+            JOptionPane.showMessageDialog(this, sanPhamService.SanPhamImport(new File(filename)));
+        } catch (Exception ex) {
+            Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Import thất bại ");
+        }
+    }//GEN-LAST:event_btnImportActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f = chooser.getSelectedFile();
+            String filename = f.getAbsolutePath();
+            MauExportSanPham.exportData(filename + ".xlsx");
+        } catch (Exception ex) {
+            Logger.getLogger(ViewSanPham.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(this, "Import thất bại ");
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem KhongBan;
     private javax.swing.JPanel TimKiemSanPham;
+    private javax.swing.JButton btnImport;
     private javax.swing.JButton btn_export;
     private javax.swing.JButton btn_search;
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbCPUSearch;
@@ -846,6 +916,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     private static com.mycompany.ungdungbanlaptop.cboCustom.AutoComboBox cbbRamSearch;
     private static javax.swing.JComboBox<String> cbb_namSearch;
     private javax.swing.JMenuItem conBan;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
