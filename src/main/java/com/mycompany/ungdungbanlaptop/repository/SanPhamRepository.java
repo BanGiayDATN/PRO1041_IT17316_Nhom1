@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResquest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
@@ -49,4 +50,7 @@ public interface SanPhamRepository {
     
     List<SanPhamCustomRespone> getListSanPham();
 
+    boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list);
+    
+    long countSanPham(long begin , long end);
 }

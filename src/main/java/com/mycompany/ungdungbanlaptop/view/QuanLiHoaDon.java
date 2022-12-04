@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
@@ -15,10 +16,15 @@ import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JTable;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
+import org.apache.commons.io.filefilter.FileFileFilter;
 import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**
@@ -232,15 +238,20 @@ public class QuanLiHoaDon extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSeachActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        new ChooseFileExcel(hoaDonService.getAll(getSeachHoaDon())).setVisible(true);
+
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        HoaDonExport.exportData(list, filename + ".xlsx");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
 
         int row = tblHoaDon.getSelectedRow();
-        HoaDonRespone repon= list.get(row);
+        HoaDonRespone repon = list.get(row);
 //        System.out.println(ma);
-       new viewThongTinHoaDon(repon).setVisible(true);
+        new viewThongTinHoaDon(repon).setVisible(true);
 
     }//GEN-LAST:event_tblHoaDonMouseClicked
 

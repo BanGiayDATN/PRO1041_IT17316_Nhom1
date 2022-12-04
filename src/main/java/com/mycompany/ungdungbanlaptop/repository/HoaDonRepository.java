@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
-import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
@@ -40,5 +39,7 @@ public interface HoaDonRepository {
     HoaDon getById(UUID id);
 
     List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma);
+    
+    long countKhachHang(long batDau , long ketThuc);
 
 }

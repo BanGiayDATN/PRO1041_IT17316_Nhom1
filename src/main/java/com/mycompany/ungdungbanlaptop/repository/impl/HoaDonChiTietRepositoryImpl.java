@@ -12,7 +12,6 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -137,10 +136,11 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
+
     @Override
     public List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma) {
         List<HoaDonChiTietSanPham> list = new ArrayList<>();
-        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = " SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham( hd.sanPham.ma,"
                     + " hd.sanPham.ten,"
                     + "hd.sanPham.ram.dungLuong,"
@@ -150,7 +150,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
                     + " hd.soLuong) "
                     + " FROM  HoaDonChiTiet hd "
                     + " WHERE hd.hoaDon.ma = :ma";
-            Query query = session.createQuery(hql).setParameter("ma",ma);
+            Query query = session.createQuery(hql).setParameter("ma", ma);
             list = query.getResultList();
         } catch (Exception e) {
             e.printStackTrace(System.out);
@@ -174,17 +174,17 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
-  
 
     @Override
     public List<HoaDonChiTiet> getAllByMa(String ma) {
-         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
             query.setParameter("ma", ma);
             List<HoaDonChiTiet> list = query.getResultList();
-            
-            return list;
 
+            return list;
+        }
+    }
 
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
@@ -209,6 +209,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
+<<<<<<< HEAD
+=======
+    public static void main(String[] args) {
+//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
+    }
+
+>>>>>>> develop
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -223,6 +230,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
     }
+<<<<<<< HEAD
 
 <<<<<<< HEAD
     @Override
@@ -334,4 +342,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
 =======
 >>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
+=======
+>>>>>>> develop
 }

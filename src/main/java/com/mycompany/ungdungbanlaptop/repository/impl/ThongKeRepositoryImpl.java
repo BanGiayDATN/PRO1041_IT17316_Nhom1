@@ -4,8 +4,11 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
+<<<<<<< HEAD
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat;
+=======
+>>>>>>> develop
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.ThongKeRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;

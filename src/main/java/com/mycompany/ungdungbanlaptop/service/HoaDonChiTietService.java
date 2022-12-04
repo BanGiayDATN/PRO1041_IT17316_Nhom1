@@ -30,15 +30,21 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> develop
 
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
 
     HoaDonChiTiet getById(UUID idHDCT);
+<<<<<<< HEAD
 =======
     
      List<GioHangViewModel> getGioHang(UUID idHoaDon);
      
          HoaDonChiTiet getById(UUID idHDCT);
+=======
+>>>>>>> develop
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
@@ -46,6 +52,7 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTiet> getAllByMa(String ma);
 
+<<<<<<< HEAD
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
 >>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
 
@@ -53,4 +60,6 @@ public interface HoaDonChiTietService {
 
     HoaDonChiTiet getByIdHoaDon(UUID idHD);
 
+=======
+>>>>>>> develop
 }

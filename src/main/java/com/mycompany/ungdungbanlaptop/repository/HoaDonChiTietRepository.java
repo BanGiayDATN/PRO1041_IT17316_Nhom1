@@ -14,11 +14,7 @@ import java.util.Date;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 >>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
 import java.util.List;
-
 import java.util.Map;
-
-import java.util.Map;
-
 import java.util.UUID;
 
 /**
@@ -42,11 +38,14 @@ public interface HoaDonChiTietRepository {
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
 <<<<<<< HEAD
+<<<<<<< HEAD
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
 =======
      List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
      
+=======
+>>>>>>> develop
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngạyetThuc);
 
     List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma);
@@ -55,6 +54,7 @@ public interface HoaDonChiTietRepository {
 
 >>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
+<<<<<<< HEAD
 
     HoaDonChiTiet getById(UUID idHDCT);
 
@@ -71,5 +71,9 @@ public interface HoaDonChiTietRepository {
     long soHoaDonTong();
     
     
+=======
+
+    HoaDonChiTiet getById(UUID idHDCT);
+>>>>>>> develop
 
 }
