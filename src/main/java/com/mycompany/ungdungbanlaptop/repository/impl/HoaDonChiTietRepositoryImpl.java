@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
@@ -136,6 +137,26 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
+    @Override
+    public List<HoaDonChiTietSanPham> getListHoaDonSanPham(String ma) {
+        List<HoaDonChiTietSanPham> list = new ArrayList<>();
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = " SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham( hd.sanPham.ma,"
+                    + " hd.sanPham.ten,"
+                    + "hd.sanPham.ram.dungLuong,"
+                    + "hd.sanPham.chatLieu.ten ,"
+                    + "hd.sanPham.heDieuHanh.ten, "
+                    + "hd.hoaDon.khachHang.hoTen,"
+                    + " hd.soLuong) "
+                    + " FROM  HoaDonChiTiet hd "
+                    + " WHERE hd.hoaDon.ma = :ma";
+            Query query = session.createQuery(hql).setParameter("ma",ma);
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
 
     @Override
     public List<HoaDonChiTiet> getWord(UUID idHoaDon) {
@@ -153,6 +174,17 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
+  
+
+    @Override
+    public List<HoaDonChiTiet> getAllByMa(String ma) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
+            query.setParameter("ma", ma);
+            List<HoaDonChiTiet> list = query.getResultList();
+            
+            return list;
+
 
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
@@ -185,12 +217,14 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             query.setParameter("idHoaDonChiTiet", idHDCT);
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
+
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
 
+<<<<<<< HEAD
     @Override
     public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -298,4 +332,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
 
+=======
+>>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
 }
