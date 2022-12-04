@@ -4,19 +4,15 @@
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.ChucVu;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.resquest.KhachHangRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhachHangRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
-import static com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl.matKhauMD5;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.List;
-import java.util.UUID;
 import org.apache.commons.validator.routines.EmailValidator;
 
 /**

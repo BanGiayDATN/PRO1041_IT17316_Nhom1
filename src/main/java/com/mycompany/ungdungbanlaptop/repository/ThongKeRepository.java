@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import java.util.List;
 

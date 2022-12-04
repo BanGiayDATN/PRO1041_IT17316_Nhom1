@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -33,4 +34,5 @@ public interface KhuyenMaiRepository {
     
     List<KhuyenMaiRespone> listKhuyenMaiRespone();
 
+    List<KhuyenMai> findAllKhuyenMaiByDieuKien(long ngayHienTai, BigDecimal dieuKien);
 }

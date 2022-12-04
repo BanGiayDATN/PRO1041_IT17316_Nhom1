@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResquest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
@@ -29,7 +30,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
 
     @Override
     public List<SanPham> getAll() {
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham ");
             List<SanPham> list = query.getResultList();
             return list;
@@ -41,7 +42,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
 
     @Override
     public List<SanPham> getAllByTrangThai(int trangThai) {
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery("FROM SanPham sp WHERE sp.trangThai = :trangThai ");
             query.setParameter("trangThai", trangThai);
             List<SanPham> list = query.getResultList();
@@ -55,7 +56,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public SanPham add(SanPham sanPham) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.save(sanPham);
             transaction.commit();
@@ -69,7 +70,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public SanPham update(SanPham sanPham) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.update(sanPham);
             transaction.commit();
@@ -83,7 +84,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public SanPham delete(SanPham sanPham) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             session.delete(sanPham);
             transaction.commit();
@@ -97,7 +98,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public SanPham getOne(String maSp) {
 
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT sp FROM SanPham sp WHERE sp.ma like :ma";
             Query<SanPham> query = session.createQuery(hql);
             query.setParameter("ma", "%" + maSp + "%");
@@ -112,7 +113,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPham> search(String maSp) {
         List<SanPham> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT sp FROM SanPham sp WHERE sp.ma like :ma ";
             Query query = session.createQuery(hql);
 
@@ -128,7 +129,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPham> searchByTen(String tenSp) {
         List<SanPham> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT sp FROM SanPham sp WHERE sp.ten like :ten ";
             Query query = session.createQuery(hql);
 
@@ -236,7 +237,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPhamBanHangViewModel> getByGia(BigDecimal min, BigDecimal max) {
         List<SanPhamBanHangViewModel> list;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.giaBan >= :min AND sp.giaBan <= :max";
             Query query = session.createQuery(hql);
             query.setParameter("min", min);
@@ -252,7 +253,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPhamBanHangViewModel> searchByTenBanHang(String tenSp) {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp WHERE sp.ten like :ten";
             Query query = session.createQuery(hql);
             query.setParameter("ten", "%" + tenSp + "%");
@@ -267,7 +268,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public void updateSoLuongSanPham(Map<UUID, SanPham> list) {
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             for (Map.Entry<UUID, SanPham> entry : list.entrySet()) {
 //                if (entry.getValue().getStatus() != 0) {
@@ -288,7 +289,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public SanPham getById(UUID id) {
         SanPham sanPham = new SanPham();
         Transaction transaction = null;
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
             String hql = "SELECT sp FROM SanPham sp WHERE sp.idSanPham = :idSanPham";
             Query<SanPham> query = session.createQuery(hql);
@@ -301,22 +302,45 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
         return sanPham;
     }
 
-
-    
-
     @Override
     public List<SanPhamCustomRespone> getListSanPham() {
         List<SanPhamCustomRespone> list = new ArrayList<>();
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone(sp.id, sp.ma,sp.ten, sp.soLuongTon, sp.hang.ten, sp.heDieuHanh.ten, sp.ram.dungLuong) FROM SanPham sp ";
             Query query = session.createQuery(hql);
             list = query.getResultList();
-            
+
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return list;
     }
 
+    @Override
+    public boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list) {
+        Transaction transaction = null;
+        try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            list.values().stream().forEach(item -> {
+                session.save(item.getCpu());
+                session.save(item.getHang());
+                session.save(item.getHeDieuHanh());
+                session.save(item.getManHinh());
+                session.save(item.getMauSac());
+                session.save(item.getRam());
+                item.getSanPham().setCpu(item.getCpu());
+                item.getSanPham().setHang(item.getHang());
+                item.getSanPham().setHeDieuHanh(item.getHeDieuHanh());
+                item.getSanPham().setManHinh(item.getManHinh());
+                item.getSanPham().setMau(item.getMauSac());
+                item.getSanPham().setRam(item.getRam());
+                session.save(item.getSanPham());
+            });
+            transaction.commit();
 
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return true;
+    }
 }

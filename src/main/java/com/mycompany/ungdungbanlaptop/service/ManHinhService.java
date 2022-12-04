@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
-import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import java.util.List;
 

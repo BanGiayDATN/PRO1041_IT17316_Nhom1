@@ -6,11 +6,11 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
-import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import com.mycompany.ungdungbanlaptop.repository.KhuyenMaiRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.KhuyenMaiRepositoryImpl;
 
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
+import java.math.BigDecimal;
 import java.util.List;
 
 
@@ -89,5 +89,10 @@ public class KhuyenMaiServiceImpl implements KhuyenMaiService {
     @Override
     public List<KhuyenMaiRespone> listKhuyenMaiRespone() {
         return  khuyenMaiRepository.listKhuyenMaiRespone();
+    }
+
+    @Override
+    public List<KhuyenMai> findAllKhuyenMaiByDieuKien(long ngayHienTai, BigDecimal dieuKien) {
+        return khuyenMaiRepository.findAllKhuyenMaiByDieuKien(ngayHienTai, dieuKien);
     }
 }
