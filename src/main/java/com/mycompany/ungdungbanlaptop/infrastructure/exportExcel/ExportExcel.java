@@ -7,7 +7,6 @@ package com.mycompany.ungdungbanlaptop.infrastructure.exportExcel;
 import java.io.File;
 import java.io.FileOutputStream;
 import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
@@ -21,8 +20,8 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ExportExcel {
 
     public static void writeToExcell(JTable table, String tenFile)  {
-        String home = System.getProperty("user.home");
-        File path = new File(home + "/Downloads/"+tenFile);
+
+        File path = new File(tenFile);
         try {
             Workbook wb = new XSSFWorkbook(); //Excell workbook
         Sheet sheet = wb.createSheet(); //WorkSheet

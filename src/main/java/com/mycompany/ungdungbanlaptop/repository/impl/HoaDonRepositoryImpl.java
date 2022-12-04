@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
-import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
@@ -15,7 +14,6 @@ import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import org.hibernate.CacheMode;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;

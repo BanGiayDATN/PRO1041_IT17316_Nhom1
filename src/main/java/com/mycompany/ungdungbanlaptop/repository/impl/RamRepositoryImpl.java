@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.repository.RamRepository;

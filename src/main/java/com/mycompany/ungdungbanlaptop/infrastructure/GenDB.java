@@ -12,7 +12,6 @@ import com.mycompany.ungdungbanlaptop.entity.Hang;
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
-import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMaiSanPham;
@@ -62,18 +61,18 @@ public class GenDB {
         // tạo giao dịch tương ứng 
         Transaction trans = session.beginTransaction();
 
-        Imei imei = new Imei();
-        imei.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
-        session.save(imei);
-
-        Imei imei1 = new Imei();
-        imei1.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
-        session.save(imei1);
-
-        Imei imei2 = new Imei();
-        imei2.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
-        session.save(imei2);
-
+//        Imei imei = new Imei();
+//        imei.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
+//        session.save(imei);
+//
+//        Imei imei1 = new Imei();
+//        imei1.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
+//        session.save(imei1);
+//
+//        Imei imei2 = new Imei();
+//        imei2.setMa(new TaoChuoiNgauNhien().getMkRanMa("", 3));
+//        session.save(imei2);
+//
         Mau mauSac1 = new Mau();
         mauSac1.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac1.setTen("Red");
@@ -83,7 +82,7 @@ public class GenDB {
         mauSac2.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac2.setTen("Yellow");
         session.save(mauSac2);
-
+        
         Mau mauSac3 = new Mau();
         mauSac3.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac3.setTen("Blue");
@@ -258,8 +257,10 @@ public class GenDB {
         khuyenMai.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai.setTen("khuyến mãi tháng 1");
         khuyenMai.setSoLuong(10);
+        khuyenMai.setDieuKienGiamGia(new BigDecimal("1000"));
         khuyenMai.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai.setTrangThai(0);
+        khuyenMai.setHinhThuc(true);
         khuyenMai.setNgayBatDau(new ConverDate().dateToLong("01/01/2022", "dd/MM/yyyy"));
         khuyenMai.setNgayKetThuc(new ConverDate().dateToLong("01/05/2022", "dd/MM/yyyy"));
         khuyenMai.setPhanTram(20);
@@ -269,7 +270,9 @@ public class GenDB {
         khuyenMai1.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai1.setTen("Tháng đặc biệt");
         khuyenMai1.setSoLuong(10);
-        khuyenMai1.setTrangThai(0);
+        khuyenMai1.setDieuKienGiamGia(new BigDecimal("1000"));
+        khuyenMai1.setTrangThai(1);
+        khuyenMai1.setHinhThuc(false);
         khuyenMai1.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/10/2022", "dd/MM/yyyy"));
         khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/12/2022", "dd/MM/yyyy"));
@@ -280,6 +283,7 @@ public class GenDB {
         khuyenMai2.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai2.setSoLuong(10);
         khuyenMai2.setTen("2 năm");
+        khuyenMai2.setHinhThuc(false);
         khuyenMai2.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai2.setTrangThai(0);
         khuyenMai2.setNgayBatDau(new ConverDate().dateToLong("01/04/2022", "dd/MM/yyyy"));
