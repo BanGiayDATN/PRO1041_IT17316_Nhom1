@@ -187,6 +187,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
             JOptionPane.showMessageDialog(this, "Đăng nhập thành công");
             new ViewManChinh(nhanVien).setVisible(true);
+            this.dispose();
         }
     }//GEN-LAST:event_btn_loginActionPerformed
 
