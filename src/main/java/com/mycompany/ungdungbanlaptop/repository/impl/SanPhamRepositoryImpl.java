@@ -221,7 +221,9 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public List<SanPhamBanHangViewModel> getSanPhamBanHang() {
         List<SanPhamBanHangViewModel> list = new ArrayList<>();
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa) FROM SanPham sp";
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel"
+                    + "(sp.id,sp.ma,sp.ten,sp.namBH,sp.trongLuong,sp.soLuongTon,sp.giaBan,sp.moTa)"
+                    + " FROM SanPham sp  WHERE sp.trangThai = 0 ";
             Query query = session.createQuery(hql);
             list = query.getResultList();
             return list;
