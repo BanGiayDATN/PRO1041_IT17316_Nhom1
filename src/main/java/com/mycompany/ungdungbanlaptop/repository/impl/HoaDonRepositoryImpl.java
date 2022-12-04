@@ -216,7 +216,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
             String hql = "SELECT count(kh.ma) FROM HoaDon hd "
                     + " inner join  KhachHang kh"
                     + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
-                    + " where hd.ngayTao BETWEEN :begin AND :end ";
+                    + " where hd.ngayThanhToan BETWEEN :begin AND :end ";
             Query query = session.createQuery(hql);
             query.setParameter("begin", begin);
             query.setParameter("end", end);

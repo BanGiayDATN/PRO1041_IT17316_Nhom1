@@ -5,9 +5,8 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
-import java.awt.Color;
-import java.awt.Cursor;
 import java.awt.FlowLayout;
 import java.io.File;
 import javax.swing.ImageIcon;
@@ -37,6 +36,7 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     }
 
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -49,15 +49,15 @@ public class ViewManChinh extends javax.swing.JFrame {
         viewChucNang = new javax.swing.JPanel();
         ViewMenu = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
-        btnBanHang = new javax.swing.JButton();
-        btnTrangChu = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         btnSanPham = new javax.swing.JButton();
-        btnHoaDOn = new javax.swing.JButton();
-        btnKhachHang = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         btnKhuyenMai = new javax.swing.JButton();
-        btnBaoHanh = new javax.swing.JButton();
-        btnDoiTra = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jButton10 = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu2 = new javax.swing.JMenu();
@@ -92,7 +92,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         );
         viewChucNangLayout.setVerticalGroup(
             viewChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
         );
 
         ViewMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -100,132 +100,54 @@ public class ViewManChinh extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(0, 204, 204));
         jPanel1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
 
-        btnBanHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnBanHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add to basket.png"))); // NOI18N
-        btnBanHang.setText("Bán hàng");
-        btnBanHang.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseMoved(evt);
-            }
-        });
-        btnBanHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBanHangMouseExited(evt);
-            }
-        });
-        btnBanHang.addActionListener(new java.awt.event.ActionListener() {
+        jButton1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add to basket.png"))); // NOI18N
+        jButton1.setText("Bán hàng");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBanHangActionPerformed(evt);
+                jButton1ActionPerformed(evt);
             }
         });
 
-        btnTrangChu.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnTrangChu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Brick house.png"))); // NOI18N
-        btnTrangChu.setText("Trang Chủ");
-        btnTrangChu.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnTrangChuMouseMoved(evt);
-            }
-        });
-        btnTrangChu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnTrangChuMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnTrangChuMouseExited(evt);
-            }
-        });
-        btnTrangChu.addActionListener(new java.awt.event.ActionListener() {
+        jButton2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Brick house.png"))); // NOI18N
+        jButton2.setText("Trang Chủ");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnTrangChuActionPerformed(evt);
+                jButton2ActionPerformed(evt);
             }
         });
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Full basket.png"))); // NOI18N
         btnSanPham.setText("Sản Phẩm");
-        btnSanPham.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseMoved(evt);
-            }
-        });
-        btnSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnSanPhamMouseExited(evt);
-            }
-        });
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnSanPhamActionPerformed(evt);
             }
         });
 
-        btnHoaDOn.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnHoaDOn.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lists.png"))); // NOI18N
-        btnHoaDOn.setText("Hóa Đơn");
-        btnHoaDOn.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnHoaDOnMouseMoved(evt);
-            }
-        });
-        btnHoaDOn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnHoaDOnMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnHoaDOnMouseExited(evt);
-            }
-        });
-        btnHoaDOn.addActionListener(new java.awt.event.ActionListener() {
+        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lists.png"))); // NOI18N
+        jButton4.setText("Hóa Đơn");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnHoaDOnActionPerformed(evt);
+                jButton4ActionPerformed(evt);
             }
         });
 
-        btnKhachHang.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnKhachHang.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Conference.png"))); // NOI18N
-        btnKhachHang.setText("Khách hàng");
-        btnKhachHang.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseMoved(evt);
-            }
-        });
-        btnKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnKhachHangMouseExited(evt);
-            }
-        });
-        btnKhachHang.addActionListener(new java.awt.event.ActionListener() {
+        jButton5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Conference.png"))); // NOI18N
+        jButton5.setText("Khách hàng");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnKhachHangActionPerformed(evt);
+                jButton5ActionPerformed(evt);
             }
         });
 
         btnNhanVien.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnNhanVien.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Boy.png"))); // NOI18N
         btnNhanVien.setText("Nhân viên");
-        btnNhanVien.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseMoved(evt);
-            }
-        });
-        btnNhanVien.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnNhanVienMouseExited(evt);
-            }
-        });
         btnNhanVien.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNhanVienActionPerformed(evt);
@@ -235,85 +157,33 @@ public class ViewManChinh extends javax.swing.JFrame {
         btnKhuyenMai.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnKhuyenMai.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Date.png"))); // NOI18N
         btnKhuyenMai.setText("Khuyến mãi");
-        btnKhuyenMai.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnKhuyenMaiMouseMoved(evt);
-            }
-        });
-        btnKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnKhuyenMaiMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnKhuyenMaiMouseExited(evt);
-            }
-        });
         btnKhuyenMai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnKhuyenMaiActionPerformed(evt);
             }
         });
 
-        btnBaoHanh.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnBaoHanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Brief case.png"))); // NOI18N
-        btnBaoHanh.setText("Bảo hành");
-        btnBaoHanh.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnBaoHanhMouseMoved(evt);
-            }
-        });
-        btnBaoHanh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnBaoHanhMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnBaoHanhMouseExited(evt);
-            }
-        });
-        btnBaoHanh.addActionListener(new java.awt.event.ActionListener() {
+        jButton9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Brief case.png"))); // NOI18N
+        jButton9.setText("Bảo hành");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBaoHanhActionPerformed(evt);
+                jButton9ActionPerformed(evt);
             }
         });
 
-        btnDoiTra.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnDoiTra.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Payment.png"))); // NOI18N
-        btnDoiTra.setText("Đổi Trả");
-        btnDoiTra.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnDoiTraMouseMoved(evt);
-            }
-        });
-        btnDoiTra.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnDoiTraMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnDoiTraMouseExited(evt);
-            }
-        });
-        btnDoiTra.addActionListener(new java.awt.event.ActionListener() {
+        jButton10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jButton10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Payment.png"))); // NOI18N
+        jButton10.setText("Đổi Trả");
+        jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDoiTraActionPerformed(evt);
+                jButton10ActionPerformed(evt);
             }
         });
 
         btnThongKe.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Statistics.png"))); // NOI18N
         btnThongKe.setText("Thống kê");
-        btnThongKe.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseMoved(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseMoved(evt);
-            }
-        });
-        btnThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseEntered(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseEntered(evt);
-            }
-            public void mouseExited(java.awt.event.MouseEvent evt) {
-                btnThongKeMouseExited(evt);
-            }
-        });
         btnThongKe.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnThongKeActionPerformed(evt);
@@ -324,38 +194,38 @@ public class ViewManChinh extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(btnBaoHanh, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnDoiTra, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
             .addComponent(btnKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-            .addComponent(btnKhachHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
             .addComponent(btnSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnHoaDOn, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
-            .addComponent(btnBanHang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnTrangChu, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
             .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(112, 112, 112)
-                .addComponent(btnTrangChu, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBanHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnHoaDOn, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnKhachHang, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnBaoHanh, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnDoiTra, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(22, 22, 22))
@@ -454,8 +324,10 @@ public class ViewManChinh extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ViewMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(viewChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(ViewMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(viewChucNang, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -519,7 +391,7 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jMenu2MouseClicked
 
-    private void btnBanHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBanHangActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
         viewChucNang.removeAll();
         ViewBanHang form = new ViewBanHang(nhanVien);
@@ -528,11 +400,11 @@ public class ViewManChinh extends javax.swing.JFrame {
         this.pack();
         form.setVisible(true);
 
-    }//GEN-LAST:event_btnBanHangActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void btnTrangChuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTrangChuActionPerformed
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnTrangChuActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         viewChucNang.removeAll();
@@ -543,16 +415,16 @@ public class ViewManChinh extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
-    private void btnHoaDOnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDOnActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         viewChucNang.removeAll();
         QuanLiHoaDon form = new QuanLiHoaDon();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
         form.setVisible(true);
-    }//GEN-LAST:event_btnHoaDOnActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void btnKhachHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKhachHangActionPerformed
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         viewChucNang.removeAll();
         ViewKhachHang form = new ViewKhachHang();
@@ -560,7 +432,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
         form.setVisible(true);
-    }//GEN-LAST:event_btnKhachHangActionPerformed
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void btnNhanVienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNhanVienActionPerformed
         viewChucNang.removeAll();
@@ -580,137 +452,29 @@ public class ViewManChinh extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btnKhuyenMaiActionPerformed
 
-    private void btnBaoHanhActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBaoHanhActionPerformed
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnBaoHanhActionPerformed
+         viewChucNang.removeAll();
+        BaoHanh1 form = new BaoHanh1();
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnThongKeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThongKeActionPerformed
         // TODO add your handling code here:
+        viewChucNang.removeAll();
+        ViewThongKe form = new ViewThongKe();
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
     }//GEN-LAST:event_btnThongKeActionPerformed
 
-    private void btnDoiTraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDoiTraActionPerformed
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnDoiTraActionPerformed
-
-    private void btnTrangChuMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseEntered
-        btnTrangChu.setBackground(Color.green);
-    }//GEN-LAST:event_btnTrangChuMouseEntered
-
-    private void btnBanHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseEntered
-        btnBanHang.setBackground(Color.green);
-    }//GEN-LAST:event_btnBanHangMouseEntered
-
-    private void btnHoaDOnMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDOnMouseEntered
-        btnHoaDOn.setBackground(Color.green);
-    }//GEN-LAST:event_btnHoaDOnMouseEntered
-
-    private void btnSanPhamMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseEntered
-        btnSanPham.setBackground(Color.green);
-    }//GEN-LAST:event_btnSanPhamMouseEntered
-
-    private void btnNhanVienMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseEntered
-        btnNhanVien.setBackground(Color.green);
-    }//GEN-LAST:event_btnNhanVienMouseEntered
-
-    private void btnKhachHangMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseEntered
-        btnKhachHang.setBackground(Color.green);
-    }//GEN-LAST:event_btnKhachHangMouseEntered
-
-    private void btnThongKeMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseEntered
-        btnThongKe.setBackground(Color.green);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeMouseEntered
-
-    private void btnBaoHanhMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBaoHanhMouseEntered
-        btnBaoHanh.setBackground(Color.green);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBaoHanhMouseEntered
-
-    private void btnDoiTraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiTraMouseEntered
-        btnDoiTra.setBackground(Color.green);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDoiTraMouseEntered
-
-    private void btnKhuyenMaiMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseEntered
-        btnKhuyenMai.setBackground(Color.green);        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhuyenMaiMouseEntered
-
-    private void btnTrangChuMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseExited
-        btnTrangChu.setBackground(new Color(240, 240, 240));
-    }//GEN-LAST:event_btnTrangChuMouseExited
-
-    private void btnBanHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseExited
-        btnBanHang.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBanHangMouseExited
-
-    private void btnHoaDOnMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDOnMouseExited
-        btnHoaDOn.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHoaDOnMouseExited
-
-    private void btnSanPhamMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseExited
-        btnSanPham.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSanPhamMouseExited
-
-    private void btnNhanVienMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseExited
-        btnNhanVien.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNhanVienMouseExited
-
-    private void btnKhachHangMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseExited
-        btnKhachHang.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHangMouseExited
-
-    private void btnThongKeMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseExited
-        btnThongKe.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeMouseExited
-
-    private void btnBaoHanhMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBaoHanhMouseExited
-        btnBaoHanh.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBaoHanhMouseExited
-
-    private void btnDoiTraMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiTraMouseExited
-        btnDoiTra.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDoiTraMouseExited
-
-    private void btnKhuyenMaiMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseExited
-        btnKhuyenMai.setBackground(new Color(240, 240, 240));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhuyenMaiMouseExited
-
-    private void btnTrangChuMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnTrangChuMouseMoved
-        btnTrangChu.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnTrangChuMouseMoved
-
-    private void btnBanHangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBanHangMouseMoved
-        btnBanHang.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBanHangMouseMoved
-
-    private void btnHoaDOnMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHoaDOnMouseMoved
-        btnHoaDOn.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnHoaDOnMouseMoved
-
-    private void btnSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnSanPhamMouseMoved
-        btnSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSanPhamMouseMoved
-
-    private void btnNhanVienMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNhanVienMouseMoved
-        btnNhanVien.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnNhanVienMouseMoved
-
-    private void btnKhachHangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhachHangMouseMoved
-        btnKhachHang.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhachHangMouseMoved
-
-    private void btnThongKeMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThongKeMouseMoved
-        btnThongKe.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThongKeMouseMoved
-
-    private void btnBaoHanhMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBaoHanhMouseMoved
-        btnBaoHanh.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnBaoHanhMouseMoved
-
-    private void btnDoiTraMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDoiTraMouseMoved
-        btnDoiTra.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnDoiTraMouseMoved
-
-    private void btnKhuyenMaiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnKhuyenMaiMouseMoved
-        btnKhuyenMai.setCursor(new Cursor(Cursor.HAND_CURSOR));        // TODO add your handling code here:
-    }//GEN-LAST:event_btnKhuyenMaiMouseMoved
+    }//GEN-LAST:event_jButton10ActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -751,16 +515,16 @@ public class ViewManChinh extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenuItem MenuGPM;
     private javax.swing.JPanel ViewMenu;
-    private javax.swing.JButton btnBanHang;
-    private javax.swing.JButton btnBaoHanh;
-    private javax.swing.JButton btnDoiTra;
-    private javax.swing.JButton btnHoaDOn;
-    private javax.swing.JButton btnKhachHang;
     private javax.swing.JButton btnKhuyenMai;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
     private javax.swing.JButton btnThongKe;
-    private javax.swing.JButton btnTrangChu;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton10;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton9;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
     private javax.swing.JMenu jMenu2;

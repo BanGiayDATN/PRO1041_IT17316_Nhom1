@@ -11,6 +11,7 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -321,12 +322,14 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
     
      public static void main(String[] args) {
-        Locale localerEN = new Locale("en", "EN");
-        NumberFormat format = NumberFormat.getInstance(localerEN);
-        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
-        System.out.println(i);
+//        Locale localerEN = new Locale("en", "EN");
+//        NumberFormat format = NumberFormat.getInstance(localerEN);
+//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
+//        System.out.println(i);
 //            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
 //            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
+ String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+        System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoNgay(new ConverDate().dateToLong(date, "dd/MM/yyyy")));
     }
 
     @Override

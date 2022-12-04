@@ -58,10 +58,10 @@ public interface SanPhamService {
 
     String SanPhamImport(File file);
 
-    long countSanPham(long begin, long end);
-
+    long countSanPham(long begin , long end);
+    
     long soSanPhamTheoNgay(long toDay);
-
+    
     long soSanPham();
     
     List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
