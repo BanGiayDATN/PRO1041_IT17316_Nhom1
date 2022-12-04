@@ -39,5 +39,7 @@ public interface HoaDonRepository {
     HoaDon getById(UUID id);
 
     List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma);
+    
+    long countKhachHang(long batDau , long ketThuc);
 
 }
