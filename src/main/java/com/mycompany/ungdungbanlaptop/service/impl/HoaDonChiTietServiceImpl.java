@@ -69,5 +69,10 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
 
     }
 
+    @Override
+    public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
+        return hoaDonChiTietRepository.getByIdHoaDon(idHD);
+    }
+
    
 }

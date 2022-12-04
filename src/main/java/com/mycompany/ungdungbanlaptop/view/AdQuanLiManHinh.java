@@ -108,6 +108,10 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
 
         jLabel2.setText("Độ phân giải:");
 
+        txtMaManHinh.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtMaManHinh.setText("Mã tự tạo");
+        txtMaManHinh.setEnabled(false);
+
         jTableManHinh.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -253,7 +257,7 @@ public class AdQuanLiManHinh extends javax.swing.JPanel {
                     .addComponent(cbbCongNghe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(47, 47, 47)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(257, Short.MAX_VALUE))
+                .addContainerGap(258, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);

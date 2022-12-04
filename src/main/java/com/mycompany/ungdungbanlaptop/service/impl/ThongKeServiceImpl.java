@@ -21,5 +21,10 @@ public class ThongKeServiceImpl implements ThongKeService{
     public List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay() {
         return thongKeRepository.top10SanPhamBanChay();
     }
+
+    @Override
+    public List<com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat> Top10KhachMuaNhieuNhat() {
+        return thongKeRepository.Top10KhachMuaNhieuNhat();
+    }
     
 }

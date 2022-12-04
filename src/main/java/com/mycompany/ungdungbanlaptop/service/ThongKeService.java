@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat;
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import java.util.List;
 
@@ -13,4 +14,5 @@ import java.util.List;
  */
 public interface ThongKeService {
      List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
+       List<Top10KhachMuaNhieuNhat>  Top10KhachMuaNhieuNhat();
 }

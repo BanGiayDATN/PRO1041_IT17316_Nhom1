@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat;
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import java.util.List;
 
@@ -14,4 +15,5 @@ import java.util.List;
  */
 public interface ThongKeRepository {
     List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
+    List<Top10KhachMuaNhieuNhat>  Top10KhachMuaNhieuNhat();
 }

@@ -516,8 +516,8 @@ public class GenDB {
 
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
-        hdct.setSoLuong(1);
-        hdct.setDonGia(new BigDecimal(18490000.0));
+        hdct1.setSoLuong(1);
+        hdct1.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
       
         // db generator : gen bảng tự động

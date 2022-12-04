@@ -29,16 +29,12 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTiet> getWord(UUID idHoaDon);
 
+    List<GioHangViewModel> getGioHang(UUID idHoaDon);
 
-    
-     
-     List<GioHangViewModel> getGioHang(UUID idHoaDon);
-     
-         HoaDonChiTiet getById(UUID idHDCT);
-
+    HoaDonChiTiet getById(UUID idHDCT);
 
     List<HoaDonChiTietKhuyenMai> getListHoaDonApDungKhuyenMai(long ngayBatDau, long ngayketThuc);
 
-   
+    HoaDonChiTiet getByIdHoaDon(UUID idHD);
 
 }

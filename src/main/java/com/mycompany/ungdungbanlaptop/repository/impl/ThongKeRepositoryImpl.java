@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat;
 import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.ThongKeRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
@@ -37,7 +38,27 @@ public class ThongKeRepositoryImpl implements ThongKeRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-        System.out.println(new ThongKeRepositoryImpl().top10SanPhamBanChay());
+  
+
+    @Override
+    public List<Top10KhachMuaNhieuNhat> Top10KhachMuaNhieuNhat() {
+        List<Top10KhachMuaNhieuNhat> list = new ArrayList<>();
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.Top10KhachMuaNhieuNhat( kh.hoTen,count(hd.ma) ) FROM KhachHang kh "
+                    + " inner join HoaDon hd"
+                    + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " GROUP BY kh.hoTen"
+                    + " ORDER BY count(hd.ma) DESC";
+            Query<Top10KhachMuaNhieuNhat> query = session.createQuery(hql);
+             list = query.setMaxResults(10).getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    
+      public static void main(String[] args) {
+        System.out.println(new ThongKeRepositoryImpl().Top10KhachMuaNhieuNhat());
     }
 }
