@@ -10,6 +10,7 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Color;
 import java.math.BigDecimal;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
@@ -20,28 +21,29 @@ import javax.swing.table.DefaultTableModel;
  * @author Diệm DZ
  */
 public class ViewKhachHang extends javax.swing.JPanel {
+
     private DefaultTableModel dtm = new DefaultTableModel();
     private DefaultTableModel dtm1 = new DefaultTableModel();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
-    
+
     /**
      * Creates new form ViewNhanVien
      */
     public ViewKhachHang() {
         initComponents();
         jTableKhachHang.setModel(dtm);
-        String [] a = {"Mã KH","Tên KH","Giới tính","SĐT","Email","Địa chỉ","Tình trạng"};
+        String[] a = {"Mã KH", "Tên KH", "Giới tính", "SĐT", "Email", "Địa chỉ", "Tình trạng"};
         dtm.setColumnIdentifiers(a);
         showData(khachHangService.getAll());
-        
-         jTableLichSuMuahang.setModel(dtm1);
-        String [] b = {"Mã Hóa Đơn","Tên SP","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán" };
+
+        jTableLichSuMuahang.setModel(dtm1);
+        String[] b = {"Mã Hóa Đơn", "Tên SP", "Số lượng", "Đơn giá", "Ngày tạo", "Ngày thanh toán"};
         dtm1.setColumnIdentifiers(b);
-        
-       cbbTimKiem();
-        
+
+        cbbTimKiem();
+
     }
-    
+
     private void cbbTimKiem() {
         DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
         cbbTimKiem.setModel(boxModel);
@@ -49,19 +51,21 @@ public class ViewKhachHang extends javax.swing.JPanel {
         boxModel.addElement("Số điện thoại");
 
     }
-    private void showData(List<KhachHang> list){
+
+    private void showData(List<KhachHang> list) {
         dtm.setRowCount(0);
         for (KhachHang x : list) {
-            dtm.addRow(new Object[]{x.getMa(),x.getHoTen(),x.getGioiTinh(),x.getSdt(),x.getEmail(),x.getDiaChi(),x.getTrangThai() == 0 ? "Còn hoạt động":"Ngưng hoạt động"});
+            dtm.addRow(new Object[]{x.getMa(), x.getHoTen(), x.getGioiTinh(), x.getSdt(), x.getEmail(), x.getDiaChi(), x.getTrangThai() == 0 ? "Còn hoạt động" : "Ngưng hoạt động"});
         }
     }
-    private void showLichSuMua(List<LichSuMuaHangViewModel>list){
+
+    private void showLichSuMua(List<LichSuMuaHangViewModel> list) {
         dtm1.setRowCount(0);
-        for (LichSuMuaHangViewModel x : list) {            
-            dtm1.addRow(new Object[]{x.getMa(),x.getTen(),x.getSoLuong(),x.getDonGia(),new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
+        for (LichSuMuaHangViewModel x : list) {
+            dtm1.addRow(new Object[]{x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"), new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -120,6 +124,14 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusLost(evt);
+            }
+        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -249,14 +261,14 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
         // TODO add your handling code here:
-       jTabbedPane1.setSelectedIndex(1);
-         int row = jTableKhachHang.getSelectedRow();
+        jTabbedPane1.setSelectedIndex(1);
+        int row = jTableKhachHang.getSelectedRow();
         List<LichSuMuaHangViewModel> list = khachHangService.getLichSuMuaHang(jTableKhachHang.getValueAt(row, 0).toString());
-        
+
         showLichSuMua(list);
         txtTenKhachHang.setText(jTableKhachHang.getValueAt(row, 1).toString());
         txtSoLuotMua.setText(String.valueOf(khachHangService.soLuotMua(jTableKhachHang.getValueAt(row, 0).toString())));
-        
+
     }//GEN-LAST:event_jTableKhachHangMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
@@ -273,6 +285,20 @@ public class ViewKhachHang extends javax.swing.JPanel {
         }
 
     }//GEN-LAST:event_txtTimKiemKeyReleased
+
+    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
+        if (txtTimKiem.getText().equals("Nhập thông tin khách hàng...")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusGained
+
+    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
+        if (txtTimKiem.getText().equals("")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
