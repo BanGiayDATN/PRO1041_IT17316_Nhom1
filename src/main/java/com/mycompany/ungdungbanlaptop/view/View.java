@@ -5,10 +5,12 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 
 
 import java.awt.Color;
 import java.awt.FlowLayout;
+import javax.swing.JFrame;
 
 /**
  *
@@ -25,7 +27,9 @@ public class View extends javax.swing.JFrame {
      */
     public View() {
         initComponents();
-
+        this.setLocationRelativeTo(this);
+//        this.setExtendedState(JFrame.MAXIMIZED_BOTH);
+//        this.setResizable(true);
     }
 
     /**
@@ -62,9 +66,12 @@ public class View extends javax.swing.JFrame {
         jSpinField1 = new com.toedter.components.JSpinField();
         jYearChooser1 = new com.toedter.calendar.JYearChooser();
         jLocaleChooser1 = new com.toedter.components.JLocaleChooser();
+        jYearChooser2 = new com.toedter.calendar.JYearChooser();
+        jMonthChooser2 = new com.toedter.calendar.JMonthChooser();
+        jDayChooser2 = new com.toedter.calendar.JDayChooser();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1293, 720));
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         jPanel2.setBackground(new java.awt.Color(255, 204, 153));
 
@@ -319,41 +326,55 @@ public class View extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(405, Short.MAX_VALUE))
         );
 
         DeskTop.setBackground(new java.awt.Color(204, 204, 204));
-        DeskTop.setPreferredSize(new java.awt.Dimension(1100, 654));
+        DeskTop.setPreferredSize(new java.awt.Dimension(1600, 654));
 
         javax.swing.GroupLayout DeskTopLayout = new javax.swing.GroupLayout(DeskTop);
         DeskTop.setLayout(DeskTopLayout);
         DeskTopLayout.setHorizontalGroup(
             DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(DeskTopLayout.createSequentialGroup()
-                .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jSpinField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(DeskTopLayout.createSequentialGroup()
-                            .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(DeskTopLayout.createSequentialGroup()
-                                    .addGap(100, 100, 100)
-                                    .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(DeskTopLayout.createSequentialGroup()
-                                    .addGap(75, 75, 75)
-                                    .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(DeskTopLayout.createSequentialGroup()
-                                    .addGap(209, 209, 209)
-                                    .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(DeskTopLayout.createSequentialGroup()
-                                    .addGap(113, 113, 113)
-                                    .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGroup(DeskTopLayout.createSequentialGroup()
-                            .addGap(326, 326, 326)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(450, Short.MAX_VALUE))
+                .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jSpinField1, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(DeskTopLayout.createSequentialGroup()
+                                .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DeskTopLayout.createSequentialGroup()
+                                        .addGap(100, 100, 100)
+                                        .addComponent(jDayChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(DeskTopLayout.createSequentialGroup()
+                                        .addGap(75, 75, 75)
+                                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(DeskTopLayout.createSequentialGroup()
+                                        .addGap(209, 209, 209)
+                                        .addComponent(jMonthChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 94, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(DeskTopLayout.createSequentialGroup()
+                                        .addGap(113, 113, 113)
+                                        .addComponent(jLocaleChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 255, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addGroup(DeskTopLayout.createSequentialGroup()
+                                        .addGap(148, 148, 148)
+                                        .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addGroup(DeskTopLayout.createSequentialGroup()
+                                .addGap(326, 326, 326)
+                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(DeskTopLayout.createSequentialGroup()
+                        .addGap(545, 545, 545)
+                        .addComponent(jDayChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(591, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskTopLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskTopLayout.createSequentialGroup()
+                        .addComponent(jMonthChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(459, 459, 459))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, DeskTopLayout.createSequentialGroup()
+                        .addComponent(jYearChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(522, 522, 522))))
         );
         DeskTopLayout.setVerticalGroup(
             DeskTopLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -379,7 +400,13 @@ public class View extends javax.swing.JFrame {
                     .addGroup(DeskTopLayout.createSequentialGroup()
                         .addGap(95, 95, 95)
                         .addComponent(jYearChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(346, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jDayChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addComponent(jYearChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(37, 37, 37)
+                .addComponent(jMonthChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(114, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -390,13 +417,15 @@ public class View extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(DeskTop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addComponent(DeskTop, javax.swing.GroupLayout.PREFERRED_SIZE, 1318, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(DeskTop, javax.swing.GroupLayout.DEFAULT_SIZE, 762, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(DeskTop, javax.swing.GroupLayout.PREFERRED_SIZE, 785, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -518,6 +547,7 @@ public class View extends javax.swing.JFrame {
     private com.toedter.calendar.JCalendar jCalendar1;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private com.toedter.calendar.JDayChooser jDayChooser1;
+    private com.toedter.calendar.JDayChooser jDayChooser2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -525,6 +555,7 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private com.toedter.components.JLocaleChooser jLocaleChooser1;
     private com.toedter.calendar.JMonthChooser jMonthChooser1;
+    private com.toedter.calendar.JMonthChooser jMonthChooser2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel11;
@@ -539,5 +570,6 @@ public class View extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel9;
     private com.toedter.components.JSpinField jSpinField1;
     private com.toedter.calendar.JYearChooser jYearChooser1;
+    private com.toedter.calendar.JYearChooser jYearChooser2;
     // End of variables declaration//GEN-END:variables
 }

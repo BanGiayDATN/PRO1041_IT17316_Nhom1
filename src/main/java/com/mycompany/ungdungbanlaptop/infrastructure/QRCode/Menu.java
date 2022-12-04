@@ -10,17 +10,19 @@ import com.google.zxing.NotFoundException;
 import com.google.zxing.Result;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.HybridBinarizer;
+import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import java.awt.Dimension;
 import java.awt.image.BufferedImage;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
+import javax.swing.JTextField;
 
 public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory {
 
     private WebcamPanel panel = null;
     private Webcam webcam = null;
-    private static String resultField = null;
+    private static String resultField ;
 
     private static final long serialVersionUID = 6441489157408381878L;
     private Executor executor = Executors.newSingleThreadExecutor(this);
@@ -34,11 +36,15 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jButton1 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         result_field = new javax.swing.JTextField();
         jSeparator1 = new javax.swing.JSeparator();
         jLabel1 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
+        btnThoat = new javax.swing.JButton();
+
+        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -61,10 +67,25 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
         jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 470, 300));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 380));
+        btnThoat.setText("Thoát");
+        btnThoat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThoatActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 460));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+
+       
+    }//GEN-LAST:event_btnThoatActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +118,8 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnThoat;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
@@ -147,7 +170,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
 
             if (result != null) {
                 result_field.setText(result.getText());
-                resultField = result.getText();
+                BaoHanh1.idHDCT = result.getText();
             }
         } while (true);
     }
@@ -159,8 +182,8 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
         return t;
     }
     
-    public static String getResult(){
-        return resultField;
-    }
+//    public static String getResult(){
+//        return resultField ;
+//    }
     
 }

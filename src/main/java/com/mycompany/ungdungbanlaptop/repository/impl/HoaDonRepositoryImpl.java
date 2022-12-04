@@ -221,16 +221,52 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
             query.setParameter("begin", begin);
             query.setParameter("end", end);
             count = (long) query.uniqueResult();
+             return count;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return count;
+       return 0;
     }
 
-    public static void main(String[] args) {
+  
+    @Override
+    public long soKhachHangTheoNgay(long toDay) {
+        long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(kh.ma) FROM HoaDon hd "
+                    + " inner join  KhachHang kh"
+                    + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " where hd.ngayThanhToan = :toDay ";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
+
+            count = (long) query.uniqueResult();
+             return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+       return 0;
+    }
+
+    @Override
+    public long tongSoKhachHang() {
+        long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(kh.ma) FROM  KhachHang kh";
+            Query query = session.createQuery(hql);
+            count = (long) query.uniqueResult();
+             return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+       return 0;
+    }
+    
+      public static void main(String[] args) {
         long begin = 1659286800000l;
         long end = 1662310800000l;
         long soLuong = new HoaDonRepositoryImpl().countKhachHang(begin, end);
         System.out.println(soLuong);
     }
+
 }

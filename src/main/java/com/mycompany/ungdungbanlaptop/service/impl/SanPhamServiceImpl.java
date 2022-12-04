@@ -21,6 +21,7 @@ import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
@@ -293,6 +294,26 @@ public class SanPhamServiceImpl implements SanPhamService {
             return "thất bại";
         }
         return "thành công";
+    }
+
+    @Override
+    public long countSanPham(long begin, long end) {
+        return sanPhamRepository.countSanPham(begin, end);
+    }
+
+    @Override
+    public long soSanPhamTheoNgay(long toDay) {
+        return sanPhamRepository.soSanPhamTheoNgay(toDay);
+    }
+
+    @Override
+    public long soSanPham() {
+        return sanPhamRepository.soSanPham();
+    }
+
+    @Override
+    public List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay() {
+        return sanPhamRepository.top10SanPhamBanChay();
     }
 
 }
