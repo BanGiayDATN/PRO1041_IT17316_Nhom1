@@ -260,6 +260,7 @@ public class GenDB {
         khuyenMai.setDieuKienGiamGia(new BigDecimal("1000"));
         khuyenMai.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai.setTrangThai(0);
+        khuyenMai.setHinhThuc(true);
         khuyenMai.setNgayBatDau(new ConverDate().dateToLong("01/01/2022", "dd/MM/yyyy"));
         khuyenMai.setNgayKetThuc(new ConverDate().dateToLong("01/05/2022", "dd/MM/yyyy"));
         khuyenMai.setPhanTram(20);
@@ -271,6 +272,7 @@ public class GenDB {
         khuyenMai1.setSoLuong(10);
         khuyenMai1.setDieuKienGiamGia(new BigDecimal("1000"));
         khuyenMai1.setTrangThai(1);
+        khuyenMai1.setHinhThuc(false);
         khuyenMai1.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/10/2022", "dd/MM/yyyy"));
         khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/12/2022", "dd/MM/yyyy"));
@@ -281,6 +283,7 @@ public class GenDB {
         khuyenMai2.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai2.setSoLuong(10);
         khuyenMai2.setTen("2 năm");
+        khuyenMai2.setHinhThuc(false);
         khuyenMai2.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai2.setTrangThai(0);
         khuyenMai2.setNgayBatDau(new ConverDate().dateToLong("01/04/2022", "dd/MM/yyyy"));
