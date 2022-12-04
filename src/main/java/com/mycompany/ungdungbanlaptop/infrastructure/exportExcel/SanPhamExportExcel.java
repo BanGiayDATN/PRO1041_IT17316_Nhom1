@@ -7,11 +7,17 @@ package com.mycompany.ungdungbanlaptop.infrastructure.exportExcel;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.repository.impl.SanPhamRepositoryImpl;
+import com.sun.mail.handlers.text_xml;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.util.List;
+import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.BuiltinFormats;
 import org.apache.poi.ss.usermodel.CellStyle;
@@ -155,7 +161,7 @@ public class SanPhamExportExcel {
         }
     }
 
-    public static void writeExcel(List<SanPham> list, String excelFilePath, String loaiFile) throws IOException {
+    public static void writeExcel(List<SanPham> list, String loaiFile) throws IOException {
         SXSSFWorkbook workbook = new SXSSFWorkbook();
         SXSSFSheet sheet = workbook.createSheet("Sheet"); // Create sheet with sheet name
         sheet.trackAllColumnsForAutoSizing();
@@ -230,15 +236,27 @@ public class SanPhamExportExcel {
         int numberOfColumn = 16; // sheet.getRow(0).getPhysicalNumberOfCells();
         autosizeColumn(sheet, numberOfColumn);
 
-        String path = new File(excelFilePath) + loaiFile;
-        createOutputFile(workbook, path);
-        System.out.println("Done!!!");
+        JFrame parentFrame = new JFrame();
+        JFileChooser fileChooser = new JFileChooser();
+        fileChooser.setSelectedFile(new File( new TaoChuoiNgauNhien().getMaSanPham("Danh_sach_san_pham", 9)));
+        fileChooser.setDialogTitle("Specify a file to save");
+        int userSelection = fileChooser.showSaveDialog(parentFrame);
+
+        if (userSelection == JFileChooser.APPROVE_OPTION) {
+            File fileToSave = fileChooser.getSelectedFile();
+            System.out.println("Save as file: " + fileToSave.getAbsolutePath());
+            String path = new File( fileToSave.getAbsolutePath()) + loaiFile;
+            createOutputFile(workbook, path);
+            System.out.println("Done!!!");
+        }
     }
 
     public static void main(String[] args) throws IOException {
         List<SanPham> list = new SanPhamRepositoryImpl().getAll();
         String sanphamExport = new TaoChuoiNgauNhien().getMaHoaDon("san_pham", 3);
         String loaiFile = ".xlsx";
-        writeExcel(list, sanphamExport, loaiFile);
+        writeExcel(list, loaiFile);
+
+        
     }
 }

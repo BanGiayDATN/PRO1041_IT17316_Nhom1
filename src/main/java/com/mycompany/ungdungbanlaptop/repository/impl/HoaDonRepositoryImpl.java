@@ -190,11 +190,6 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
-    public static void main(String[] args) {
-
-        System.out.println(new HoaDonRepositoryImpl().getHoaDonBanHang());
-    }
-
     @Override
     public List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -213,5 +208,29 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
         return null;
     }
-}
 
+    @Override
+    public long countKhachHang(long begin, long end) {
+        long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(kh.ma) FROM HoaDon hd "
+                    + " inner join  KhachHang kh"
+                    + " ON kh.idKhachHang = hd.khachHang.idKhachHang"
+                    + " where hd.ngayTao BETWEEN :begin AND :end ";
+            Query query = session.createQuery(hql);
+            query.setParameter("begin", begin);
+            query.setParameter("end", end);
+            count = (long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return count;
+    }
+
+    public static void main(String[] args) {
+        long begin = 1659286800000l;
+        long end = 1662310800000l;
+        long soLuong = new HoaDonRepositoryImpl().countKhachHang(begin, end);
+        System.out.println(soLuong);
+    }
+}

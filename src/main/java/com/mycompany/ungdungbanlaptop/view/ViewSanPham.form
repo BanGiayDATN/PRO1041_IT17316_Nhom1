@@ -547,6 +547,9 @@
                           <ComponentRef name="jPopupMenu1"/>
                         </Property>
                       </Properties>
+                      <Events>
+                        <EventHandler event="mouseMoved" listener="java.awt.event.MouseMotionListener" parameters="java.awt.event.MouseEvent" handler="jTableSanPhamMouseMoved"/>
+                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
                       </AuxValues>
@@ -566,6 +569,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btn_export">
                   <Properties>
+                    <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="ExportExcel"/>
                   </Properties>
                   <Events>
