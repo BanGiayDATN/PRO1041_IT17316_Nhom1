@@ -523,10 +523,6 @@ public class GenDB {
         HoaDonChiTiet hdct1 = new HoaDonChiTiet();
         hdct1.setHoaDon(hd1);
         hdct1.setSoLuong(1);
-<<<<<<< HEAD
-=======
-        hdct1.setSanPham(sanPham1);
->>>>>>> develop
         hdct1.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
 
