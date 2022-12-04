@@ -12,6 +12,7 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -209,13 +210,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
-<<<<<<< HEAD
-=======
-    public static void main(String[] args) {
-//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
-    }
-
->>>>>>> develop
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -230,9 +224,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
     }
-<<<<<<< HEAD
 
-<<<<<<< HEAD
     @Override
     public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -300,7 +292,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
    
     @Override
-    public long soHoaDon(long ngayBatDau, long ngayKetThuc) {
+    public long soHoaDontheoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
         long tong = 0;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT count(hd.ma) FROM HoaDon hd"
@@ -331,17 +323,28 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
     
      public static void main(String[] args) {
-//        Locale localerEN = new Locale("en", "EN");
-//        NumberFormat format = NumberFormat.getInstance(localerEN);
-//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
-//        System.out.println(i);
-            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDon(1659286800000l, 1661101200000l));
-            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
+        Locale localerEN = new Locale("en", "EN");
+        NumberFormat format = NumberFormat.getInstance(localerEN);
+        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
+        System.out.println(i);
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
     }
 
+    @Override
+    public long soHoaDontheoNgay(long toDay) {
+        long tong = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(hd.ma) FROM HoaDon hd"
+                    + " WHERE hd.ngayThanhToan = :toDay";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
 
-=======
->>>>>>> fd2951e2e0f49c1c610dbceed8407c70cd5441e2
-=======
->>>>>>> develop
+            tong = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return tong;
+    }
+
 }

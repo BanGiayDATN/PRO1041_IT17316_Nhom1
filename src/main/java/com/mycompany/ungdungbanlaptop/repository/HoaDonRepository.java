@@ -41,5 +41,8 @@ public interface HoaDonRepository {
     List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma);
     
     long countKhachHang(long batDau , long ketThuc);
-
+    
+    long soKhachHangTheoNgay(long toDay);
+    
+    long tongSoKhachHang();
 }

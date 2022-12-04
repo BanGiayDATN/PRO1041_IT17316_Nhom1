@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResques
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import com.mycompany.ungdungbanlaptop.repository.SanPhamRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
@@ -348,24 +349,75 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public long countSanPham(long begin, long end) {
         long count = 0;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT count(sp.ma) FROM HoaDonChiTiet hdct "
-                    + " inner join  SanPham sp ON sp.idSanPham = hdct.sanPham.idSanPham "
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
                     + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
                     + " where hd.ngayTao BETWEEN :begin AND :end ";
             Query query = session.createQuery(hql);
             query.setParameter("begin", begin);
             query.setParameter("end", end);
             count = (long) query.uniqueResult();
+            return count;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return count;
+        return 0;
     }
     
+  
+
+    @Override
+    public long soSanPhamTheoNgay(long toDay) {
+         long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
+                    + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
+                    + " where hd.ngayThanhToan =:toDay";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
+            count = (long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
+
+    @Override
+    public long soSanPham() {
+       long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct ";
+
+            Query query = session.createQuery(hql);
+            count = (long) query.uniqueResult();
+            return count;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return 0;
+    }
      public static void main(String[] args) {
         long begin = 1659286800000l;
         long end = 1662310800000l;
         long soLuong = new SanPhamRepositoryImpl().countSanPham(begin, end);
-        System.out.println(soLuong);
+        System.out.println(new SanPhamRepositoryImpl().soSanPhamTheoNgay(1662310800000l));
+    }
+
+    @Override
+    public List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay() {
+         List<Top10SanPhamBanChayViewModel> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT  new com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel( sp.ten,SUM(hdct.soLuong),hdct.donGia)  FROM SanPham sp"
+                    + " INNER JOIN HoaDonChiTiet hdct "
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " GROUP BY sp.ten,hdct.donGia"
+                    + " ORDER BY SUM(hdct.soLuong) DESC";
+            Query<Top10SanPhamBanChayViewModel> query = session.createQuery(hql);
+            list = query.setMaxResults(10).getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
     }
 }
