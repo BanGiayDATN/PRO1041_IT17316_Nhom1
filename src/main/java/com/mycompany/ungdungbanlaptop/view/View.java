@@ -7,7 +7,6 @@ package com.mycompany.ungdungbanlaptop.view;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 
-
 import java.awt.Color;
 import java.awt.FlowLayout;
 import javax.swing.JFrame;
@@ -439,8 +438,7 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(Color.black);
         jPanel6.setBackground(one);
         jPanel12.setBackground(one);
-        ViewSanPham viewsp = new ViewSanPham();
-
+        ViewSanPham viewsp = new ViewSanPham(nhanVien);
         DeskTop.add(viewsp);
         DeskTop.setLayout(new FlowLayout());
         this.pack();
@@ -484,8 +482,8 @@ public class View extends javax.swing.JFrame {
         jPanel7.setBackground(one);
         jPanel6.setBackground(one);
         jPanel8.setBackground(one);
-        jPanel12.setBackground(one);      
-        ViewThongKe viewnv= new ViewThongKe();
+        jPanel12.setBackground(one);
+        ViewThongKe viewnv = new ViewThongKe();
         DeskTop.add(viewnv);
         DeskTop.setLayout(new FlowLayout());
         this.pack();

@@ -342,12 +342,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        viewChucNang.removeAll();
-        ViewDoiTra form = new ViewDoiTra();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     public static void main(String args[]) {

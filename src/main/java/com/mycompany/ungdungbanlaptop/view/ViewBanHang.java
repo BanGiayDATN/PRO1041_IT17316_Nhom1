@@ -1309,7 +1309,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbKhuyenMaiSanPham.setModel(model);
     }
 
-    <<<<<<< HEAD
+   
 
     private void removeGioHang() {
         for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
@@ -1320,11 +1320,9 @@ public class ViewBanHang extends javax.swing.JPanel {
             showSanPham(sanPhamService.getSanPhamBanHang());
         }
         listGioHang.entrySet().clear();
-        showGioHang(listGioHang);
+        showGioHangHDCT((List<GioHangViewModel>) listGioHang);
     }
-    =======
  
->>>>>>> develop
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableGiohang;
     private javax.swing.JTable TableHoaDon;
