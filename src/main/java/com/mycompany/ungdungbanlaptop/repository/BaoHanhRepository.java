@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import java.util.List;
 
 /**
@@ -18,4 +19,6 @@ public interface BaoHanhRepository {
     BaoHanh add(BaoHanh baoHanh);
 
     BaoHanh getOne(String maBh);
+//    
+//    List<BaoHanh> sreach(String soDienThoai);
 }

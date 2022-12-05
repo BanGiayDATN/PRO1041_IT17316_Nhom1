@@ -4,6 +4,9 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewBaoHanh;
 
+import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
+import java.util.List;
+
 /**
  *
  * @author Du
@@ -35,6 +38,11 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
         jLabel1.setText("Số Điện Thoại :");
 
         btn_TimKiem.setText("Tìm Kiếm");
+        btn_TimKiem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_TimKiemActionPerformed(evt);
+            }
+        });
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -84,6 +92,12 @@ public class TimKiemBaoHanh extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_TimKiemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_TimKiemActionPerformed
+//String ten = txt_SĐTLienHe.getText();
+//        List<SanPhamBanHangViewModel> listNew = sanPhamService.searchByTenBanHang(sanPhamService.getSanPhamBanHang(), ten);
+//        showSanPham(listNew);        
+    }//GEN-LAST:event_btn_TimKiemActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
-
+import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.swing.ScrollBar;
 import com.mycompany.ungdungbanlaptop.swing.WrapLayout;
 
@@ -16,8 +16,12 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
     /**
      * Creates new form ViewDoiTraTheoHoaDon
      */
-    public ViewDoiTraTheoHoaDon() {
+    public ViewDoiTraTheoHoaDon(HoaDon hoaDon) {
         initComponents();
+    }
+
+    private ViewDoiTraTheoHoaDon() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
      private void init() {

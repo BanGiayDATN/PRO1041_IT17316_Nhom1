@@ -2,19 +2,17 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package com.mycompany.ungdungbanlaptop.repository;
+package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
 import java.util.List;
 
 /**
  *
- * @author vinhnv
+ * @author ADMIN
  */
-public interface DoiTraRepository {
-    
+public interface DoiTraService {
     List<DoiTRa> gelAll();
     
-    DoiTRa add(DoiTRa doiTRa);
-    
+    String add(DoiTRa doiTRa);
 }
