@@ -45,4 +45,6 @@ public interface HoaDonRepository {
     long soKhachHangTheoNgay(long toDay);
     
     long tongSoKhachHang();
+    
+    List<HoaDonRespone> getListHoaDonByMaOrSDT(String ma, String sdt);
 }

@@ -92,5 +92,10 @@ public class HoaDonServiceImpl implements HoaDonService{
     public long tongSoKhachHang() {
         return hoadonRepository.tongSoKhachHang();
     }
+
+    @Override
+    public List<HoaDonRespone> getListHoaDonByMaOrSDT(String ma, String sdt) {
+           return  hoadonRepository.getListHoaDonByMaOrSDT(ma, sdt);
+    }
     
 }
