@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
@@ -183,7 +184,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
             query.setParameter("ma", ma);
             List<HoaDonChiTiet> list = query.getResultList();
-
             return list;
         }
     }
@@ -191,7 +191,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         List<GioHangViewModel> list = new ArrayList<>();
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -204,12 +203,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query<GioHangViewModel> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHoaDon);
             list = query.getResultList();
+
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace(System.out);
         }
         return list;
     }
+
 
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
@@ -219,7 +219,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             query.setParameter("idHoaDonChiTiet", idHDCT);
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
@@ -323,7 +322,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return tong;
     }
     
- 
+
 
     @Override
     public long soHoaDontheoNgay(long toDay) {
@@ -342,6 +341,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
+
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -383,5 +383,29 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 // String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
         System.out.println(new HoaDonChiTietRepositoryImpl().getByIdSanPham(UUID.fromString("0138A8C0-E284-6711-8184-E2416CC20027")));
     }
+
+
+    public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma){
+        List<HoaDonChiTietRespone> list = new ArrayList<>();
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone(hdct.id, hdct.sanPham.ma, hdct.sanPham.ten,hdct.sanPham.giaBan, hdct.soLuong) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.ma = :ma";
+            Query<HoaDonChiTietRespone> query = session.createQuery(hql);
+            query.setParameter("ma", ma);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
 
 }

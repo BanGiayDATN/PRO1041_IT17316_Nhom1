@@ -16,6 +16,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -35,12 +37,13 @@ public class ViewNhanVien extends javax.swing.JPanel {
         btn_add.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//add.png"));
         btn_delete.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//delete.png"));
         btn_update.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//update.png"));
-
+        txtMatKhau.setEditable(false);
         txtMaNhanVien.setEditable(false);
         jTableNhanVien.setModel(dtm);
         String[] a = {"STT", "Mã", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Trạng thai"};
         dtm.setColumnIdentifiers(a);
         showData(nhanVienService.getAll());
+        TableFilterHeader filterHeader = new TableFilterHeader(jTableNhanVien, AutoChoices.ENABLED);
     }
 
     private void showData(List<NhanVien> list) {
@@ -122,6 +125,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 204, 204));
         setPreferredSize(new java.awt.Dimension(996, 683));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
@@ -155,6 +159,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
         jPanel4.setBorder(new javax.swing.border.MatteBorder(null));
 
+        btn_add.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_add.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Create.png"))); // NOI18N
         btn_add.setText("Thêm");
         btn_add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,6 +168,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
             }
         });
 
+        btnLamMoi.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnLamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Refresh.png"))); // NOI18N
         btnLamMoi.setText("Làm mới");
         btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -169,6 +177,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
             }
         });
 
+        btn_delete.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_delete.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Delete.png"))); // NOI18N
         btn_delete.setText("xóa");
         btn_delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -176,6 +186,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
             }
         });
 
+        btn_update.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btn_update.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Save as.png"))); // NOI18N
         btn_update.setText("Sửa");
         btn_update.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -183,6 +195,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
             }
         });
 
+        btnDoiMK.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        btnDoiMK.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Key.png"))); // NOI18N
         btnDoiMK.setText("Đổi mật khẩu");
         btnDoiMK.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,7 +233,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 .addComponent(btnDoiMK)
                 .addGap(18, 18, 18)
                 .addComponent(btnLamMoi)
-                .addContainerGap(14, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         buttonGroup1.add(rdNam);
@@ -431,17 +445,19 @@ public class ViewNhanVien extends javax.swing.JPanel {
             }
         });
 
+        jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
         jLabel26.setText("Tìm kiếm:");
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));
 
         jLabel3.setText("Giới tính");
 
-        cbbLocGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbLocGioiTinh.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nam", "Nữ" }));
 
         jLabel4.setText("Trạng thái");
 
-        cbbLocTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbbLocTrangThai.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Còn làm", "Nghỉ làm" }));
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -488,8 +504,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 .addContainerGap(77, Short.MAX_VALUE))
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(39, 39, 39)
-                .addComponent(jLabel26, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27)
+                .addComponent(jLabel26)
+                .addGap(51, 51, 51)
                 .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
@@ -519,7 +535,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -736,8 +752,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
-        String timKiem = txtTimKiem.getText();
-        List<NhanVien> list = nhanVienService.searchByEmail(nhanVienService.getAll(), timKiem);
+        String timKiem = txtTimKiem.getText().trim();
+        List<NhanVien> list = nhanVienService.getSearchByName( timKiem);
         showData(list);
     }//GEN-LAST:event_txtTimKiemKeyReleased
 

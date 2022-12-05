@@ -37,4 +37,5 @@ public interface KhachHangService {
 
     Long soLuotMua(String maKH);
 
+    List<String> getAllTenKhachHang();
 }

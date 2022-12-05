@@ -4,10 +4,14 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
+import com.mycompany.ungdungbanlaptop.model.resquest.SeachDoiTraRequest;
+import java.util.List;
+
 /**
  *
  * @author vinhnv
  */
 public interface DoiTraRepository {
-    
+    List<DoiTRa> getList(SeachDoiTraRequest request);
 }

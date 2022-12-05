@@ -12,6 +12,7 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.SanPhamImport;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.MessageErrorImport;
@@ -32,6 +33,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+import java.util.function.Consumer;
 
 /**
  *
@@ -135,7 +137,7 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
     @Override
-    public SanPham updateTrangThai(SanPham sanPham , int trangThai) {
+    public SanPham updateTrangThai(SanPham sanPham, int trangThai) {
         sanPham.setTrangThai(trangThai);
         return sanPhamRepository.update(sanPham);
     }
@@ -145,6 +147,7 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.getAllByTrangThai(trangThai);
     }
 
+    @Override
     public List<SanPhamCustomRespone> getListSanPham() {
         return sanPhamRepository.getListSanPham();
     }
@@ -248,6 +251,7 @@ public class SanPhamServiceImpl implements SanPhamService {
                 if (sp.getMa().isEmpty() || sp.getTen().isEmpty() || sp.getGiaBan().isEmpty() || sp.getSoLuongTon().isEmpty() || sp.getNamBH().isEmpty()) {
                     messageErrorImport.setCheck(false);
                     messageErrorImport.setMessage("vui long khong de trong ");
+
                     return;
                 }
 
@@ -264,7 +268,6 @@ public class SanPhamServiceImpl implements SanPhamService {
                 }
 
                 if (!sp.getNamBH().matches("\\d+")) {
-
                     return;
                 }
 
@@ -316,9 +319,11 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.top10SanPhamBanChay();
     }
 
+
     @Override
     public SanPham getByTen(String ten) {
         return sanPhamRepository.getByTen(ten);
     }
+
 
 }

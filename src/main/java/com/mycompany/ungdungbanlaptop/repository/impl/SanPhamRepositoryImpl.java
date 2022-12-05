@@ -340,7 +340,6 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
                 session.save(item.getSanPham());
             });
             transaction.commit();
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

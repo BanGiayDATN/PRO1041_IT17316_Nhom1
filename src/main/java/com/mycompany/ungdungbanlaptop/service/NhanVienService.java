@@ -28,6 +28,8 @@ public interface NhanVienService {
     List<NhanVien> getAll();
 
     List<NhanVien> searchByEmail(List<NhanVien> list, String email);
+    
+    List<NhanVien> searchByTen( String ten);
 
     NhanVien getByTen(String ten);
 

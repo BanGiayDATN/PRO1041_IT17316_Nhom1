@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
+import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
 import java.awt.FlowLayout;
 import java.io.File;
@@ -30,9 +31,9 @@ public class ViewManChinh extends javax.swing.JFrame {
             btnSanPham.setVisible(false);
             btnNhanVien.setVisible(false);
             btnThongKe.setVisible(false);
-            menu.setVisible(false);
+            btnHoaDon.setVisible(false);
         }
-        menu.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.png"));
+      
 
     }
 
@@ -52,23 +53,13 @@ public class ViewManChinh extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btnSanPham = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btnHoaDon = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         btnNhanVien = new javax.swing.JButton();
         btnKhuyenMai = new javax.swing.JButton();
         jButton9 = new javax.swing.JButton();
         jButton10 = new javax.swing.JButton();
         btnThongKe = new javax.swing.JButton();
-        jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu2 = new javax.swing.JMenu();
-        menu = new javax.swing.JMenu();
-        menuHang = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        menuCPU = new javax.swing.JMenuItem();
-        menuChatLieu = new javax.swing.JMenuItem();
-        MenuGPM = new javax.swing.JMenuItem();
-        jMenu10 = new javax.swing.JMenu();
 
         jMenu1.setText("jMenu1");
 
@@ -92,7 +83,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         );
         viewChucNangLayout.setVerticalGroup(
             viewChucNangLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 697, Short.MAX_VALUE)
+            .addGap(0, 789, Short.MAX_VALUE)
         );
 
         ViewMenu.setBackground(new java.awt.Color(255, 255, 255));
@@ -127,12 +118,12 @@ public class ViewManChinh extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jButton4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lists.png"))); // NOI18N
-        jButton4.setText("Hóa Đơn");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btnHoaDon.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnHoaDon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Lists.png"))); // NOI18N
+        btnHoaDon.setText("Hóa Đơn");
+        btnHoaDon.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btnHoaDonActionPerformed(evt);
             }
         });
 
@@ -195,32 +186,32 @@ public class ViewManChinh extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jButton10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnKhuyenMai, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
             .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(btnNhanVien, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnSanPham, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(btnHoaDon, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 177, Short.MAX_VALUE)
+            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(btnThongKe, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(112, 112, 112)
+                .addContainerGap(150, Short.MAX_VALUE)
                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnHoaDon, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnSanPham, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnNhanVien, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,7 +219,7 @@ public class ViewManChinh extends javax.swing.JFrame {
                 .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnKhuyenMai, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22))
+                .addGap(70, 70, 70))
         );
 
         javax.swing.GroupLayout ViewMenuLayout = new javax.swing.GroupLayout(ViewMenu);
@@ -238,79 +229,14 @@ public class ViewManChinh extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewMenuLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         ViewMenuLayout.setVerticalGroup(
             ViewMenuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, ViewMenuLayout.createSequentialGroup()
-                .addGap(0, 13, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(ViewMenuLayout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 33, Short.MAX_VALUE))
         );
-
-        jMenu2.setText("File");
-        jMenu2.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jMenu2MouseClicked(evt);
-            }
-        });
-        jMenuBar1.add(jMenu2);
-
-        menu.setText("Cấu hình máy");
-
-        menuHang.setText("Hãng");
-        menuHang.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuHangActionPerformed(evt);
-            }
-        });
-        menu.add(menuHang);
-
-        jMenuItem2.setText("Ram");
-        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem2ActionPerformed(evt);
-            }
-        });
-        menu.add(jMenuItem2);
-
-        jMenuItem4.setText("Version hệ điều hành");
-        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem4ActionPerformed(evt);
-            }
-        });
-        menu.add(jMenuItem4);
-
-        menuCPU.setText("CPU");
-        menuCPU.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuCPUActionPerformed(evt);
-            }
-        });
-        menu.add(menuCPU);
-
-        menuChatLieu.setText("Chất liệu");
-        menuChatLieu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                menuChatLieuActionPerformed(evt);
-            }
-        });
-        menu.add(menuChatLieu);
-
-        MenuGPM.setText("GPM");
-        MenuGPM.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                MenuGPMActionPerformed(evt);
-            }
-        });
-        menu.add(MenuGPM);
-
-        jMenuBar1.add(menu);
-
-        jMenu10.setText("Sản phẩm");
-        jMenuBar1.add(jMenu10);
-
-        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -324,70 +250,15 @@ public class ViewManChinh extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(ViewMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-            .addComponent(viewChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(ViewMenu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(viewChucNang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void menuHangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuHangActionPerformed
-        viewChucNang.removeAll();
-        AdQuanLiHang form = new AdQuanLiHang();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_menuHangActionPerformed
-
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        viewChucNang.removeAll();
-        AdQuanLiRam form = new AdQuanLiRam();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
-    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
-        viewChucNang.removeAll();
-        AdQuanLiVersionHeDieuHanh form = new AdQuanLiVersionHeDieuHanh();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_jMenuItem4ActionPerformed
-
-    private void menuCPUActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuCPUActionPerformed
-        viewChucNang.removeAll();
-        CPUview form = new CPUview();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_menuCPUActionPerformed
-
-    private void menuChatLieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuChatLieuActionPerformed
-        viewChucNang.removeAll();
-        ChatLieuView form = new ChatLieuView();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_menuChatLieuActionPerformed
-
-    private void MenuGPMActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MenuGPMActionPerformed
-        viewChucNang.removeAll();
-        GPMView form = new GPMView();
-        viewChucNang.add(form);
-        viewChucNang.setLayout(new FlowLayout());
-        this.pack();
-        form.setVisible(true);
-    }//GEN-LAST:event_MenuGPMActionPerformed
-
-    private void jMenu2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu2MouseClicked
-
-    }//GEN-LAST:event_jMenu2MouseClicked
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
 
@@ -406,21 +277,21 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     private void btnSanPhamActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSanPhamActionPerformed
         viewChucNang.removeAll();
-        ViewSanPham form = new ViewSanPham();
+        ViewSanPham form = new ViewSanPham(nhanVien);
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
         form.setVisible(true);
     }//GEN-LAST:event_btnSanPhamActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btnHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnHoaDonActionPerformed
         viewChucNang.removeAll();
         QuanLiHoaDon form = new QuanLiHoaDon();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
         form.setVisible(true);
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btnHoaDonActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
@@ -471,8 +342,14 @@ public class ViewManChinh extends javax.swing.JFrame {
     }//GEN-LAST:event_btnThongKeActionPerformed
 
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
-        // TODO add your handling code here:
-        
+
+        viewChucNang.removeAll();
+        ViewDoiTra form = new ViewDoiTra();
+        viewChucNang.add(form);
+        viewChucNang.setLayout(new FlowLayout());
+        this.pack();
+        form.setVisible(true);
+
     }//GEN-LAST:event_jButton10ActionPerformed
 
     public static void main(String args[]) {
@@ -512,8 +389,8 @@ public class ViewManChinh extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem MenuGPM;
     private javax.swing.JPanel ViewMenu;
+    private javax.swing.JButton btnHoaDon;
     private javax.swing.JButton btnKhuyenMai;
     private javax.swing.JButton btnNhanVien;
     private javax.swing.JButton btnSanPham;
@@ -521,24 +398,14 @@ public class ViewManChinh extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton10;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton9;
     private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu10;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
-    private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JMenu menu;
-    private javax.swing.JMenuItem menuCPU;
-    private javax.swing.JMenuItem menuChatLieu;
-    private javax.swing.JMenuItem menuHang;
     private javax.swing.JPanel viewChucNang;
     // End of variables declaration//GEN-END:variables
 }

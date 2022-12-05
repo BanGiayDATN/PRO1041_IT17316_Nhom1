@@ -125,4 +125,9 @@ public class KhachHangServiceImpl implements KhachHangService {
     public Long soLuotMua(String maKH) {
         return khachHangRepository.soLuotMua(maKH);
     }
+
+    @Override
+    public List<String> getAllTenKhachHang() {
+        return khachHangRepository.getAllTenKhachHang();
+    }
 }

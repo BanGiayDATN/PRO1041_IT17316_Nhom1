@@ -52,7 +52,7 @@ public interface SanPhamRepository {
     SanPham getById(UUID id);
 
     List<SanPhamCustomRespone> getListSanPham();
-
+    
     boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list);
 
     long countSanPham(long begin, long end);
