@@ -891,7 +891,7 @@ public class ViewSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_exportActionPerformed
 
     private void jTableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseMoved
-        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+        if (!nhanVien.getChucVu().getTen().equals("Nhân viên")) {
             jTableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
         }
     }//GEN-LAST:event_jTableSanPhamMouseMoved

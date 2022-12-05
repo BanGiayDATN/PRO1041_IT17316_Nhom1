@@ -210,4 +210,16 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
      public static void main(String[] args) {
         System.out.println(new KhachHangRepositoryImpl().soLuotMua("KH797"));
     }
+
+    @Override
+    public List<String> getAllTenKhachHang() {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery("SELECT kh.hoTen FROM KhachHang kh");
+            List<String> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
 }

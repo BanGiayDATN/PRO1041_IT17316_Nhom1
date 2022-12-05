@@ -7,8 +7,8 @@ package com.mycompany.ungdungbanlaptop.repository;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import java.math.BigDecimal;
-import java.util.Date;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import java.util.List;
 import java.util.Map;
@@ -58,4 +58,7 @@ public interface HoaDonChiTietRepository {
     long soHoaDonTong();
     
     long soHoaDontheoNgay(long toDay);
+
+    List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma);
+    
 }

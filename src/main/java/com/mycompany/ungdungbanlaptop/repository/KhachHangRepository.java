@@ -40,5 +40,6 @@ public interface KhachHangRepository {
     
     Long soLuotMua(String maKH);
     
+    List<String> getAllTenKhachHang();
     
 }

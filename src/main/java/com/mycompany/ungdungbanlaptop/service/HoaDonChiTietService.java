@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import java.math.BigDecimal;
 import java.util.List;
@@ -55,4 +56,6 @@ public interface HoaDonChiTietService {
     
     long soHoaDontheoNgay(long toDay);
 
+    List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma);
+    
 }

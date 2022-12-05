@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
@@ -321,17 +322,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return tong;
     }
     
-     public static void main(String[] args) {
-//        Locale localerEN = new Locale("en", "EN");
-//        NumberFormat format = NumberFormat.getInstance(localerEN);
-//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
-//        System.out.println(i);
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
- String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-        System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoNgay(new ConverDate().dateToLong(date, "dd/MM/yyyy")));
-    }
-
+    
     @Override
     public long soHoaDontheoNgay(long toDay) {
         long tong = 0;
@@ -348,4 +339,30 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return tong;
     }
 
+    @Override
+    public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma){
+        List<HoaDonChiTietRespone> list = new ArrayList<>();
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone(hdct.id, hdct.sanPham.ma, hdct.sanPham.ten,hdct.sanPham.giaBan, hdct.soLuong) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.ma = :ma";
+            Query<HoaDonChiTietRespone> query = session.createQuery(hql);
+            query.setParameter("ma", ma);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    
+    public static void main(String[] args) {
+        System.out.println(new HoaDonChiTietRepositoryImpl().findHoaDonChiTietByMaHoaDon("HD46674"));
+    }
 }
