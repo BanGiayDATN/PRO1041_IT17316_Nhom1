@@ -482,6 +482,11 @@ public class ViewSanPham extends javax.swing.JPanel {
 
         btn_lamMoi.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Refresh.png"))); // NOI18N
         btn_lamMoi.setText("Làm mới");
+        btn_lamMoi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_lamMoiActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -921,6 +926,22 @@ public class ViewSanPham extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(this, "Import thất bại ");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btn_lamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_lamMoiActionPerformed
+        // TODO add your handling code here:
+        txtSoLuongTonSearch.setText("");
+        txtTenSanPhamSearch.setText("");
+        txtTrongLuongSearch.setText("");
+        cbbCPUSearch.setSelectedIndex(0);
+        cbbChatLieuSearch.setSelectedIndex(0);
+        cbbGiaBanSearch.setSelectedIndex(0);
+        cbbHeDieuHanhSearch.setSelectedIndex(0);
+        cbbManHinhSearch.setSelectedIndex(0);
+        cbbMauSacSearch.setSelectedIndex(0);
+        cbbNhaSanXuatSearch.setSelectedIndex(0);
+        cbbRamSearch.setSelectedIndex(0);
+        cbb_namSearch.setSelectedIndex(0);
+    }//GEN-LAST:event_btn_lamMoiActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
