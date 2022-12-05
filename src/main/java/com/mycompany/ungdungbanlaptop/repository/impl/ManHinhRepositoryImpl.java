@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.repository.ManHinhRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;

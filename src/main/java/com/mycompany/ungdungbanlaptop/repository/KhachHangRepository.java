@@ -39,4 +39,6 @@ public interface KhachHangRepository {
     KhachHang getByEmail(String email);
     
     Long soLuotMua(String maKH);
+    
+    
 }

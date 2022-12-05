@@ -9,11 +9,14 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Cursor;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -29,6 +32,7 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         list = khuyenMaiService.listKhuyenMaiRespone();
         lbSoLuong.setText(lbSoLuong.getText() + ": " + list.size());
         loadTable(list);
+        TableFilterHeader filterHeader = new TableFilterHeader(tblKhuyenMai, AutoChoices.ENABLED);
     }
 
     public static void addKhuyenMai(KhuyenMai khuyenMai){
@@ -48,7 +52,12 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         model.setColumnIdentifiers(new String[]{"id", "Mã", "Tên", "Ngày bắt đầu", "Ngày kết thúc", "Hình thức", "Số lượng"});
         if (list != null) {
             list.stream().forEach(item -> {
-                model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), item.getNgayBatDauString(), item.getNgayKethucString(), item.getHinhThuc(), item.getSoLuong()});
+                if( item.getNgaybatDau()== 0 || item.getNgayKethuc() == 0){
+                    model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), 0, 0, item.getHinhThuc(), item.getSoLuong()});
+                }else{
+                    model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), item.getNgayBatDauString(), item.getNgayKethucString(), item.getHinhThuc(), item.getSoLuong()});
+                }
+                
             });
         }
         tblKhuyenMai.setModel(model);
@@ -62,13 +71,13 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         if (conHan) {
             if (seach == null) {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0) {
                         listKhuyenMai.add(item);
                     }
                 });
             } else {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0 ) {
                         if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
                             listKhuyenMai.add(item);
                         }
@@ -78,14 +87,14 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         } else if (hetHan) {
             if (seach == null) {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0 ) {
                     } else {
                         listKhuyenMai.add(item);
                     }
                 });
             } else {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0) {
                     } else {
                         if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
                             listKhuyenMai.add(item);
@@ -205,6 +214,11 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblKhuyenMai.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                tblKhuyenMaiMouseMoved(evt);
+            }
+        });
         tblKhuyenMai.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblKhuyenMaiMouseClicked(evt);
@@ -300,6 +314,10 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
     private void btnAddKhuyenMaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddKhuyenMaiActionPerformed
         new ViewThemKhuyenMai().setVisible(true);
     }//GEN-LAST:event_btnAddKhuyenMaiActionPerformed
+
+    private void tblKhuyenMaiMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblKhuyenMaiMouseMoved
+        tblKhuyenMai.setCursor(new Cursor(Cursor.HAND_CURSOR));
+    }//GEN-LAST:event_tblKhuyenMaiMouseMoved
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

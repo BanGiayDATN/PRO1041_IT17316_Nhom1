@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.service.impl;
 import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonBanHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.HoaDonRepositoryImpl;
@@ -70,6 +71,26 @@ public class HoaDonServiceImpl implements HoaDonService{
     @Override
     public HoaDon getById(UUID id) {
         return hoadonRepository.getById(id);
+    }
+
+    @Override
+    public List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma) {
+        return hoadonRepository.findAllByMaKhuyenMai(ma);
+    }
+
+    @Override
+    public long countKhachHang(long batDau, long ketThuc) {
+        return hoadonRepository.countKhachHang(batDau, ketThuc);
+    }
+
+    @Override
+    public long soKhachHangTheoNgay(long toDay) {
+        return hoadonRepository.soKhachHangTheoNgay(toDay);
+    }
+
+    @Override
+    public long tongSoKhachHang() {
+        return hoadonRepository.tongSoKhachHang();
     }
     
 }

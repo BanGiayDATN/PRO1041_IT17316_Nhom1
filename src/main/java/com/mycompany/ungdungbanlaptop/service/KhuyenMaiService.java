@@ -4,14 +4,10 @@
  */
 package com.mycompany.ungdungbanlaptop.service;
 
-import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiRespone;
-import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
-import java.util.Date;
+import java.math.BigDecimal;
 import java.util.List;
-import java.util.UUID;
 
 /**
  *
@@ -35,4 +31,5 @@ public interface KhuyenMaiService {
     
     List<KhuyenMaiRespone> listKhuyenMaiRespone();
 
+    List<KhuyenMai> findAllKhuyenMaiByDieuKien(long ngayHienTai, BigDecimal dieuKien);
 }

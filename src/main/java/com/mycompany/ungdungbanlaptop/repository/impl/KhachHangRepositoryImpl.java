@@ -10,7 +10,6 @@ import com.mycompany.ungdungbanlaptop.repository.KhachHangRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 
 import java.util.ArrayList;
-import  java.util.Iterator;
 import java.util.List;
 
 import org.hibernate.Session;
@@ -204,12 +203,11 @@ public class KhachHangRepositoryImpl implements KhachHangRepository {
             return count;
         } catch (Exception e) {
             e.printStackTrace(System.out);
-           
         }
         return null;
     }
     
      public static void main(String[] args) {
-        System.out.println(new KhachHangRepositoryImpl().getLichSuMuaHang("KH98719"));
+        System.out.println(new KhachHangRepositoryImpl().soLuotMua("KH797"));
     }
 }
