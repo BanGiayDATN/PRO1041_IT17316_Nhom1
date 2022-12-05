@@ -31,8 +31,9 @@ public interface NhanVienRepository {
 
     NhanVien getByTen(String ten);
 
-
     List<NhanVien> searchByEmail(String email);
+    
+    List<NhanVien> searchByTen(String ten);
 
     NhanVien getNhanVienByMa(String ma);
     
