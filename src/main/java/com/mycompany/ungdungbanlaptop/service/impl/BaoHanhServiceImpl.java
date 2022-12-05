@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.repository.BaoHanhRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.BaoHanhRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -29,6 +30,16 @@ public class BaoHanhServiceImpl implements BaoHanhService{
             return "Tạo phiếu bảo hành thành công";
         }
             return "Tạo phiếu bảo hành thất bại";
+    }
+
+    @Override
+    public BaoHanh getById(UUID id) {
+        return ql.getById(id);
+    }
+
+    @Override
+    public BaoHanh getOne(String maBh) {
+        return ql.getOne(maBh);
     }
     
 }

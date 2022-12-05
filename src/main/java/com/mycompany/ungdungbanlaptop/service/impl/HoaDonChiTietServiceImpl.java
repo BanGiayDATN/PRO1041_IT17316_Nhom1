@@ -116,5 +116,15 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
            return hoaDonChiTietRepository.soHoaDontheoNgay(toDay);
     }
 
+    @Override
+    public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
+        return hoaDonChiTietRepository.getListByIdHoaDon(idHD);
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSP) {
+        return hoaDonChiTietRepository.getByIdSanPham(idSP);
+    }
+
    
 }

@@ -43,6 +43,8 @@ public interface HoaDonChiTietService {
 
     HoaDonChiTiet getByIdHoaDon(UUID idHD);
     
+    HoaDonChiTiet getByIdSanPham(UUID idSP);
+    
      BigDecimal tongDoanhThu();
 
     BigDecimal toDay(long toDay);
@@ -54,5 +56,7 @@ public interface HoaDonChiTietService {
     long soHoaDonTong();
     
     long soHoaDontheoNgay(long toDay);
+    
+     List<HoaDonChiTiet > getListByIdHoaDon(UUID idHD);
 
 }

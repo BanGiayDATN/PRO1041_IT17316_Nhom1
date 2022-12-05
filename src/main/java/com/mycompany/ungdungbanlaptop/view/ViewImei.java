@@ -35,7 +35,8 @@ public class ViewImei extends javax.swing.JFrame {
     public ViewImei(HoaDonChiTiet hoaDonChiTiet) {
         initComponents();
         this.hdct = hoaDonChiTiet;
-        jLabel4.setText(String.valueOf(hdct.getSoLuong()));
+        jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
+       
     }
 
     
@@ -137,8 +138,10 @@ public class ViewImei extends javax.swing.JFrame {
             imei.setHoaDonChiTiet(hdct);
 
             JOptionPane.showMessageDialog(this, imeiService.add(imei));
-            
-            jLabel4.setText(String.valueOf(Integer.valueOf(jLabel4.getText())-1));
+             jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
+           if(Integer.valueOf(jLabel4.getText()) == 0){
+            this.dispose();
+        }
     }//GEN-LAST:event_btnAddActionPerformed
 
     private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed

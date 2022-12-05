@@ -316,4 +316,9 @@ public class SanPhamServiceImpl implements SanPhamService {
         return sanPhamRepository.top10SanPhamBanChay();
     }
 
+    @Override
+    public SanPham getByTen(String ten) {
+        return sanPhamRepository.getByTen(ten);
+    }
+
 }
