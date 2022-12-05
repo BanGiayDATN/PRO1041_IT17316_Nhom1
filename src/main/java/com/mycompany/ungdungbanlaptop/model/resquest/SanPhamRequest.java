@@ -21,7 +21,6 @@ import org.bridj.ann.Alignment;
 @NoArgsConstructor
 @AllArgsConstructor
 public class SanPhamRequest {
-
     private String ma;
     private String ten;
     private String giaBan;

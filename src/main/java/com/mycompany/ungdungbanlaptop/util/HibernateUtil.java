@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.util;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
@@ -60,11 +61,10 @@ public class HibernateUtil {
         properties.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
         properties.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
 
+
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
         properties.put(Environment.USER, "QLNTuser"); // nhớ thay tài khoản SQL
         properties.put(Environment.PASS, "123456"); // nhớ thay mật khẩu SQL
-
-
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
 //        properties.put(Environment.HBM2DDL_AUTO, "create");
@@ -93,6 +93,7 @@ public class HibernateUtil {
         conf.addAnnotatedClass(DoiTRa.class);
         conf.addAnnotatedClass(HoaDonChiTiet.class);
         conf.addAnnotatedClass(BaoHanh.class);
+        conf.addAnnotatedClass(BaoHanhChiTiet.class);
         return conf;
     }
 }

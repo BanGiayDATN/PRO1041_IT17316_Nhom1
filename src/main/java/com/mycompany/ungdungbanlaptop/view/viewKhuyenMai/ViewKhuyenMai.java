@@ -52,7 +52,12 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         model.setColumnIdentifiers(new String[]{"id", "Mã", "Tên", "Ngày bắt đầu", "Ngày kết thúc", "Hình thức", "Số lượng"});
         if (list != null) {
             list.stream().forEach(item -> {
-                model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), item.getNgayBatDauString(), item.getNgayKethucString(), item.getHinhThuc(), item.getSoLuong()});
+                if( item.getNgaybatDau()== 0 || item.getNgayKethuc() == 0){
+                    model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), 0, 0, item.getHinhThuc(), item.getSoLuong()});
+                }else{
+                    model.addRow(new Object[]{item.getId(), item.getMa(), item.getTen(), item.getNgayBatDauString(), item.getNgayKethucString(), item.getHinhThuc(), item.getSoLuong()});
+                }
+                
             });
         }
         tblKhuyenMai.setModel(model);
@@ -66,13 +71,13 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         if (conHan) {
             if (seach == null) {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0) {
                         listKhuyenMai.add(item);
                     }
                 });
             } else {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0 ) {
                         if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
                             listKhuyenMai.add(item);
                         }
@@ -82,14 +87,14 @@ public class ViewKhuyenMai extends javax.swing.JPanel {
         } else if (hetHan) {
             if (seach == null) {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0 ) {
                     } else {
                         listKhuyenMai.add(item);
                     }
                 });
             } else {
                 list.stream().forEach(item -> {
-                    if (item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) {
+                    if ((item.getNgaybatDau() <= date && item.getNgayKethuc() >= date) || item.getSoLuong() > 0) {
                     } else {
                         if (item.getMa().toLowerCase().contains(seach) || item.getTen().toLowerCase().contains(seach)) {
                             listKhuyenMai.add(item);

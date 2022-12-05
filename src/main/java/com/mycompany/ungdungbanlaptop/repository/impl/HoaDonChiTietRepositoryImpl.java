@@ -11,14 +11,19 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
+import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  *
@@ -177,16 +182,17 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
             query.setParameter("ma", ma);
-            List<HoaDonChiTiet> list = query.getResultList();          
+
+            List<HoaDonChiTiet> list = query.getResultList();
+
             return list;
-         }
+        }
 
     }
 
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         List<GioHangViewModel> list = new ArrayList<>();
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -199,18 +205,12 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query<GioHangViewModel> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHoaDon);
             list = query.getResultList();
+
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace(System.out);
         }
         return list;
     }
-
-
-    public static void main(String[] args) {
-//        System.out.println( new HoaDonChiTietRepositoryImpl().getGioHang());
-    }
-
 
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
@@ -220,19 +220,134 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             query.setParameter("idHoaDonChiTiet", idHDCT);
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
         return null;
     }
 
-   
+    @Override
+    public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHD);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public BigDecimal tongDoanhThu() {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            BigDecimal tong;
+            String hql = "SELECT SUM(hdct.soLuong*hdct.donGia) FROM HoaDonChiTiet hdct ";
+            Query query = session.createQuery(hql);
+            tong = (BigDecimal) query.uniqueResult();
+            return tong;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public BigDecimal toDay(long toDay) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            BigDecimal tong;
+            String hql = "SELECT SUM(hdct.soLuong*hdct.donGia) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.ngayThanhToan = :toDay";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
+            tong = (BigDecimal) query.uniqueResult();
+            return tong;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public BigDecimal theoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            BigDecimal tong;
+            String hql = "SELECT SUM(hdct.soLuong*hdct.donGia) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.ngayThanhToan BETWEEN :ngayBatDau AND :ngayKetThuc";
+            Query query = session.createQuery(hql);
+            query.setParameter("ngayBatDau", ngayBatDau);
+            query.setParameter("ngayKetThuc", ngayKetThuc);
+            tong = (BigDecimal) query.uniqueResult();
+            return tong;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public long soHoaDontheoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
+        long tong = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(hd.ma) FROM HoaDon hd"
+                    + " WHERE hd.ngayThanhToan BETWEEN :ngayBatDau AND :ngayKetThuc";
+            Query query = session.createQuery(hql);
+            query.setParameter("ngayBatDau", ngayBatDau);
+            query.setParameter("ngayKetThuc", ngayKetThuc);
+
+            tong = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return tong;
+    }
+
+    @Override
+    public long soHoaDonTong() {
+        long tong = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(hd.ma) FROM HoaDon hd";
+            Query query = session.createQuery(hql);
+            tong = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return tong;
+    }
+
+    @Override
+    public long soHoaDontheoNgay(long toDay) {
+        long tong = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(hd.ma) FROM HoaDon hd"
+                    + " WHERE hd.ngayThanhToan = :toDay";
+            Query query = session.createQuery(hql);
+            query.setParameter("toDay", toDay);
+
+            tong = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return tong;
+    }
 
 
-  
+
 
     
-
-         }
-
+     public static void main(String[] args) {
+//        Locale localerEN = new Locale("en", "EN");
+//        NumberFormat format = NumberFormat.getInstance(localerEN);
+//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
+//        System.out.println(i);
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
+ 
+}
+}

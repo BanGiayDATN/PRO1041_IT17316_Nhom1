@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.model.resquest.ChiTietSanPhamImportResques
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamCustomRespone;
+import com.mycompany.ungdungbanlaptop.model.viewModel.Top10SanPhamBanChayViewModel;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
@@ -49,8 +50,14 @@ public interface SanPhamRepository {
     SanPham getById(UUID id);
     
     List<SanPhamCustomRespone> getListSanPham();
-
+    
     boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list);
     
     long countSanPham(long begin , long end);
+    
+    long soSanPhamTheoNgay(long toDay);
+    
+    long soSanPham();
+    
+    List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
 }
