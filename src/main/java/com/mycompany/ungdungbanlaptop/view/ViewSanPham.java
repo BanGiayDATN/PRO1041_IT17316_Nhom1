@@ -11,6 +11,7 @@ import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
@@ -86,13 +87,14 @@ public class ViewSanPham extends javax.swing.JPanel {
     private static List<SanPham> listSanPham = new ArrayList<>();
 
     long count, soTrang, trang = 1;
-
+    private NhanVien nhanVien;
     ;
     /**
      * Creates new form ViewSanPham
      */
-    public ViewSanPham() {
+    public ViewSanPham(NhanVien nhanVien) {
         initComponents();
+        this.nhanVien = nhanVien;
         jTableSanPham.setModel(dtm);
         String[] a = {"STT", "Mã SP", "Tên Sp", "Trọng lượng", "Năm sản xuất", "Số lượng tồn", "Giá nhập", "Giá bán", "Mô tả"};
         dtm.setColumnIdentifiers(a);
@@ -111,7 +113,12 @@ public class ViewSanPham extends javax.swing.JPanel {
         showData(listSanPham);
         TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
         filterHeader.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+            jToggleButton1.setVisible(false);
+            btn_export.setVisible(false);
+            btnImport.setVisible(false);
+            jButton1.setVisible(false);
+        }
     }
 
     private void radio() {
@@ -425,7 +432,9 @@ public class ViewSanPham extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel6.setText("Quản Lý Sản Phẩm");
 
-        jTabbedPane1.setBackground(new java.awt.Color(204, 204, 204));
+        jTabbedPane1.setBackground(new java.awt.Color(255, 255, 255));
+
+        TimKiemSanPham.setBackground(new java.awt.Color(255, 255, 255));
 
         jPanel3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -637,7 +646,6 @@ public class ViewSanPham extends javax.swing.JPanel {
             }
         });
 
-        btn_export.setBackground(new java.awt.Color(255, 255, 255));
         btn_export.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btn_export.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Download.png"))); // NOI18N
         btn_export.setText("ExportExcel");
@@ -690,10 +698,11 @@ public class ViewSanPham extends javax.swing.JPanel {
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(btnImport)
-                        .addComponent(jButton1)
-                        .addComponent(btn_export))
+                    .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(btn_export, javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(btnImport)
+                            .addComponent(jButton1)))
                     .addComponent(jToggleButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -707,7 +716,7 @@ public class ViewSanPham extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TimKiemSanPhamLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(70, 70, 70))
+                .addGap(8, 8, 8))
             .addGroup(TimKiemSanPhamLayout.createSequentialGroup()
                 .addGap(256, 256, 256)
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -882,9 +891,9 @@ public class ViewSanPham extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_exportActionPerformed
 
     private void jTableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseMoved
-        // TODO add your handling code here:
-        jTableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
-
+        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+            jTableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        }
     }//GEN-LAST:event_jTableSanPhamMouseMoved
 
     private void btnImportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImportActionPerformed
