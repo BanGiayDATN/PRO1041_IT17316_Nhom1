@@ -464,7 +464,7 @@ public class ViewSanPham extends javax.swing.JPanel {
 
         cbbGiaBanSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mời chọn khoảng giá" }));
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search1.png"))); // NOI18N
         btn_search.setText("Search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

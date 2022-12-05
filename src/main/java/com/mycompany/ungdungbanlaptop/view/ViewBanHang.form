@@ -1018,6 +1018,11 @@
                 <Component class="javax.swing.JTextField" name="txtTimKiemSoDienThoai">
                 </Component>
                 <Component class="javax.swing.JLabel" name="btnTimKiem">
+                  <Properties>
+                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
+                      <Image iconType="3" name="/Search1.png"/>
+                    </Property>
+                  </Properties>
                   <Events>
                     <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnTimKiemMouseClicked"/>
                   </Events>

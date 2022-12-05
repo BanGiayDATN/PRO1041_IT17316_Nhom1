@@ -545,6 +545,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         jScrollPane5.setViewportView(txtDiaChiHoaDon);
 
+        btnTimKiem.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search1.png"))); // NOI18N
         btnTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btnTimKiemMouseClicked(evt);
