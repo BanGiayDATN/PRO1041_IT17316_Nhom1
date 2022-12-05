@@ -30,8 +30,9 @@ public class HoaDonRespone {
     private long soLuong;
     private BigDecimal tong;
 
-    public String getTrangThai() {
-        if (tinhTrang == 1) {
+
+    public String getTrangThai(){
+        if(tinhTrang == 0){
             return "Hóa đơn chờ";
         } else {
             return "Đã thanh toán";

@@ -184,7 +184,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
             query.setParameter("ma", ma);
             List<HoaDonChiTiet> list = query.getResultList();
-
             return list;
         }
     }
@@ -192,7 +191,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         List<GioHangViewModel> list = new ArrayList<>();
-
         Transaction transaction = null;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             transaction = session.beginTransaction();
@@ -205,12 +203,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             Query<GioHangViewModel> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHoaDon);
             list = query.getResultList();
+
             transaction.commit();
         } catch (Exception e) {
-            e.printStackTrace(System.out);
         }
         return list;
     }
+
 
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
@@ -220,7 +219,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             query.setParameter("idHoaDonChiTiet", idHDCT);
             HoaDonChiTiet hdct = query.uniqueResult();
             return hdct;
-
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

@@ -261,6 +261,7 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         }
        return 0;
     }
+
     
     public List<HoaDonRespone> getListHoaDonByMaOrSDT(String ma, String sdt){
         try (Session session = HibernateUtil.getFACTORY().openSession()) {

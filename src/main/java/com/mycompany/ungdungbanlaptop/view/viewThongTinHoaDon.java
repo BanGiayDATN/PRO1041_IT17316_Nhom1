@@ -38,12 +38,10 @@ public class viewThongTinHoaDon extends javax.swing.JFrame {
 
 //        HoaDon hd = hoaDonServce.getOne(ma);
         List<HoaDonChiTiet> list = hoaDonChiTietService.getAllByMa(ma);
-        if (list == null) {
-            JOptionPane.showMessageDialog(this, "Sản phẩm không tồn tại");
-        } else {
+
             loadDonHangBan(list);
             System.out.println(list);
-        }
+
 
     }
 

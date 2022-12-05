@@ -7,6 +7,12 @@ package com.mycompany.ungdungbanlaptop.infrastructure.importExcel;
 import com.github.pjfanning.xlsx.StreamingReader;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import java.io.File;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;
@@ -21,6 +27,7 @@ import org.apache.poi.ss.usermodel.Workbook;
 public class SanPhamImport {
 
     public List<SanPhamRequest> importData(File reapExcelDataFile) {
+
         List<SanPhamRequest> listSP = new ArrayList<>();
         Workbook workbook = StreamingReader.builder()
                 .bufferSize(4096)
@@ -47,6 +54,7 @@ public class SanPhamImport {
                     && String.valueOf(getCellValue(row.getCell(12))).trim().length() == 0
                     && String.valueOf(getCellValue(row.getCell(13))).trim().length() == 0
                     && String.valueOf(getCellValue(row.getCell(14))).trim().length() == 0) {
+
                 continue;
             }
             SanPhamRequest sanPhamRequest = new SanPhamRequest();
@@ -65,6 +73,7 @@ public class SanPhamImport {
             sanPhamRequest.setDungLuong(String.valueOf(row.getCell(12).getStringCellValue()).trim());
             sanPhamRequest.setEnumLoaiRam(String.valueOf(row.getCell(13).getStringCellValue()).trim());
             sanPhamRequest.setTenHang(String.valueOf(row.getCell(14).getStringCellValue()).trim());
+
             listSP.add(sanPhamRequest);
         }
         return listSP;
@@ -90,5 +99,4 @@ public class SanPhamImport {
         }
     }
 
-   
 }
