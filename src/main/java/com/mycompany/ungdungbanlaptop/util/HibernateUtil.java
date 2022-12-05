@@ -65,10 +65,7 @@ public class HibernateUtil {
         properties.put(Environment.URL, "jdbc:sqlserver://localhost:1433;databaseName=db_BanLaptop;encrypt=true;trustServerCertificate=true");
         properties.put(Environment.USER, ""); // nhớ thay tài khoản SQL
         properties.put(Environment.PASS, ""); // nhớ thay mật khẩu SQL
-<<<<<<< HEAD
-=======
 
->>>>>>> develop
         properties.put(Environment.SHOW_SQL, "true");
         //gen DB tự động
 //        properties.put(Environment.HBM2DDL_AUTO, "create");
