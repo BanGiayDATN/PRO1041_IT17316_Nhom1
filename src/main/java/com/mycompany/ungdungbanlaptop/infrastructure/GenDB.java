@@ -256,14 +256,14 @@ public class GenDB {
         KhuyenMai khuyenMai = new KhuyenMai();
         khuyenMai.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai.setTen("khuyến mãi tháng 1");
-        khuyenMai.setSoLuong(10);
+        khuyenMai.setSoLuong(0);
         khuyenMai.setDieuKienGiamGia(new BigDecimal("1000"));
         khuyenMai.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai.setTrangThai(0);
         khuyenMai.setHinhThuc(true);
         khuyenMai.setNgayBatDau(new ConverDate().dateToLong("01/01/2022", "dd/MM/yyyy"));
         khuyenMai.setNgayKetThuc(new ConverDate().dateToLong("01/05/2022", "dd/MM/yyyy"));
-        khuyenMai.setPhanTram(20);
+        khuyenMai.setPhanTram(10);
         session.save(khuyenMai);
 
         KhuyenMai khuyenMai1 = new KhuyenMai();
@@ -274,8 +274,8 @@ public class GenDB {
         khuyenMai1.setTrangThai(1);
         khuyenMai1.setHinhThuc(false);
         khuyenMai1.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
-        khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/10/2022", "dd/MM/yyyy"));
-        khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/12/2022", "dd/MM/yyyy"));
+//        khuyenMai1.setNgayBatDau(new ConverDate().dateToLong("01/10/2022", "dd/MM/yyyy"));
+//        khuyenMai1.setNgayKetThuc(new ConverDate().dateToLong("15/12/2022", "dd/MM/yyyy"));
         khuyenMai1.setPhanTram(20);
         session.save(khuyenMai1);
 
@@ -285,9 +285,9 @@ public class GenDB {
         khuyenMai2.setTen("2 năm");
         khuyenMai2.setHinhThuc(false);
         khuyenMai2.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
-        khuyenMai2.setTrangThai(0);
-        khuyenMai2.setNgayBatDau(new ConverDate().dateToLong("01/04/2022", "dd/MM/yyyy"));
-        khuyenMai2.setNgayKetThuc(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
+        khuyenMai2.setTrangThai(1);
+//        khuyenMai2.setNgayBatDau(new ConverDate().dateToLong("01/04/2022", "dd/MM/yyyy"));
+//        khuyenMai2.setNgayKetThuc(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         khuyenMai2.setPhanTram(30);
         session.save(khuyenMai2);
 
