@@ -129,7 +129,7 @@
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="error_DiaChi" min="-2" pref="22" max="-2" attributes="0"/>
-              <EmptySpace pref="6" max="32767" attributes="0"/>
+              <EmptySpace pref="14" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="rbHoatDong" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="rbNgungHoatDong" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -224,9 +224,6 @@
     </Component>
     <Component class="javax.swing.JButton" name="btnThemKhachHanh">
       <Properties>
-        <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Add.png"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
       </Properties>
       <Events>

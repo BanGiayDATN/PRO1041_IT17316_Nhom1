@@ -96,7 +96,6 @@ public class ViewThemKhachHang extends javax.swing.JFrame {
 
         jLabel38.setText("Ngày sinh:");
 
-        btnThemKhachHanh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add.png"))); // NOI18N
         btnThemKhachHanh.setText("Thêm");
         btnThemKhachHanh.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -209,7 +208,7 @@ public class ViewThemKhachHang extends javax.swing.JFrame {
                     .addComponent(jLabel33))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(error_DiaChi, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 6, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rbHoatDong)
                     .addComponent(rbNgungHoatDong)

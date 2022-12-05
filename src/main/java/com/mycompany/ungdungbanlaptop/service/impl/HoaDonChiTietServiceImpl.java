@@ -74,12 +74,13 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getGioHang(idHoaDon);
     }
 
-    @Override
+
 
     public HoaDonChiTiet getById(UUID idHDCT) {
         return hoaDonChiTietRepository.getById(idHDCT);
 
     }
+
 
     @Override
     public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
@@ -115,6 +116,4 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     public long soHoaDontheoNgay(long toDay) {
            return hoaDonChiTietRepository.soHoaDontheoNgay(toDay);
     }
-
-   
 }
