@@ -20,6 +20,10 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         initComponents();
     }
 
+    private ViewDoiTraTheoHoaDon() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
      private void init() {
         jpanelTra.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
