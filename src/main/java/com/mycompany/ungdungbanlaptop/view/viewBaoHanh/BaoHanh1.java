@@ -91,7 +91,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
     private void showDataBHCT(List<BaoHanhChiTietViewMoDel>list){
         dtmBHCT.setRowCount(0);
         for (BaoHanhChiTietViewMoDel x : list) {
-            dtmBHCT.addRow(new Object[]{x.getMa(),x.getNgayBatDau(),x.getNgayKetThuc(),x.getHoaDonChiTiet().getSanPham().getTen(),x.getHoaDonChiTiet().getSoLuong(),x.getTrangThai()});
+            dtmBHCT.addRow(new Object[]{x.getMa(),new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"),x.getHoaDonChiTiet().getSanPham().getTen(),x.getHoaDonChiTiet().getSoLuong(),x.getTrangThai()});
         }
     }
     private void cbbBaohanh(){
