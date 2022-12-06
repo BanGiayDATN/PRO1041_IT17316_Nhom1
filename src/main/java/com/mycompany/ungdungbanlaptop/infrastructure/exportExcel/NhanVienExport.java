@@ -9,13 +9,11 @@ import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-import org.apache.poi.hssf.util.HSSFColor;
 import org.apache.poi.ss.usermodel.BorderStyle;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.Color;
-import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.streaming.SXSSFSheet;
@@ -37,6 +35,7 @@ public class NhanVienExport {
             cellStyle.setBorderBottom(BorderStyle.MEDIUM);
             cellStyle.setBorderLeft(BorderStyle.MEDIUM);
             cellStyle.setAlignment(HorizontalAlignment.LEFT);
+                    
             // Header
             Row row = sheet.createRow(0);
             Cell cell = row.createCell(0);
@@ -76,21 +75,14 @@ public class NhanVienExport {
             cell8.setCellStyle(cellStyle);
 
             //Set data
-            int rowNum = 1;
+            int rowNum = 0;
             int index = 1;
-            for (NhanVien nhanVien : list) {
-                Row empDataRow = sheet.createRow(rowNum++);
-                if(nhanVien.getTrangThai() == 1){
-                    Font font = workbook.getFontAt(rowNum);
-                    Color Color;
-                    font.setColor(Short.decode("#fc5959"));
-                    cellStyle.setFont(font);
-                }else{
-                    Font font = workbook.getFontAt(rowNum);
-                    Color Color;
-                    font.setColor(Short.decode("#0f0e0e"));
-                    cellStyle.setFont(font);
-                }
+            if(list != null){
+                for (NhanVien nhanVien : list) {
+                     rowNum++;
+                Row empDataRow = sheet.createRow(rowNum);
+                
+                
                 Cell empSttCell = empDataRow.createCell(0);
                 empSttCell.setCellStyle(cellStyle);
                 empSttCell.setCellValue(index);
@@ -99,36 +91,37 @@ public class NhanVienExport {
                 empMaNhanVienCell.setCellStyle(cellStyle);
                 empMaNhanVienCell.setCellValue(nhanVien.getMa());
                 
-                Cell empTenNhanVienCell = empDataRow.createCell(1);
+                Cell empTenNhanVienCell = empDataRow.createCell(2);
                 empTenNhanVienCell.setCellStyle(cellStyle);
                 empTenNhanVienCell.setCellValue(nhanVien.getHoTen());
                 
-                 Cell empNgaySinhCell = empDataRow.createCell(1);
+                 Cell empNgaySinhCell = empDataRow.createCell(3);
                 empNgaySinhCell.setCellStyle(cellStyle);
                 empNgaySinhCell.setCellValue(new ConverDate().longToDate(nhanVien.getNgaySinh(), "dd/MM/yyyy"));
                 
-                Cell empGioiTinhCell = empDataRow.createCell(1);
+                Cell empGioiTinhCell = empDataRow.createCell(4);
                 empGioiTinhCell.setCellStyle(cellStyle);
                 empGioiTinhCell.setCellValue(nhanVien.getGioiTinh());
                 
-                Cell empDiaChihCell = empDataRow.createCell(1);
+                Cell empDiaChihCell = empDataRow.createCell(5);
                 empDiaChihCell.setCellStyle(cellStyle);
                 empDiaChihCell.setCellValue(nhanVien.getDiaChi());
                 
-                Cell empSoDienThoaiCell = empDataRow.createCell(1);
+                Cell empSoDienThoaiCell = empDataRow.createCell(6);
                 empSoDienThoaiCell.setCellStyle(cellStyle);
                 empSoDienThoaiCell.setCellValue(nhanVien.getSdt());
                 
-                Cell empEmailCell = empDataRow.createCell(1);
+                Cell empEmailCell = empDataRow.createCell(7);
                 empEmailCell.setCellStyle(cellStyle);
                 empEmailCell.setCellValue(nhanVien.getEmail());
                 
-                Cell empTrangThaiCell = empDataRow.createCell(1);
+                Cell empTrangThaiCell = empDataRow.createCell(8);
                 empTrangThaiCell.setCellStyle(cellStyle);
                 empTrangThaiCell.setCellValue( nhanVien.getTrangThai() == 0 ? "Còn làm" : "Nghỉ làm");
                 
+               index++;
                 
-                
+            }
             }
             //write output to response
  
@@ -149,4 +142,7 @@ public class NhanVienExport {
         }
     }
     
+    public static void main(String[] args) {
+        NhanVienExport.exportData(new ArrayList<>(), "C:\\Users\\thang\\Downloads\\123.xlsx");
+    }
 }
