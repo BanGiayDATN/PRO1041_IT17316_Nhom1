@@ -16,6 +16,8 @@ import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
@@ -35,12 +37,13 @@ public class ViewNhanVien extends javax.swing.JPanel {
         btn_add.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//add.png"));
         btn_delete.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//delete.png"));
         btn_update.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//update.png"));
-
+        txtMatKhau.setEditable(false);
         txtMaNhanVien.setEditable(false);
         jTableNhanVien.setModel(dtm);
         String[] a = {"STT", "Mã", "Họ tên", "Ngày sinh", "Giới tính", "Địa chỉ", "Số điện thoại", "Email", "Trạng thai"};
         dtm.setColumnIdentifiers(a);
         showData(nhanVienService.getAll());
+        TableFilterHeader filterHeader = new TableFilterHeader(jTableNhanVien, AutoChoices.ENABLED);
     }
 
     private void showData(List<NhanVien> list) {
@@ -749,8 +752,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
         // TODO add your handling code here:
-        String timKiem = txtTimKiem.getText();
-        List<NhanVien> list = nhanVienService.searchByEmail(nhanVienService.getAll(), timKiem);
+        String timKiem = txtTimKiem.getText().trim();
+        List<NhanVien> list = nhanVienService.getSearchByName( timKiem);
         showData(list);
     }//GEN-LAST:event_txtTimKiemKeyReleased
 

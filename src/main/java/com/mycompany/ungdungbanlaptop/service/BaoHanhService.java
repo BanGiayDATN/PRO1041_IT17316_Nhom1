@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -15,4 +16,8 @@ public interface BaoHanhService {
     List<BaoHanh> getAll();
     
     String add(BaoHanh baohanh);
+    
+     BaoHanh getById( UUID id);
+     
+     BaoHanh getOne(String maBh);
 }

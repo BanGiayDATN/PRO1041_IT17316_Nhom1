@@ -30,7 +30,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table
+@Table(name="bao_hanh_chi_tiet")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaoHanhChiTiet {
@@ -48,10 +48,7 @@ public class BaoHanhChiTiet {
             }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
-    private UUID idHaoHanhChiTiet;
-
-    @Column(name = "ma")
-    private String ma;
+    private UUID id;
 
     @Column(name = "trang_thai")
     private String trangThai;

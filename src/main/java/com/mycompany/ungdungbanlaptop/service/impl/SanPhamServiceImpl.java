@@ -320,4 +320,10 @@ public class SanPhamServiceImpl implements SanPhamService {
     }
 
 
+    @Override
+    public SanPham getByTen(String ten) {
+        return sanPhamRepository.getByTen(ten);
+    }
+
+
 }

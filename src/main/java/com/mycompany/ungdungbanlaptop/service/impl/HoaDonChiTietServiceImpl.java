@@ -119,8 +119,21 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
     }
 
     @Override
+
+    public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
+        return hoaDonChiTietRepository.getListByIdHoaDon(idHD);
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSP) {
+        return hoaDonChiTietRepository.getByIdSanPham(idSP);
+    }
+
+   
+
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         return hoaDonChiTietRepository.findHoaDonChiTietByMaHoaDon(ma);
     }
+
 
 }

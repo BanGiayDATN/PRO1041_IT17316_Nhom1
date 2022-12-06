@@ -322,7 +322,8 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return tong;
     }
     
-    
+
+
     @Override
     public long soHoaDontheoNgay(long toDay) {
         long tong = 0;
@@ -340,6 +341,50 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
+
+    public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHD);
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+       
+    }
+
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSP) {
+          try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.sanPham.idSanPham = :idSanPham";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idSanPham", idSP);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+
+        
+    }
+      public static void main(String[] args) {
+//        Locale localerEN = new Locale("en", "EN");
+//        NumberFormat format = NumberFormat.getInstance(localerEN);
+//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
+//        System.out.println(i);
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
+//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
+// String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdSanPham(UUID.fromString("0138A8C0-E284-6711-8184-E2416CC20027")));
+    }
+
+
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma){
         List<HoaDonChiTietRespone> list = new ArrayList<>();
 
@@ -362,7 +407,5 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
     
-    public static void main(String[] args) {
-        System.out.println(new HoaDonChiTietRepositoryImpl().findHoaDonChiTietByMaHoaDon("HD46674"));
-    }
+
 }

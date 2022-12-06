@@ -32,6 +32,8 @@ public interface SanPhamService {
 
     SanPham getOne(String ma);
 
+    SanPham getByTen(String ten);
+
     List<SanPham> search(List<SanPham> list, String maSp);
 
     List<SanPham> searchByTen(List<SanPham> list, String tenSp);
@@ -58,11 +60,11 @@ public interface SanPhamService {
 
     String SanPhamImport(File file);
 
-    long countSanPham(long begin , long end);
-    
+    long countSanPham(long begin, long end);
+
     long soSanPhamTheoNgay(long toDay);
-    
+
     long soSanPham();
-    
+
     List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
 }

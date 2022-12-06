@@ -210,6 +210,20 @@ public class NhanVienRepositoryImpl implements NhanVienRepository {
         return null;
     }
 
+    @Override
+    public List<NhanVien> searchByTen(String ten) {
+        List<NhanVien> list = new ArrayList<>();
+        try  (Session session = HibernateUtil.getFACTORY().openSession()){
+            String hql ="SELECT nv FROM NhanVien nv WHERE nv.ten like :ten";
+            Query<NhanVien> query = session.createQuery(hql);
+            query.setParameter("ten","%"+ ten+"%");
+            list = query.getResultList();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
    
     
 }

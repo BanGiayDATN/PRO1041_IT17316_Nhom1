@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.ImeiRepositoryImpl;
 import com.mycompany.ungdungbanlaptop.service.ImeiService;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -25,6 +26,10 @@ public class ImeiServiceImpl implements ImeiService {
 
     @Override
     public String add(Imei imei) {
+        Imei ma = imeiRepository.getOne(imei.getMa());
+        if(ma != null){
+            return "Đã có imei này";
+        }
         Imei add = imeiRepository.add(imei);
         if(add != null){
             return "Thêm thành công";
@@ -46,6 +51,11 @@ public class ImeiServiceImpl implements ImeiService {
     @Override
     public Imei getOne(String ma) {
         return imeiRepository.getOne(ma);
+    }
+
+    @Override
+    public long getImeiByIDHDCT(UUID idHDCT) {
+        return imeiRepository.getImeiByIDHDCT(idHDCT);
     }
 
 }
