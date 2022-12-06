@@ -269,6 +269,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 "STT", "Mã HĐ", "Ngày tạo", "Tên nhân viên"
             }
         ));
+        TableHoaDon.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TableHoaDon.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableHoaDonMouseClicked(evt);
@@ -320,6 +321,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng tốn", "Đơn giá", "Mô tả"
             }
         ));
+        TableSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 TableSanPhamMouseClicked(evt);
@@ -409,6 +411,7 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
         ));
         TableGiohang.setComponentPopupMenu(jPopupMenu1);
+        TableGiohang.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane2.setViewportView(TableGiohang);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
