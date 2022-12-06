@@ -33,18 +33,19 @@ public interface HoaDonRepository {
     List<HoaDonBanHangViewModel> getHoaDonBanHang();
 
     List<HoaDonBanHangViewModel> getTrangThai(int trangThai);
-    
+
     List<HoaDonBanHangViewModel> getHoaDonCho();
 
     HoaDon getById(UUID id);
 
     List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma);
-    
-    long countKhachHang(long batDau , long ketThuc);
-    
+
+    long countKhachHang(long batDau, long ketThuc);
+
     long soKhachHangTheoNgay(long toDay);
-    
+
     long tongSoKhachHang();
-    
+
     List<HoaDonRespone> getListHoaDonByMaOrSDT(String ma, String sdt);
+
 }

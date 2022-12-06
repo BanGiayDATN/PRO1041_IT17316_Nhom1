@@ -1001,12 +1001,12 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-
+                
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
                 List<HoaDonChiTiet> list = hoaDonChiTietService.getWord(idHoaDon);
-                new GenerateQRCode().CreateQRCode(String.valueOf(idHoaDon), maQRHoaDonChiTiet);
+                new GenerateQRCode().CreateQRCode(String.valueOf(hoaDon.getMa()), maQRHoaDonChiTiet);
                 new GeneratePdf().exportBill(maQRHoaDonChiTiet, maQRHoaDonChiTiet, hoaDon, list);
 
                 // gưi email cho khách hàng

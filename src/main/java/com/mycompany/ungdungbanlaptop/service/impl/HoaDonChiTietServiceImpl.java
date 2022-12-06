@@ -70,18 +70,14 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getAllByMa(ma);
     }
 
-   
     public List<GioHangViewModel> getGioHang(UUID idHoaDon) {
         return hoaDonChiTietRepository.getGioHang(idHoaDon);
     }
-
-
 
     public HoaDonChiTiet getById(UUID idHDCT) {
         return hoaDonChiTietRepository.getById(idHDCT);
 
     }
-
 
     @Override
     public HoaDonChiTiet getByIdHoaDon(UUID idHD) {
@@ -95,31 +91,30 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
 
     @Override
     public BigDecimal toDay(long toDay) {
-          return hoaDonChiTietRepository.toDay(toDay);
+        return hoaDonChiTietRepository.toDay(toDay);
     }
 
     @Override
     public BigDecimal theoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
-           return hoaDonChiTietRepository.theoKhoangNgay(ngayBatDau, ngayKetThuc);
+        return hoaDonChiTietRepository.theoKhoangNgay(ngayBatDau, ngayKetThuc);
     }
 
     @Override
     public long soHoaDontheoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
-           return hoaDonChiTietRepository.soHoaDontheoKhoangNgay(ngayBatDau, ngayKetThuc);
+        return hoaDonChiTietRepository.soHoaDontheoKhoangNgay(ngayBatDau, ngayKetThuc);
     }
 
     @Override
     public long soHoaDonTong() {
-           return hoaDonChiTietRepository.soHoaDonTong();
+        return hoaDonChiTietRepository.soHoaDonTong();
     }
 
     @Override
     public long soHoaDontheoNgay(long toDay) {
-           return hoaDonChiTietRepository.soHoaDontheoNgay(toDay);
+        return hoaDonChiTietRepository.soHoaDontheoNgay(toDay);
     }
 
     @Override
-
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         return hoaDonChiTietRepository.getListByIdHoaDon(idHD);
     }
@@ -129,11 +124,13 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getByIdSanPham(idSP);
     }
 
-   
-
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         return hoaDonChiTietRepository.findHoaDonChiTietByMaHoaDon(ma);
     }
 
+    @Override
+    public List<HoaDonChiTiet> getHdctByHoaDon(String maHoaDon) {
+        return hoaDonChiTietRepository.getHdctByHoaDon(maHoaDon);
+    }
 
 }

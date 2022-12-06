@@ -62,4 +62,5 @@ public interface HoaDonChiTietService {
 
     List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma);
     
+    List<HoaDonChiTiet> getHdctByHoaDon(String maHoaDon);
 }

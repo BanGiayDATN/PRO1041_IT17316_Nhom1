@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.infrastructure;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
+import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.ChucVu;
@@ -82,7 +83,7 @@ public class GenDB {
         mauSac2.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac2.setTen("Yellow");
         session.save(mauSac2);
-        
+
         Mau mauSac3 = new Mau();
         mauSac3.setMa(new TaoChuoiNgauNhien().getMkRanMa("#", 3));
         mauSac3.setTen("Blue");
@@ -256,7 +257,7 @@ public class GenDB {
         KhuyenMai khuyenMai = new KhuyenMai();
         khuyenMai.setMa(new TaoChuoiNgauNhien().getMkRanMa("KM", 3));
         khuyenMai.setTen("khuyến mãi tháng 1");
-        khuyenMai.setSoLuong(0);
+//        khuyenMai.setSoLuong(20);
         khuyenMai.setDieuKienGiamGia(new BigDecimal("1000"));
         khuyenMai.setLoaiKhuyenMai(EnumLoaiKhuyenMai.TIEN_MAT);
         khuyenMai.setTrangThai(0);
@@ -455,6 +456,7 @@ public class GenDB {
         session.save(khuyenMaiSanPham1);
 
         BaoHanh baoHanh = new BaoHanh();
+        baoHanh.setMa(new TaoChuoiNgauNhien().getMkRanMa("BH", 3));
         baoHanh.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));
         baoHanh.setMoTa("");
@@ -463,6 +465,7 @@ public class GenDB {
         session.save(baoHanh);
 
         BaoHanh baoHanh1 = new BaoHanh();
+        baoHanh1.setMa(new TaoChuoiNgauNhien().getMkRanMa("BH", 3));
         baoHanh1.setNgayBatDau(new ConverDate().dateToLong("01/08/2022", "dd/MM/yyyy"));
         baoHanh1.setNgayKetThuc(new ConverDate().dateToLong("01/08/2023", "dd/MM/yyyy"));
         baoHanh1.setMoTa("");
@@ -526,6 +529,16 @@ public class GenDB {
         hdct1.setSanPham(sanPham1);
         hdct1.setDonGia(new BigDecimal(18490000.0));
         session.save(hdct1);
+        
+        BaoHanhChiTiet bhct = new BaoHanhChiTiet();
+        bhct.setBaoHanh(baoHanh);
+        bhct.setHoaDonChiTiet(hdct);
+        bhct.setTrangThai("Con bao hanh");
+        
+        BaoHanhChiTiet bhct1 = new BaoHanhChiTiet();
+        bhct1.setBaoHanh(baoHanh1);
+        bhct1.setHoaDonChiTiet(hdct1);
+        bhct1.setTrangThai("Con bao hanh");
 
         // db generator : gen bảng tự động
         trans.commit();
