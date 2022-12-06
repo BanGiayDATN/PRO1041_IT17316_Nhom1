@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachDoiTraRequest;
 import com.mycompany.ungdungbanlaptop.service.DoiTraService;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
@@ -28,9 +29,11 @@ public class QuanLiDoiTra extends javax.swing.JPanel {
     private DoiTraService doiTraService = new DoiTraServiceImpl();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
+    private NhanVien nhanVien;
 
-    public QuanLiDoiTra() {
+    public QuanLiDoiTra(NhanVien nhanVien) {
         initComponents();
+        this.nhanVien = nhanVien;
         loadTable(doiTraService.getList(new SeachDoiTraRequest()));
         loadCboNhanVien(nhanVienService.getAllMaNhanVien());
         loadCboKhachHanh(khachHangService.getAllTenKhachHang());
@@ -278,7 +281,7 @@ public class QuanLiDoiTra extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        ViewShowDoiTra.loadView(new ViewDoiTra(nhanVien));
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void btnSeachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeachActionPerformed
