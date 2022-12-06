@@ -265,11 +265,33 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
     }
 
     
+    public List<HoaDonRespone> getListHoaDonByMaOrSDT(String ma, String sdt){
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            Query query = session.createQuery(""" 
+                                              SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone(hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang, SUM(hdct.soLuong), SUM(hdct.donGia))
+                                              FROM HoaDon hd
+                                              JOIN HoaDonChiTiet hdct ON hdct.hoaDon.id = hd.id
+                                              WHERE (:ma IS NULL
+                                                    OR :ma LIKE ''
+                                                    OR hd.ma LIKE :ma)
+                                              AND   (:sdt IS NULL
+                                                    OR :sdt LIKE ''
+                                                     OR hd.khachHang.sdt = :sdt)
+                                              GROUP BY hd.ma, hd.ngayTao, hd.nhanVien.ma, hd.nhanVien.hoTen, hd.khachHang.hoTen,hd.tinhTrang
+                                              ORDER BY hd.ngayTao DESC
+                                              """).setParameter("ma", ma)
+                    .setParameter("sdt", sdt);
+            List<HoaDonRespone> list = query.getResultList();
+
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
       public static void main(String[] args) {
-        long begin = 1659286800000l;
-        long end = 1662310800000l;
-        long soLuong = new HoaDonRepositoryImpl().countKhachHang(begin, end);
-        System.out.println(soLuong);
+
+        System.out.println( new HoaDonRepositoryImpl().getListHoaDonByMaOrSDT(null, "0989999999"));
     }
 
 }

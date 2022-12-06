@@ -28,7 +28,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="bao_hanh")
+@Table(name = "bao_hanh")
 @ToString
 public class BaoHanh {
 
@@ -47,6 +47,9 @@ public class BaoHanh {
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idBaoHanh;
 
+    @Column(name = "ma")
+    private String ma;
+
     @Column(name = "ngay_bat_dau")
     private long ngayBatDau;
 
@@ -59,7 +62,7 @@ public class BaoHanh {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_nhan_vien")
     private NhanVien nhanVien;

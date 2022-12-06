@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -87,4 +88,22 @@ public class ImeiRepositoryImpl implements ImeiRepository {
         }
         return null;
     }
+
+    @Override
+    public long getImeiByIDHDCT(UUID idHDCT) {
+         long count = 0;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT count(imei.ma) FROM Imei imei"
+                    + " WHERE imei.hoaDonChiTiet.idHoaDonChiTiet = :idHoaDonChiTiet";
+            Query query = session.createQuery(hql);
+            query.setParameter("idHoaDonChiTiet", idHDCT);
+
+            count = (Long) query.uniqueResult();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return count;
+    }
+
+  
 }

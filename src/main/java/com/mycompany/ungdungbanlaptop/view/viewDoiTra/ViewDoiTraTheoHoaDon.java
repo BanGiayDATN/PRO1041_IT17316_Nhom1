@@ -4,8 +4,19 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
+import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
+import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.ungdungbanlaptop.swing.ScrollBar;
 import com.mycompany.ungdungbanlaptop.swing.WrapLayout;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -13,20 +24,56 @@ import com.mycompany.ungdungbanlaptop.swing.WrapLayout;
  */
 public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
 
-    /**
-     * Creates new form ViewDoiTraTheoHoaDon
-     */
-    public ViewDoiTraTheoHoaDon() {
+    private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
+    private static Map<UUID, GioHangViewModel> listGioHang = new HashMap<>();
+    private static List<HoaDonChiTietRespone> listHoaDon = new ArrayList<>();
+    
+    public ViewDoiTraTheoHoaDon(String ma) {
         initComponents();
+        listHoaDon = hoaDonChiTietService.findHoaDonChiTietByMaHoaDon(ma);
+        init(listHoaDon);
+        showGioHangHDCT(null);
+
     }
 
-     private void init() {
+    private void init(List<HoaDonChiTietRespone> list) {
         jpanelTra.setLayout(new WrapLayout(WrapLayout.LEADING));
         jScrollPane1.setVerticalScrollBar(new ScrollBar());
-        
+        int index =0;
+        if (list != null) {
+            for(HoaDonChiTietRespone item : list){
+                jpanelTra.add(new ItemSanPham(index,item));
+                index++;
+            };
+        }
         jpanelTra.revalidate();
         jpanelTra.repaint();
     }
+
+    private static void showGioHangHDCT(Map<UUID, GioHangViewModel> listGioHang) {
+        DefaultTableModel model = new DefaultTableModel();
+        String[] gh = {"idHDCT", "idSP", "STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá"};
+        model.setColumnIdentifiers(gh);
+        int i = 0;
+        if (listGioHang != null) {
+            for (GioHangViewModel x : listGioHang.values()) {
+                i++;
+                model.addRow(new Object[]{x.getIdSanPham(), i, x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia()});
+            }
+        }
+        TableGiohang.setModel(model);
+        TableGiohang.removeColumn(TableGiohang.getColumnModel().getColumn(0));
+    }
+
+    public static void updateSoLuong(int index, HoaDonChiTietRespone hoaDonChiTietRespone){
+        listHoaDon.set(index, hoaDonChiTietRespone);
+    }
+    public static void addSanPham(GioHangViewModel GioHangViewModel) {
+        listGioHang.put(GioHangViewModel.getIdSanPham(), GioHangViewModel);
+
+        showGioHangHDCT(listGioHang);
+    }
+
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -34,7 +81,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        TableGiohang = new javax.swing.JTable();
         jButton2 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -70,7 +117,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder("Đổi hàng"));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        TableGiohang.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -81,7 +128,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(TableGiohang);
 
         jButton2.setText("add");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -350,12 +397,13 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ViewDoiTraTheoHoaDon().setVisible(true);
+//                new ViewDoiTraTheoHoaDon().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private static javax.swing.JTable TableGiohang;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
@@ -376,7 +424,6 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;

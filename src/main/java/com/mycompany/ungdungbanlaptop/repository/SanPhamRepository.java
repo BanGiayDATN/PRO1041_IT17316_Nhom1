@@ -33,6 +33,8 @@ public interface SanPhamRepository {
 
     SanPham getOne(String maSp);
 
+    SanPham getByTen(String ten);
+
     List<SanPham> search(String maSp);
 
     List<SanPham> searchByTen(String tenSp);
@@ -48,16 +50,16 @@ public interface SanPhamRepository {
     void updateSoLuongSanPham(Map<UUID, SanPham> list);
 
     SanPham getById(UUID id);
-    
+
     List<SanPhamCustomRespone> getListSanPham();
     
     boolean saveAllSanPham(Map<String, ChiTietSanPhamImportResquest> list);
-    
-    long countSanPham(long begin , long end);
-    
+
+    long countSanPham(long begin, long end);
+
     long soSanPhamTheoNgay(long toDay);
-    
+
     long soSanPham();
-    
+
     List<Top10SanPhamBanChayViewModel> top10SanPhamBanChay();
 }

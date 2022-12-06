@@ -41,8 +41,8 @@ public class TaoChuoiNgauNhien {
         String generator = ma + RandomStringUtils.randomNumeric(soLuong);
         return generator;
     }
-     public String getiMei( int soluong) {
-        String generator =  RandomStringUtils.randomNumeric(soluong);
+     public String getBaoHanh( int soluong) {
+        String generator = "BH" +  RandomStringUtils.randomNumeric(soluong);
         return generator;
     }
     public static void main(String[] args) {

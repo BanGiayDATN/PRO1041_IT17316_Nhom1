@@ -9,6 +9,7 @@ import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
+import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
@@ -337,17 +338,71 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return tong;
     }
 
+    @Override
 
+    public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHD);
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
 
+    }
 
-    
-     public static void main(String[] args) {
+    @Override
+    public HoaDonChiTiet getByIdSanPham(UUID idSP) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.sanPham.idSanPham = :idSanPham";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idSanPham", idSP);
+            HoaDonChiTiet hdct = query.uniqueResult();
+            return hdct;
+
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+
+    }
+
+    public static void main(String[] args) {
+
 //        Locale localerEN = new Locale("en", "EN");
 //        NumberFormat format = NumberFormat.getInstance(localerEN);
 //        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
 //        System.out.println(i);
 //            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
 //            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
- 
-}
+    }
+
+// String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
+//        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdSanPham(UUID.fromString("0138A8C0-E284-6711-8184-E2416CC20027")));
+    public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
+        List<HoaDonChiTietRespone> list = new ArrayList<>();
+
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT new com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone(hdct.id, hdct.sanPham.ma, hdct.sanPham.ten,hdct.sanPham.giaBan, hdct.soLuong) FROM HoaDonChiTiet hdct"
+                    + " INNER JOIN SanPham sp"
+                    + " ON sp.idSanPham = hdct.sanPham.idSanPham"
+                    + " INNER JOIN HoaDon hd"
+                    + " ON hd.idHoaDon = hdct.hoaDon.idHoaDon"
+                    + " WHERE hd.ma = :ma";
+            Query<HoaDonChiTietRespone> query = session.createQuery(hql);
+            query.setParameter("ma", ma);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
 }

@@ -75,7 +75,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
         });
         jPanel1.add(btnThoat, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 380, -1, -1));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 460));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 440));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,7 +170,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
 
             if (result != null) {
                 result_field.setText(result.getText());
-                BaoHanh1.idHDCT = result.getText();
+                BaoHanh1.idHD = result.getText();
             }
         } while (true);
     }
