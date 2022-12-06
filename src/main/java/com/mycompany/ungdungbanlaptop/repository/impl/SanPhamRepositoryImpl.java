@@ -350,7 +350,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public long countSanPham(long begin, long end) {
         long count ;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT count(hdct.soLuong) FROM HoaDonChiTiet hdct "
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
                     + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
                     + " where hd.ngayThanhToan BETWEEN :begin AND :end ";
             Query query = session.createQuery(hql);
@@ -359,10 +359,10 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             count =  (long) query.uniqueResult();
              return count;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
+            return 0;
              
         }
-       return 0;
+       
     }
     
   
@@ -371,7 +371,7 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     public long soSanPhamTheoNgay(long toDay) {
          long count ;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT count(hdct.soLuong) FROM HoaDonChiTiet hdct "
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct "
                     + " inner join  HoaDon hd ON hd.idHoaDon = hdct.hoaDon.idHoaDon "
                     + " where hd.ngayThanhToan =:toDay";
             Query query = session.createQuery(hql);
@@ -379,26 +379,23 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
             count = (long) query.uniqueResult();
             return count;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
-             
+            return 0;
         }
-       return 0;
     }
 
     @Override
     public long soSanPham() {
        long count =0;
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT Count(hdct.soLuong) FROM HoaDonChiTiet hdct ";
+            String hql = "SELECT SUM(hdct.soLuong) FROM HoaDonChiTiet hdct ";
 
             Query query = session.createQuery(hql);
             count = (long) query.uniqueResult();
               return count;
         } catch (Exception e) {
-            e.printStackTrace(System.out);
-              
+               return 0;
         }
-      return count;
+     
     }
      public static void main(String[] args) {
 //        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
@@ -418,6 +415,20 @@ System.out.println(new SanPhamRepositoryImpl().soSanPham());
             Query<Top10SanPhamBanChayViewModel> query = session.createQuery(hql);
             list = query.setMaxResults(10).getResultList();
             return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public SanPham getByTen(String ten) {
+           try ( Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT sp FROM SanPham sp WHERE sp.ten = :ten";
+            Query<SanPham> query = session.createQuery(hql);
+            query.setParameter("ten",  ten );
+            SanPham sp = query.uniqueResult();
+            return sp;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }

@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -18,4 +19,7 @@ public interface BaoHanhRepository {
     BaoHanh add(BaoHanh baoHanh);
 
     BaoHanh getOne(String maBh);
+    
+      BaoHanh getById( UUID id);
+    
 }

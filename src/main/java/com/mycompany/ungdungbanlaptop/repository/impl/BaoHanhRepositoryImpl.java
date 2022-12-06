@@ -8,6 +8,7 @@ import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
 import com.mycompany.ungdungbanlaptop.repository.BaoHanhRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.util.List;
+import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -48,9 +49,23 @@ public class BaoHanhRepositoryImpl implements BaoHanhRepository {
     @Override
     public BaoHanh getOne(String maBh) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT bh FROM BaoHanh bh WHERE bh.ma like :ma";
+            String hql = "SELECT bh FROM BaoHanh bh WHERE bh.ma = :ma";
             Query<BaoHanh> query = session.createQuery(hql);
-            query.setParameter("ma", "%" + maBh + "%");
+            query.setParameter("ma", maBh );
+            BaoHanh bh = query.uniqueResult();
+            return bh;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+
+    @Override
+    public BaoHanh getById(UUID id) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT bh FROM BaoHanh bh WHERE bh.id = :id";
+            Query<BaoHanh> query = session.createQuery(hql);
+            query.setParameter("id",id );
             BaoHanh bh = query.uniqueResult();
             return bh;
         } catch (Exception e) {

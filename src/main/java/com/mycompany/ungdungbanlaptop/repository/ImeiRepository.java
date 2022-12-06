@@ -6,6 +6,7 @@ package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import java.util.List;
+import java.util.UUID;
 
 /**
  *
@@ -22,4 +23,6 @@ public interface ImeiRepository {
     Imei delete(Imei imei);
 
     Imei getOne(String maImei);
+
+    long getImeiByIDHDCT(UUID idHDCT);
 }
