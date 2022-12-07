@@ -5,6 +5,8 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
+import java.util.List;
 
 /**
  *
@@ -12,5 +14,5 @@ import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
  */
 public interface BaoHanhChiTietRepository {
     BaoHanhChiTiet add(BaoHanhChiTiet baoHanhChiTiet);
-    
+    List<BaoHanhChiTietViewMoDel> getBHCT(String maBH);
 }
