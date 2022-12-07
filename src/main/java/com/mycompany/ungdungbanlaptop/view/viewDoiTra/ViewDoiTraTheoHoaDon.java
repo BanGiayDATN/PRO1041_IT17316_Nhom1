@@ -52,7 +52,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
 
     private static void showGioHangHDCT(Map<UUID, GioHangViewModel> listGioHang) {
         DefaultTableModel model = new DefaultTableModel();
-        String[] gh = {"idHDCT", "idSP", "STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá"};
+        String[] gh = {"idSP", "STT", "Mã SP", "Tên SP", "Số lượng", "Đơn Giá"};
         model.setColumnIdentifiers(gh);
         int i = 0;
         if (listGioHang != null) {
@@ -397,7 +397,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-//                new ViewDoiTraTheoHoaDon().setVisible(true);
+                new ViewDoiTraTheoHoaDon("HD911").setVisible(true);
             }
         });
     }
