@@ -5,6 +5,8 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.NhanVienExport;
 import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
@@ -14,6 +16,7 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.coderazzi.filters.gui.AutoChoices;
@@ -37,6 +40,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
         btn_add.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//add.png"));
         btn_delete.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//delete.png"));
         btn_update.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//update.png"));
+        btnDoiMK.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//ey.png"));
+        btnLamMoi.setIcon(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//efresh.png.png"));
         txtMatKhau.setEditable(false);
         txtMaNhanVien.setEditable(false);
         jTableNhanVien.setModel(dtm);
@@ -123,6 +128,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jLabel4 = new javax.swing.JLabel();
         cbbLocTrangThai = new javax.swing.JComboBox<>();
         jLabel5 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
 
         setBackground(new java.awt.Color(204, 204, 204));
@@ -492,24 +498,36 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Lọc");
 
+        jButton1.setText("Xuất");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel5Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(77, Short.MAX_VALUE))
-            .addGroup(jPanel5Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addComponent(jLabel26)
-                .addGap(51, 51, 51)
-                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel5)
-                .addGap(128, 128, 128))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addComponent(jLabel26)
+                        .addGap(51, 51, 51)
+                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(268, 268, 268)
+                        .addComponent(jButton1))
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 743, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(77, Short.MAX_VALUE))
+                    .addGroup(jPanel5Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5)
+                        .addGap(128, 128, 128))))
         );
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -518,7 +536,8 @@ public class ViewNhanVien extends javax.swing.JPanel {
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel26)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jButton1))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 169, Short.MAX_VALUE)
@@ -535,7 +554,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 13, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -757,6 +776,14 @@ public class ViewNhanVien extends javax.swing.JPanel {
         showData(list);
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        NhanVienExport.exportData(nhanVienService.getAll(), filename + ".xlsx");
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDoiMK;
@@ -768,6 +795,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbLocGioiTinh;
     private javax.swing.JComboBox<String> cbbLocTrangThai;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

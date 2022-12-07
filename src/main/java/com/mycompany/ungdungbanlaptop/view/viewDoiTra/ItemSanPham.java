@@ -6,9 +6,7 @@ package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import javax.swing.SpinnerNumberModel;
-import org.apache.poi.hpsf.HPSFException;
 
 /**
  *
@@ -21,8 +19,8 @@ public class ItemSanPham extends javax.swing.JPanel {
      */
     private int index;
     private HoaDonChiTietRespone hoaDonRespone;
-    
-    public ItemSanPham(int i,HoaDonChiTietRespone hoaDonRespone) {
+
+    public ItemSanPham(int i, HoaDonChiTietRespone hoaDonRespone) {
         initComponents();
         this.index = i;
         this.hoaDonRespone = hoaDonRespone;
