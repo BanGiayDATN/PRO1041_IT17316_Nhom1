@@ -10,7 +10,7 @@ import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
 
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
-
+import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewShowDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
 import java.awt.FlowLayout;
 import java.io.File;
@@ -346,7 +346,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
 
         viewChucNang.removeAll();
-        ViewDoiTra form = new ViewDoiTra();
+        ViewShowDoiTra form = new ViewShowDoiTra(nhanVien);
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
         this.pack();
