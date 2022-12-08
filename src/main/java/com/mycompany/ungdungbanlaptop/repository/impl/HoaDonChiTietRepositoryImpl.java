@@ -341,20 +341,23 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
-
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
+                    + " WHERE hdct.hoaDon.idHoaDon = :idHoaDon AND hdct.id not in (SELECT bhct.hoaDonChiTiet.idHoaDonChiTiet FROM BaoHanhChiTiet bhct)";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHD);
             list = query.getResultList();
-            return list;
+            
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-        return null;
+      return list;
        
+    }
+     public static void main(String[] args) {
+        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdHoaDon(UUID.fromString("0138A8C0-EA84-7114-8184-EAD477200031")));
     }
 
     @Override
@@ -373,16 +376,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
         
     }
-      public static void main(String[] args) {
-//        Locale localerEN = new Locale("en", "EN");
-//        NumberFormat format = NumberFormat.getInstance(localerEN);
-//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
-//        System.out.println(i);
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
-// String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdSanPham(UUID.fromString("0138A8C0-E284-6711-8184-E2416CC20027")));
-    }
+     
 
 
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma){

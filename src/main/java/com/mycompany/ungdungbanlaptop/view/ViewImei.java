@@ -64,7 +64,6 @@ public class ViewImei extends javax.swing.JFrame {
         btnAdd = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        btnLamMoi = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableImei = new javax.swing.JTable();
 
@@ -85,15 +84,9 @@ public class ViewImei extends javax.swing.JFrame {
 
         jLabel4.setText(" ");
 
-        btnLamMoi.setText("Làm mới");
-        btnLamMoi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLamMoiActionPerformed(evt);
-            }
-        });
-
         jTableImei.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
+                {null, null},
                 {null, null},
                 {null, null},
                 {null, null},
@@ -114,11 +107,6 @@ public class ViewImei extends javax.swing.JFrame {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 208, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(46, 46, 46)
-                            .addComponent(jLabel1)
-                            .addGap(18, 18, 18)
-                            .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createSequentialGroup()
                             .addContainerGap()
                             .addComponent(jLabel3)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,10 +114,12 @@ public class ViewImei extends javax.swing.JFrame {
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel4))
                         .addGroup(layout.createSequentialGroup()
-                            .addGap(59, 59, 59)
-                            .addComponent(btnAdd)
-                            .addGap(36, 36, 36)
-                            .addComponent(btnLamMoi))))
+                            .addGap(46, 46, 46)
+                            .addComponent(jLabel1)
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(btnAdd)
+                                .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, 144, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(34, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -145,11 +135,9 @@ public class ViewImei extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtMaImei, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAdd)
-                    .addComponent(btnLamMoi))
-                .addGap(26, 26, 26)
+                .addGap(47, 47, 47)
+                .addComponent(btnAdd)
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(47, Short.MAX_VALUE))
         );
@@ -168,15 +156,11 @@ public class ViewImei extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, imeiService.add(imei));
              showData(imeiService.getAll());
              jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
+             txtMaImei.setText("");
            if(Integer.valueOf(jLabel4.getText()) == 0){
             this.dispose();
         }
     }//GEN-LAST:event_btnAddActionPerformed
-
-    private void btnLamMoiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLamMoiActionPerformed
-        // TODO add your handling code here:
-        txtMaImei.setText("");
-    }//GEN-LAST:event_btnLamMoiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -215,13 +199,12 @@ public class ViewImei extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdd;
-    private javax.swing.JButton btnLamMoi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableImei;
-    private javax.swing.JTextField txtMaImei;
+    public javax.swing.JTextField txtMaImei;
     // End of variables declaration//GEN-END:variables
 }

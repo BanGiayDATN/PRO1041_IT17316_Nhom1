@@ -11,6 +11,9 @@ import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.Menu;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.BaoHanhExport;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
+import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhChitietService;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhService;
@@ -25,11 +28,17 @@ import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import com.mycompany.ungdungbanlaptop.view.ViewSanPham;
+import java.io.File;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
@@ -102,6 +111,14 @@ public class BaoHanh1 extends javax.swing.JPanel {
             boxModel.addElement(x.getMa());
         }
     }
+    private  void cbbHDCT(){
+        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
+        cbbHoaDonChiTiet1.setModel(boxModel);
+        List<HoaDonChiTiet> list = hoaDonChiTietService.getListByIdHoaDon(UUID.fromString(idHD));
+        for (HoaDonChiTiet x : list) {
+            boxModel.addElement(x.getSanPham().getTen());
+        }
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -150,6 +167,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
         jButton4 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         jtableChiTietBaoHanh = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -445,13 +463,25 @@ public class BaoHanh1 extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(jtableChiTietBaoHanh);
 
+        jButton1.setText("Export");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(26, 26, 26)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(542, 542, 542)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -476,7 +506,9 @@ public class BaoHanh1 extends javax.swing.JPanel {
                         .addGap(62, 62, 62)
                         .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(115, 115, 115)
+                        .addGap(56, 56, 56)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(26, 26, 26)
                         .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(177, Short.MAX_VALUE))
         );
@@ -506,12 +538,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
 
     private void btnAddHoaDonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddHoaDonActionPerformed
         // TODO add your handling code here:
-        DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
-        cbbHoaDonChiTiet1.setModel(boxModel);
-        List<HoaDonChiTiet> list = hoaDonChiTietService.getListByIdHoaDon(UUID.fromString(idHD));
-        for (HoaDonChiTiet x : list) {
-            boxModel.addElement(x.getSanPham().getTen());
-        }
+       cbbHDCT();
     }//GEN-LAST:event_btnAddHoaDonActionPerformed
 
     private void btnTaoBaoHanhChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoBaoHanhChiTietActionPerformed
@@ -527,6 +554,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
         bhct.setBaoHanh(hangService.getOne(cbbBaoHanh1.getSelectedItem().toString()));
         
         JOptionPane.showMessageDialog(this, baoHanhChitietService.add(bhct));
+        cbbHDCT();
         
     }//GEN-LAST:event_btnTaoBaoHanhChiTietActionPerformed
 
@@ -555,6 +583,17 @@ public class BaoHanh1 extends javax.swing.JPanel {
         showDataBHCT(baoHanhChitietService.getBHCT(jtableBaoHanh.getValueAt(row, 0).toString()));
     }//GEN-LAST:event_jtableBaoHanhMouseClicked
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         JFileChooser chooser = new JFileChooser();
+        chooser.showOpenDialog(null);
+        File f = chooser.getSelectedFile();
+        String filename = f.getAbsolutePath();
+        int row = jtableBaoHanh.getSelectedRow();
+        BaoHanhExport.exportData(baoHanhChitietService.getBHCT(jtableBaoHanh.getValueAt(row, 0).toString()), filename + ".xlsx");
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAddHoaDon;
@@ -566,6 +605,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbbHoaDonChiTiet1;
     private javax.swing.JComboBox<String> cbbKhachHang;
     private javax.swing.JComboBox<String> cbbNhanVien;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;

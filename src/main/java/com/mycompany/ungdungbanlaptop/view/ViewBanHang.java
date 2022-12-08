@@ -94,6 +94,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbHinhThucThanhToan();
         cbbPhanLoai();
         TableFilterHeader filterHeader = new TableFilterHeader(TableSanPham, AutoChoices.ENABLED);
+        
     }
 
     private void cbbHinhThucThanhToan() {
