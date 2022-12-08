@@ -5,6 +5,8 @@
 package com.mycompany.ungdungbanlaptop.infrastructure.email;
 
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -59,6 +61,13 @@ public class SendEmail {
         message.setContent(multipart);
 
         Transport.send(message);
+    }
+    public static void main(String[] args) {
+        try {
+            new SendEmail().guiMail("diemdkph23701@fpt.edu.vn", "vinh ngu", "vinh ngu");
+        } catch (MessagingException ex) {
+            Logger.getLogger(SendEmail.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
 }

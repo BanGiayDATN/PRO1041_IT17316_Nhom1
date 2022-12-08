@@ -5,11 +5,16 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.BaoHanhChiTiet;
+import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
+import java.util.List;
 
 /**
  *
  * @author Diệm DZ
  */
 public interface BaoHanhChitietService {
-       String add(BaoHanhChiTiet baoHanhChiTiet);
+
+    String add(BaoHanhChiTiet baoHanhChiTiet);
+
+    List<BaoHanhChiTietViewMoDel> getBHCT(String maBH);
 }

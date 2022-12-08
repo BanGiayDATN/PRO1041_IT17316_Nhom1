@@ -11,6 +11,7 @@ import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.Menu;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
+import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhChitietService;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhService;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
@@ -43,6 +44,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
      * Creates new form BaoHanh1
      */
     private DefaultTableModel dtm = new DefaultTableModel();
+     private DefaultTableModel dtmBHCT = new DefaultTableModel();
     private DefaultComboBoxModel dcm1 = new DefaultComboBoxModel();
     private DefaultComboBoxModel dcm2 = new DefaultComboBoxModel();
     private BaoHanhService hangService = new BaoHanhServiceImpl();
@@ -57,13 +59,16 @@ public class BaoHanh1 extends javax.swing.JPanel {
      
     public BaoHanh1() {
         initComponents();
-        showData(hangService.getAll());
-        jtableBaoHanh.setModel(dtm);
+
+       
+         jtableBaoHanh.setModel(dtm);
         String a []={"Mã Bảo hành","Ngày bắt đầu","Ngày kết thúc","Mô tả"};
         dtm.setColumnIdentifiers(a);
         
-        
-        showData(hangService.getAll());
+        jtableChiTietBaoHanh.setModel(dtmBHCT);
+        String b[]={"Mã bảo hành","Ngày bắt đầu","Ngày kết thúc","Tên sản phẩm","Số lượng","Trạng thái"};
+        dtmBHCT.setColumnIdentifiers(b);
+
         cbbKhachHang.setModel(dcm1);
         for (KhachHang x : listKhachHang) {
             dcm1.addElement(x.getHoTen());
@@ -74,11 +79,19 @@ public class BaoHanh1 extends javax.swing.JPanel {
             dcm2.addElement(x.getHoTen());
         }
         cbbBaohanh();
+        showData(hangService.getAll());
     }
     private void showData(List<BaoHanh> list){
+        
         dtm.setRowCount(0);
         for (BaoHanh x : list) {
             dtm.addRow(new Object[]{x.getMa(),new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"),x.getMoTa()});
+        }
+    }
+    private void showDataBHCT(List<BaoHanhChiTietViewMoDel>list){
+        dtmBHCT.setRowCount(0);
+        for (BaoHanhChiTietViewMoDel x : list) {
+            dtmBHCT.addRow(new Object[]{x.getMa(),new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"),x.getHoaDonChiTiet().getSanPham().getTen(),x.getHoaDonChiTiet().getSoLuong(),x.getTrangThai()});
         }
     }
     private void cbbBaohanh(){
@@ -163,6 +176,11 @@ public class BaoHanh1 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jtableBaoHanh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jtableBaoHanhMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jtableBaoHanh);
 
         jPanel3.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -492,7 +510,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
         cbbHoaDonChiTiet1.setModel(boxModel);
         List<HoaDonChiTiet> list = hoaDonChiTietService.getListByIdHoaDon(UUID.fromString(idHD));
         for (HoaDonChiTiet x : list) {
-            boxModel.addElement(x.getIdHoaDonChiTiet());
+            boxModel.addElement(x.getSanPham().getTen());
         }
     }//GEN-LAST:event_btnAddHoaDonActionPerformed
 
@@ -504,7 +522,8 @@ public class BaoHanh1 extends javax.swing.JPanel {
         }else{
              bhct.setTrangThai("Hết hạn");
         }
-        bhct.setHoaDonChiTiet(hoaDonChiTietService.getById(UUID.fromString(cbbHoaDonChiTiet1.getSelectedItem().toString()))); 
+         List<HoaDonChiTiet> list = hoaDonChiTietService.getListByIdHoaDon(UUID.fromString(idHD));
+        bhct.setHoaDonChiTiet(list.get(cbbHoaDonChiTiet1.getSelectedIndex())); 
         bhct.setBaoHanh(hangService.getOne(cbbBaoHanh1.getSelectedItem().toString()));
         
         JOptionPane.showMessageDialog(this, baoHanhChitietService.add(bhct));
@@ -529,6 +548,12 @@ public class BaoHanh1 extends javax.swing.JPanel {
         JOptionPane.showMessageDialog(this, hangService.add(bh));
         showData(hangService.getAll());
     }//GEN-LAST:event_btnTaoPhieuActionPerformed
+
+    private void jtableBaoHanhMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jtableBaoHanhMouseClicked
+        // TODO add your handling code here:
+        int row = jtableBaoHanh.getSelectedRow();
+        showDataBHCT(baoHanhChitietService.getBHCT(jtableBaoHanh.getValueAt(row, 0).toString()));
+    }//GEN-LAST:event_jtableBaoHanhMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
