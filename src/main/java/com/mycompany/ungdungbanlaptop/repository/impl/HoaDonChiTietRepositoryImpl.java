@@ -339,32 +339,24 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
-<<<<<<< HEAD
+
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
                     + " WHERE hdct.hoaDon.idHoaDon = :idHoaDon AND hdct.id not in (SELECT bhct.hoaDonChiTiet.idHoaDonChiTiet FROM BaoHanhChiTiet bhct)";
-=======
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
->>>>>>> develop
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHD);
             list = query.getResultList();
-            
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-<<<<<<< HEAD
       return list;
        
-=======
-        return null;
 
->>>>>>> develop
+        
+
     }
-     public static void main(String[] args) {
-        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdHoaDon(UUID.fromString("0138A8C0-EA84-7114-8184-EAD477200031")));
-    }
+
+   
 
     @Override
     public HoaDonChiTiet getByIdSanPham(UUID idSP) {
@@ -380,13 +372,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
 
-<<<<<<< HEAD
+
         
     }
      
-=======
-    }
->>>>>>> develop
+
+    
+
 
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         List<HoaDonChiTietRespone> list = new ArrayList<>();
