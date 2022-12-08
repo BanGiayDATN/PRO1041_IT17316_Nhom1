@@ -19,7 +19,7 @@ public interface BaoHanhRepository {
     BaoHanh add(BaoHanh baoHanh);
 
     BaoHanh getOne(String maBh);
-    
-      BaoHanh getById( UUID id);
-    
+
+    BaoHanh getById(UUID id);
+
 }
