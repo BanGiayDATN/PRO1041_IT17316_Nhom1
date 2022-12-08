@@ -210,7 +210,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
-
     @Override
     public HoaDonChiTiet getById(UUID idHDCT) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -290,7 +289,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return null;
     }
 
-   
     @Override
     public long soHoaDontheoKhoangNgay(long ngayBatDau, long ngayKetThuc) {
         long tong = 0;
@@ -321,8 +319,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return tong;
     }
-    
-
 
     @Override
     public long soHoaDontheoNgay(long toDay) {
@@ -343,9 +339,14 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     @Override
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
+<<<<<<< HEAD
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
                     + " WHERE hdct.hoaDon.idHoaDon = :idHoaDon AND hdct.id not in (SELECT bhct.hoaDonChiTiet.idHoaDonChiTiet FROM BaoHanhChiTiet bhct)";
+=======
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+>>>>>>> develop
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHD);
             list = query.getResultList();
@@ -353,8 +354,13 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
+<<<<<<< HEAD
       return list;
        
+=======
+        return null;
+
+>>>>>>> develop
     }
      public static void main(String[] args) {
         System.out.println(new HoaDonChiTietRepositoryImpl().getByIdHoaDon(UUID.fromString("0138A8C0-EA84-7114-8184-EAD477200031")));
@@ -362,7 +368,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     @Override
     public HoaDonChiTiet getByIdSanPham(UUID idSP) {
-          try (Session session = HibernateUtil.getFACTORY().openSession()) {
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.sanPham.idSanPham = :idSanPham";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idSanPham", idSP);
@@ -374,12 +380,15 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
 
+<<<<<<< HEAD
         
     }
      
+=======
+    }
+>>>>>>> develop
 
-
-    public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma){
+    public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         List<HoaDonChiTietRespone> list = new ArrayList<>();
 
         Transaction transaction = null;
@@ -400,6 +409,29 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return list;
     }
-    
 
+    @Override
+    public List<HoaDonChiTiet> getHdctByHoaDon(String maHoaDon) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.ma = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", maHoaDon);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        UUID idHoaDon = UUID.fromString("0100007F-E584-2511-8184-E5E12A0C002F");
+        List<HoaDonChiTiet>  list = new HoaDonChiTietRepositoryImpl().getHdctByHoaDon("HD88991");
+        System.out.println(list.size());
+        HoaDonChiTiet getById = new HoaDonChiTietRepositoryImpl().getById(idHoaDon);
+        System.out.println(getById);
+    }
 }

@@ -4,14 +4,12 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
+import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
-import com.mycompany.ungdungbanlaptop.view.ViewBanHang;
-import java.awt.FlowLayout;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -26,10 +24,17 @@ public class ViewDoiTra extends javax.swing.JPanel {
     private String datHienTai = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
     private long dateHT = new ConverDate().dateToLong(datHienTai, "dd/MM/yyyy");
     private List<HoaDonRespone> list = new ArrayList<>();
-    
-    public ViewDoiTra() {
+    private NhanVien nhanVien;
+
+    public ViewDoiTra(NhanVien nhanVien) {
         initComponents();
-        loadTable(null);
+        this.nhanVien = nhanVien;
+        DefaultTableModel model = new DefaultTableModel();
+        model.setColumnIdentifiers(new String[]{"Mã", "Ngày Tạo", "Mã Nhân Viên", "Tên Nhân viên", "Tên khách hàng", "Tình trạng", "Số Lượng", "Tổng", "Trạng thái"});
+        tblHoaDon.setModel(model);
+         if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+            btnDanhSach.setVisible(false);
+        }
     }
 
     private void loadTable(List<HoaDonRespone> hoaDons) {
@@ -58,6 +63,7 @@ public class ViewDoiTra extends javax.swing.JPanel {
         btnSeach = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblHoaDon = new javax.swing.JTable();
+        btnDanhSach = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -139,22 +145,37 @@ public class ViewDoiTra extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblHoaDon);
 
+        btnDanhSach.setText("Danh sách");
+        btnDanhSach.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnDanhSachActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 530, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnDanhSach)
+                        .addGap(15, 15, 15))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(btnDanhSach)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
@@ -169,19 +190,24 @@ public class ViewDoiTra extends javax.swing.JPanel {
         } else {
             list = hoaDonService.getListHoaDonByMaOrSDT(txtMa.getText(), txtSDT.getText());
             loadTable(list);
-            
+
         }
     }//GEN-LAST:event_btnSeachActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
         int i = tblHoaDon.getSelectedRow();
-        if(list.get(i).getMocThoiGian(dateHT).equals("còn hạn")){
+        if (list.get(i).getMocThoiGian(dateHT).equals("còn hạn")) {
             new ViewDoiTraTheoHoaDon(list.get(i).getMa()).setVisible(true);
         }
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
+    private void btnDanhSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachActionPerformed
+       ViewShowDoiTra.loadView(new QuanLiDoiTra(nhanVien));
+    }//GEN-LAST:event_btnDanhSachActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnDanhSach;
     private javax.swing.JButton btnSeach;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
