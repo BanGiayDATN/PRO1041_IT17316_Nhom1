@@ -375,6 +375,12 @@ public class AddSanPham extends javax.swing.JFrame {
 
         jLabel37.setText("Số lượng tồn:");
 
+        txtSoLuongTon.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSoLuongTonKeyPressed(evt);
+            }
+        });
+
         jLabel38.setText("Hệ điều hành:");
 
         jPanel6.setBorder(new javax.swing.border.MatteBorder(null));
@@ -739,10 +745,11 @@ public class AddSanPham extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cbbNhaSanXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel28)
-                            .addComponent(btnHang, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnHang, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(cbbNhaSanXuat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel28)))
                         .addGap(10, 10, 10)
                         .addComponent(lab_errorHang, javax.swing.GroupLayout.PREFERRED_SIZE, 11, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
@@ -801,7 +808,7 @@ public class AddSanPham extends javax.swing.JFrame {
         String cpu = cbbCPU.getSelectedItem().toString().trim();
         String chatLieu = cbbChatLieu.getSelectedItem().toString().trim();
         String namString = cbb_nam.getSelectedItem().toString();
-
+        String soDuong = "^(?!^0)\\d{1,9}$";
         // vali
         if (namString.equalsIgnoreCase(checkComBoBox)) {
             lab_errorNam.setText("Vui lòng chọn");
@@ -815,13 +822,12 @@ public class AddSanPham extends javax.swing.JFrame {
         } else {
             lab_errorTen.setText("");
         }
-        
+
         if (moTa.isEmpty()) {
             lab_errorMoTa.setText("Không để trống");
         } else {
             lab_errorMoTa.setText("");
         }
-
 
         if (ram.equalsIgnoreCase(checkComBoBox)) {
             lab_errorRam.setText("Vui lòng chọn");
@@ -878,13 +884,20 @@ public class AddSanPham extends javax.swing.JFrame {
         if (soLuongString.isEmpty()) {
             lab_errorSoLuong.setText("Không để trống");
             return;
-        } else if (!NumberUtils.isNumber(soLuongString)) {
-            lab_errorSoLuong.setText("Phải là số ");
+        } else if (!soLuongString.matches(soDuong)) {
+            lab_errorSoLuong.setText("Số lượng phải là số và > 0");
             return;
-        } else {
-            lab_errorSoLuong.setText(" ");
         }
 
+//        if (soLuongString.isEmpty()) {
+//            lab_errorSoLuong.setText("Không để trống");
+//            return;
+//        } else if (!NumberUtils.isNumber(soLuongString)) {
+//            lab_errorSoLuong.setText("Phải là số ");
+//            return;
+//        } else {
+//            lab_errorSoLuong.setText(" ");
+//        }
         if (giaBan.isEmpty()) {
             lab_errorGiaBan.setText("Không để trống");
             return;
@@ -927,7 +940,7 @@ public class AddSanPham extends javax.swing.JFrame {
         sanPham.setTrongLuong(Float.valueOf(trongLuongString));
         sanPham.setMau(mauService.getByTen(mauSac));
         sanPham.setTrangThai(0);
-       boolean ktra = sanPhamService.add(sanPham);
+        boolean ktra = sanPhamService.add(sanPham);
         if (ktra) {
             JOptionPane.showMessageDialog(this, " Thêm thành công");
             ViewSanPham.addSanPham(sanPham);
@@ -971,6 +984,16 @@ public class AddSanPham extends javax.swing.JFrame {
     private void btnImeiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnImeiActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnImeiActionPerformed
+
+    private void txtSoLuongTonKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSoLuongTonKeyPressed
+        char c = evt.getKeyChar();
+        if (Character.isLetter(c)) {
+            txtSoLuongTon.setEditable(false);
+            lab_errorSoLuong.setText("Số lượng phải là số và > 0");
+        } else {
+            txtSoLuongTon.setEditable(true);
+        }
+    }//GEN-LAST:event_txtSoLuongTonKeyPressed
 
     /**
      * @param args the command line arguments

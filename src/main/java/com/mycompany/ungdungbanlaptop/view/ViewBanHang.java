@@ -65,6 +65,8 @@ import net.coderazzi.filters.gui.TableFilterHeader;
  *
  * @author Diệm DZ
  */
+
+
 public class ViewBanHang extends javax.swing.JPanel {
 
     private DefaultTableModel dtm1 = new DefaultTableModel();
@@ -97,12 +99,8 @@ public class ViewBanHang extends javax.swing.JPanel {
         btnSeach.setToolTipText("tìm khuyến mãi");
         cbbHinhThucThanhToan();
         cbbPhanLoai();
-<<<<<<< HEAD
         TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
-=======
-        TableFilterHeader filterHeader = new TableFilterHeader(TableSanPham, AutoChoices.ENABLED);
-        
->>>>>>> develop
+
     }
 
     private void cbbHinhThucThanhToan() {
@@ -912,8 +910,8 @@ public class ViewBanHang extends javax.swing.JPanel {
             showSanPham(sanPhamService.getSanPhamBanHang());
 
             BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-            
-            txtTongTien.setText(String.format("%.0f",tongTien().add(phiShip)));
+
+            txtTongTien.setText(String.format("%.0f", tongTien().add(phiShip)));
             System.out.println(tongTien());
 
         }
@@ -1051,7 +1049,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-                
+
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
@@ -1157,8 +1155,8 @@ public class ViewBanHang extends javax.swing.JPanel {
         txtNgaytao.setText(TableHoaDon.getValueAt(row, 2).toString());
         txtTenNhanvien.setText(TableHoaDon.getValueAt(row, 3).toString());
         BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-        
-         txtTongTien.setText(String.format("%.0f",tongTien().add(phiShip)));
+
+        txtTongTien.setText(String.format("%.0f", tongTien().add(phiShip)));
 
         // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
 
@@ -1315,8 +1313,8 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         } else {
             float tongPhanTram = 20;
-            BigDecimal tongGiam = new BigDecimal(txtTongTien.getText()).multiply(new BigDecimal(tongPhanTram /100));
-            txtTongTien.setText( String.format("%.0f",new BigDecimal(txtTongTien.getText()).subtract(tongGiam)));
+            BigDecimal tongGiam = new BigDecimal(txtTongTien.getText()).multiply(new BigDecimal(tongPhanTram / 100));
+            txtTongTien.setText(String.format("%.0f", new BigDecimal(txtTongTien.getText()).subtract(tongGiam)));
 
         }
     }//GEN-LAST:event_cbbKhuyenMaiSanPhamActionPerformed
@@ -1348,7 +1346,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void TableGiohangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableGiohangMouseMoved
         // TODO add your handling code here:
-         TableGiohang.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        TableGiohang.setCursor(new Cursor(Cursor.HAND_CURSOR));
         int row = TableGiohang.rowAtPoint(evt.getPoint());
         if (row > -1) {
             // easiest way:
@@ -1361,7 +1359,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void TableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSanPhamMouseMoved
         // TODO add your handling code here:
-         TableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        TableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
         int row = TableSanPham.rowAtPoint(evt.getPoint());
         if (row > -1) {
             // easiest way:
@@ -1383,8 +1381,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbKhuyenMaiSanPham.setModel(model);
     }
 
-   
-
     private void removeGioHang() {
         for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
             SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());
@@ -1396,7 +1392,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         listGioHang.entrySet().clear();
         showGioHangHDCT((List<GioHangViewModel>) listGioHang);
     }
- 
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableGiohang;
     private javax.swing.JTable TableHoaDon;
