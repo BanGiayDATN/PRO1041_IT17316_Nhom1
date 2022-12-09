@@ -4,10 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-import com.mycompany.ungdungbanlaptop.entity.CPU;
 import com.mycompany.ungdungbanlaptop.entity.KhuyenMai;
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
-import com.mycompany.ungdungbanlaptop.model.viewModel.KhuyenMaiViewModel;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import java.util.List;
@@ -30,7 +27,7 @@ public class AdQuanLyKhuyenMai extends javax.swing.JPanel {
         tbKhuyenMai.setModel(dtm);
         String[] a = {"Ma", "Ngày bắt đầu", "Ngày kết thúc", "Trạng thái", "Số lượng", "Phần trăm(%)"};
         dtm.setColumnIdentifiers(a);
-//          showData(ql.getALl());
+          showData(ql.getALl());
 
     }
 

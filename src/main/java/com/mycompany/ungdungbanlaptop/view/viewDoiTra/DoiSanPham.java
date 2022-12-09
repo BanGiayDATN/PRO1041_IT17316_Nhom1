@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
-import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;

@@ -29,6 +29,7 @@ public class CPUview extends javax.swing.JPanel {
         tbCPU.setModel(dtm);
         String[] header = {"MA", "TEN CPU"};
         dtm.setColumnIdentifiers(header);
+        showData((ArrayList<CPUViewModel>) ql.getALl());
 
     }
 

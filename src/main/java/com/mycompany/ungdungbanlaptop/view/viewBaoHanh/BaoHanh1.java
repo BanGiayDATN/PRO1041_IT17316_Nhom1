@@ -12,8 +12,6 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.infrastructure.QRCode.Menu;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.BaoHanhExport;
-import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
-import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhChitietService;
 import com.mycompany.ungdungbanlaptop.service.BaoHanhService;

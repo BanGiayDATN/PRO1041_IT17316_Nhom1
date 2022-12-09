@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view;
 
-import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachHoaDon;
@@ -25,11 +24,7 @@ import java.io.File;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
-import javax.swing.JTable;
-import javax.swing.filechooser.FileFilter;
-import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
-import org.apache.commons.io.filefilter.FileFileFilter;
 import org.oxbow.swingbits.table.filter.TableRowFilterSupport;
 
 /**

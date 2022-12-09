@@ -8,7 +8,6 @@ import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHinhThucDoiTra
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bridj.ann.Alignment;
 
 /**
  *

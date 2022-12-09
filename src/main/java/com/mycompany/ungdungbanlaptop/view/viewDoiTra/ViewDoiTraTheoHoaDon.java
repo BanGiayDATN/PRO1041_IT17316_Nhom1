@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
-import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;

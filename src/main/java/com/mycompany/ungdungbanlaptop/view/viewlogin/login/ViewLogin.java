@@ -8,7 +8,6 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.view.ViewManChinh;
-import com.mycompany.ungdungbanlaptop.view.ViewNhanVien;
 
 import javax.swing.JOptionPane;
 

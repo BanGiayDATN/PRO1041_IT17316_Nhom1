@@ -5,8 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.BaoHanhExport;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.KhachHangExport;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;

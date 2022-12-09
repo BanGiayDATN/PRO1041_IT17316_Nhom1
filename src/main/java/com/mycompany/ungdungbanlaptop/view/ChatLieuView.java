@@ -22,6 +22,7 @@ public class ChatLieuView extends javax.swing.JPanel {
 
     public ChatLieuView() {
         initComponents();
+        loadTable(service.getAll());
     }
 
     public void loadTable(List<ChatLieu> list) {

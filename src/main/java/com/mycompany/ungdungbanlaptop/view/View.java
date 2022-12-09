@@ -9,7 +9,6 @@ import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 
 import java.awt.Color;
 import java.awt.FlowLayout;
-import javax.swing.JFrame;
 
 /**
  *

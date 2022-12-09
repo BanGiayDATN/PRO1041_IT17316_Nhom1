@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.view.ViewBanHang;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 

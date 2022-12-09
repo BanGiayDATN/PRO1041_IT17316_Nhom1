@@ -4,13 +4,11 @@
  */
 package com.mycompany.ungdungbanlaptop.model.resquest;
 
-import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
-import java.math.BigDecimal;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.bridj.ann.Alignment;
 
 /**
  *

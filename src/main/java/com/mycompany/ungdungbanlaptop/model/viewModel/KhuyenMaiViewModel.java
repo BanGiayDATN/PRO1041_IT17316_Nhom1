@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.model.viewModel;
 
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Data;
