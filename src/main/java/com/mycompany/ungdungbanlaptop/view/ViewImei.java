@@ -34,6 +34,7 @@ public class ViewImei extends javax.swing.JFrame {
      */
     public ViewImei(HoaDonChiTiet hoaDonChiTiet) {
         initComponents();
+        this.setLocationRelativeTo(null);
         this.hdct = hoaDonChiTiet;
         jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
         showData(imeiService.getAll());

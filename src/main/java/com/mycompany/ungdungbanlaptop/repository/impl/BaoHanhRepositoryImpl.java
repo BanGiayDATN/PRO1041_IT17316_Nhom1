@@ -7,6 +7,7 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.entity.BaoHanh;
 import com.mycompany.ungdungbanlaptop.repository.BaoHanhRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -49,9 +50,9 @@ public class BaoHanhRepositoryImpl implements BaoHanhRepository {
     @Override
     public BaoHanh getOne(String maBh) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT bh FROM BaoHanh bh WHERE bh.ma = :ma";
+            String hql = "SELECT bh FROM BaoHanh bh WHERE bh.ma like :ma";
             Query<BaoHanh> query = session.createQuery(hql);
-            query.setParameter("ma", maBh );
+            query.setParameter("ma","%" + maBh +"%");
             BaoHanh bh = query.uniqueResult();
             return bh;
         } catch (Exception e) {
@@ -65,7 +66,7 @@ public class BaoHanhRepositoryImpl implements BaoHanhRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT bh FROM BaoHanh bh WHERE bh.id = :id";
             Query<BaoHanh> query = session.createQuery(hql);
-            query.setParameter("id",id );
+            query.setParameter("id", id);
             BaoHanh bh = query.uniqueResult();
             return bh;
         } catch (Exception e) {
@@ -74,4 +75,30 @@ public class BaoHanhRepositoryImpl implements BaoHanhRepository {
         return null;
     }
 
+    @Override
+    public List<BaoHanh> searchByMa(String ma) {
+        List<BaoHanh>  list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT bh FROM BaoHanh bh"
+                    + " INNER JOIN BaoHanhChiTiet bhct"
+                    + " ON bh.idBaoHanh = bhct.baoHanh.idBaoHanh"
+                    + " INNER JOIN HoaDonChiTiet hdct"
+                    + " ON bhct.hoaDonChiTiet.idHoaDonChiTiet = hdct.idHoaDonChiTiet"
+                    + " INNER JOIN Imei imei"
+                    + " ON hdct.idHoaDonChiTiet = imei.hoaDonChiTiet.idHoaDonChiTiet"
+                    + " WHERE imei.ma like :ma";
+            Query<BaoHanh> query = session.createQuery(hql);
+            query.setParameter("ma","%" + ma +"%");
+            list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+    }
+    public static void main(String[] args) {
+        System.out.println(new BaoHanhRepositoryImpl().searchByMa("123456789123456"));
+    }
+    
+   
 }
