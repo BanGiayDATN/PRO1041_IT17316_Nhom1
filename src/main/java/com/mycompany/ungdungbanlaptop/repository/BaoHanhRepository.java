@@ -21,5 +21,8 @@ public interface BaoHanhRepository {
     BaoHanh getOne(String maBh);
 
     BaoHanh getById(UUID id);
+    
+    List<BaoHanh> searchByMa(String ma);
+    
 
 }

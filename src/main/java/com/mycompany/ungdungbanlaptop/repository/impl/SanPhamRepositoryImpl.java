@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
@@ -34,7 +35,9 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
     @Override
     public List<SanPham> getAll() {
         try ( Session session = HibernateUtil.getFACTORY().openSession()) {
-            Query query = session.createQuery("FROM SanPham ");
+        
+            
+            Query <SanPham>query = session.createQuery("FROM SanPham ");
             List<SanPham> list = query.getResultList();
             return list;
         } catch (Exception e) {
@@ -400,7 +403,11 @@ public class SanPhamRepositoryImpl implements SanPhamRepository {
      public static void main(String[] args) {
 //        String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
 //        System.out.println(new SanPhamRepositoryImpl().soSanPhamTheoNgay(new ConverDate().dateToLong(date, "dd/MM/yyyy")));
-System.out.println(new SanPhamRepositoryImpl().soSanPham());
+    List<SanPham> list =  new SanPhamRepositoryImpl().getAll();
+list.forEach(a ->{
+        System.out.println(a);
+        
+        });
     }
 
     @Override

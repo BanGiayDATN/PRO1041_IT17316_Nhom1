@@ -6,42 +6,56 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.BaoHanhExport;
+import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.KhachHangExport;
 import com.mycompany.ungdungbanlaptop.model.viewModel.LichSuMuaHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.awt.Color;
+import java.awt.Cursor;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JFileChooser;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
+import net.coderazzi.filters.gui.AutoChoices;
+import net.coderazzi.filters.gui.TableFilterHeader;
 
 /**
  *
  * @author Diệm DZ
  */
 public class ViewKhachHang extends javax.swing.JPanel {
+
     private DefaultTableModel dtm = new DefaultTableModel();
     private DefaultTableModel dtm1 = new DefaultTableModel();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
-    
+
     /**
      * Creates new form ViewNhanVien
      */
     public ViewKhachHang() {
         initComponents();
         jTableKhachHang.setModel(dtm);
-        String [] a = {"Mã KH","Tên KH","Giới tính","SĐT","Email","Địa chỉ","Tình trạng"};
+        String[] a = {"Mã KH", "Tên KH", "Giới tính", "SĐT", "Email", "Địa chỉ", "Tình trạng"};
         dtm.setColumnIdentifiers(a);
         showData(khachHangService.getAll());
-        
-         jTableLichSuMuahang.setModel(dtm1);
-        String [] b = {"Mã Hóa Đơn","Tên SP","Số lượng","Đơn giá","Ngày tạo","Ngày thanh toán" };
+
+        jTableLichSuMuahang.setModel(dtm1);
+        String[] b = {"Mã Hóa Đơn", "Tên SP", "Số lượng", "Đơn giá", "Ngày tạo", "Ngày thanh toán"};
         dtm1.setColumnIdentifiers(b);
-        
-       cbbTimKiem();
-        
+
+        cbbTimKiem();
+          TableFilterHeader filterHeader = new TableFilterHeader(jTableKhachHang, AutoChoices.ENABLED);
+          TableFilterHeader filterHeader1 = new TableFilterHeader(jTableLichSuMuahang, AutoChoices.ENABLED);
+
     }
-    
+
     private void cbbTimKiem() {
         DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
         cbbTimKiem.setModel(boxModel);
@@ -49,19 +63,21 @@ public class ViewKhachHang extends javax.swing.JPanel {
         boxModel.addElement("Số điện thoại");
 
     }
-    private void showData(List<KhachHang> list){
+
+    private void showData(List<KhachHang> list) {
         dtm.setRowCount(0);
         for (KhachHang x : list) {
-            dtm.addRow(new Object[]{x.getMa(),x.getHoTen(),x.getGioiTinh(),x.getSdt(),x.getEmail(),x.getDiaChi(),x.getTrangThai() == 0 ? "Còn hoạt động":"Ngưng hoạt động"});
+            dtm.addRow(new Object[]{x.getMa(), x.getHoTen(), x.getGioiTinh(), x.getSdt(), x.getEmail(), x.getDiaChi(), x.getTrangThai() == 0 ? "Còn hoạt động" : "Ngưng hoạt động"});
         }
     }
-    private void showLichSuMua(List<LichSuMuaHangViewModel>list){
+
+    private void showLichSuMua(List<LichSuMuaHangViewModel> list) {
         dtm1.setRowCount(0);
-        for (LichSuMuaHangViewModel x : list) {            
-            dtm1.addRow(new Object[]{x.getMa(),x.getTen(),x.getSoLuong(),x.getDonGia(),new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
+        for (LichSuMuaHangViewModel x : list) {
+            dtm1.addRow(new Object[]{x.getMa(), x.getTen(), x.getSoLuong(), x.getDonGia(), new ConverDate().longToDate(x.getNgayTao(), "dd/MM/yyyy"), new ConverDate().longToDate(x.getNgayThanhToan(), "dd/MM/yyyy")});
         }
     }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -81,6 +97,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
         jLabel8 = new javax.swing.JLabel();
         cbbTimKiem = new javax.swing.JComboBox<>();
         txtTimKiem = new javax.swing.JTextField();
+        btnExport = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTableLichSuMuahang = new javax.swing.JTable();
@@ -109,6 +126,11 @@ public class ViewKhachHang extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableKhachHang.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jTableKhachHangMouseMoved(evt);
+            }
+        });
         jTableKhachHang.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 jTableKhachHangMouseClicked(evt);
@@ -116,6 +138,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(jTableKhachHang);
 
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
         jLabel8.setText("Tìm kiếm:");
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
@@ -126,23 +149,32 @@ public class ViewKhachHang extends javax.swing.JPanel {
             }
         });
 
+        btnExport.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Upload.png"))); // NOI18N
+        btnExport.setText("Export");
+        btnExport.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnExportActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
-                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(167, 167, 167)
-                        .addComponent(jLabel8)
-                        .addGap(42, 42, 42)
-                        .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(47, 47, 47)
-                        .addComponent(cbbTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel4Layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(102, 102, 102)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 744, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 97, Short.MAX_VALUE))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(167, 167, 167)
+                .addComponent(jLabel8)
+                .addGap(42, 42, 42)
+                .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 243, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47)
+                .addComponent(cbbTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnExport)
+                .addGap(45, 45, 45))
         );
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -151,7 +183,8 @@ public class ViewKhachHang extends javax.swing.JPanel {
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
                     .addComponent(cbbTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTimKiem, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnExport, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(54, 54, 54)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(124, Short.MAX_VALUE))
@@ -249,14 +282,14 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     private void jTableKhachHangMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseClicked
         // TODO add your handling code here:
-       jTabbedPane1.setSelectedIndex(1);
-         int row = jTableKhachHang.getSelectedRow();
+        jTabbedPane1.setSelectedIndex(1);
+        int row = jTableKhachHang.getSelectedRow();
         List<LichSuMuaHangViewModel> list = khachHangService.getLichSuMuaHang(jTableKhachHang.getValueAt(row, 0).toString());
-        
+
         showLichSuMua(list);
         txtTenKhachHang.setText(jTableKhachHang.getValueAt(row, 1).toString());
         txtSoLuotMua.setText(String.valueOf(khachHangService.soLuotMua(jTableKhachHang.getValueAt(row, 0).toString())));
-        
+
     }//GEN-LAST:event_jTableKhachHangMouseClicked
 
     private void txtTimKiemKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTimKiemKeyReleased
@@ -274,8 +307,37 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+    private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
+        // TODO add your handling code here:
+        try {
+            JFileChooser chooser = new JFileChooser();
+            chooser.showOpenDialog(null);
+            File f = chooser.getSelectedFile();
+            String filename = f.getAbsolutePath();
+            KhachHangExport.exportData(khachHangService.getAll(), filename + ".xlsx");
+            JOptionPane.showMessageDialog(this, "Export thành công ");
+        } catch (Exception e) {
+             Logger.getLogger(ViewKhachHang.class.getName()).log(Level.SEVERE, null, e);
+            JOptionPane.showMessageDialog(this, "Export thất bại ");
+        }
+    }//GEN-LAST:event_btnExportActionPerformed
+
+    private void jTableKhachHangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableKhachHangMouseMoved
+        // TODO add your handling code here:
+        jTableKhachHang.setCursor(new Cursor(Cursor.HAND_CURSOR));
+        int row = jTableKhachHang.rowAtPoint(evt.getPoint());
+        if (row > -1) {
+            // easiest way:
+            jTableKhachHang.clearSelection();
+            jTableKhachHang.setRowSelectionInterval(row, row);
+        } else {
+            jTableKhachHang.setSelectionBackground(Color.blue);
+        }
+    }//GEN-LAST:event_jTableKhachHangMouseMoved
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnExport;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> cbbTimKiem;
