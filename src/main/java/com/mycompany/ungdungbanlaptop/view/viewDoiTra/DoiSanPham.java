@@ -119,6 +119,14 @@ public class DoiSanPham extends javax.swing.JFrame {
                 sanPham.setDonGia(new BigDecimal(tblSanPham.getModel().getValueAt(row, 7).toString()));
                 ViewDoiTraTheoHoaDon.addSanPham(sanPham);
             }
+              SanPhamBanHangViewModel model = sanPhamService.getSanPhamBanHang().get(row);
+            System.out.println(model);
+            SanPham sanPham = sanPhamService.getById(model.getId());
+            int soLuongUpdate = sanPham.getSoLuongTon() - soLuong;
+            sanPham.setSoLuongTon(soLuongUpdate);
+            sanPhamService.update(sanPham);
+
+            showSanPham(sanPhamService.getSanPhamBanHang());
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
      private int soLuongMua(int index) {
