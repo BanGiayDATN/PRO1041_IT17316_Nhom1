@@ -28,21 +28,17 @@ import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
-import com.mycompany.ungdungbanlaptop.view.ViewSanPham;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
-import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -62,16 +58,16 @@ public class BaoHanh1 extends javax.swing.JPanel {
     private HoaDonChiTietService hoaDonChiTietService = new HoaDonChiTietServiceImpl();
     private KhachHangService khachHangService = new KhachHangServiceImpl();
     private BaoHanhChitietService baoHanhChitietService = new BaoHanhChiTietServiceImpl();
-    private SanPhamService  phamService = new SanPhamServiceImpl();
+    private SanPhamService phamService = new SanPhamServiceImpl();
     private NhanVienService nhanVienService = new NhanVienServiceImpl();
     private List<KhachHang> listKhachHang = khachHangService.getAll();
-     private List<NhanVien> listNhanVien = nhanVienService.getAll();
-     public static  String idHD;
-     
+    private List<NhanVien> listNhanVien = nhanVienService.getAll();
+    public static String idHD;
+
     public BaoHanh1() {
         initComponents();
 
-       
+
          jtableBaoHanh.setModel(dtm);
         String a []={"Mã Bảo hành","Ngày bắt đầu","Ngày kết thúc","Mô tả"};
         dtm.setColumnIdentifiers(a);
@@ -84,7 +80,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
         for (KhachHang x : listKhachHang) {
             dcm1.addElement(x.getHoTen());
         }
-        
+
         cbbNhanVien.setModel(dcm2);
         for (NhanVien x : listNhanVien) {
             dcm2.addElement(x.getHoTen());
@@ -92,19 +88,21 @@ public class BaoHanh1 extends javax.swing.JPanel {
         cbbBaohanh();
         showData(hangService.getAll());
     }
-    private void showData(List<BaoHanh> list){
-        
+
+    private void showData(List<BaoHanh> list) {
         dtm.setRowCount(0);
         for (BaoHanh x : list) {
-            dtm.addRow(new Object[]{x.getMa(),new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"),x.getMoTa()});
+            dtm.addRow(new Object[]{x.getMa(), new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"), new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"), x.getMoTa()});
         }
     }
+
     private void showDataBHCT(List<BaoHanhChiTietViewMoDel>list){
         dtmBHCT.setRowCount(0);
         for (BaoHanhChiTietViewMoDel x : list) {
             dtmBHCT.addRow(new Object[]{x.getMa(),new ConverDate().longToDate(x.getNgayBatDau(), "dd/MM/yyyy"),new ConverDate().longToDate(x.getNgayKetThuc(), "dd/MM/yyyy"),x.getHoaDonChiTiet().getSanPham().getTen(),x.getHoaDonChiTiet().getSoLuong(),x.getTrangThai()});
         }
     }
+
     private void cbbBaohanh(){
         DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
         cbbBaoHanh1.setModel(boxModel);
@@ -113,6 +111,7 @@ public class BaoHanh1 extends javax.swing.JPanel {
             boxModel.addElement(x.getMa());
         }
     }
+
     private  void cbbHDCT(){
         DefaultComboBoxModel boxModel = new DefaultComboBoxModel();
         cbbHoaDonChiTiet1.setModel(boxModel);
@@ -137,6 +136,8 @@ public class BaoHanh1 extends javax.swing.JPanel {
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jtableBaoHanh = new javax.swing.JTable();
         jPanel3 = new javax.swing.JPanel();
         cbbNhanVien = new javax.swing.JComboBox<>();
         jLabel15 = new javax.swing.JLabel();
@@ -626,18 +627,20 @@ public class BaoHanh1 extends javax.swing.JPanel {
     private void btnTaoBaoHanhChiTietActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoBaoHanhChiTietActionPerformed
         // TODO add your handling code here:
         BaoHanhChiTiet bhct = new BaoHanhChiTiet();
-        if(rbConHan.isSelected()){
-              bhct.setTrangThai("Còn hạn");
-        }else{
-             bhct.setTrangThai("Hết hạn");
+        if (rbConHan.isSelected()) {
+            bhct.setTrangThai("Còn hạn");
+        } else {
+            bhct.setTrangThai("Hết hạn");
         }
+        bhct.setHoaDonChiTiet(hoaDonChiTietService.getById(UUID.fromString(cbbHoaDonChiTiet1.getSelectedItem().toString())));
          List<HoaDonChiTiet> list = hoaDonChiTietService.getListByIdHoaDon(UUID.fromString(idHD));
-        bhct.setHoaDonChiTiet(list.get(cbbHoaDonChiTiet1.getSelectedIndex())); 
+        bhct.setHoaDonChiTiet(list.get(cbbHoaDonChiTiet1.getSelectedIndex()));
         bhct.setBaoHanh(hangService.getOne(cbbBaoHanh1.getSelectedItem().toString()));
-        
+
         JOptionPane.showMessageDialog(this, baoHanhChitietService.add(bhct));
+
         cbbHDCT();
-        
+
     }//GEN-LAST:event_btnTaoBaoHanhChiTietActionPerformed
 
     private void btnTaoPhieuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTaoPhieuActionPerformed
@@ -648,8 +651,8 @@ public class BaoHanh1 extends javax.swing.JPanel {
         Date ngayKetThuc = txtNKT.getDate();
         String nbd = new ConverDate().convertDateToString(ngayBatDau, "dd/MM/yyyy");
         String nkt = new ConverDate().convertDateToString(ngayKetThuc, "dd/MM/yyyy");
-        bh.setNgayBatDau(new ConverDate().dateToLong(nbd,  "dd/MM/yyyy"));
-        bh.setNgayKetThuc(new ConverDate().dateToLong(nkt,  "dd/MM/yyyy"));
+        bh.setNgayBatDau(new ConverDate().dateToLong(nbd, "dd/MM/yyyy"));
+        bh.setNgayKetThuc(new ConverDate().dateToLong(nkt, "dd/MM/yyyy"));
         bh.setMoTa(txtMoTa.getText());
 
         bh.setKhachHang(khachHangService.getByTen(cbbKhachHang.getSelectedItem().toString()));
@@ -668,8 +671,8 @@ public class BaoHanh1 extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
-            
-       
+
+
          JFileChooser chooser = new JFileChooser();
         chooser.showOpenDialog(null);
         File f = chooser.getSelectedFile();

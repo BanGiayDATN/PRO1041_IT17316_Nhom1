@@ -5,6 +5,9 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+
+import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
+
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewShowDoiTra;
@@ -34,11 +37,9 @@ public class ViewManChinh extends javax.swing.JFrame {
             btnThongKe.setVisible(false);
             btnHoaDon.setVisible(false);
         }
-      
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -324,7 +325,7 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-         viewChucNang.removeAll();
+        viewChucNang.removeAll();
         BaoHanh1 form = new BaoHanh1();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());

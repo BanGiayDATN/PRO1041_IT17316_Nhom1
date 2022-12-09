@@ -15,7 +15,6 @@ import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.awt.Color;
 import java.awt.Cursor;
 import java.io.File;
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -143,6 +142,14 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusLost(evt);
+            }
+        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -334,6 +341,20 @@ public class ViewKhachHang extends javax.swing.JPanel {
             jTableKhachHang.setSelectionBackground(Color.blue);
         }
     }//GEN-LAST:event_jTableKhachHangMouseMoved
+
+    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
+        if (txtTimKiem.getText().equals("Nhập thông tin khách hàng...")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusGained
+
+    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
+        if (txtTimKiem.getText().equals("")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusLost
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
