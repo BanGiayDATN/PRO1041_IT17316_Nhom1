@@ -41,5 +41,10 @@ public class BaoHanhServiceImpl implements BaoHanhService{
     public BaoHanh getOne(String maBh) {
         return ql.getOne(maBh);
     }
+
+    @Override
+    public List<BaoHanh> searchByMa(String ma) {
+        return ql.searchByMa(ma);
+    }
     
 }

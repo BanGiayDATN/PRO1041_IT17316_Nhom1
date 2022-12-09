@@ -50,6 +50,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         result_field.setBorder(null);
@@ -83,6 +84,7 @@ public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
         this.dispose();
+        webcam.close();
 
        
     }//GEN-LAST:event_btnThoatActionPerformed

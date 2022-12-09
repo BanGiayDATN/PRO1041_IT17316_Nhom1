@@ -20,7 +20,8 @@ import java.util.UUID;
  */
 public interface HoaDonChiTietRepository {
 
-    List<HoaDonChiTiet> getAll();
+    
+   List<HoaDonChiTiet> getAll();
 
     HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet);
 
@@ -42,11 +43,10 @@ public interface HoaDonChiTietRepository {
 
     List<GioHangViewModel> getGioHang(UUID idHoaDon);
 
-
     HoaDonChiTiet getById(UUID idHDCT);
 
     HoaDonChiTiet getByIdHoaDon(UUID idHD);
-    
+
     HoaDonChiTiet getByIdSanPham(UUID idSP);
 
     BigDecimal tongDoanhThu();
@@ -58,14 +58,12 @@ public interface HoaDonChiTietRepository {
     long soHoaDontheoKhoangNgay(long ngayBatDau, long ngayKetThuc);
 
     long soHoaDonTong();
-    
+
     long soHoaDontheoNgay(long toDay);
 
-
-    List<HoaDonChiTiet > getListByIdHoaDon(UUID idHD);
-
+    List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD);
 
     List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma);
-    
 
+    List<HoaDonChiTiet> getHdctByHoaDon (String maHoaDon);
 }

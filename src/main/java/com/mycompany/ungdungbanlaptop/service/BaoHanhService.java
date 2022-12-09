@@ -20,4 +20,6 @@ public interface BaoHanhService {
      BaoHanh getById( UUID id);
      
      BaoHanh getOne(String maBh);
+     
+     List<BaoHanh> searchByMa(String ma);
 }

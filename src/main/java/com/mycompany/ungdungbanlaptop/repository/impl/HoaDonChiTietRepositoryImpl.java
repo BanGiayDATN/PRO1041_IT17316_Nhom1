@@ -32,7 +32,7 @@ import java.util.Locale;
  */
 public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
-    @Override
+     @Override
     public List<HoaDonChiTiet> getAll() {
 
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -183,12 +183,9 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
             Query query = session.createQuery(" FROM HoaDonChiTiet hd where hd.hoaDon.ma = :ma ");
             query.setParameter("ma", ma);
-
             List<HoaDonChiTiet> list = query.getResultList();
-
             return list;
         }
-
     }
 
     @Override
@@ -307,6 +304,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             e.printStackTrace(System.out);
         }
         return tong;
+
     }
 
     @Override
@@ -371,18 +369,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
     }
 
-    public static void main(String[] args) {
-
-//        Locale localerEN = new Locale("en", "EN");
-//        NumberFormat format = NumberFormat.getInstance(localerEN);
-//        String i = format.format(new HoaDonChiTietRepositoryImpl().toDay(1659286800000l));
-//        System.out.println(i);
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDontheoKhoangNgay(1659286800000l, 1661101200000l));
-//            System.out.println(new HoaDonChiTietRepositoryImpl().soHoaDonTong());
-    }
-
-// String date = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
-//        System.out.println(new HoaDonChiTietRepositoryImpl().getByIdSanPham(UUID.fromString("0138A8C0-E284-6711-8184-E2416CC20027")));
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         List<HoaDonChiTietRespone> list = new ArrayList<>();
 
@@ -405,4 +391,28 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
+    @Override
+    public List<HoaDonChiTiet> getHdctByHoaDon(String maHoaDon) {
+        List<HoaDonChiTiet> list = new ArrayList<>();
+        Transaction transaction = null;
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            transaction = session.beginTransaction();
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.ma = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", maHoaDon);
+            list = query.getResultList();
+            transaction.commit();
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+
+    public static void main(String[] args) {
+        UUID idHoaDon = UUID.fromString("0100007F-E584-2511-8184-E5E12A0C002F");
+        List<HoaDonChiTiet>  list = new HoaDonChiTietRepositoryImpl().getHdctByHoaDon("HD88991");
+        System.out.println(list.size());
+        HoaDonChiTiet getById = new HoaDonChiTietRepositoryImpl().getById(idHoaDon);
+        System.out.println(getById);
+    }
 }

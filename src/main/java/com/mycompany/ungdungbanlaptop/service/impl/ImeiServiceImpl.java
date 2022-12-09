@@ -28,8 +28,15 @@ public class ImeiServiceImpl implements ImeiService {
     public String add(Imei imei) {
         Imei ma = imeiRepository.getOne(imei.getMa());
         if(ma != null){
-            return "Đã có imei này";
+            return "Đã tồn tại Imei này";
         }
+        if(imei.getMa().isEmpty()){
+            return "Vui lòng nhập mã Imei!";
+        }
+        if( 15> imei.getMa().length() || 15<imei.getMa().length() ){
+            return "Imei phải là 15 kí tự!";
+        }
+       
         Imei add = imeiRepository.add(imei);
         if(add != null){
             return "Thêm thành công";
