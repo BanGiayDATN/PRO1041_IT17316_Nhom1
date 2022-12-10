@@ -826,7 +826,7 @@ public class UpdateSanPham extends javax.swing.JFrame {
         String cpu = cbbCPU.getSelectedItem().toString().trim();
         String chatLieu = cbbChatLieu.getSelectedItem().toString().trim();
         String namString = cbb_nam.getSelectedItem().toString();
-
+        String soDuong = "^(?!^0)\\d{1,9}$";
         // vali
         if (namString.equalsIgnoreCase(checkComBoBox)) {
             lab_errorNam.setText("Vui lòng chọn");
@@ -898,7 +898,13 @@ public class UpdateSanPham extends javax.swing.JFrame {
         } else {
             lab_errorTrongLuong.setText(" ");
         }
-
+        if (soLuongString.isEmpty()) {
+            lab_errorSoLuong.setText("Không để trống");
+            return;
+        } else if (!soLuongString.matches(soDuong)) {
+            lab_errorSoLuong.setText("Số lượng phải là số và > 0");
+            return;
+        }
         if (soLuongString.isEmpty()) {
             lab_errorSoLuong.setText("Không để trống");
             return;

@@ -375,12 +375,6 @@ public class AddSanPham extends javax.swing.JFrame {
 
         jLabel37.setText("Số lượng tồn:");
 
-        txtSoLuongTon.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                txtSoLuongTonKeyPressed(evt);
-            }
-        });
-
         jLabel38.setText("Hệ điều hành:");
 
         jPanel6.setBorder(new javax.swing.border.MatteBorder(null));
@@ -871,6 +865,13 @@ public class AddSanPham extends javax.swing.JFrame {
             lab_errorChatLieu.setText("");
         }
 
+        if (soLuongString.isEmpty()) {
+            lab_errorSoLuong.setText("Không để trống");
+            return;
+        } else if (!soLuongString.matches(soDuong)) {
+            lab_errorSoLuong.setText("Số lượng phải là số và > 0");
+            return;
+        }
         if (trongLuongString.isEmpty()) {
             lab_errorTrongLuong.setText("Không để trống");
             return;
@@ -881,23 +882,6 @@ public class AddSanPham extends javax.swing.JFrame {
             lab_errorTrongLuong.setText(" ");
         }
 
-        if (soLuongString.isEmpty()) {
-            lab_errorSoLuong.setText("Không để trống");
-            return;
-        } else if (!soLuongString.matches(soDuong)) {
-            lab_errorSoLuong.setText("Số lượng phải là số và > 0");
-            return;
-        }
-
-//        if (soLuongString.isEmpty()) {
-//            lab_errorSoLuong.setText("Không để trống");
-//            return;
-//        } else if (!NumberUtils.isNumber(soLuongString)) {
-//            lab_errorSoLuong.setText("Phải là số ");
-//            return;
-//        } else {
-//            lab_errorSoLuong.setText(" ");
-//        }
         if (giaBan.isEmpty()) {
             lab_errorGiaBan.setText("Không để trống");
             return;

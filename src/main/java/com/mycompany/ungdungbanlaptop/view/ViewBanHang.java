@@ -36,10 +36,7 @@ import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.awt.Color;
-<<<<<<< HEAD
-=======
 import java.awt.Cursor;
->>>>>>> develop
 import java.awt.event.MouseMotionAdapter;
 import java.awt.event.MouseMotionListener;
 import java.io.IOException;
@@ -50,6 +47,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import java.util.UUID;
 import java.util.function.Consumer;
 import java.util.logging.Level;
@@ -65,8 +63,6 @@ import net.coderazzi.filters.gui.TableFilterHeader;
  *
  * @author Diệm DZ
  */
-
-
 public class ViewBanHang extends javax.swing.JPanel {
 
     private DefaultTableModel dtm1 = new DefaultTableModel();
@@ -99,8 +95,8 @@ public class ViewBanHang extends javax.swing.JPanel {
         btnSeach.setToolTipText("tìm khuyến mãi");
         cbbHinhThucThanhToan();
         cbbPhanLoai();
-        TableFilterHeader filterHeader = new TableFilterHeader(jTableSanPham, AutoChoices.ENABLED);
-
+        TableFilterHeader filterHeader = new TableFilterHeader(TableSanPham, AutoChoices.ENABLED);
+        
     }
 
     private void cbbHinhThucThanhToan() {
@@ -134,12 +130,10 @@ public class ViewBanHang extends javax.swing.JPanel {
             row += 1;
             model.addRow(new Object[]{x.getId(), row, x.getMa(), x.getTen(), x.getNamBH(), x.getTrongLuong(), x.getSoLuongTon(), x.getGiaBan(), x.getMoTa()});
         }
-        jTableSanPham.setModel(model);
-        jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
-        jTableSanPham.setModel(model);
-        jTableSanPham.removeColumn(jTableSanPham.getColumnModel().getColumn(0));
-
+        TableSanPham.setModel(model);
+        TableSanPham.removeColumn(TableSanPham.getColumnModel().getColumn(0));
     }
+
 
     private void showGioHangHDCT(List<GioHangViewModel> list) {
 
@@ -189,7 +183,7 @@ public class ViewBanHang extends javax.swing.JPanel {
         jLabel11 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        jTableSanPham = new javax.swing.JTable();
+        TableSanPham = new javax.swing.JTable();
         cbbPhanLoai = new javax.swing.JComboBox<>();
         txtTimKiem = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
@@ -320,9 +314,9 @@ public class ViewBanHang extends javax.swing.JPanel {
         jPanel4.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, null, new java.awt.Color(255, 0, 0), new java.awt.Color(255, 255, 255), new java.awt.Color(255, 51, 0)));
         jPanel4.setForeground(new java.awt.Color(255, 255, 255));
 
-        jTableSanPham.setAutoCreateRowSorter(true);
-        jTableSanPham.setBackground(new java.awt.Color(204, 255, 204));
-        jTableSanPham.setModel(new javax.swing.table.DefaultTableModel(
+        TableSanPham.setAutoCreateRowSorter(true);
+        TableSanPham.setBackground(new java.awt.Color(204, 255, 204));
+        TableSanPham.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null, null, null, null},
                 {null, null, null, null, null, null, null, null},
@@ -335,9 +329,6 @@ public class ViewBanHang extends javax.swing.JPanel {
                 "STT", "Mã SP", "Tên SP", "Năm SX", "Trọng lượng", "Số lượng tốn", "Đơn giá", "Mô tả"
             }
         ));
-<<<<<<< HEAD
-        jTableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
-=======
         TableSanPham.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         TableSanPham.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
             public void mouseMoved(java.awt.event.MouseEvent evt) {
@@ -345,12 +336,11 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
         });
         TableSanPham.addMouseListener(new java.awt.event.MouseAdapter() {
->>>>>>> develop
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableSanPhamMouseClicked(evt);
+                TableSanPhamMouseClicked(evt);
             }
         });
-        jScrollPane4.setViewportView(jTableSanPham);
+        jScrollPane4.setViewportView(TableSanPham);
 
         cbbPhanLoai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -360,14 +350,6 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
-        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusGained(java.awt.event.FocusEvent evt) {
-                txtTimKiemFocusGained(evt);
-            }
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                txtTimKiemFocusLost(evt);
-            }
-        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -881,20 +863,20 @@ public class ViewBanHang extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableSanPhamMouseClicked
+    private void TableSanPhamMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSanPhamMouseClicked
         // TODO add your handling code here:
         if (txtMaHoaDon.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Hãy tạo hóa đơn");
         } else {
-            int row = jTableSanPham.getSelectedRow();
+            int row = TableSanPham.getSelectedRow();
             int soLuong = soLuongMua(row);
             if (soLuong != 0) {
 
                 HoaDonChiTiet hoaDonChiTiet = new HoaDonChiTiet();
                 hoaDonChiTiet.setSoLuong(soLuong);
-                BigDecimal donGia = new BigDecimal(jTableSanPham.getModel().getValueAt(row, 7).toString());
+                BigDecimal donGia = new BigDecimal(TableSanPham.getModel().getValueAt(row, 7).toString());
                 hoaDonChiTiet.setDonGia(donGia);
-                hoaDonChiTiet.setSanPham(sanPhamService.getOne(jTableSanPham.getModel().getValueAt(row, 2).toString()));
+                hoaDonChiTiet.setSanPham(sanPhamService.getOne(TableSanPham.getModel().getValueAt(row, 2).toString()));
                 hoaDonChiTiet.setHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()));
                 hoaDonChiTietService.add(hoaDonChiTiet);
                 showGioHangHDCT(hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon()));
@@ -910,12 +892,12 @@ public class ViewBanHang extends javax.swing.JPanel {
             showSanPham(sanPhamService.getSanPhamBanHang());
 
             BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-
-            txtTongTien.setText(String.format("%.0f", tongTien().add(phiShip)));
+            
+            txtTongTien.setText(String.format("%.0f",tongTien().add(phiShip)));
             System.out.println(tongTien());
 
         }
-    }//GEN-LAST:event_jTableSanPhamMouseClicked
+    }//GEN-LAST:event_TableSanPhamMouseClicked
 
     private BigDecimal tongTien() {
         List<GioHangViewModel> list = hoaDonChiTietService.getGioHang(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
@@ -929,7 +911,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private int soLuongMua(int index) {
 
-        int soLuong = Integer.valueOf(jTableSanPham.getModel().getValueAt(index, 6).toString());
+        int soLuong = Integer.valueOf(TableSanPham.getModel().getValueAt(index, 6).toString());
         int numBer = 0;
         try {
             numBer = Integer.valueOf(JOptionPane.showInputDialog("Nhập số lượng", 0));
@@ -1027,19 +1009,6 @@ public class ViewBanHang extends javax.swing.JPanel {
             }
             try {
 
-                // TODO add your handling code here:
-//            for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
-//                // add imei
-//                int soLuong = x.getValue().getSoLuong();
-//                for (int i = 1; i < soLuong + 1; ++i) {
-//                    Imei imei = new Imei();
-//                    imei.setMa(new TaoChuoiNgauNhien().getiMei(16));
-//                    imei.setTrangThai(0);
-//                    imei.setHoaDonChiTiet(hoaDonChiTiet);
-//                    imeiRepository.add(imei);
-//                }
-//            }
-                ////// update hoadon
                 hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
                 hoaDon.setTinhTrang(1);
                 hoaDon.setDiaChhi(txtDiaChiHoaDon.getText());
@@ -1049,7 +1018,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-
+                
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
@@ -1066,7 +1035,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
                 showHoaDon(hoaDonService.getHoaDonBanHang());
                 dtm2.setRowCount(0);
-
+               
                 clearHoaDon();
             } catch (WriterException ex) {
                 Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
@@ -1098,15 +1067,10 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
                 hoaDonChiTietService.delete(hoaDonChiTiet);
             }
-
-            HoaDon hd = new HoaDon();
-            hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
-            hoaDonService.delete(hd);
             int row = TableHoaDon.getSelectedRow();
             HoaDonBanHangViewModel viewModel = hoaDonService.getHoaDonBanHang().get(row);
             HoaDon hoaDon = hoaDonService.getById(viewModel.getId());
             hoaDonService.delete(hoaDon);
-
             showHoaDon(hoaDonService.getHoaDonBanHang());
             dtm2.setRowCount(0);
             clearHoaDon();
@@ -1155,8 +1119,8 @@ public class ViewBanHang extends javax.swing.JPanel {
         txtNgaytao.setText(TableHoaDon.getValueAt(row, 2).toString());
         txtTenNhanvien.setText(TableHoaDon.getValueAt(row, 3).toString());
         BigDecimal phiShip = new BigDecimal(txtPhiship.getText());
-
-        txtTongTien.setText(String.format("%.0f", tongTien().add(phiShip)));
+        
+         txtTongTien.setText(String.format("%.0f",tongTien().add(phiShip)));
 
         // Show giỏ hàng chi tiết khi click vào hoá đơn chờ
 
@@ -1250,21 +1214,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnImeiActionPerformed
-
-
-    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
-        if (txtTimKiem.getText().equals("Nhập thông tin tìm kiếm...")) {
-            txtTimKiem.setText(null);
-            txtTimKiem.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_txtTimKiemFocusGained
-
-    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
-        if (txtTimKiem.getText().equals(null)) {
-            txtTimKiem.setText("Nhập thông tin tìm kiếm...");
-            txtTimKiem.setForeground(Color.black);
-        }
-    }//GEN-LAST:event_txtTimKiemFocusLost
+                                       
 
     private void txtTongTienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTongTienKeyReleased
 
@@ -1313,8 +1263,8 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         } else {
             float tongPhanTram = 20;
-            BigDecimal tongGiam = new BigDecimal(txtTongTien.getText()).multiply(new BigDecimal(tongPhanTram / 100));
-            txtTongTien.setText(String.format("%.0f", new BigDecimal(txtTongTien.getText()).subtract(tongGiam)));
+            BigDecimal tongGiam = new BigDecimal(txtTongTien.getText()).multiply(new BigDecimal(tongPhanTram /100));
+            txtTongTien.setText( String.format("%.0f",new BigDecimal(txtTongTien.getText()).subtract(tongGiam)));
 
         }
     }//GEN-LAST:event_cbbKhuyenMaiSanPhamActionPerformed
@@ -1346,7 +1296,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void TableGiohangMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableGiohangMouseMoved
         // TODO add your handling code here:
-        TableGiohang.setCursor(new Cursor(Cursor.HAND_CURSOR));
+         TableGiohang.setCursor(new Cursor(Cursor.HAND_CURSOR));
         int row = TableGiohang.rowAtPoint(evt.getPoint());
         if (row > -1) {
             // easiest way:
@@ -1359,7 +1309,7 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void TableSanPhamMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_TableSanPhamMouseMoved
         // TODO add your handling code here:
-        TableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
+         TableSanPham.setCursor(new Cursor(Cursor.HAND_CURSOR));
         int row = TableSanPham.rowAtPoint(evt.getPoint());
         if (row > -1) {
             // easiest way:
@@ -1381,21 +1331,13 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbKhuyenMaiSanPham.setModel(model);
     }
 
-    private void removeGioHang() {
-        for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
-            SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());
-            int soLuongUpdate = sanPham.getSoLuongTon() + x.getValue().getSoLuong();
-            sanPham.setSoLuongTon(soLuongUpdate);
-            sanPhamService.update(sanPham);
-            showSanPham(sanPhamService.getSanPhamBanHang());
-        }
-        listGioHang.entrySet().clear();
-        showGioHangHDCT((List<GioHangViewModel>) listGioHang);
-    }
+ 
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableGiohang;
     private javax.swing.JTable TableHoaDon;
+    private javax.swing.JTable TableSanPham;
     private javax.swing.JPanel btnHuyDon;
     private javax.swing.JButton btnImei;
     private javax.swing.JButton btnSeach;
@@ -1440,7 +1382,6 @@ public class ViewBanHang extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTableSanPham;
     private javax.swing.JMenuItem miUpdateSoLuong;
     private javax.swing.JMenuItem miXoa;
     private javax.swing.JRadioButton rbShip;
