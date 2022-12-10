@@ -108,7 +108,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         });
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Full basket.png"))); // NOI18N
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add to basket.png"))); // NOI18N
         btnSanPham.setText("Sản Phẩm");
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

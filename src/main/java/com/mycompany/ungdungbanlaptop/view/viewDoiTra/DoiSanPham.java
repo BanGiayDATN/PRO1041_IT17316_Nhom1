@@ -51,7 +51,7 @@ public class DoiSanPham extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblSanPham = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -114,10 +114,18 @@ public class DoiSanPham extends javax.swing.JFrame {
                 sanPham.setIdSanPham(UUID.fromString(tblSanPham.getModel().getValueAt(row, 0).toString()));
                 sanPham.setMa(tblSanPham.getModel().getValueAt(row, 2).toString());
                 sanPham.setTen(tblSanPham.getModel().getValueAt(row, 3).toString());
-                sanPham.setSoLuong(Integer.valueOf(tblSanPham.getModel().getValueAt(row, 6).toString()));
+                sanPham.setSoLuong(soLuong);
                 sanPham.setDonGia(new BigDecimal(tblSanPham.getModel().getValueAt(row, 7).toString()));
                 ViewDoiTraTheoHoaDon.addSanPham(sanPham);
             }
+              SanPhamBanHangViewModel model = sanPhamService.getSanPhamBanHang().get(row);
+            System.out.println(model);
+            SanPham sanPham = sanPhamService.getById(model.getId());
+            int soLuongUpdate = sanPham.getSoLuongTon() - soLuong;
+            sanPham.setSoLuongTon(soLuongUpdate);
+            sanPhamService.update(sanPham);
+
+            showSanPham(sanPhamService.getSanPhamBanHang());
     }//GEN-LAST:event_tblSanPhamMouseClicked
 
      private int soLuongMua(int index) {

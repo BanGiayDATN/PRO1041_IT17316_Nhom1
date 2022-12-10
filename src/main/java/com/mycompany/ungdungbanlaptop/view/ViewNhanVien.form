@@ -643,7 +643,7 @@
         <Component class="javax.swing.JTextField" name="txtTimKiem">
           <Properties>
             <Property name="horizontalAlignment" type="int" value="0"/>
-            <Property name="text" type="java.lang.String" value="M&#x1edd;i nh&#x1ead;p h&#x1ecd; t&#xea;n"/>
+            <Property name="text" type="java.lang.String" value="M&#x1edd;i nh&#x1ead;p emai nh&#xe2;n vi&#xea;n"/>
           </Properties>
           <Events>
             <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="txtTimKiemMouseClicked"/>
@@ -656,7 +656,7 @@
               <Font name="Segoe UI" size="12" style="1"/>
             </Property>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Search.png"/>
+              <Image iconType="3" name="/Search1.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Ti&#x300;m ki&#xea;&#x301;m:"/>
           </Properties>
