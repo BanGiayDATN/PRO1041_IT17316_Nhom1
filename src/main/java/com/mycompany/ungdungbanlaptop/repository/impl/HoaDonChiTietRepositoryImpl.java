@@ -32,7 +32,7 @@ import java.util.Locale;
  */
 public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
 
-    @Override
+     @Override
     public List<HoaDonChiTiet> getAll() {
 
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
@@ -337,26 +337,21 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
+
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
-
-         try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
-                    + " WHERE hdct.hoaDon.idHoaDon = :idHoaDon AND hdct.id not in (SELECT bhct.hoaDonChiTiet.idHoaDonChiTiet FROM BaoHanhChiTiet bhct)";
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHD);
             list = query.getResultList();
+            return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-      return list;
-       
-
-        
+        return null;
 
     }
-
-   
 
     @Override
     public HoaDonChiTiet getByIdSanPham(UUID idSP) {
@@ -372,13 +367,7 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
 
-
-        
     }
-     
-
-    
-
 
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         List<HoaDonChiTietRespone> list = new ArrayList<>();

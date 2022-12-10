@@ -45,14 +45,11 @@ public class ViewKhachHang extends javax.swing.JPanel {
         String[] a = {"Mã KH", "Tên KH", "Giới tính", "SĐT", "Email", "Địa chỉ", "Tình trạng"};
         dtm.setColumnIdentifiers(a);
         showData(khachHangService.getAll());
-
         jTableLichSuMuahang.setModel(dtm1);
         String[] b = {"Mã Hóa Đơn", "Tên SP", "Số lượng", "Đơn giá", "Ngày tạo", "Ngày thanh toán"};
         dtm1.setColumnIdentifiers(b);
-
         cbbTimKiem();
-          TableFilterHeader filterHeader = new TableFilterHeader(jTableKhachHang, AutoChoices.ENABLED);
-          TableFilterHeader filterHeader1 = new TableFilterHeader(jTableLichSuMuahang, AutoChoices.ENABLED);
+        TableFilterHeader filterHeader1 = new TableFilterHeader(jTableLichSuMuahang, AutoChoices.ENABLED);
 
     }
 
@@ -143,6 +140,14 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusLost(evt);
+            }
+        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -307,6 +312,21 @@ public class ViewKhachHang extends javax.swing.JPanel {
 
     }//GEN-LAST:event_txtTimKiemKeyReleased
 
+
+    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
+        if (txtTimKiem.getText().equals("Nhập thông tin khách hàng...")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusGained
+
+    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
+        if (txtTimKiem.getText().equals("")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusLost
+    
     private void btnExportActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExportActionPerformed
         // TODO add your handling code here:
         try {
@@ -317,7 +337,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
             KhachHangExport.exportData(khachHangService.getAll(), filename + ".xlsx");
             JOptionPane.showMessageDialog(this, "Export thành công ");
         } catch (Exception e) {
-             Logger.getLogger(ViewKhachHang.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(ViewKhachHang.class.getName()).log(Level.SEVERE, null, e);
             JOptionPane.showMessageDialog(this, "Export thất bại ");
         }
     }//GEN-LAST:event_btnExportActionPerformed
@@ -334,8 +354,7 @@ public class ViewKhachHang extends javax.swing.JPanel {
             jTableKhachHang.setSelectionBackground(Color.blue);
         }
     }//GEN-LAST:event_jTableKhachHangMouseMoved
-
-
+ 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnExport;
     private javax.swing.ButtonGroup buttonGroup1;

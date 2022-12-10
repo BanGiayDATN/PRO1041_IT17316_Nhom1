@@ -20,7 +20,8 @@ import java.util.UUID;
  */
 public interface HoaDonChiTietRepository {
 
-    List<HoaDonChiTiet> getAll();
+    
+   List<HoaDonChiTiet> getAll();
 
     HoaDonChiTiet add(HoaDonChiTiet hoaDonChiTiet);
 
