@@ -7,7 +7,6 @@ package com.mycompany.ungdungbanlaptop.model.resquest;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.bridj.ann.Alignment;
 
 /**
  *

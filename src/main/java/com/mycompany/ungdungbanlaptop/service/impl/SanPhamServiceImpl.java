@@ -12,7 +12,6 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.SanPhamImport;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumHeDieuHanh;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.infrastructure.importExcel.MessageErrorImport;
@@ -33,7 +32,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import java.util.function.Consumer;
 
 /**
  *
@@ -205,7 +203,6 @@ public class SanPhamServiceImpl implements SanPhamService {
             mapSanPham.put(sanPham.getMa(), ctsp);
         }
         sanPhamRepository.saveAllSanPham(mapSanPham);
-        System.out.println(mapSanPham.values());
         return list;
     }
 
@@ -255,21 +252,21 @@ public class SanPhamServiceImpl implements SanPhamService {
                     return;
                 }
 
-                if (sp.getTen().trim().length() < 8) {
-                    return;
-                }
-
-                if (!sp.getGiaBan().matches("\\d+")) {
-                    return;
-                }
-
-                if (!sp.getSoLuongTon().matches("\\d+")) {
-                    return;
-                }
-
-                if (!sp.getNamBH().matches("\\d+")) {
-                    return;
-                }
+//                if (sp.getTen().trim().length() < 8) {
+//                    return;
+//                }
+//
+//                if (!sp.getGiaBan().matches("\\d+")) {
+//                    return;
+//                }
+//
+//                if (!sp.getSoLuongTon().matches("\\d+")) {
+//                    return;
+//                }
+//
+//                if (!sp.getNamBH().matches("\\d+")) {
+//                    return;
+//                }
 
                 SanPhamRequest sanPhamRequest = new SanPhamRequest();
                 sanPhamRequest.setMa(sp.getMa());

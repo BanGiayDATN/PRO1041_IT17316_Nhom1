@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.swing;
 
-import javax.swing.plaf.basic.BasicScrollBarUI;
 
 import java.awt.Color;
 import java.awt.Graphics;

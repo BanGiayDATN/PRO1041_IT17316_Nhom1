@@ -12,19 +12,15 @@ import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietKhuyenMai;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietRespone;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonChiTietSanPham;
 import com.mycompany.ungdungbanlaptop.repository.HoaDonChiTietRepository;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.hibernate.query.Query;
-import java.text.NumberFormat;
-import java.util.Locale;
 
 /**
  *
@@ -304,7 +300,6 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
             e.printStackTrace(System.out);
         }
         return tong;
-
     }
 
     @Override
@@ -337,30 +332,25 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
     }
 
     @Override
+
     public List<HoaDonChiTiet> getListByIdHoaDon(UUID idHD) {
         List<HoaDonChiTiet> list = new ArrayList<>();
-
          try (Session session = HibernateUtil.getFACTORY().openSession()) {
-            String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
-                    + " WHERE hdct.hoaDon.idHoaDon = :idHoaDon AND hdct.id not in (SELECT bhct.hoaDonChiTiet.idHoaDonChiTiet FROM BaoHanhChiTiet bhct)";
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idHoaDon", idHD);
             list = query.getResultList();
+            return list;
         } catch (Exception e) {
             e.printStackTrace(System.out);
         }
-      return list;
+        return null;
        
-
-        
-
     }
-
-   
 
     @Override
     public HoaDonChiTiet getByIdSanPham(UUID idSP) {
-        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+          try (Session session = HibernateUtil.getFACTORY().openSession()) {
             String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.sanPham.idSanPham = :idSanPham";
             Query<HoaDonChiTiet> query = session.createQuery(hql);
             query.setParameter("idSanPham", idSP);
@@ -372,13 +362,8 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         }
         return null;
 
-
         
     }
-     
-
-    
-
 
     public List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma) {
         List<HoaDonChiTietRespone> list = new ArrayList<>();
@@ -419,11 +404,4 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         return list;
     }
 
-    public static void main(String[] args) {
-        UUID idHoaDon = UUID.fromString("0100007F-E584-2511-8184-E5E12A0C002F");
-        List<HoaDonChiTiet>  list = new HoaDonChiTietRepositoryImpl().getHdctByHoaDon("HD88991");
-        System.out.println(list.size());
-        HoaDonChiTiet getById = new HoaDonChiTietRepositoryImpl().getById(idHoaDon);
-        System.out.println(getById);
-    }
 }

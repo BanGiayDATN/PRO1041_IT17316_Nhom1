@@ -26,43 +26,42 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name= "man_hinh")
+@Table(name = "man_hinh")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ManHinh {
 
-       @Id
+    @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator",
-        parameters = {
-            @Parameter(
-                name = "uuid_gen_strategy_class",
-                value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-            )
-        }
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                @Parameter(
+                        name = "uuid_gen_strategy_class",
+                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                )
+            }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idManHinh;
 
     @Column(name = "ma")
     private String ma;
-    
-    @Column(name = "do_phan_giai",columnDefinition = "nvarchar(Max)")
+
+    @Column(name = "do_phan_giai", columnDefinition = "nvarchar(Max)")
     private String doPhanGiaMan;
-    
-    @Column(name = "kich_thuoc",columnDefinition = "nvarchar(Max)")
+
+    @Column(name = "kich_thuoc", columnDefinition = "nvarchar(Max)")
     private String kichThuoc;
-    
-    @Column(name = "loai_cam_ung",columnDefinition = "nvarchar(50)")
+
+    @Column(name = "loai_cam_ung", columnDefinition = "nvarchar(50)")
     private String loaiCamUng;
-    
-    @Column(name = "tan_so",columnDefinition = "nvarchar(100)")
+
+    @Column(name = "tan_so", columnDefinition = "nvarchar(100)")
     private String tanSo;
 
-    
-    @Column(name = "cong_nghe_man_hinh",columnDefinition = "nvarchar(100)")
+    @Column(name = "cong_nghe_man_hinh", columnDefinition = "nvarchar(100)")
     private String congNgheMH;
 
     public ManHinh(UUID idManHinh) {

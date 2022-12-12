@@ -8,12 +8,18 @@ import java.io.File;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.Properties;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
 import javax.mail.internet.AddressException;
 
 /**
@@ -63,9 +69,5 @@ public class EmailKhachHang {
         System.out.println("Gui mail thanh cong");
     }
 
-    public static void main(String[] args) throws MessagingException {
-        String filePath = "D:\\DuAn1\\word\\HD986.doc";
-        new EmailKhachHang().guiEmailDinhKiem("anhvinh12a888@gmail.com", filePath);
-    }
 
 }

@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.view.ViewBanHang;
 import java.awt.FlowLayout;
 import javax.swing.JPanel;
 
@@ -31,6 +30,8 @@ public class ViewShowDoiTra extends javax.swing.JPanel {
         viewChucNang.removeAll();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
+        viewChucNang.revalidate();
+        viewChucNang.repaint();
         form.setVisible(true);
     }
 

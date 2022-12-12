@@ -5,7 +5,9 @@
 package com.mycompany.ungdungbanlaptop.repository;
 
 import com.mycompany.ungdungbanlaptop.entity.Hang;
+import com.mycompany.ungdungbanlaptop.model.resquest.HangRequest;
 import java.util.List;
+import java.util.Map;
 
 /**
  *
@@ -22,4 +24,6 @@ public interface HangRepository {
     Hang getByTen(String ten);
 
     Hang getOne(String ma);
+
+    public boolean saveAllHang(Map<String, HangRequest> list);
 }

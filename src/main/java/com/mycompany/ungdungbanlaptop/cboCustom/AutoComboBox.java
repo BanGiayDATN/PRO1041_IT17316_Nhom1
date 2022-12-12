@@ -16,7 +16,7 @@ import javax.swing.JTextField;
 
 public class AutoComboBox extends JComboBox<Object> {
 
-    List<String> list ;
+    List<String> list;
     Vector myVector = new Vector();
 
     public AutoComboBox() {
@@ -43,23 +43,21 @@ public class AutoComboBox extends JComboBox<Object> {
 
     private void setMyVector() {
         int a;
-        if(list != null){
-             for (a = 0; a < list.size(); a++) {
-            myVector.add(list.get(a));
-        }
+        if (list != null) {
+            for (a = 0; a < list.size(); a++) {
+                myVector.add(list.get(a));
+            }
         }
     }
 
     private void setMyVectorInitial() {
         myVector.clear();
         int a;
-         if(list != null){
-             for (a = 0; a < list.size(); a++) {
-            myVector.add(list.get(a));
+        if (list != null) {
+            for (a = 0; a < list.size(); a++) {
+                myVector.add(list.get(a));
+            }
         }
-         }
     }
-
-
 
 }

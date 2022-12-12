@@ -10,7 +10,9 @@ import com.mycompany.ungdungbanlaptop.model.resquest.KhachHangRequest;
 import com.mycompany.ungdungbanlaptop.service.KhachHangService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhachHangServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.io.File;
 import java.util.Date;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -26,6 +28,7 @@ public class ViewThemKhachHang extends javax.swing.JFrame {
      */
     public ViewThemKhachHang(KhachHang khachHang1) {
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         initComponents();
        
     }

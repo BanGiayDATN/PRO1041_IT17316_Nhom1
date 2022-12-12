@@ -13,7 +13,6 @@ import com.mycompany.ungdungbanlaptop.entity.ManHinh;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
-import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.CPUViewModel;
 import com.mycompany.ungdungbanlaptop.service.CPUService;
 import com.mycompany.ungdungbanlaptop.service.ChatLieuService;
@@ -33,13 +32,14 @@ import com.mycompany.ungdungbanlaptop.service.impl.ManHinhServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.MauServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.RamServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.io.File;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import org.apache.commons.lang3.math.NumberUtils;
 
 /**
@@ -76,6 +76,7 @@ public class UpdateSanPham extends javax.swing.JFrame {
 
     public UpdateSanPham(int row, SanPham sp) {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         txtMaSanPham.setEditable(false);
         sanPham = sp;
         index = row;

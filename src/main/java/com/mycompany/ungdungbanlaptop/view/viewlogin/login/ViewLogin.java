@@ -8,7 +8,8 @@ import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
 import com.mycompany.ungdungbanlaptop.view.ViewManChinh;
-import com.mycompany.ungdungbanlaptop.view.ViewNhanVien;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 import javax.swing.JOptionPane;
 
@@ -26,6 +27,7 @@ public class ViewLogin extends javax.swing.JFrame {
 
     public ViewLogin() {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.setLocationRelativeTo(null);
     }
 

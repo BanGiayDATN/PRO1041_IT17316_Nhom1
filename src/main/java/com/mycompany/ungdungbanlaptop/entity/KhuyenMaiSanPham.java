@@ -19,36 +19,33 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Parameter;
 
 /**
  *
  * @author thang
  */
-
 @Entity
 @Data
 @Setter
 @Getter
-@Table(name="khuyen_mai_san_pham")
+@Table(name = "khuyen_mai_san_pham")
 @AllArgsConstructor
 @NoArgsConstructor
 public class KhuyenMaiSanPham {
-    
+
     @Id
     @GeneratedValue(generator = "UUID", strategy = GenerationType.AUTO)
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID id;
-     
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khuyen_mai")
-    private KhuyenMai khuyenMai; 
-    
+    private KhuyenMai khuyenMai;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_san_pham")
     private SanPham sanPham;
-    
+
     @Column(name = "ma")
     private String ma;
 }

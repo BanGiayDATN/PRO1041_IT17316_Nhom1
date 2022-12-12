@@ -8,8 +8,6 @@ import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiRam;
 import com.mycompany.ungdungbanlaptop.service.RamService;
 import com.mycompany.ungdungbanlaptop.service.impl.RamServiceImpl;
-import java.util.ArrayList;
-
 import java.util.List;
 import java.util.UUID;
 import javax.swing.DefaultComboBoxModel;

@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
-import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.NhanVienExport;
 import com.mycompany.ungdungbanlaptop.model.resquest.NhanVienResquest;
 import com.mycompany.ungdungbanlaptop.service.NhanVienService;
@@ -439,7 +438,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         jScrollPane2.setViewportView(jTableNhanVien);
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTimKiem.setText("Mời nhập họ tên");
+        txtTimKiem.setText("Mời nhập emai nhân viên");
         txtTimKiem.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 txtTimKiemMouseClicked(evt);
@@ -452,7 +451,7 @@ public class ViewNhanVien extends javax.swing.JPanel {
         });
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
+        jLabel26.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search1.png"))); // NOI18N
         jLabel26.setText("Tìm kiếm:");
 
         jPanel6.setBackground(new java.awt.Color(204, 204, 204));

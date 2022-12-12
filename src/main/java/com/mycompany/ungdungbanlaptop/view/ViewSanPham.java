@@ -14,8 +14,6 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
-import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.MauExportSanPham;
 import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;
@@ -88,7 +86,6 @@ public class ViewSanPham extends javax.swing.JPanel {
 
     long count, soTrang, trang = 1;
     private NhanVien nhanVien;
-    ;
     /**
      * Creates new form ViewSanPham
      */
@@ -98,7 +95,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         jTableSanPham.setModel(dtm);
         String[] a = {"STT", "Mã SP", "Tên Sp", "Trọng lượng", "Năm sản xuất", "Số lượng tồn", "Giá nhập", "Giá bán", "Mô tả"};
         dtm.setColumnIdentifiers(a);
-        radio();
+            radio();
         rd_ban.setSelected(true);
         loadDataCombobox();
         comBoBoxMau(listMau);
@@ -464,7 +461,7 @@ public class ViewSanPham extends javax.swing.JPanel {
 
         cbbGiaBanSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mời chọn khoảng giá" }));
 
-        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search.png"))); // NOI18N
+        btn_search.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Search1.png"))); // NOI18N
         btn_search.setText("Search");
         btn_search.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

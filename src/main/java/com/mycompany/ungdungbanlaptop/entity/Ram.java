@@ -27,7 +27,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="ram")
+@Table(name = "ram")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Ram {
@@ -35,14 +35,14 @@ public class Ram {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator",
-        parameters = {
-            @Parameter(
-                name = "uuid_gen_strategy_class",
-                value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-            )
-        }
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                @Parameter(
+                        name = "uuid_gen_strategy_class",
+                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                )
+            }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idRam;
@@ -50,7 +50,7 @@ public class Ram {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_ram",columnDefinition = "nvarchar(100)")
+    @Column(name = "ten_ram", columnDefinition = "nvarchar(100)")
     private String ten;
 
     @Column(name = "dung_luong")
@@ -65,6 +65,5 @@ public class Ram {
     public Ram(UUID idRam) {
         this.idRam = idRam;
     }
-    
-    
+
 }

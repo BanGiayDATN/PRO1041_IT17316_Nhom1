@@ -6,6 +6,8 @@ package com.mycompany.ungdungbanlaptop.view.viewlogin.login;
 
 import com.mycompany.ungdungbanlaptop.service.LoginService;
 import com.mycompany.ungdungbanlaptop.service.impl.LoginServiceImpl;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,6 +23,7 @@ public class QuenMatKhau extends javax.swing.JFrame {
 
     public QuenMatKhau() {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.setLocationRelativeTo(null);
     }
 

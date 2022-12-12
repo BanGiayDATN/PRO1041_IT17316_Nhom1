@@ -5,8 +5,6 @@
 package com.mycompany.ungdungbanlaptop.infrastructure.exportExcel;
 
 import com.mycompany.ungdungbanlaptop.entity.KhachHang;
-import com.mycompany.ungdungbanlaptop.model.viewModel.BaoHanhChiTietViewMoDel;
-import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;

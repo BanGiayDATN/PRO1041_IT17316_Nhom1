@@ -16,7 +16,6 @@ import java.awt.image.BufferedImage;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ThreadFactory;
-import javax.swing.JTextField;
 
 public class Menu extends javax.swing.JFrame implements Runnable, ThreadFactory {
 

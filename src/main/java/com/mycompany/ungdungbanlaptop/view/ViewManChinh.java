@@ -5,8 +5,8 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
+
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
-import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewShowDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
 import java.awt.FlowLayout;
@@ -27,6 +27,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     public ViewManChinh(NhanVien nhanVien) {
         initComponents();
         this.nhanVien = nhanVien;
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.setLocationRelativeTo(null);
         if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
             btnSanPham.setVisible(false);
@@ -34,11 +35,9 @@ public class ViewManChinh extends javax.swing.JFrame {
             btnThongKe.setVisible(false);
             btnHoaDon.setVisible(false);
         }
-      
 
     }
 
-    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -111,7 +110,7 @@ public class ViewManChinh extends javax.swing.JFrame {
         });
 
         btnSanPham.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Full basket.png"))); // NOI18N
+        btnSanPham.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Add to basket.png"))); // NOI18N
         btnSanPham.setText("Sản Phẩm");
         btnSanPham.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +323,7 @@ public class ViewManChinh extends javax.swing.JFrame {
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-         viewChucNang.removeAll();
+        viewChucNang.removeAll();
         BaoHanh1 form = new BaoHanh1();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());

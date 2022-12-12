@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDon;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.model.viewModel.HoaDonRespone;
 import com.mycompany.ungdungbanlaptop.service.HoaDonService;
@@ -24,15 +25,17 @@ public class ViewDoiTra extends javax.swing.JPanel {
     private String datHienTai = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
     private long dateHT = new ConverDate().dateToLong(datHienTai, "dd/MM/yyyy");
     private List<HoaDonRespone> list = new ArrayList<>();
-    private NhanVien nhanVien;
+    private NhanVien nv;
+    private HoaDonRespone hd;
 
     public ViewDoiTra(NhanVien nhanVien) {
         initComponents();
-        this.nhanVien = nhanVien;
+        this.nv = nhanVien;
+
         DefaultTableModel model = new DefaultTableModel();
         model.setColumnIdentifiers(new String[]{"Mã", "Ngày Tạo", "Mã Nhân Viên", "Tên Nhân viên", "Tên khách hàng", "Tình trạng", "Số Lượng", "Tổng", "Trạng thái"});
         tblHoaDon.setModel(model);
-         if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
+        if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
             btnDanhSach.setVisible(false);
         }
     }
@@ -195,14 +198,16 @@ public class ViewDoiTra extends javax.swing.JPanel {
     }//GEN-LAST:event_btnSeachActionPerformed
 
     private void tblHoaDonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblHoaDonMouseClicked
-        int i = tblHoaDon.getSelectedRow();
-        if (list.get(i).getMocThoiGian(dateHT).equals("còn hạn")) {
-            new ViewDoiTraTheoHoaDon(list.get(i).getMa()).setVisible(true);
+        int row = tblHoaDon.getSelectedRow();
+        if (list.get(row).getMocThoiGian(dateHT).equals("còn hạn")) {
+            new ViewDoiTraTheoHoaDon(list.get(row).getMa(), nv).setVisible(true);
         }
+
+
     }//GEN-LAST:event_tblHoaDonMouseClicked
 
     private void btnDanhSachActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDanhSachActionPerformed
-       ViewShowDoiTra.loadView(new QuanLiDoiTra(nhanVien));
+        ViewShowDoiTra.loadView(new QuanLiDoiTra(nv));
     }//GEN-LAST:event_btnDanhSachActionPerformed
 
 

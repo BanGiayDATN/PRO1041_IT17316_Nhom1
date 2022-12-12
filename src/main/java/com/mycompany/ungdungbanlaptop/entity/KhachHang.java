@@ -5,7 +5,6 @@
 package com.mycompany.ungdungbanlaptop.entity;
 
 import java.io.Serializable;
-import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -36,14 +35,14 @@ public class KhachHang implements Serializable {
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator",
-        parameters = {
-            @Parameter(
-                name = "uuid_gen_strategy_class",
-                value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-            )
-        }
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                @Parameter(
+                        name = "uuid_gen_strategy_class",
+                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                )
+            }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idKhachHang;
@@ -51,10 +50,10 @@ public class KhachHang implements Serializable {
     @Column(name = "ma", unique = true, length = 20)
     private String ma;
 
-    @Column(name = "ho_ten", columnDefinition="nvarchar(30)")
+    @Column(name = "ho_ten", columnDefinition = "nvarchar(30)")
     private String hoTen;
 
-    @Column(name = "gioi_tinh", columnDefinition="nvarchar(10)")
+    @Column(name = "gioi_tinh", columnDefinition = "nvarchar(10)")
     private String gioiTinh;
 
     @Column(name = "ngay_sinh")
@@ -66,7 +65,7 @@ public class KhachHang implements Serializable {
     @Column(name = "email", length = 30)
     private String email;
 
-    @Column(name = "dia_chi", columnDefinition="nvarchar(Max)")
+    @Column(name = "dia_chi", columnDefinition = "nvarchar(Max)")
     private String diaChi;
 
     @Column(name = "trang_thai")
@@ -75,6 +74,5 @@ public class KhachHang implements Serializable {
     public KhachHang(UUID idKhachHang) {
         this.idKhachHang = idKhachHang;
     }
-   
-    
+
 }

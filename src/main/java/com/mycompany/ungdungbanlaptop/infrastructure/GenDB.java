@@ -312,7 +312,7 @@ public class GenDB {
         nhanVien.setNgaySinh(new ConverDate().dateToLong("2000/06/01", "yyyy/MM/dd"));
         nhanVien.setGioiTinh("Nam");
         nhanVien.setDiaChi("Hà Nội");
-        nhanVien.setEmail("vinhnvph23845@fpt.edu.vn");
+        nhanVien.setEmail("admin@gmail.com");
         session.save(nhanVien);
 
         NhanVien nhanVien1 = new NhanVien();
@@ -325,7 +325,7 @@ public class GenDB {
         nhanVien1.setNgaySinh(new ConverDate().dateToLong("2000/06/04", "yyyy/MM/dd"));
         nhanVien1.setGioiTinh("Nam");
         nhanVien1.setDiaChi("Hà Nội");
-        nhanVien1.setEmail("anhvinh12a888@gmail.com");
+        nhanVien1.setEmail("nhanVien@gmail.com");
         session.save(nhanVien1);
 
         KhachHang khachHang = new KhachHang();

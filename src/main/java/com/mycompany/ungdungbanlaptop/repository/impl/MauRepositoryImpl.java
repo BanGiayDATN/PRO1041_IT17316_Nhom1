@@ -7,7 +7,6 @@ package com.mycompany.ungdungbanlaptop.repository.impl;
 import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.repository.MauRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
-import java.util.ArrayList;
 import java.util.List;
 import org.hibernate.Transaction;
 import org.hibernate.Session;

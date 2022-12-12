@@ -28,7 +28,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="he_dieu_hanh")
+@Table(name = "he_dieu_hanh")
 @AllArgsConstructor
 @NoArgsConstructor
 public class HeDieuHanh {
@@ -51,15 +51,14 @@ public class HeDieuHanh {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_he_dieu_hanh",columnDefinition = "nvarchar(Max)")
+    @Column(name = "ten_he_dieu_hanh", columnDefinition = "nvarchar(Max)")
     private String ten;
 
-    @Column(name="he_dieu_hanh")
+    @Column(name = "he_dieu_hanh")
     private EnumHeDieuHanh heDieuHanh;
 
     public HeDieuHanh(UUID idHeDieuHanh) {
         this.idHeDieuHanh = idHeDieuHanh;
     }
-    
-    
+
 }

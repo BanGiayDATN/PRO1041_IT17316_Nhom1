@@ -49,12 +49,11 @@ public class Mau {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_mau",columnDefinition = "nvarchar(Max)")
+    @Column(name = "ten_mau", columnDefinition = "nvarchar(Max)")
     private String ten;
 
     public Mau(UUID idMau) {
         this.idMau = idMau;
     }
-    
-    
+
 }

@@ -28,7 +28,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="khuyen_mai")
+@Table(name = "khuyen_mai")
 @AllArgsConstructor
 @NoArgsConstructor
 public class KhuyenMai {
@@ -50,9 +50,9 @@ public class KhuyenMai {
 
     @Column(name = "ma")
     private String ma;
-    
+
     @Column(name = "ten", columnDefinition = "nvarchar(Max)")
-    private String  ten;
+    private String ten;
 
     @Column(name = "ngay_bat_dau")
     private long ngayBatDau;
@@ -60,33 +60,32 @@ public class KhuyenMai {
     @Column(name = "ngay_ket_thuc")
     private long ngayKetThuc;
 
-    @Column(name = "trang_thai",  columnDefinition = "int default 0")
+    @Column(name = "trang_thai", columnDefinition = "int default 0")
     private int trangThai;
 
     @Column(name = "so_luong")
     private int soLuong;
-    
+
     @Column(name = "hinh_thuc")
     private boolean hinhThuc;
-    
+
     @Column(name = "phan_tram")
     private int phanTram;
-    
+
     @Column(name = "gia_tien_giam")
     private BigDecimal giaTienGiam;
-    
+
     @Column(name = "dieu_kien_giam_gia")
     private BigDecimal dieuKienGiamGia;
-    
+
     @Column(name = "loai_khuyen_mai")
     private EnumLoaiKhuyenMai loaiKhuyenMai;
-    
+
     @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
-    private String  moTa;
+    private String moTa;
 
     public KhuyenMai(String ma) {
         this.ma = ma;
     }
-    
-    
+
 }

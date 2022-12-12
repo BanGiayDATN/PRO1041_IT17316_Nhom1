@@ -10,11 +10,9 @@ import com.mycompany.ungdungbanlaptop.service.HoaDonChiTietService;
 import com.mycompany.ungdungbanlaptop.service.ImeiService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.ImeiServiceImpl;
-import com.mycompany.ungdungbanlaptop.view.viewlogin.swing.Button;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.List;
-import javax.swing.JButton;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -35,6 +33,7 @@ public class ViewImei extends javax.swing.JFrame {
     public ViewImei(HoaDonChiTiet hoaDonChiTiet) {
         initComponents();
         this.setLocationRelativeTo(null);
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.hdct = hoaDonChiTiet;
         jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
         showData(imeiService.getAll());

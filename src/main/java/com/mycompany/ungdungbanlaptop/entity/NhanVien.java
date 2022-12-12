@@ -30,7 +30,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="nhan_vien")
+@Table(name = "nhan_vien")
 @AllArgsConstructor
 @NoArgsConstructor
 public class NhanVien implements Serializable {
@@ -84,5 +84,5 @@ public class NhanVien implements Serializable {
     public NhanVien(UUID idNhanVien) {
         this.idNhanVien = idNhanVien;
     }
- 
+
 }

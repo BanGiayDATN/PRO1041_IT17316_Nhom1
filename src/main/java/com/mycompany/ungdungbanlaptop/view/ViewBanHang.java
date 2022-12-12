@@ -35,10 +35,8 @@ import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
-import java.awt.Color;
 import java.awt.Cursor;
-import java.awt.event.MouseMotionAdapter;
-import java.awt.event.MouseMotionListener;
+import java.awt.Color;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.BigInteger;
@@ -47,9 +45,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import java.util.UUID;
-import java.util.function.Consumer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.mail.MessagingException;
@@ -96,7 +92,6 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbHinhThucThanhToan();
         cbbPhanLoai();
         TableFilterHeader filterHeader = new TableFilterHeader(TableSanPham, AutoChoices.ENABLED);
-        
     }
 
     private void cbbHinhThucThanhToan() {
@@ -350,6 +345,14 @@ public class ViewBanHang extends javax.swing.JPanel {
 
         txtTimKiem.setHorizontalAlignment(javax.swing.JTextField.CENTER);
         txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+        txtTimKiem.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                txtTimKiemFocusLost(evt);
+            }
+        });
         txtTimKiem.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtTimKiemKeyReleased(evt);
@@ -1018,7 +1021,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-                
+
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
@@ -1035,7 +1038,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
                 showHoaDon(hoaDonService.getHoaDonBanHang());
                 dtm2.setRowCount(0);
-               
+
                 clearHoaDon();
             } catch (WriterException ex) {
                 Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
@@ -1067,6 +1070,10 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDonChiTiet.setIdHoaDonChiTiet(x.getIdHoaDonChiTiet());
                 hoaDonChiTietService.delete(hoaDonChiTiet);
             }
+
+            HoaDon hd = new HoaDon();
+            hd.setIdHoaDon(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon());
+            hoaDonService.delete(hd);
             int row = TableHoaDon.getSelectedRow();
             HoaDonBanHangViewModel viewModel = hoaDonService.getHoaDonBanHang().get(row);
             HoaDon hoaDon = hoaDonService.getById(viewModel.getId());
@@ -1214,7 +1221,21 @@ public class ViewBanHang extends javax.swing.JPanel {
 
 
     }//GEN-LAST:event_btnImeiActionPerformed
-                                       
+
+
+    private void txtTimKiemFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusGained
+        if (txtTimKiem.getText().equals("Nhập thông tin tìm kiếm...")) {
+            txtTimKiem.setText(null);
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusGained
+
+    private void txtTimKiemFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtTimKiemFocusLost
+        if (txtTimKiem.getText().equals(null)) {
+            txtTimKiem.setText("Nhập thông tin tìm kiếm...");
+            txtTimKiem.setForeground(Color.black);
+        }
+    }//GEN-LAST:event_txtTimKiemFocusLost
 
     private void txtTongTienKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtTongTienKeyReleased
 
@@ -1331,8 +1352,19 @@ public class ViewBanHang extends javax.swing.JPanel {
         cbbKhuyenMaiSanPham.setModel(model);
     }
 
- 
 
+
+    private void removeGioHang() {
+        for (Map.Entry<UUID, GioHangViewModel> x : listGioHang.entrySet()) {
+            SanPham sanPham = sanPhamService.getOne(x.getValue().getMa());
+            int soLuongUpdate = sanPham.getSoLuongTon() + x.getValue().getSoLuong();
+            sanPham.setSoLuongTon(soLuongUpdate);
+            sanPhamService.update(sanPham);
+            showSanPham(sanPhamService.getSanPhamBanHang());
+        }
+        listGioHang.entrySet().clear();
+        showGioHangHDCT((List<GioHangViewModel>) listGioHang);
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable TableGiohang;

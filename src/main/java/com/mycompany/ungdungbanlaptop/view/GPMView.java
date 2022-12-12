@@ -24,6 +24,7 @@ public class GPMView extends javax.swing.JPanel {
 
     public GPMView() {
         initComponents();
+        loadTable(service.getAll());
     }
 
     public void loadTable(List<Mau> list) {

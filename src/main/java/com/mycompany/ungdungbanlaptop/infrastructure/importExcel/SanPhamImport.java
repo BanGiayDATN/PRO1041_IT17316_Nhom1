@@ -7,12 +7,6 @@ package com.mycompany.ungdungbanlaptop.infrastructure.importExcel;
 import com.github.pjfanning.xlsx.StreamingReader;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamRequest;
 import java.io.File;
-
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.io.InputStream;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.poi.ss.usermodel.Cell;

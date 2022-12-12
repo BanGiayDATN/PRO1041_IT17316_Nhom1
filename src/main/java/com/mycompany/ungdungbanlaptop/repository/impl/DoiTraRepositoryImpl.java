@@ -4,7 +4,6 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
-import com.mycompany.ungdungbanlaptop.entity.ChatLieu;
 import com.mycompany.ungdungbanlaptop.entity.DoiTRa;
 import com.mycompany.ungdungbanlaptop.model.resquest.SeachDoiTraRequest;
 import com.mycompany.ungdungbanlaptop.repository.DoiTraRepository;

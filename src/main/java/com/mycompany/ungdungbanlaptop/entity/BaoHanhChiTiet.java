@@ -19,7 +19,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.Parameter;
 
 /**
@@ -30,7 +29,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="bao_hanh_chi_tiet")
+@Table(name = "bao_hanh_chi_tiet")
 @AllArgsConstructor
 @NoArgsConstructor
 public class BaoHanhChiTiet {
@@ -52,11 +51,11 @@ public class BaoHanhChiTiet {
 
     @Column(name = "trang_thai")
     private String trangThai;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_hoa_don_chi_tiet")
     private HoaDonChiTiet hoaDonChiTiet;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_bao_hanh")
     private BaoHanh baoHanh;

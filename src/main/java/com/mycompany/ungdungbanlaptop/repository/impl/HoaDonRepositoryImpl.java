@@ -190,6 +190,8 @@ public class HoaDonRepositoryImpl implements HoaDonRepository {
         return null;
     }
 
+    
+
     @Override
     public List<HoaDonKhuyenMai> findAllByMaKhuyenMai(String ma) {
         try (Session session = HibernateUtil.getFACTORY().openSession()) {
