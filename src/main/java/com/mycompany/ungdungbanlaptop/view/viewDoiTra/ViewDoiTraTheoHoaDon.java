@@ -17,14 +17,14 @@ import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
 import com.mycompany.ungdungbanlaptop.swing.ScrollBar;
 import com.mycompany.ungdungbanlaptop.swing.WrapLayout;
-import java.awt.MenuComponent;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
-import javax.swing.JOptionPane;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -42,6 +42,7 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
 
     public ViewDoiTraTheoHoaDon(String ma, NhanVien nv) {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         listHoaDon = hoaDonChiTietService.findHoaDonChiTietByMaHoaDon(ma);
         init(listHoaDon);
         showGioHangHDCT(null);
@@ -219,6 +220,11 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
         jLabel10.setText("Tình Trạng:");
 
         jButton1.setText("Lưu ");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel11.setText("hình thức:");
 
@@ -464,6 +470,10 @@ public class ViewDoiTraTheoHoaDon extends javax.swing.JFrame {
 
         /* Create and display the form */
     }//GEN-LAST:event_txtPhiKeyReleased
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

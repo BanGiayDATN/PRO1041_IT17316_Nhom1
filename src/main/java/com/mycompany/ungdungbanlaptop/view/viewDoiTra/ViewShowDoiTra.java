@@ -30,6 +30,8 @@ public class ViewShowDoiTra extends javax.swing.JPanel {
         viewChucNang.removeAll();
         viewChucNang.add(form);
         viewChucNang.setLayout(new FlowLayout());
+        viewChucNang.revalidate();
+        viewChucNang.repaint();
         form.setVisible(true);
     }
 

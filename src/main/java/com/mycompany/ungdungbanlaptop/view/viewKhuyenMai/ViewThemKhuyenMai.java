@@ -9,7 +9,9 @@ import com.mycompany.ungdungbanlaptop.infrastructure.constant.EnumLoaiKhuyenMai;
 import com.mycompany.ungdungbanlaptop.service.KhuyenMaiService;
 import com.mycompany.ungdungbanlaptop.service.impl.KhuyenMaiServiceImpl;
 import com.mycompany.ungdungbanlaptop.util.ConverDate;
+import java.io.File;
 import java.math.BigDecimal;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -23,6 +25,7 @@ public class ViewThemKhuyenMai extends javax.swing.JFrame {
 
     public ViewThemKhuyenMai() {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         jLabel4.setText("thời gian");
         jLabel2.setVisible(true);
         jLabel3.setVisible(true);

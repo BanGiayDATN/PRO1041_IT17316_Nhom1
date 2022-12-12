@@ -86,7 +86,6 @@ public class ViewSanPham extends javax.swing.JPanel {
 
     long count, soTrang, trang = 1;
     private NhanVien nhanVien;
-    ;
     /**
      * Creates new form ViewSanPham
      */
@@ -96,7 +95,7 @@ public class ViewSanPham extends javax.swing.JPanel {
         jTableSanPham.setModel(dtm);
         String[] a = {"STT", "Mã SP", "Tên Sp", "Trọng lượng", "Năm sản xuất", "Số lượng tồn", "Giá nhập", "Giá bán", "Mô tả"};
         dtm.setColumnIdentifiers(a);
-        radio();
+            radio();
         rd_ban.setSelected(true);
         loadDataCombobox();
         comBoBoxMau(listMau);

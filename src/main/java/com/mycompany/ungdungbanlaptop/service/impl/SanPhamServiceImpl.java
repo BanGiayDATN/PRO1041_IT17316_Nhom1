@@ -203,7 +203,6 @@ public class SanPhamServiceImpl implements SanPhamService {
             mapSanPham.put(sanPham.getMa(), ctsp);
         }
         sanPhamRepository.saveAllSanPham(mapSanPham);
-        System.out.println(mapSanPham.values());
         return list;
     }
 
@@ -253,21 +252,21 @@ public class SanPhamServiceImpl implements SanPhamService {
                     return;
                 }
 
-                if (sp.getTen().trim().length() < 8) {
-                    return;
-                }
-
-                if (!sp.getGiaBan().matches("\\d+")) {
-                    return;
-                }
-
-                if (!sp.getSoLuongTon().matches("\\d+")) {
-                    return;
-                }
-
-                if (!sp.getNamBH().matches("\\d+")) {
-                    return;
-                }
+//                if (sp.getTen().trim().length() < 8) {
+//                    return;
+//                }
+//
+//                if (!sp.getGiaBan().matches("\\d+")) {
+//                    return;
+//                }
+//
+//                if (!sp.getSoLuongTon().matches("\\d+")) {
+//                    return;
+//                }
+//
+//                if (!sp.getNamBH().matches("\\d+")) {
+//                    return;
+//                }
 
                 SanPhamRequest sanPhamRequest = new SanPhamRequest();
                 sanPhamRequest.setMa(sp.getMa());

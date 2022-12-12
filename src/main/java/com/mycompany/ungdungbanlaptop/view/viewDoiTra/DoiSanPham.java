@@ -4,13 +4,16 @@
  */
 package com.mycompany.ungdungbanlaptop.view.viewDoiTra;
 
+import com.mycompany.ungdungbanlaptop.entity.SanPham;
 import com.mycompany.ungdungbanlaptop.model.viewModel.GioHangViewModel;
 import com.mycompany.ungdungbanlaptop.model.viewModel.SanPhamBanHangViewModel;
 import com.mycompany.ungdungbanlaptop.service.SanPhamService;
 import com.mycompany.ungdungbanlaptop.service.impl.SanPhamServiceImpl;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import net.coderazzi.filters.gui.AutoChoices;
@@ -26,6 +29,7 @@ public class DoiSanPham extends javax.swing.JFrame {
     
     public DoiSanPham() {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         showSanPham(sanPhamService.getSanPhamBanHang());
         TableFilterHeader filterHeader = new TableFilterHeader(tblSanPham, AutoChoices.ENABLED);
     }

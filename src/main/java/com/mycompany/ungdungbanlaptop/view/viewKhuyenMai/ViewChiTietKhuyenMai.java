@@ -21,6 +21,7 @@ import com.mycompany.ungdungbanlaptop.util.ConverDate;
 import java.io.File;
 import java.util.Date;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JFileChooser;
 import javax.swing.table.DefaultTableModel;
 import net.coderazzi.filters.gui.AutoChoices;
@@ -40,6 +41,7 @@ public class ViewChiTietKhuyenMai extends javax.swing.JFrame {
 
     public ViewChiTietKhuyenMai(String ma) {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.ma = ma;
         KhuyenMai khuyenMai = khuyenMaiService.getOne(ma);
         List<HoaDonChiTietKhuyenMai> list = hoaDonChiTietService.getListHoaDonApDungKhuyenMai(khuyenMai.getNgayBatDau(), khuyenMai.getNgayKetThuc());

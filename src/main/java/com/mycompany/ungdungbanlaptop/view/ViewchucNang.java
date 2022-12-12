@@ -5,6 +5,8 @@
 package com.mycompany.ungdungbanlaptop.view;
 
 import java.awt.FlowLayout;
+import java.io.File;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
@@ -18,6 +20,7 @@ public class ViewchucNang extends javax.swing.JFrame {
      */
     public ViewchucNang(JPanel form) {
         initComponents();
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         view.removeAll();
         view.add(form);
         view.setLayout(new FlowLayout());

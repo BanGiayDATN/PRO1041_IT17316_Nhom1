@@ -12,8 +12,10 @@ import com.mycompany.ungdungbanlaptop.service.NhanVienService;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonChiTietServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.HoaDonServiceImpl;
 import com.mycompany.ungdungbanlaptop.service.impl.NhanVienServiceImpl;
+import java.io.File;
 import java.math.BigDecimal;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -30,7 +32,7 @@ public class viewThongTinHoaDon extends javax.swing.JFrame {
     public viewThongTinHoaDon(HoaDonRespone repon) {
         initComponents();
         ma = repon.getMa();
-
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
 //        HoaDon hd = hoaDonServce.getOne(ma);
         List<HoaDonChiTiet> list = hoaDonChiTietService.getAllByMa(ma);
 

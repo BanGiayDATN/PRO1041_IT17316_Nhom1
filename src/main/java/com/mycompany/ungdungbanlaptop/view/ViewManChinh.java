@@ -11,6 +11,8 @@ import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewShowDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;
 import java.awt.FlowLayout;
+import java.io.File;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -26,6 +28,7 @@ public class ViewManChinh extends javax.swing.JFrame {
     public ViewManChinh(NhanVien nhanVien) {
         initComponents();
         this.nhanVien = nhanVien;
+        this.setIconImage(new ImageIcon(new File("").getAbsolutePath() + "//src//main//resources//img//icon.jpg").getImage());
         this.setLocationRelativeTo(null);
         if (nhanVien.getChucVu().getTen().equals("Nhân viên")) {
             btnSanPham.setVisible(false);
