@@ -30,21 +30,21 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="doi_tra")
+@Table(name = "doi_tra")
 @ToString
 public class DoiTRa {
-    
+
     @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator",
-        parameters = {
-            @Parameter(
-                name = "uuid_gen_strategy_class",
-                value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-            )
-        }
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                @Parameter(
+                        name = "uuid_gen_strategy_class",
+                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                )
+            }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idDoiTra;
@@ -54,39 +54,38 @@ public class DoiTRa {
 
     @Column(name = "ngay_ket_thuc")
     private long ngayKetThuc;
-    
-    @Column(name = "mo_ta",columnDefinition="nvarchar(Max)")
+
+    @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
     private String moTa;
-    
-    @Column(name = "hinh_thuc",columnDefinition="nvarchar(Max)")
+
+    @Column(name = "hinh_thuc", columnDefinition = "nvarchar(Max)")
     private EnumHinhThucDoiTra hinhThucDoiTra;
-    
+
     @Column(name = "tien_thu")
     private BigDecimal tienThu;
-    
+
     @Column(name = "tien_tra")
     private BigDecimal tienTra;
-    
-    @Column(name = "ly_do",columnDefinition="nvarchar(Max)")
+
+    @Column(name = "ly_do", columnDefinition = "nvarchar(Max)")
     private String liDo;
-    
+
     @Column(name = "tinh_trang")
     private int tinhTrang;
-    
+
     @Column(name = "trang_thai")
     private int trangThai;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_khach_hang")
     private KhachHang khachHang;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_hoa_don_chi_tiet")
     private HoaDonChiTiet hoaDonChiTiet;
-    
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_nhan_vien")
     private NhanVien nhanVien;
-    
-    
+
 }

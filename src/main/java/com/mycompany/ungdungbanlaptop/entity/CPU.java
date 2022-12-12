@@ -18,12 +18,11 @@ import lombok.Setter;
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Parameter;
 
-
 @Entity
 @Data
 @Setter
 @Getter
-@Table(name="cpu")
+@Table(name = "cpu")
 @AllArgsConstructor
 @NoArgsConstructor
 public class CPU {
@@ -46,8 +45,8 @@ public class CPU {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_cpu" ,columnDefinition = "nvarchar(Max)")
-    private String ten;   
+    @Column(name = "ten_cpu", columnDefinition = "nvarchar(Max)")
+    private String ten;
 
     public CPU(String ma, String ten) {
         this.ma = ma;
@@ -57,5 +56,5 @@ public class CPU {
     public CPU(UUID idCPU) {
         this.idCPU = idCPU;
     }
-    
+
 }

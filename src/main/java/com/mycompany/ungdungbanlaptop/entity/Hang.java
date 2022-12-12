@@ -26,7 +26,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name="hang")
+@Table(name = "hang")
 @AllArgsConstructor
 @NoArgsConstructor
 public class Hang {
@@ -49,12 +49,11 @@ public class Hang {
     @Column(name = "ma")
     private String ma;
 
-    @Column(name = "ten_hang",columnDefinition = "nvarchar(Max)")
+    @Column(name = "ten_hang", columnDefinition = "nvarchar(Max)")
     private String ten;
 
     public Hang(UUID idHang) {
         this.idHang = idHang;
     }
-    
-    
+
 }

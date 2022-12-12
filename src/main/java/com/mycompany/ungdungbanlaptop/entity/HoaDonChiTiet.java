@@ -30,7 +30,7 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name= "hoa_don_chi_tiet")
+@Table(name = "hoa_don_chi_tiet")
 @ToString
 public class HoaDonChiTiet implements Serializable {
 
@@ -62,7 +62,5 @@ public class HoaDonChiTiet implements Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_san_pham")
     private SanPham sanPham;
-    
-    
-    
+
 }

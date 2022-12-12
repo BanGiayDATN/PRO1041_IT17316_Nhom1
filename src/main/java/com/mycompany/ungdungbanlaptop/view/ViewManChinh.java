@@ -6,7 +6,6 @@ package com.mycompany.ungdungbanlaptop.view;
 
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 
-
 import com.mycompany.ungdungbanlaptop.view.viewBaoHanh.BaoHanh1;
 import com.mycompany.ungdungbanlaptop.view.viewDoiTra.ViewShowDoiTra;
 import com.mycompany.ungdungbanlaptop.view.viewKhuyenMai.ViewKhuyenMai;

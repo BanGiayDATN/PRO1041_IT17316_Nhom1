@@ -75,9 +75,9 @@ public class SanPham implements Serializable {
     @Column(name = "mo_ta", columnDefinition = "nvarchar(Max)")
     private String moTa;
 
-    @Column(name = "trang_thai",  columnDefinition = "int default 0")
+    @Column(name = "trang_thai", columnDefinition = "int default 0")
     private int trangThai;
-    
+
     //Map cac bang
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "id_man_hinh")

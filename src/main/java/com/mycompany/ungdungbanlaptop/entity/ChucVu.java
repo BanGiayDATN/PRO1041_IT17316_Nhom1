@@ -27,35 +27,35 @@ import org.hibernate.annotations.Parameter;
 @Data
 @Setter
 @Getter
-@Table(name= "chuc_vu")
+@Table(name = "chuc_vu")
 @AllArgsConstructor
 @NoArgsConstructor
 public class ChucVu implements Serializable {
-    
-    @Id 
+
+    @Id
     @GeneratedValue(generator = "UUID")
     @GenericGenerator(
-        name = "UUID",
-        strategy = "org.hibernate.id.UUIDGenerator",
-        parameters = {
-            @Parameter(
-                name = "uuid_gen_strategy_class",
-                value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
-            )
-        }
+            name = "UUID",
+            strategy = "org.hibernate.id.UUIDGenerator",
+            parameters = {
+                @Parameter(
+                        name = "uuid_gen_strategy_class",
+                        value = "org.hibernate.id.uuid.CustomVersionOneStrategy"
+                )
+            }
     )
     @Column(name = "id", columnDefinition = "uniqueidentifier")
     private UUID idChucVu;
-    
+
     @Column(name = "ma", unique = true, length = 20)
     private String ma;
-    
-    @Column(name = "ten",columnDefinition="nvarchar(30)")
+
+    @Column(name = "ten", columnDefinition = "nvarchar(30)")
     private String ten;
 
     public ChucVu(String ma, String ten) {
         this.ma = ma;
         this.ten = ten;
     }
-    
+
 }
