@@ -15,6 +15,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -28,6 +29,7 @@ public class ViewImei extends javax.swing.JFrame {
     private ImeiService imeiService = new ImeiServiceImpl();
     private DefaultTableModel dtm = new DefaultTableModel();
     private HoaDonChiTiet hdct;
+    
 
     /**
      * Creates new form ViewImei
@@ -38,6 +40,9 @@ public class ViewImei extends javax.swing.JFrame {
         this.hdct = hoaDonChiTiet;
         jLabel4.setText(String.valueOf(hdct.getSoLuong() - imeiService.getImeiByIDHDCT(hdct.getIdHoaDonChiTiet())));
         showData(imeiService.getAll());
+        if(jLabel4.getText().equals("0")){
+            btnAdd.setEnabled(false);
+        }
     }
 
     private void showData(List<Imei>list){

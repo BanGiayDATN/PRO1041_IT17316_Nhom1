@@ -46,6 +46,8 @@ public interface HoaDonChiTietRepository {
 
     HoaDonChiTiet getByIdHoaDon(UUID idHD);
 
+    List<HoaDonChiTiet> getByIDHD(UUID idHD);
+
     HoaDonChiTiet getByIdSanPham(UUID idSP);
 
     BigDecimal tongDoanhThu();
@@ -64,5 +66,5 @@ public interface HoaDonChiTietRepository {
 
     List<HoaDonChiTietRespone> findHoaDonChiTietByMaHoaDon(String ma);
 
-    List<HoaDonChiTiet> getHdctByHoaDon (String maHoaDon);
+    List<HoaDonChiTiet> getHdctByHoaDon(String maHoaDon);
 }

@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.repository;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import java.util.List;
 import java.util.UUID;
@@ -25,4 +26,6 @@ public interface ImeiRepository {
     Imei getOne(String maImei);
 
     long getImeiByIDHDCT(UUID idHDCT);
+
+    List<HoaDonChiTiet> getByIDHDCT(String maHD);
 }

@@ -5,6 +5,7 @@
 package com.mycompany.ungdungbanlaptop.service;
 
 import com.mycompany.ungdungbanlaptop.entity.HeDieuHanh;
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import java.util.List;
 import java.util.UUID;
@@ -26,5 +27,7 @@ public interface ImeiService {
     Imei getOne(String ma);
 
     long getImeiByIDHDCT(UUID idHDCT);
+    
+     List<HoaDonChiTiet> getByIDHDCT(String maHD);
 
 }

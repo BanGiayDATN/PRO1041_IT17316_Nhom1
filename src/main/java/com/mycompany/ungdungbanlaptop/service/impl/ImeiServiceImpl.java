@@ -4,6 +4,7 @@
  */
 package com.mycompany.ungdungbanlaptop.service.impl;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
 import com.mycompany.ungdungbanlaptop.repository.impl.ImeiRepositoryImpl;
@@ -63,6 +64,12 @@ public class ImeiServiceImpl implements ImeiService {
     @Override
     public long getImeiByIDHDCT(UUID idHDCT) {
         return imeiRepository.getImeiByIDHDCT(idHDCT);
+    }
+
+    @Override
+    public List<HoaDonChiTiet> getByIDHDCT(String maHD) {
+        return imeiRepository.getByIDHDCT(maHD);
+       
     }
 
 }

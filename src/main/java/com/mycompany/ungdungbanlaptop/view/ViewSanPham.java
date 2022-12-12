@@ -14,8 +14,6 @@ import com.mycompany.ungdungbanlaptop.entity.Mau;
 import com.mycompany.ungdungbanlaptop.entity.NhanVien;
 import com.mycompany.ungdungbanlaptop.entity.Ram;
 import com.mycompany.ungdungbanlaptop.entity.SanPham;
-import com.mycompany.ungdungbanlaptop.infrastructure.TaoChuoiNgauNhien;
-import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.HoaDonExport;
 import com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.MauExportSanPham;
 import static com.mycompany.ungdungbanlaptop.infrastructure.exportExcel.SanPhamExportExcel.writeExcel;
 import com.mycompany.ungdungbanlaptop.model.resquest.SanPhamSearchRequest;

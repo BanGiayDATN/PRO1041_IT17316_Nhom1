@@ -44,6 +44,8 @@ public interface HoaDonChiTietService {
 
     HoaDonChiTiet getByIdHoaDon(UUID idHD);
     
+    List<HoaDonChiTiet> getByIDHD(UUID idHD);
+    
     HoaDonChiTiet getByIdSanPham(UUID idSP);
     
      BigDecimal tongDoanhThu();

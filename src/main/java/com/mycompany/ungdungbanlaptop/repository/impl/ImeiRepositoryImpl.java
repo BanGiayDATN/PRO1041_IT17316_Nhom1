@@ -4,9 +4,11 @@
  */
 package com.mycompany.ungdungbanlaptop.repository.impl;
 
+import com.mycompany.ungdungbanlaptop.entity.HoaDonChiTiet;
 import com.mycompany.ungdungbanlaptop.entity.Imei;
 import com.mycompany.ungdungbanlaptop.repository.ImeiRepository;
 import com.mycompany.ungdungbanlaptop.util.HibernateUtil;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import org.hibernate.Session;
@@ -105,5 +107,23 @@ public class ImeiRepositoryImpl implements ImeiRepository {
         return count;
     }
 
+    @Override
+    public List<HoaDonChiTiet> getByIDHDCT(String maHD) {
+          List<HoaDonChiTiet> list = new ArrayList<>();
+        try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct"
+                    + " WHERE hdct.hoaDon.ma = :ma AND hdct.idHoaDonChiTiet not in (SELECT imei.hoaDonChiTiet.idHoaDonChiTiet FROM Imei imei)";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("ma", maHD);
+            list =  query.getResultList();
+            
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return list;
+    }
+    public static void main(String[] args) {
+        System.out.println(new ImeiRepositoryImpl().getByIDHDCT("HD837"));
+    }
   
 }

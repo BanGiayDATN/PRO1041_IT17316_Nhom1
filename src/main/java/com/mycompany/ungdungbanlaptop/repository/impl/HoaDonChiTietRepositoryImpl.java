@@ -426,4 +426,19 @@ public class HoaDonChiTietRepositoryImpl implements HoaDonChiTietRepository {
         HoaDonChiTiet getById = new HoaDonChiTietRepositoryImpl().getById(idHoaDon);
         System.out.println(getById);
     }
+
+    @Override
+    public List<HoaDonChiTiet> getByIDHD(UUID idHD) {
+         try (Session session = HibernateUtil.getFACTORY().openSession()) {
+            String hql = "SELECT hdct FROM HoaDonChiTiet hdct WHERE hdct.hoaDon.idHoaDon = :idHoaDon";
+            Query<HoaDonChiTiet> query = session.createQuery(hql);
+            query.setParameter("idHoaDon", idHD);
+            List<HoaDonChiTiet> list = query.getResultList();
+            return list;
+        } catch (Exception e) {
+            e.printStackTrace(System.out);
+        }
+        return null;
+       
+    }
 }

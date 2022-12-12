@@ -133,4 +133,9 @@ public class HoaDonChiTietServiceImpl implements HoaDonChiTietService {
         return hoaDonChiTietRepository.getHdctByHoaDon(maHoaDon);
     }
 
+    @Override
+    public List<HoaDonChiTiet> getByIDHD(UUID idHD) {
+        return hoaDonChiTietRepository.getByIDHD(idHD);
+    }
+
 }

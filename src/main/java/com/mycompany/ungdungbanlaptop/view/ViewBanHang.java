@@ -985,13 +985,17 @@ public class ViewBanHang extends javax.swing.JPanel {
 
     private void btnThanhToanMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThanhToanMouseClicked
 
-        if (txtTimKiemSoDienThoai.getText().isEmpty()) {
+         if (!imeiRepository.getByIDHDCT(txtMaHoaDon.getText()).isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Nhập imei cho sản phẩm!");
+
+        } else if (txtTimKiemSoDienThoai.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Số điện thoại trống");
         } else if (txtDiaChiHoaDon.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Địa chỉ trống");
         } else if (txtTienKhachDua.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Tiền khách đưa trống");
         } else {
+
             String convertNgayString = new ConverDate().convertDateToString(new Date(), "dd/MM/yyyy");
             long ngayHienTai = new ConverDate().dateToLong(convertNgayString, "dd/MM/yyyy");
             BigDecimal dieuKien;
@@ -1007,6 +1011,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                     khuyenMaiService.update(item);
                 }
             }
+
             try {
 
                 hoaDon = hoaDonService.getOne(txtMaHoaDon.getText());
@@ -1018,7 +1023,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 hoaDon.setTenNguoiNhan(txtTenKHHoaDon.getText());
                 hoaDon.setSdt(txtTimKiemSoDienThoai.getText());
                 hoaDonService.setTrangThai(hoaDonService.getOne(txtMaHoaDon.getText()).getIdHoaDon(), hoaDon);
-                
+
                 // in hoa don
                 UUID idHoaDon = hoaDon.getIdHoaDon();
                 String maQRHoaDonChiTiet = new TaoChuoiNgauNhien().getMaHoaDon("HD", 5);
@@ -1035,7 +1040,7 @@ public class ViewBanHang extends javax.swing.JPanel {
                 JOptionPane.showMessageDialog(this, "Thanh toán thành công!");
                 showHoaDon(hoaDonService.getHoaDonBanHang());
                 dtm2.setRowCount(0);
-               
+
                 clearHoaDon();
             } catch (WriterException ex) {
                 Logger.getLogger(ViewBanHang.class.getName()).log(Level.SEVERE, null, ex);
