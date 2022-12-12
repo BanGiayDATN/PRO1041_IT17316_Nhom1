@@ -1,0 +1,194 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+<<<<<<< HEAD
+    <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="" />
+=======
+    <list default="true" id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="diem">
+<<<<<<< HEAD
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhuyenMaiRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhuyenMaiRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/SanPhamRepositoryImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/SanPhamRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/HibernateUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/HibernateUtil.class" afterDir="false" />
+=======
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/GenerateQRCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/Menu.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/infrastructure/QRCode/ReadingQRCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/model/viewModel/CPUViewModel.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/BaoHanhRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/CPURespositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/ChatLieuRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/ChucVuRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/GPMRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HangRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HeDieuHanhRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonChiTietRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/HoaDonRepositoryimpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/ImeiRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhachHangRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/KhuyenMaiRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/ManHinhRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/NhanVienRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/RamRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/SanPhamRepositoryImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/viewBaoHanh/BaoHanh1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/viewBaoHanh/TimKiemBaoHanh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/BaoHanh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/BaoHanh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/KhachHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/KhachHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/NhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/entity/NhanVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/model/response/NhanVienResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/model/response/NhanVienResquest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/BaoHanhRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/BaoHanhRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/BaoHanhRespository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/CPURespository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/CPURespository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/CapNhatBaoHanhRespository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ChatLieuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ChatLieuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ChucVuRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ChucVuRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/DoiTraRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/DoiTraRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/GPMRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/GPMRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HeDieuHanhRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HeDieuHanhRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HoaDonChiTietRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HoaDonChiTietRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HoaDonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/HoaDonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ImeiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ImeiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/KhachHangRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/KhachHangRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/KhuyenMaiRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/KhuyenMaiRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ManHinhRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/ManHinhRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/NhanVienRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/NhanVienRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/RamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/RamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/SanPhamRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/TimKiemBaoHanhRespository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/BaoHanhService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/BaoHanhService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/CPUService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/CPUService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/CapNhatBaoHanhService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/KhachHangService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/KhachHangService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/LoginService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/NhanVienService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/NhanVienService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/TimKiemBaoHanhService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/BaoHanhServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/BaoHanhServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/CPUServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/CPUServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/CapNhatBaoHanhServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/repository/impl/DoiTraRepositoryImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ChatLieuServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ChatLieuServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/GPMServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/GPMServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/HangServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/HangServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/HeDieuHanhServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/HeDieuHanhServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ImeiServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ImeiServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/KhachHangServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/KhachHangServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/LoginServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/LoginServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ManHinhServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/ManHinhServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/RamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/RamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/SanPhamServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/SanPhamServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/service/impl/TimKiemBaoHanhServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/util/ConverDate.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/util/ConverDate.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/util/HibernateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/util/HibernateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiHang.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiHang.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiManHinh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiManHinh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiRam.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiRam.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiVersionHeDieuHanh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/AdQuanLiVersionHeDieuHanh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/CPUview.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/CPUview.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewMenuNhanVien.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewMenuNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/viewBaoHanh/view.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewMenuQuanLi.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewManChinh.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewMenuQuanLi.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewManChinh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewNhanVien.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewNhanVien.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewNhanVien.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewNhanVien.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewSanPham.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/ViewSanPham.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/BaoHanh1.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/BaoHanh1.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/BaoHanh1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/BaoHanh1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/CapNhatBaoHanh.form" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/CapNhatBaoHanh.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/TimKiemBaoHanh.form" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/TimKiemBaoHanh.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/TimKiemBaoHanh.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewBaoHanh/TimKiemBaoHanh.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/ViewDangKy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/ViewDangKy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/ViewLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mycompany/ungdungbanlaptop/view/viewlogin/login/ViewLogin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/entity/NhanVien.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/entity/NhanVien.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/entity/khachHang.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/entity/khachHang.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/repository/NhanVienRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/repository/NhanVienRepository.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/NhanVienService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/NhanVienService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/service/impl/NhanVienServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/mycompany/ungdungbanlaptop/util/ConverDate.class" afterDir="false" />
+>>>>>>> develop
+    </list>
+>>>>>>> develop
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop_vinh" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2HZSVeJjCFAiEGY2SDGj7Rxz64x" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+<<<<<<< HEAD
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "D:/DuAn1/PRO1041_IT17346_Nhom1"
+=======
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;E:/PRO1041_DuAn1/PRO1041_IT17346_Nhom1&quot;
+>>>>>>> develop
+  }
+}</component>
+<<<<<<< HEAD
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\DuAn1\PRO1041_IT17346_Nhom1\src\main\java" />
+    </key>
+  </component>
+=======
+>>>>>>> develop
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6242c4eb-2658-4f6a-bc0b-eea34f13f476" name="Changes" comment="" />
+      <created>1668491138610</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1668491138610</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
